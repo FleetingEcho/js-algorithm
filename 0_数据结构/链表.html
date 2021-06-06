@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+class LinkList{
+    constructor(){
+      this.data='start'
+      this.next=null
+    };
+
+    //插入(两种)
+    insert(node, newNode, data){
+      while (node) {
+        //插入到指定节点后面
+        if (data && node.data === data) {
+          // 当前节点存在子节点===>将子节点挂载到新节点的子节点上
+          if (node.next) {
+            newNode.next = node.next
+          }
+          // 新节点挂载到当前节点下
+          node.next = newNode
+          return
+        }
+        //直接插入到最后面
+        if (!data && node.next === null) {
+          node.next = newNode
+          return
+        }
+        node = node.next
+      }
+    }
+    _find(node, data){
+      let parent = node
+      node = node.next// node.next才是除start外的数据部分
+      while (node) {
+        if (Object.keys(node.data)[0] === data) {
+          // console.log(node.data);
+          return Object.values(node.data)[0]
+        }
+        parent = node
+        node = node.next
+      }
+    }
+    delete(node, data){
+      // 当前节点
+      let parent = node
+      node = node.next// node.next才是除start外的数据部分
+      while (node) {
+        if (node.data === data) {
+          if (parent) {
+            parent.next = node.next
+            return
+          } else {
+            return
+          }
+        }
+        parent = node
+        node = node.next
+      }
+    }
+    // 删除单个节点，返回链表
+    deleteNode(head, val) {
+    let pre = new LinkList(-1); // 哨兵节点
+    pre.next = head;
+
+    let node = pre;
+    while (node.next) {
+        if (node.next.data === val) {
+            node.next = node.next.next;
+            break;
+        }
+        node = node.next;
+    }
+    return pre.next;
+};
+}
+
+//调用
+const List=new LinkList()
+List.insert(List, { data: 2, next: null })
+List.insert(List, { data: 3, next: null })
+List.insert(List, { data: 4, next: null })
+List.insert(List, { data: 5, next: null })
+List.insert(List, { data: 10, next: null },2)
+
+console.log(List.deleteNode(List, 10));
+console.log(List);
+
+  </script>
+</body>
+</html>

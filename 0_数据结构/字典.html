@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+class Dictionary{
+  constructor(){
+    this.dictionary=new Map();
+  }
+  set(key,value){
+    this.dictionary.set(key,value)
+  };
+  get(key){
+   return this.dictionary.get(key)
+  };
+  remove(key){
+    this.dictionary.delete(key)
+
+  };
+  hasKey(key){
+   return this.dictionary.has(key)
+  };
+  clear(){
+    this.dictionary.clear()
+  };
+  size(){
+    return this.dictionary.size()
+  };
+  isEmpty(){
+     if(this.dictionary.size===0) return true
+     return false
+  };
+  keys(){
+    return [...this.dictionary].keys()
+  };
+  values(){
+    return [...this.dictionary].values()
+  };
+  keyValues(){
+    return [...this.dictionary]
+  };
+  forEach(){
+    // let res={};
+    // this.dictionary.forEach((value,key,self)=>{
+    //     res[key]=value
+    // })
+    // return res
+    let obj = Object.create(null);
+    for (let [key,value] of this.dictionary) {
+      obj[key] = value; 
+    }
+    return obj;
+
+  };
+}
+
+
+let dictionary=new Dictionary();
+dictionary.set('Honda','Civic')
+dictionary.set('Honda1','CRV')
+dictionary.set('Honda2','Fit')
+dictionary.set('Honda3','Accord')
+
+console.log(dictionary.keyValues());
+console.log(dictionary.values());
+// console.log(dictionary.keyValues());
+
+  </script>
+</body>
+</html>

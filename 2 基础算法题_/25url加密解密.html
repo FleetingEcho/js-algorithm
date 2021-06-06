@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>url加密解密</title>
+</head>
+<body>
+  <div>btoa() 等是JS的处理方法，  new Buffer() 是node.js中的类</div>
+  <script>
+    const encode = function(longUrl) {
+  return 'http://tinyurl.com/' + window.btoa(longUrl)
+};
+
+const decode = function(shortUrl) {
+  return window.atob((shortUrl.split('http://tinyurl.com/')[1])).toString()
+};
+
+const url='https://leetcode.com/problems/design-tinyurl';
+console.log(`加密后${encode(url)}`);
+console.log(`解密后${decode(encode(url))}`);
+
+  </script>
+</body>
+</html>

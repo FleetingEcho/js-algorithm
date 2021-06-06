@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+const temp =[100,200,1,2,3,30,22]
+const temp2=temp.values()
+console.log(temp2.next().value);//才能连续打印   100
+console.log(temp2.next().value);//200
+console.log(temp2.next().value);//1
+console.log(temp2.next().value);//2
+console.log(temp2.next().value);//3
+console.log(temp2.next().value);//30
+console.log(temp2.next().value);//22
+console.log(temp2.next().value);//结束后打印undefined
+
+  </script>
+</body>
+</html>

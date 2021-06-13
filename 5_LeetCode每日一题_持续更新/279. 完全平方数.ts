@@ -18,7 +18,6 @@ function numSquares(n: number) {
 			dp[i] = Math.min(dp[i], dp[i - j * j] + 1)
 		}
 	}
-	console.log(dp)
 	return dp[n]
 }
 
@@ -49,18 +48,21 @@ const _numSquares = function (target: number) {
 	}
 }
 
-// DFS 解法   --- 会超时
-// const numSquares_1 = (n: number) => {
-// 	const dfs = (k: number) => {
-// 		let res = k
-// 		let limit = Math.floor(k ** 0.5)
-// 		for (let i = limit; i > 0; i--) {
-// 			res = Math.min(res, 1 + dfs(k - i * i))
-// 		}
-// 		return res
-// 	}
-// 	return dfs(n)
-// }
+// DFS 解法 +记忆化
+const numSquares_1 = (n: number) => {
+	const map = new Map()
+	const dfs = (k: number) => {
+		if (map.has(k)) return map.get(k)
+		const limit = Math.floor(k ** 0.5)
+		let res = k
+		for (let i = limit; i > 0; i--) {
+			res = Math.min(res, 1 + dfs(k - i * i))
+		}
+		map.set(k, res)
+		return res
+	}
+	return dfs(n)
+}
 
 // BFS
 // 不加备忘录会超时

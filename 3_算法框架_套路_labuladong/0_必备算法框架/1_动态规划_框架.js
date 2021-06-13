@@ -52,12 +52,11 @@
 一般使用一个数组充当这个「备忘录」，当然你也可以使用哈希表（字典），思想都是一样的。
 */
 function fib(N) {
-  let dp=new Array(N).fill(0)
-  // base case
-  dp[1] = dp[2] = 1;
-  for (let i = 3; i <= N; i++)
-      dp[i] = dp[i - 1] + dp[i - 2];
-  return dp[N];
+	let dp = new Array(N).fill(0)
+	// base case
+	dp[1] = dp[2] = 1
+	for (let i = 3; i <= N; i++) dp[i] = dp[i - 1] + dp[i - 2]
+	return dp[N]
 }
 /* 
 至此，带备忘录的递归解法的效率已经和迭代的动态规划解法一样了。
@@ -70,23 +69,20 @@ function fib(N) {
 #   这就是动态规划的思路，这也是为什么动态规划一般都脱离了递归，而是由循环迭代完成计算。
 */
 
-
-
 // ! 状态压缩？  比如斐波那契数列，其实不需要一整个数组来存储值，只需要存储之前的两个状态不断叠加即可
 // !             最后的空间复杂度就从O(N)  ---> O(1)
 
 function fib(n) {
-  if (n == 2 || n == 1) 
-      return 1;
-  let prev = 1, curr = 1;
-  for (let i = 3; i <= n; i++) {
-      let sum = prev + curr;
-      prev = curr;
-      curr = sum;
-  }
-  return curr;
+	if (n == 2 || n == 1) return 1
+	let prev = 1,
+		curr = 1
+	for (let i = 3; i <= n; i++) {
+		let sum = prev + curr
+		prev = curr
+		curr = sum
+	}
+	return curr
 }
-
 
 //! 最优子结构
 //  例如最少硬币问题
@@ -94,38 +90,37 @@ function fib(n) {
 
 // dp 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚硬币凑出。
 // 核心: 计算每增加一步的可能性，取最小值
-function coinChange(coins,amount) {
-  // 数组大小为 amount + 1，初始值也为 amount + 1
-  // var dp = Array.from({length:amount+1}, (val,key)=>key);
-  var dp =new Array(amount+1).fill(amount+1);
-  console.log(dp);
-  // base case
-  dp[0] = 0;
-  // 外层 for 循环在遍历所有状态的所有取值
-  for (let i = 0; i < dp.length; i++) {
-      // 内层 for 循环在求所有选择的最小值
-      for (let coin of coins) { //[1,2,5]
-          // 子问题无解，跳过
-          // 每增加一块钱，都判断一下，如果没有零钱找，就跳过，有则取最小值
-          if (i - coin < 0) continue;
-          dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
-      }
-  }
-  console.log(dp);
-/* 
+function coinChange(coins, amount) {
+	// 数组大小为 amount + 1，初始值也为 amount + 1
+	// var dp = Array.from({length:amount+1}, (val,key)=>key);
+	var dp = new Array(amount + 1).fill(amount + 1)
+	console.log(dp)
+	// base case
+	dp[0] = 0
+	// 外层 for 循环在遍历所有状态的所有取值
+	for (let i = 0; i < dp.length; i++) {
+		// 内层 for 循环在求所有选择的最小值
+		for (let coin of coins) {
+			//[1,2,5]
+			// 子问题无解，跳过
+			// 每增加一块钱，都判断一下，如果没有零钱找，就跳过，有则取最小值
+			if (i - coin < 0) continue
+			dp[i] = Math.min(dp[i], 1 + dp[i - coin])
+		}
+	}
+	console.log(dp)
+	/* 
 [
   0, 1, 1, 2, 2,
   1, 2, 2, 3, 3,
   2, 3
 ]
-*/ 
-// 如果有解，必然不相等
-  return (dp[amount] == amount + 1) ? -1 : dp[amount];
+*/
+	// 如果有解，必然不相等
+	return dp[amount] == amount + 1 ? -1 : dp[amount]
 }
 // console.log(coinChange([1,2,5],11));
-console.log(coinChange([1],0));
-
-
+console.log(coinChange([1], 0))
 
 /* 
 计算机解决问题其实没有任何奇技淫巧，它唯一的解决办法就是穷举，穷举所有可能性。

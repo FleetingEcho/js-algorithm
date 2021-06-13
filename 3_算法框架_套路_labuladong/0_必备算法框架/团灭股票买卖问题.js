@@ -24,7 +24,6 @@ for 0 <= i < n:
 
 */
 
-
 /* 
 ! 状态转移方程
 
@@ -45,7 +44,6 @@ dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
 >如果 buy，就要从利润中减去 prices[i]，如果 sell，就要给利润增加 prices[i]。
 
 */
-
 
 /* 
 ! base case分析
@@ -76,27 +74,25 @@ dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
 
 // > 题目1： 最多进行一次交易，也就是K=1；
 
-var maxProfit = function(prices) {
-  let n = prices.length;
-  if(prices.length===0) return 0;
-  // k = 0 的 base case，所以 dp[i-1][0][0] = 0。
-  // 现在发现 k 都是 1，不会改变，即 k 对状态转移已经没有影响了。
-  // 也就可以去掉所有的K；
-  let dp=new Array(n).fill(0).map(v=>new Array(2).fill(0));
-  for (let i = 0; i < n; i++) {
-    // 显然 i = 0 时 dp[i-1] 是不合法的。这是因为我们没有对 i 的 base case 进行处理。
-      if (i===0) {
-        dp[i][0] = 0;
-        dp[i][1] = -prices[i];
-        continue;
-    }
-      dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1] + prices[i]);
-      dp[i][1] = Math.max(dp[i-1][1], -prices[i]);
-  }
-  return dp[n - 1][0];  //左下角
-
-};
-
+var maxProfit = function (prices) {
+	let n = prices.length
+	if (prices.length === 0) return 0
+	// k = 0 的 base case，所以 dp[i-1][0][0] = 0。
+	// 现在发现 k 都是 1，不会改变，即 k 对状态转移已经没有影响了。
+	// 也就可以去掉所有的K；
+	let dp = new Array(n).fill(0).map((v) => new Array(2).fill(0))
+	for (let i = 0; i < n; i++) {
+		// 显然 i = 0 时 dp[i-1] 是不合法的。这是因为我们没有对 i 的 base case 进行处理。
+		if (i === 0) {
+			dp[i][0] = 0
+			dp[i][1] = -prices[i]
+			continue
+		}
+		dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i])
+		dp[i][1] = Math.max(dp[i - 1][1], -prices[i])
+	}
+	return dp[n - 1][0] //左下角
+}
 
 // > 降维后  第一题就解决了，但是这样处理 base case 很麻烦，而且注意一下状态转移方程，
 // > 新状态只和相邻的一个状态有关，其实不用整个 dp 数组，只需要一个变量储存相邻的那个状态就足够了，这样可以把空间复杂度降到 O(1):
@@ -106,17 +102,18 @@ var maxProfit = function(prices) {
 */
 // k == 1
 function maxProfit_k_1(prices) {
-  let n = prices.length;
-  // base case: dp[-1][0] = 0, dp[-1][1] = -infinity
-  let dp_i_0 = 0, dp_i_1 = Number.MIN_SAFE_INTEGER;
-  for (let i = 0; i < n; i++) {
-      dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]); 
-      dp_i_1 = Math.max(dp_i_1, -prices[i]); 
-  }
-  return dp_i_0;
+	let n = prices.length
+	// base case: dp[-1][0] = 0, dp[-1][1] = -infinity
+	let dp_i_0 = 0,
+		dp_i_1 = Number.MIN_SAFE_INTEGER
+	for (let i = 0; i < n; i++) {
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
+		dp_i_1 = Math.max(dp_i_1, -prices[i])
+	}
+	return dp_i_0
 }
 
-//>  第二题，k = +infinity  
+//>  第二题，k = +infinity
 
 /* 
 * 如果 k 为正无穷，那么就可以认为 k 和 k - 1 是一样的。可以这样改写框架：
@@ -131,19 +128,19 @@ dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])
 
 */
 function maxProfit_k_inf(prices) {
-  let n = prices.length;
-  let dp_i_0 = 0, dp_i_1 = Number.MIN_SAFE_INTEGER;
-  for (let i = 0; i < n; i++) {
-      let temp = dp_i_0;
-      dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
-      dp_i_1 = Math.max(dp_i_1, temp - prices[i]);
-  }
-  return dp_i_0;
+	let n = prices.length
+	let dp_i_0 = 0,
+		dp_i_1 = Number.MIN_SAFE_INTEGER
+	for (let i = 0; i < n; i++) {
+		let temp = dp_i_0
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
+		dp_i_1 = Math.max(dp_i_1, temp - prices[i])
+	}
+	return dp_i_0
 }
 
-
 //> 第三题，k = +infinity with cooldown
-// 
+//
 /* 
 * 每次 sell 之后要等一天才能继续交易。只要把这个特点融入上一题的状态转移方程即可：
 dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
@@ -152,20 +149,19 @@ dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i])
 
 */
 function maxProfit_with_cool(prices) {
-  let n = prices.length;
-  let dp_i_0 = 0, dp_i_1 = Number.MIN_SAFE_INTEGER;
-  let dp_pre_0 = 0; // 代表 dp[i-2][0]
-  for (let i = 0; i < n; i++) {
-      let temp = dp_i_0;
-      dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);//今天没股票，可能有股票然后卖了，或者本来就没有股票
-      dp_i_1 = Math.max(dp_i_1, dp_pre_0 - prices[i]);//今天有股票，可能本来就有，或者昨天买的
-      dp_pre_0 = temp;
-    // 第一天pre是0;第二天也是0，第三天才开始是pre=dp_i_0； 
-  }
-  return dp_i_0;
+	let n = prices.length
+	let dp_i_0 = 0,
+		dp_i_1 = Number.MIN_SAFE_INTEGER
+	let dp_pre_0 = 0 // 代表 dp[i-2][0]
+	for (let i = 0; i < n; i++) {
+		let temp = dp_i_0
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]) //今天没股票，可能有股票然后卖了，或者本来就没有股票
+		dp_i_1 = Math.max(dp_i_1, dp_pre_0 - prices[i]) //今天有股票，可能本来就有，或者昨天买的
+		dp_pre_0 = temp
+		// 第一天pre是0;第二天也是0，第三天才开始是pre=dp_i_0；
+	}
+	return dp_i_0
 }
-
-
 
 // > 第四题，k = +infinity with fee
 
@@ -178,15 +174,16 @@ dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i] - fee)
 ! 不限制交易次数，K可以认为对交易没有影响
 */
 
-function maxProfit_with_fee(prices,fee) {
-  let n = prices.length;
-  let dp_i_0 = 0, dp_i_1 = Number.MIN_SAFE_INTEGER;
-  for (let i = 0; i < n; i++) {
-      let temp = dp_i_0;
-      dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
-      dp_i_1 = Math.max(dp_i_1, temp - prices[i] - fee);
-  }
-  return dp_i_0;
+function maxProfit_with_fee(prices, fee) {
+	let n = prices.length
+	let dp_i_0 = 0,
+		dp_i_1 = Number.MIN_SAFE_INTEGER
+	for (let i = 0; i < n; i++) {
+		let temp = dp_i_0
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
+		dp_i_1 = Math.max(dp_i_1, temp - prices[i] - fee)
+	}
+	return dp_i_0
 }
 
 // > 第五题，k = 2
@@ -218,17 +215,18 @@ return dp[n - 1][max_k][0];
 
 // 两种情况全考虑，肯定是交易越多钱越多，所以最后结果是dp_i20
 function maxProfit_k_2(prices) {
-  let dp_i10 = 0, dp_i11 =Number.MIN_SAFE_INTEGER;
-  let dp_i20 = 0, dp_i21 = Number.MIN_SAFE_INTEGER;
-  for (let price of prices) {
-      dp_i20 = Math.max(dp_i20, dp_i21 + price);
-      dp_i21 = Math.max(dp_i21, dp_i10 - price);
-      dp_i10 = Math.max(dp_i10, dp_i11 + price);
-      dp_i11 = Math.max(dp_i11, -price);
-  }
-  return dp_i20;
+	let dp_i10 = 0,
+		dp_i11 = Number.MIN_SAFE_INTEGER
+	let dp_i20 = 0,
+		dp_i21 = Number.MIN_SAFE_INTEGER
+	for (let price of prices) {
+		dp_i20 = Math.max(dp_i20, dp_i21 + price)
+		dp_i21 = Math.max(dp_i21, dp_i10 - price)
+		dp_i10 = Math.max(dp_i10, dp_i11 + price)
+		dp_i11 = Math.max(dp_i11, -price)
+	}
+	return dp_i20
 }
-
 
 // > 第六题，k = any integer
 
@@ -238,35 +236,37 @@ function maxProfit_k_2(prices) {
 
 */
 
-function maxProfit_k_any( max_k,prices) {
-  let n = prices.length;
-  // 交易次数判断是否超过n/2。
-  if (max_k > n / 2) return maxProfit_k_inf(prices);
-  let dp=new Array(n).fill(0).map(v=>new Array(max_k+1).fill(0).map(v=>{
-   return new Array(2).fill(0)
-  }));
+function maxProfit_k_any(max_k, prices) {
+	let n = prices.length
+	// 交易次数判断是否超过n/2。
+	if (max_k > n / 2) return maxProfit_k_inf(prices)
+	let dp = new Array(n).fill(0).map((v) =>
+		new Array(max_k + 1).fill(0).map((v) => {
+			return new Array(2).fill(0)
+		})
+	)
 
-  for (let i = 0; i < n; i++) 
-      for (let k = max_k; k >= 1; k--) {
-          if (i===0) {
-            dp[i][k][0] = 0;
-            dp[i][k][1] = -prices[i];
-            continue;
-           }
-          dp[i][k][0] = Math.max(dp[i-1][k][0], dp[i-1][k][1] + prices[i]);
-          dp[i][k][1] = Math.max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i]);     
-      }
-  return dp[n - 1][max_k][0];
+	for (let i = 0; i < n; i++)
+		for (let k = max_k; k >= 1; k--) {
+			if (i === 0) {
+				dp[i][k][0] = 0
+				dp[i][k][1] = -prices[i]
+				continue
+			}
+			dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i])
+			dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i])
+		}
+	return dp[n - 1][max_k][0]
 }
 // 备选项，如果K 大于一半，那说明就是infinity，随便交易
 function maxProfit_k_inf(prices) {
-  let n = prices.length;
-  let dp_i_0 = 0, dp_i_1 = Number.MIN_SAFE_INTEGER;
-  for (let i = 0; i < n; i++) {
-      let temp = dp_i_0;
-      dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
-      dp_i_1 = Math.max(dp_i_1, temp - prices[i]);
-  }
-  return dp_i_0;
+	let n = prices.length
+	let dp_i_0 = 0,
+		dp_i_1 = Number.MIN_SAFE_INTEGER
+	for (let i = 0; i < n; i++) {
+		let temp = dp_i_0
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
+		dp_i_1 = Math.max(dp_i_1, temp - prices[i])
+	}
+	return dp_i_0
 }
-

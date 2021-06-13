@@ -14,18 +14,16 @@
 
 // ! 最典型的分治算法 ---归并排序
 
-function sort(nums,lo,hi) {
-  let mid = (lo + hi) / 2;
-  /****** 分 ******/
-  // 对数组的两部分分别排序
-  sort(nums, lo, mid);
-  sort(nums, mid + 1, hi);
-  /****** 治 ******/
-  // 合并两个排好序的子数组
-  merge(nums, lo, mid, hi);
+function sort(nums, lo, hi) {
+	let mid = (lo + hi) / 2
+	/****** 分 ******/
+	// 对数组的两部分分别排序
+	sort(nums, lo, mid)
+	sort(nums, mid + 1, hi)
+	/****** 治 ******/
+	// 合并两个排好序的子数组
+	merge(nums, lo, mid, hi)
 }
-
-
 
 //!  LeetCode 241. 为运算表达式设计优先级;
 /* 
@@ -41,54 +39,49 @@ function sort(nums,lo,hi) {
 
 // > 基本逻辑
 
-const test="(1 + 2 * 3) - (4 * 5)";
+const test = '(1 + 2 * 3) - (4 * 5)'
 function diffWaysToCompute(test) {
-  let res =[];
-  /****** 分 ******/
-  let left = diffWaysToCompute("1 + 2 * 3");
-  let right = diffWaysToCompute("4 * 5");
-  /****** 治 ******/
-  for (let a of left)
-      for (let b of right)
-          res.push(a - b);
-  return res;
+	let res = []
+	/****** 分 ******/
+	let left = diffWaysToCompute('1 + 2 * 3')
+	let right = diffWaysToCompute('4 * 5')
+	/****** 治 ******/
+	for (let a of left) for (let b of right) res.push(a - b)
+	return res
 }
-
 
 // > 解决
 
 // 1 + 2 * 3- 4 * 5
 function diffWaysToCompute(input) {
- let res =[];
-  for (let i = 0; i < input.length; i++) {
-      let c = input.charAt(i);
-      // 扫描算式 input 中的运算符
-      if (c == '-' || c == '*' || c == '+') {
-          /****** 分 ******/
-          // 以运算符为中心，分割成两个字符串，分别递归计算
-          let left = diffWaysToCompute(input.substring(0, i));
-          let right= diffWaysToCompute(input.substring(i + 1));
-          /****** 治 ******/
-          // 通过子问题的结果，合成原问题的结果
-          for (let a of left){
-            for (let b of right){
-              if (c == '+') res.push(a + b);
-              else if (c == '-') res.push(a - b);
-              else if (c == '*') res.push(a * b);
-            }
-          }
-
-      }
-  }
-  // base case
-  // 如果 res 为空，说明算式是一个数字，没有运算符
-  // ! 递归函数必须有个 base case 用来结束递归
-  if (res.length===0) {
-      res.push(Number(input));
-  }
-  return res;
+	let res = []
+	for (let i = 0; i < input.length; i++) {
+		let c = input.charAt(i)
+		// 扫描算式 input 中的运算符
+		if (c == '-' || c == '*' || c == '+') {
+			/****** 分 ******/
+			// 以运算符为中心，分割成两个字符串，分别递归计算
+			let left = diffWaysToCompute(input.substring(0, i))
+			let right = diffWaysToCompute(input.substring(i + 1))
+			/****** 治 ******/
+			// 通过子问题的结果，合成原问题的结果
+			for (let a of left) {
+				for (let b of right) {
+					if (c == '+') res.push(a + b)
+					else if (c == '-') res.push(a - b)
+					else if (c == '*') res.push(a * b)
+				}
+			}
+		}
+	}
+	// base case
+	// 如果 res 为空，说明算式是一个数字，没有运算符
+	// ! 递归函数必须有个 base case 用来结束递归
+	if (res.length === 0) {
+		res.push(Number(input))
+	}
+	return res
 }
-
 
 /* 
 (1 + 1) + (1 + 1 + 1)
@@ -96,37 +89,40 @@ function diffWaysToCompute(input) {
 属于重复计算，所以可以加一个备忘录进行剪枝
 */
 // 备忘录 优化
-const memo=new Map();
+const memo = new Map()
 function diffWaysToCompute(input) {
-  // 避免重复计算--剪枝
-  if (memo.has(input)) {return memo.get(input);}
- let res =[];
-  for (let i = 0; i < input.length; i++) {
-      let c = input.charAt(i);
-      // 扫描算式 input 中的运算符
-      if (c == '-' || c == '*' || c == '+') {
-          /****** 分 ******/
-          // 以运算符为中心，分割成两个字符串，分别递归计算
-          let left = diffWaysToCompute(input.substring(0, i));
-          let right= diffWaysToCompute(input.substring(i + 1));
-          /****** 治 ******/
-          // 通过子问题的结果，合成原问题的结果
-          for (let a of left){
-            for (let b of right){
-              if (c == '+') res.push(a + b);
-              else if (c == '-') res.push(a - b);
-              else if (c == '*') res.push(a * b);
-            }
-          }
+	// 避免重复计算--剪枝
+	if (memo.has(input)) {
+		return memo.get(input)
+	}
+	let res = []
+	for (let i = 0; i < input.length; i++) {
+		let c = input.charAt(i)
+		// 扫描算式 input 中的运算符
+		if (c == '-' || c == '*' || c == '+') {
+			/****** 分 ******/
+			// 以运算符为中心，分割成两个字符串，分别递归计算
+			let left = diffWaysToCompute(input.substring(0, i))
+			let right = diffWaysToCompute(input.substring(i + 1))
+			/****** 治 ******/
+			// 通过子问题的结果，合成原问题的结果
+			for (let a of left) {
+				for (let b of right) {
+					if (c == '+') res.push(a + b)
+					else if (c == '-') res.push(a - b)
+					else if (c == '*') res.push(a * b)
+				}
+			}
+		}
+	}
+	// base case
+	// 如果 res 为空，说明算式是一个数字，没有运算符
+	// ! 递归函数必须有个 base case 用来结束递归
+	if (res.length === 0) {
+		res.push(Number(input))
+	}
 
-      }
-  }
-  // base case
-  // 如果 res 为空，说明算式是一个数字，没有运算符
-  // ! 递归函数必须有个 base case 用来结束递归
-  if (res.length===0) {res.push(Number(input))};
-
-  // 将结果添加进备忘录
-  memo.set(input, res);
-  return res;
+	// 将结果添加进备忘录
+	memo.set(input, res)
+	return res
 }

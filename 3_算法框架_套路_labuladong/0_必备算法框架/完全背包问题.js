@@ -37,54 +37,48 @@
 ]
 
 */
-function change(amount ,coins){
-  let len=coins.length;
-let dp=new Array(coins).fill(0).map(v=>new Array(amount).fill(0));
-  // base case
-for (let i = 0; i <= n; i++) dp[i][0] = 1;
+function change(amount, coins) {
+	let len = coins.length
+	let dp = new Array(coins).fill(0).map((v) => new Array(amount).fill(0))
+	// base case
+	for (let i = 0; i <= n; i++) dp[i][0] = 1
 
-for(let i=1;i<=len;i++){
-  // 重量从1开始计算；
-  for(let k=1;k<=amount;k++ ){
-    // 还能装？
-    if(k-coins[i-1]>=0){ //重量为k是装coins[i]能装下，那结果总数就是不装+装(重量减去当前)
-      dp[i][k]=dp[i-1][k]+dp[i-1][k- coins[i-1]]
-    }
-    // 没地方了？
-    else{
-      dp[i][k]=dp[i-1][k];
-    }
-
-  }
+	for (let i = 1; i <= len; i++) {
+		// 重量从1开始计算；
+		for (let k = 1; k <= amount; k++) {
+			// 还能装？
+			if (k - coins[i - 1] >= 0) {
+				//重量为k是装coins[i]能装下，那结果总数就是不装+装(重量减去当前)
+				dp[i][k] = dp[i - 1][k] + dp[i - 1][k - coins[i - 1]]
+			}
+			// 没地方了？
+			else {
+				dp[i][k] = dp[i - 1][k]
+			}
+		}
+	}
+	return dp[len][amount]
 }
-return dp[len][amount];
+
+function change(amount, coins) {
+	let n = coins.length
+	// let[][] dp = amount let[n + 1][amount + 1];
+	let dp = new Array(n + 1).fill(0).map((v) => new Array(amount + 1).fill(0))
+	// base case
+	for (let i = 0; i <= n; i++) dp[i][0] = 1
+	// 开始状态转移
+	for (let i = 1; i <= n; i++) {
+		for (let j = 1; j <= amount; j++)
+			if (j - coins[i - 1] >= 0)
+				//能装下
+				// 方法数相加
+				dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]]
+			// 还是原来的方法数
+			else dp[i][j] = dp[i - 1][j]
+	}
+	return dp[n][amount]
 }
-
-
-
-
-
-function change(amount,coins) {
-  let n = coins.length;
-  // let[][] dp = amount let[n + 1][amount + 1];
-  let dp=new Array(n+1).fill(0).map(v=>new Array(amount+1).fill(0));
-  // base case
-  for (let i = 0; i <= n; i++) dp[i][0] = 1;
-// 开始状态转移
-  for (let i = 1; i <= n; i++) {
-      for (let j = 1; j <= amount; j++)
-          if (j - coins[i-1] >= 0) //能装下
-              // 方法数相加
-              dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i-1]];
-          else 
-              // 还是原来的方法数
-              dp[i][j] = dp[i - 1][j];
-  }
-  return dp[n][amount];
-}
-console.log(change(5,[1,2,5]));
-
-
+console.log(change(5, [1, 2, 5]))
 
 /* 
 > 优化: 状态压缩
@@ -94,16 +88,11 @@ console.log(change(5,[1,2,5]));
 */
 
 function change1(amount, coins) {
-  let n = coins.length;
-  let dp=new Array(amount+1).fill(0);
-  dp[0] = 1; // base case
-  for (let i = 0; i < n; i++)
-  for (let j = 1; j <= amount; j++)
-      if (j - coins[i] >= 0)
-       dp[j] = dp[j] + dp[j-coins[i]];
-  return dp[amount];
+	let n = coins.length
+	let dp = new Array(amount + 1).fill(0)
+	dp[0] = 1 // base case
+	for (let i = 0; i < n; i++) for (let j = 1; j <= amount; j++) if (j - coins[i] >= 0) dp[j] = dp[j] + dp[j - coins[i]]
+	return dp[amount]
 }
 
-console.log(change1(5,[1,2,5]));
-
-
+console.log(change1(5, [1, 2, 5]))

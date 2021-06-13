@@ -1,5 +1,3 @@
-
-
 /* 
 & 与,以特定的方式组合操作二进制数中对应的位，
   如果对应的位都为1，那么结果就是1， 如果任意一个位是0 则结果就是0。
@@ -50,24 +48,21 @@
 
 */
 
-// 1.判断奇偶 
-console.log(2 & 1)    // 0
-console.log(3 & 1)    // 1
+// 1.判断奇偶
+console.log(2 & 1) // 0
+console.log(3 & 1) // 1
 
 // 2.求2的n次方
 // 有符号左移和有符号右移  不会影响正负
 function power(n) {
-  return 1 << n;
+	return 1 << n
 }
 
-
 // 3. 向下取整(必须是非负数)
-console.log(6.83 | 0)   // 6
+console.log(6.83 | 0) // 6
 
-console.log(6.83 >> 0)  // 6
-console.log(6.83 << 0)  // 6
-
-
+console.log(6.83 >> 0) // 6
+console.log(6.83 << 0) // 6
 
 // 4.使用^来完成值交换
 var a = 5
@@ -75,20 +70,18 @@ var b = 8
 a ^= b
 b ^= a
 a ^= b
-console.log(a)   // 8
-console.log(b)   // 5
-
+console.log(a) // 8
+console.log(b) // 5
 
 // 5. 一个数的1/2(并且向下取整)
-var num = 64 >> 1; // 32
-var num = 5 >> 1; // 2 小数同样会向下取整
-
+var num = 64 >> 1 // 32
+var num = 5 >> 1 // 2 小数同样会向下取整
 
 // 6. 判断正负
 function isPos(n) {
-  return (n === (n >>> 0)) ? true : false;    
+	return n === n >>> 0 ? true : false
 }
-isPos(-1); // false 
-isPos(1); // true
+isPos(-1) // false
+isPos(1) // true
 
 // -1>>>0虽然没有向右移动位数，但-1的二进制码已经变成了正数的二进制码：

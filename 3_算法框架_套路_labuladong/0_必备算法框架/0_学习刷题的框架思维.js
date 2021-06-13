@@ -17,8 +17,6 @@
 ! 而且不能随机访问
 */
 
-
-
 /* 
 数据结构的基本操作
 * 对于任何数据结构，其基本操作无非遍历 + 访问，再具体一点就是：增删查改。
@@ -28,73 +26,73 @@
 !  非线性------递归为代表。
 */
 
-
 //*1. 数组 遍历框架，典型的线性迭代结构：
- function traverse(arr) {
-      for (let i = 0; i < arr.length; i++) {
-          //! 迭代访问 arr[i]
-      }
-  }
+function traverse(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		//! 迭代访问 arr[i]
+	}
+}
 
 //*2. 链表遍历框架，兼具迭代和递归结构：
 
 /* 基本的单链表节点 */
 class ListNode {
-constructor(){
-  this.val= val;
-   this.next=null;
-}}
+	constructor() {
+		this.val = val
+		this.next = null
+	}
+}
 //! 迭代的话
 function traverse(head) {
-  for ( p = head; p != null; p = p.next) {
-      //* 迭代访问 p.val
-  }
+	for (p = head; p != null; p = p.next) {
+		//* 迭代访问 p.val
+	}
 }
 //! 递归的话
-function traverse( head) {
-  // 递归访问 head.val
-  traverse(head.next)
+function traverse(head) {
+	// 递归访问 head.val
+	traverse(head.next)
 }
 
 // * 2--倒序打印单链表
 
 /* 倒序打印单链表中的元素值 */
 function traverse(head) {
-  if (head == null) return;
-  traverse(head.next);
-  // 后序遍历代码
-  console.log(head.val);
+	if (head == null) return
+	traverse(head.next)
+	// 后序遍历代码
+	console.log(head.val)
 }
-
-
 
 //* 3.二叉树遍历框架，典型的非线性递归遍历结构：
 
 /* 基本的二叉树节点 */
 class TreeNode {
-  constructor(){
-    this.val= val;
-    this.left=null;
-    this.right=null;
-  }}
+	constructor() {
+		this.val = val
+		this.left = null
+		this.right = null
+	}
+}
 
-function traverse( root) {
-  traverse(root.left)
-  traverse(root.right)
+function traverse(root) {
+	traverse(root.left)
+	traverse(root.right)
 }
 
 //* 4.N 叉树的遍历框架：
 /* 基本的 N 叉树节点 */
 class TreeNode {
-  constructor(){
-    this.val= val;
-    this.child=[];
-  }}
+	constructor() {
+		this.val = val
+		this.child = []
+	}
+}
 
-function traverse(root){
-  for(let item of child){
-    traverse(item);
-  }
+function traverse(root) {
+	for (let item of child) {
+		traverse(item)
+	}
 }
 
 //* 5. N 叉树的遍历又可以扩展为图的遍历，因为图就是好几 N 叉棵树的结合体。
@@ -104,41 +102,40 @@ function traverse(root){
 
 // 例如： 二叉树中的最大路径和就是用递归
 const maxPathSum = (root) => {
-  let maxSum = Number.MIN_SAFE_INTEGER; // 最大路径和
-  const dfs = (root) => {
-    if (root == null) return 0;   // 遍历到null节点，返回0;
-    
-    const left = Math.max(0, dfs(root.left));   // 左子树提供的最大收益
-    const right = Math.max(0, dfs(root.right)); // 右子树提供的最大收益
-     maxSum=Math.max(maxSum,left+right+root.val);
+	let maxSum = Number.MIN_SAFE_INTEGER // 最大路径和
+	const dfs = (root) => {
+		if (root == null) return 0 // 遍历到null节点，返回0;
 
-    return  Math.max(left,right)+root.val //返回节点贡献的最大值
-  };
+		const left = Math.max(0, dfs(root.left)) // 左子树提供的最大收益
+		const right = Math.max(0, dfs(root.right)) // 右子树提供的最大收益
+		maxSum = Math.max(maxSum, left + right + root.val)
 
-  dfs(root); // 递归的入口
-  return maxSum;
-};
+		return Math.max(left, right) + root.val //返回节点贡献的最大值
+	}
 
+	dfs(root) // 递归的入口
+	return maxSum
+}
 
 //! 举例2
 // 99. 恢复二叉搜索树
 const recoverTree = (root) => {
-  let prev = new TreeNode(-Infinity);
-  let s;//错误1
-  let t; //错误2
-  function traverse(node) {
-    if (!node) return;
-    traverse(node.left);
-    if (node.val < prev.val) {
-        s = (s == null) ? prev : s;//记录第一个错误
-        t = node; //记录错误2
-    }
-    prev = node; //更新prev
-    traverse(node.right);
-  }
-  traverse(root)
-  // > 交换s.val和t.val  swap这两个错误
-  const temp = s.val;
-  s.val = t.val;
-  t.val = temp; 
-};
+	let prev = new TreeNode(-Infinity)
+	let s //错误1
+	let t //错误2
+	function traverse(node) {
+		if (!node) return
+		traverse(node.left)
+		if (node.val < prev.val) {
+			s = s == null ? prev : s //记录第一个错误
+			t = node //记录错误2
+		}
+		prev = node //更新prev
+		traverse(node.right)
+	}
+	traverse(root)
+	// > 交换s.val和t.val  swap这两个错误
+	const temp = s.val
+	s.val = t.val
+	t.val = temp
+}

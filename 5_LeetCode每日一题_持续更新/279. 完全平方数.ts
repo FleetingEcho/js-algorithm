@@ -10,7 +10,7 @@ DP
 可以用数组dp[i]表示正整数i的最少个完全平方数表达
 状态转移方程 dp[i] = min(i, 1 + ∑(dp[i - a^2])), a^2 <= i
 */
-function numSquares(n: number) {
+function numSquares_DP(n: number) {
 	let dp = new Array(n + 1).fill(0)
 	for (let i = 1; i <= n; i++) {
 		dp[i] = i
@@ -21,7 +21,7 @@ function numSquares(n: number) {
 	return dp[n]
 }
 
-console.log(numSquares(12))
+// console.log(numSquares(12))
 
 // BFS 加备忘录
 
@@ -49,19 +49,20 @@ const _numSquares = function (target: number) {
 }
 
 // DFS 解法 +记忆化
-const numSquares_1 = (n: number) => {
+type _type = (target: number) => number
+const numSquares: _type = (target) => {
 	const map = new Map()
-	const dfs = (k: number) => {
-		if (map.has(k)) return map.get(k)
-		const limit = Math.floor(k ** 0.5)
-		let res = k
+	const dfs: _type = (n) => {
+		if (map.has(n)) return map.get(n)
+		const limit = Math.floor(n ** 0.5)
+		let res = n
 		for (let i = limit; i > 0; i--) {
-			res = Math.min(res, 1 + dfs(k - i * i))
+			res = Math.min(res, 1 + dfs(n - i * i))
 		}
-		map.set(k, res)
+		map.set(n, res)
 		return res
 	}
-	return dfs(n)
+	return dfs(target)
 }
 
 // BFS

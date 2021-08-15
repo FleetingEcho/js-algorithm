@@ -63,7 +63,7 @@ Visited大部分时候都是必须的。
 // > 不过，双向 BFS 也有局限，因为你必须知道终点在哪里
 // > 双向 BFS 还是遵循 BFS 算法框架的，只是不再使用队列，而是使用 HashSet 方便快速判断两个集合是否有交集。
 
-// 二叉树的最小高度
+// 二叉树的最小高度 剑指 Offer 55 - I. 二叉树的深度
 
 function minDepth(root) {
 	if (root == null) return 0

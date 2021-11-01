@@ -67,21 +67,22 @@ This is a collection of personal algorithm training codes based on **JavaScript*
 In [Data Structures](https://github.com/JakeZT/js-algorithm/tree/master/0_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
 
 ```js
-    0_Node中Buffer对象.js
-    0_基础_JS全局方法.js
-    0_基础_Map.js
-    0_基础_Math.js
-    0_基础_Number.js
-    0_基础_Set.js
-    0_基础_Symbol.js
-    0_基础_字符串方法.js
-    0_基础_对象Obj.js
-    0_基础_数组Array.js
-    0_基础_条件问题.js
-    0_基础_正则表达式.js
-    0_补充_算法方法知识点.js
+    1.基础_BigInt使用.js
+    2.基础_JS全局方法.js
+    3.基础_Map.js
+    4.基础_Math.js
+    5.基础_Number.js
+    6.基础_Set.js
+    7.基础_Symbol.js
+    8.基础_对象Obj.js
+    9.基础_数组Array.js
+    10.基础_字符串方法.js
+    11.基础_条件问题.js
+    12.基础_正则表达式.js
+    13.补充_算法方法知识点.js
     AVL.html
     AYL树_自平衡二叉树.js
+    Node中Buffer对象.js
     temp.html
     temp.js
     二叉树 copy.html
@@ -89,6 +90,7 @@ In [Data Structures](https://github.com/JakeZT/js-algorithm/tree/master/0_%E6%95
     二叉树.js
     二叉树_红黑树.html
     二叉树_红黑树.js
+    优先级队列_最小堆.ts
     双向链表.html
     双向链表.js
     双端队列.js
@@ -126,44 +128,51 @@ In [Data Structures](https://github.com/JakeZT/js-algorithm/tree/master/0_%E6%95
 ## Main Categories
 
 ```js
-├───0_LeetCode每日一题
-├───0_剑指Offer_√
-│   ├───BFS_广度遍历_√
-│   ├───DFS_深度遍历_√
-│   ├───二叉树_√
-│   ├───位运算_√
-│   ├───动态规划_√
-│   ├───哈希表_√
-│   ├───回溯法_试探法_√
-│   ├───数组+字符串_√
-│   ├───栈和队列_√
-│   ├───正则表达式_√
-│   ├───递归_√
-│   └───链表_√
-├───0_北美Top Interview Questions 145
-│   ├───BFS
-│   └───DFS
-├───1 数据结构
-├───2 算法
-└───3 算法框架_套路_labuladong
-    ├───0_必备算法框架
-    ├───0_排序算法 合集
-    ├───0_未分类题目
-    ├───二分法_详解
-    ├───二叉树集锦
-    ├───位运算
-    ├───动态规划问题  合集
-    ├───区间问题
-    ├───单调栈__单调队列
-    ├───双指针_快慢指针
-    ├───回文系列
-    ├───回溯算法问题合集
-    ├───差分算法_前缀和算法
-    ├───滑动窗口_解决子串子数组问题
-    ├───贪心算法
-    ├───递归汇总
-    └───高频面试题
-
+├─1.算法框架_labuladong
+│  ├─1.必备算法框架
+│  ├─10.回文系列
+│  ├─11.分治算法框架
+│  ├─12.贪心算法
+│  ├─13.滑动窗口_解决子串子数组问题
+│  ├─14.区间问题
+│  ├─15.差分算法_前缀和算法
+│  ├─16.图
+│  ├─17.位运算
+│  ├─18.未分类题目
+│  ├─19.高频面试题
+│  ├─2.排序算法 合集
+│  ├─3.二叉树集锦
+│  ├─4.单调栈__单调队列
+│  ├─5.动态规划问题  合集
+│  ├─6.双指针_快慢指针
+│  ├─7.回溯算法问题合集
+│  ├─8.递归汇总
+│  ├─9.二分法_详解
+│  └─New Topics_after 2021-08
+│      ├─DFS 岛屿问题
+│      ├─Dijkstra 算法
+│      ├─图相关
+│      ├─时间调度问题
+│      ├─贪心算法
+│      └─链表
+├─2.剑指Offer
+│  ├─BFS_广度遍历_√
+│  ├─DFS_深度遍历_√
+│  ├─二叉树_√
+│  ├─位运算_√
+│  ├─动态规划_√
+│  ├─哈希表_√
+│  ├─回溯法_试探法_√
+│  ├─数组+字符串_√
+│  ├─栈和队列_√
+│  ├─正则表达式_√
+│  ├─递归_√
+│  └─链表_√
+├─3.Data Structure
+├─4.Basic Challenge
+└─5.Daily Challenge
+    ├─BFS
+    └─DFS
 
 ```
 

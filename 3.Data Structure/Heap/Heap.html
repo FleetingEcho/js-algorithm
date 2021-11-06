@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heap</title>
+</head>
+
+<body>
+  <script>
+    class Heap {
+      constructor(comparator = (a, b) => a - b) {
+        this.array = [];
+        this.comparator = (i1, i2) => comparator(this.array[i1], this.array[i2]);
+      }
+
+      add(value) {
+        this.array.push(value);
+        this.bubbleUp();
+      }
+
+
+      peek() {
+        return this.array[0];
+      }
+
+
+      remove(index = 0) {
+        if (!this.size) return null;
+        this.swap(index, this.size - 1); // swap with last
+        const value = this.array.pop(); // remove element
+        this.bubbleDown(index);
+        return value;
+      }
+
+
+      get size() {
+        return this.array.length;
+      }
+
+
+      bubbleUp() {
+        let index = this.size - 1;
+        const parent = (i) => Math.ceil(i / 2 - 1);
+        while (parent(index) >= 0 && this.comparator(parent(index), index) > 0) {
+          this.swap(parent(index), index);
+          index = parent(index);
+        }
+      }
+
+
+      bubbleDown(index = 0) {
+        let curr = index;
+        const left = (i) => 2 * i + 1;
+        const right = (i) => 2 * i + 2;
+        const getTopChild = (i) => (right(i) < this.size
+          && this.comparator(left(i), right(i)) > 0 ? right(i) : left(i));
+
+        while (left(curr) < this.size && this.comparator(curr, getTopChild(curr)) > 0) {
+          const next = getTopChild(curr);
+          this.swap(curr, next);
+          curr = next;
+        }
+      }
+
+
+      swap(i1, i2) {
+        [this.array[i1], this.array[i2]] = [this.array[i2], this.array[i1]];
+      }
+    }
+    class MaxHeap extends Heap {
+      constructor() {
+        super((a, b) => b - a)
+      }
+    }
+    class MinHeap extends Heap {
+      constructor() {
+        super((a, b) => a - b)
+      }
+    }
+    class PriorityQueue extends Heap {
+      constructor(iterable = [], comparator = (a, b) => a - b) {
+        super(comparator);
+        Array.from(iterable).forEach((el) => this.add(el));
+      }
+      push(value) {
+        super.add(value);
+      }
+
+
+      shift() {
+        return super.remove();
+      }
+    }
+
+    const data = [12, 15, 2, 4, 1, 5, 6, 77, 8, 99, 100];
+
+
+    maxHeap = new MaxHeap();
+    for (let i = 1; i < data.length; i++) {
+      maxHeap.add(data[i]);
+    }
+    console.log('maxHeap', maxHeap);
+
+    minHeap = new MinHeap();
+    for (let i = 1; i < data.length; i++) {
+      minHeap.add(data[i]);
+    }
+    console.log('minHeap', minHeap);
+
+    priorityQueue = new PriorityQueue(data, (a, b) => b - a);
+    console.log('priorityQueue', priorityQueue);
+    for (let i = 0; i < data.length; i++) {
+      console.log(priorityQueue.shift());
+    }
+  </script>
+</body>
+
+</html>

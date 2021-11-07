@@ -1,3 +1,8 @@
+## TO DO LIST
+
++ Complete No.6 Collections and Organize relevant files.
++ No.7 is a supplement to No.6 Collections. 
+
 ## Recommend
 
 **The fastest way to master the algorithm framework**

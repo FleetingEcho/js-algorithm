@@ -1,0 +1,1 @@
+基础知识：基于红黑树（平衡二叉搜索树）的一种树状 hashmap，增删查改、找求大最小均为 logN 复杂度，Python 当中可以使用 SortedDict 替代；SortedDict 继承了普通的 dict 全部的方法，除此之外还可以 peekitem(k)来找 key 里面第 k 大的元素，popitem(k)来删除掉第 k 大的元素，弥补了 Python 自带的 heapq 没法 logN 时间复杂度内删除某个元素的缺陷；最近又在刷一些 hard 题目时候突然发现 TreeMap 简直是个神技，很多用别的数据结构写起来非常麻烦的题目，TreeMap 解决起来易如反掌。

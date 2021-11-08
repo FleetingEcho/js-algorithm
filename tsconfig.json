@@ -8,7 +8,7 @@
 		"strict": true,
 		"strictNullChecks": true,
 		"noFallthroughCasesInSwitch": true,
-
+		"noImplicitThis": false,
 		"moduleResolution": "Node",
 		"forceConsistentCasingInFileNames": true
 	}

@@ -7,53 +7,10 @@
 // 记录一次 traverse 递归经过的节点
 
 // ==
-namespace Leetcode207 {
-	let onPath: boolean[] = []
-	let visited: boolean[] = [] // 记录遍历过的节点，防止走回头路
-	let hasCycle = false
-	// 记录图中是否有环
-	function canFinish(numCourses: number, prerequisites: number[][]): boolean {
-		if (prerequisites.length === 0) {
-			return true
-		}
-		let graph: number[][] = buildGraph(numCourses, prerequisites)
-
-		visited = new Array(numCourses).fill(false)
-		onPath = new Array(numCourses).fill(false)
-
-		for (let i = 0; i < numCourses; i++) {
-			// 遍历图中的所有节点
-			traverse(graph, i)
-		}
-		// 只要没有循环依赖可以完成所有课程
-		return !hasCycle
-	}
-
-	function traverse(graph: number[][], s: number) {
-		if (onPath[s]) {
-			hasCycle = true // 出现环
-		}
-		if (visited[s] || hasCycle) {
-			// 如果已经找到了环，也不用再遍历了
-			return
-		}
-		// 前序遍历代码位置
-		visited[s] = true
-		onPath[s] = true
-		for (let t of graph[s]) {
-			traverse(graph, t)
-		}
-		// 后序遍历代码位置
-		onPath[s] = false
-	}
-
+namespace LeetCode207 {
 	function buildGraph(numCourses: number, prerequisites: number[][]) {
 		// 图中共有 numCourses 个节点
-		// let graph: number[][] = new Array(numCourses).fill(0).map((v) => [])
-		let graph = new Array(numCourses)
-		for (let i = 0; i < numCourses; i++) {
-			graph[i] = new Array()
-		}
+		let graph: number[][] = new Array(numCourses).fill(0).map((v) => [])
 		for (let edge of prerequisites) {
 			let from = edge[1]
 			let to = edge[0]
@@ -63,4 +20,38 @@ namespace Leetcode207 {
 		// 在图中添加一条从 from 指向 to 的有向边
 		return graph
 	}
+
+	// 记录图中是否有环
+	function canFinish(numCourses: number, prerequisites: number[][]): boolean {
+		let hasCycle = false
+		let graph: number[][] = buildGraph(numCourses, prerequisites)
+		const visited = new Array(numCourses).fill(false) // 记录遍历过的节点，防止走回头路
+		const onPath = new Array(numCourses).fill(false)
+
+		const traverse = (graph: number[][], s: number) => {
+			if (onPath[s]) {
+				hasCycle = true // 出现环
+			}
+			if (visited[s] || hasCycle) {
+				// 如果已经找到了环，也不用再遍历了
+				return
+			}
+			// 前序遍历代码位置
+			visited[s] = true
+			onPath[s] = true
+			for (let t of graph[s]) {
+				traverse(graph, t)
+			}
+			// 后序遍历代码位置
+			onPath[s] = false
+		}
+		for (let i = 0; i < numCourses; i++) {
+			// 遍历图中的所有节点
+			traverse(graph, i)
+		}
+		// 只要没有循环依赖可以完成所有课程
+		return !hasCycle
+	}
+
+	canFinish(2, [[1, 0]])
 }

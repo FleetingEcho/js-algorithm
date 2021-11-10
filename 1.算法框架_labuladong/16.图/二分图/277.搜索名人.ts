@@ -9,6 +9,7 @@
 ]
 输出: 1
 */
+// 图 算法
 // knows是一个函数， n是第i个人；
 namespace Leetcode277 {
 	var solution = function (knows: any) {

@@ -17,16 +17,17 @@ https://mp.weixin.qq.com/s/jI8_-E6rx2HVBOmuQOTgHg
 
 5 个岛屿问题 DFS
 https://mp.weixin.qq.com/s/IZQkb-M27dt-AZ1VICThOw
-未完成:
+
+并查集算法
+https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484751&idx=1&sn=a873c1f51d601bac17f5078c408cc3f6&scene=21#wechat_redirect
 
 图论 4: 二分图的判定
 https://mp.weixin.qq.com/s/5tMzyADbfIJAAvRfSy41Ng
 
+未完成:
+
 图论 5: Kruskal 最小生成树算法
 https://mp.weixin.qq.com/s/dJ9gqR3RVoeGnATlpMG39w
-
-并查集算法
-https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484751&idx=1&sn=a873c1f51d601bac17f5078c408cc3f6&scene=21#wechat_redirect
 
 「穷举」具体来说可以分为两点，看到一道算法题，可以从这两个维度去思考：
 

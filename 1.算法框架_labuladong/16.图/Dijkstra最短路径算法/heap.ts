@@ -73,8 +73,13 @@ namespace HeapDS {
 		shift = () => super.remove()
 	}
 	export function main() {
-		const data: number[] = [12, 15, 2, 4, 1, 5, 6, 77, 8, 99, 100]
-		const test = new PriorityQueue(data, (a, b) => a - b)
+		// const data: number[] = [12, 15, 2, 4, 1, 5, 6, 77, 8, 99, 100]
+		const data: any[] = [
+			[1, 2, 6],
+			[0, 2, 18],
+			[0, 1, 12],
+		]
+		const test = new PriorityQueue(data, (a, b) => a[2] - b[2])
 		console.log('priorityQueue', test)
 		for (let i = 0; i < data.length; i++) {
 			console.log(test.shift())

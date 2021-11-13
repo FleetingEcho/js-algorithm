@@ -24,10 +24,30 @@ https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484751&idx=1&sn=a873c1
 图论 4: 二分图的判定
 https://mp.weixin.qq.com/s/5tMzyADbfIJAAvRfSy41Ng
 
-未完成:
-
 图论 5: Kruskal 最小生成树算法
 https://mp.weixin.qq.com/s/dJ9gqR3RVoeGnATlpMG39w
+
+回溯算法牛逼！
+https://mp.weixin.qq.com/s/fsLKaWBvSWtM0jA-CfOxyA
+
+未完成:
+
+动态规划算法帮我通关了魔塔
+https://mp.weixin.qq.com/s/MydL7eyzdfJc6jYZNwFWWw
+
+数据结构基本功：设计最大频率栈
+https://mp.weixin.qq.com/s/FM7pi3VH4jVlb_BNcGR8ow
+
+手把手带你刷通二叉搜索树（第三期）
+https://mp.weixin.qq.com/s/kcwz2lyRxxOsC3n11qdVSw
+
+美团面试官：你对二叉树后续遍历一无所知
+https://mp.weixin.qq.com/s/RST4Cujs0V0yiwRyu1fxCQ
+
+我写了一个套路，助你随心所欲运用二分搜索
+https://mp.weixin.qq.com/s/JgJ0jh2SJd6grQSPnN6Jww
+
+<!--  -->
 
 「穷举」具体来说可以分为两点，看到一道算法题，可以从这两个维度去思考：
 

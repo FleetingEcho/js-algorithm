@@ -1,9 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "ES6",
+		"target": "es2016",
 		"module": "commonjs",
 		"allowJs": true,
 		"outDir": "./dist",
+		"lib": ["ES2020", "dom", "dom.Iterable", "ES2016"],
 		"rootDir": "./src",
 		"strict": true,
 		"strictNullChecks": true,

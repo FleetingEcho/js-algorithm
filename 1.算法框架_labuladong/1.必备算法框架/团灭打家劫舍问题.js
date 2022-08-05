@@ -101,6 +101,31 @@ function robRange(nums, start, end) {
 	return amount
 }
 
+/*
+class Solution {
+    public int rob(int[] nums) {
+     int n=nums.length;
+        if(n==1){
+            return nums[0];
+        }
+        return Math.max(robRange(nums,0,n-2),robRange(nums,1,n-1));
+    }
+    
+    int robRange(int[] nums,int start, int end){
+        int total=0;
+        int noRobAmount=0;
+        int amount=0;
+        for(int i=end;i>=start;i--){
+            amount=Math.max(total,nums[i]+noRobAmount);
+            noRobAmount=total;
+            total=amount;
+        }
+        return total;
+        
+    }
+}
+*/
+
 // ! 二叉树形的打家劫舍
 
 //! 方法1          --超时。。。。时间复杂度 O(N)

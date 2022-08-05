@@ -39,5 +39,35 @@ function lengthOfStr(string) {
 	return res
 }
 
+/* 
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n=s.length();
+        if(n!=0 && s.trim().length()==0){
+            return 1;// space
+        }
+        StringBuilder ss= new StringBuilder();
+        int res=0;
+        for(int i=0;i<n;i++){
+            char temp=s.charAt(i);
+            int test=ss.indexOf(String.valueOf(temp));
+            if(test==-1){
+                ss.append(temp);
+            }else{
+                res=Math.max(res,ss.length());
+                ss=new StringBuilder(ss.substring(test+1)); // because  dvdf=3; it means you cannot drop from the index of duplicate "d";
+                ss.append(temp);
+            }
+            if(i==n-1){
+                res=Math.max(res,ss.length());
+            }
+        }
+        return res;
+    }
+}
+
+*/
+
 console.log(lengthOfLongestSubstring('abcabcbb'))
 console.log(lengthOfStr('abcabcbb'))

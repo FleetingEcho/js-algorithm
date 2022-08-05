@@ -11,30 +11,66 @@ https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247486946&idx=1&sn=94804e
 */
 // ! 单调栈
 
-/* 
+/*
  *        1. 维护一个栈stack，对字符串进行正序遍历
  *        2. 对每个字符char，首先判断stack中是否存在，
  *          2.1 若stack栈顶值比char大且后续还存在此值，则将栈顶弹出；
  *            2.1.1 使用indexOf(xx, i)取代 lastIndexOf(xx)减少遍历次数会更快
  *        3. 入栈每个char
  *        4. 打印栈底到栈顶即为结果
-*/
+ */
 const removeDuplicateLetters = function (s) {
-  let stack = []
-  for (let i = 0; i < s.length; i++) {
-    let char = s[i]
-    console.log(stack)
-    if (stack.indexOf(char) > -1) continue
-    while ( stack.length!== 0 && 
-            stack[stack.length - 1] > char &&  //stack最后一位大于当前字母
-            s.indexOf(stack[stack.length - 1], i) > i  //从s第i位开始查stack最后一位数字，确认还有的话才删除前面的字母
-            ) {
-      stack.pop()
-    }
-    stack.push(char)
-  }
-  return stack.join('')
+	let stack = []
+	for (let i = 0; i < s.length; i++) {
+		let char = s[i]
+		console.log(stack)
+		if (stack.indexOf(char) > -1) continue
+		while (
+			stack.length !== 0 &&
+			stack[stack.length - 1] > char && //stack最后一位大于当前字母
+			s.indexOf(stack[stack.length - 1], i) > i
+			//从s第i位开始查stack最后一位数字，确认还有的话才删除前面的字母
+		) {
+			stack.pop()
+		}
+		stack.push(char)
+	}
+	return stack.join('')
 }
+
+/* 
+
+class Solution {
+    public String removeDuplicateLetters(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        boolean[] inStack = new boolean[256];
+        int[] count = new int[256];
+        for(char c : s.toCharArray()){
+            count[c]++;
+        }
+        for(char c : s.toCharArray()){
+            count[c]--;
+            //如果栈中已存在，则访问下一个字符
+            if(inStack[c]) continue;
+            //插入前与栈顶元素比大小
+            while(!stack.isEmpty()&&stack.peek() > c){
+                if(count[stack.peek()] == 0){
+                    break;
+                }
+                inStack[stack.pop()] = false;
+            }
+            stack.push(c);
+            inStack[c] = true;
+        }
+        StringBuilder ss = new StringBuilder();
+        while(!stack.isEmpty()){
+            ss.append(stack.pop());
+        }
+        return ss.reverse().toString();
+    }
+}
+
+*/
 /* 
 []
 [ 'b' ]
@@ -43,6 +79,5 @@ const removeDuplicateLetters = function (s) {
 [ 'a', 'b' ]
 
 */
-console.log(removeDuplicateLetters("bcabc"))
+console.log(removeDuplicateLetters('bcabc'))
 // console.log(removeDuplicateLetters("cbacdcbc"))
-

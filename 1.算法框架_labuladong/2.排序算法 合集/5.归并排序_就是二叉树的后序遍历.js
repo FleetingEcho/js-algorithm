@@ -4,9 +4,8 @@ const mergeSort=(arr)=>{
   let middle=Math.floor(arr.length /2);
   let left=arr.slice(0,middle)
   let right=arr.slice(middle)
-  const res=merge(mergeSort(left),mergeSort(right))
-  return res 
-  
+  return  merge(mergeSort(left),mergeSort(right))
+
 }
 const merge=(left,right)=>{
   const result=[];
@@ -88,7 +87,7 @@ console.log(mergeSort(list));
 
 
 // ! 归并排序的框架
-/* 
+/*
 先对左右子数组排序，然后合并（类似合并有序链表的逻辑），
 你看这是不是二叉树的后序遍历框架？另外，这不就是传说中的分治算法嘛，不过如此呀。
 */

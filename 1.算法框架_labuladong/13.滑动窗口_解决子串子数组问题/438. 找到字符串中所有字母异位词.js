@@ -32,39 +32,88 @@ s: "abab" p: "ab"
 */
 
 function findAnagrams(s, t) {
-  let need={};
-  let window={};
-  // 没有设置为0，有则累加
-  for (const c of t){
-    if(!need[c]) need[c]=1;
-    else need[c]++;
-  };
-  let res=[];
-  let left = 0, right = 0;
-  let valid = 0; // 记录最小覆盖子串的起始索引及长度
-  while (right < s.length) {
-    let c = s[right];
-    right++;
-    // 进行窗口内数据的一系列更新
-    if (need[c]) {
-        if(!window[c]){window[c]=0}
-        window[c]++
-        if (window[c]== need[c]) valid++
-      }
-     // 判断左侧窗口是否要收缩
-     while (right - left >= t.length) {
-      // 在这里判断是否找到了合法的子串
-      if (valid == Object.keys(need).length) res.push(left)
-      let d = s[left];
-      left++;
-      // 进行窗口内数据的一系列更新
-      if (need[d]) {
-          if (window[d] == need[d]) valid--;
-          window[d]--;
-      }
-  }
-  }
-  return res;
+	let need = {}
+	let window = {}
+	// 没有设置为0，有则累加
+	for (const c of t) {
+		if (!need[c]) need[c] = 1
+		else need[c]++
+	}
+	let res = []
+	let left = 0,
+		right = 0
+	let valid = 0 // 记录最小覆盖子串的起始索引及长度
+	while (right < s.length) {
+		let c = s[right]
+		right++
+		// 进行窗口内数据的一系列更新
+		if (need[c]) {
+			if (!window[c]) {
+				window[c] = 0
+			}
+			window[c]++
+			if (window[c] == need[c]) valid++
+		}
+		// 判断左侧窗口是否要收缩
+		while (right - left >= t.length) {
+			// 在这里判断是否找到了合法的子串
+			if (valid == Object.keys(need).length) res.push(left)
+			let d = s[left]
+			left++
+			// 进行窗口内数据的一系列更新
+			if (need[d]) {
+				if (window[d] == need[d]) valid--
+				window[d]--
+			}
+		}
+	}
+	return res
 }
 
-console.log(findAnagrams("cbaebabacd","abc"))
+console.log(findAnagrams('cbaebabacd', 'abc'))
+
+/* 
+
+class Solution {
+    HashMap<Character, Integer> window= new HashMap<>();
+    HashMap<Character, Integer> need= new HashMap<>();
+
+    public List<Integer> findAnagrams(String s, String t) {
+        for(int i=0;i<t.length();i++){
+            char cur=t.charAt(i) ;
+            need.put(cur, need.getOrDefault(cur,0)+1);
+        }
+        List<Integer>  res=new ArrayList<>();
+        int left=0;
+        int right=0;
+        int valid=0;
+        //==
+        while(right<s.length()){
+            char cur=s.charAt(right);
+            right++;
+            if(need.containsKey(cur)){
+                window.put(cur,window.getOrDefault(cur,0)+1);
+                if(window.get(cur).equals(need.get(cur))) valid++;
+                
+            }
+            
+            while(right-left>=t.length()){
+                if(valid==need.size()){
+                    res.add(left);
+                }
+                char old=s.charAt(left);
+                left++;
+                if(need.containsKey(old)){
+                    if(window.get(old).equals(need.get(old)))valid--;
+                    window.put(old,window.get(old)-1);
+                }
+            }
+        }
+        return res;
+        
+    }
+}
+
+
+
+*/

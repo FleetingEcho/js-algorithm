@@ -34,9 +34,30 @@ function maxSubArray(nums) {
 	let dp_0 = nums[0]
 	result = dp_0
 	for (let i = 1; i < numsSize; i++) {
-		dp_1 = Math.max(dp_0 + nums[i], nums[i])
+		let dp_1 = Math.max(dp_0 + nums[i], nums[i])
 		result = Math.max(result, dp_1)
 		dp_0 = dp_1
 	}
 	return result
 }
+
+/* 
+
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+    int max=nums[0];
+    int n=nums.length;
+    int sum=0;
+    int slow=0;
+    while(slow <n){
+        sum+=nums[slow];
+        if(sum>max){ max=sum;}
+        if(sum<0){ sum=0;}
+        slow++;
+    }
+        return max;
+        
+    }
+}
+*/

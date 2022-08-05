@@ -2,6 +2,7 @@
 //复杂度 O(1) < O(logn) < (n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)
 // 每次淘汰那些最久没被使用的数据
 
+/* 
 class LRUCache {
 	constructor(capacity) {
 		this.capacity = capacity
@@ -33,6 +34,48 @@ class LRUCache {
 }
 
 // Map { 4 => 4, 3 => 3, 2 => 2 }
+
+let LRU = new LRUCache(3)
+console.log(LRU.put(2, 2))
+console.log(LRU.put(1, 1))
+console.log(LRU.get(2))
+console.log(LRU.get(1))
+console.log(LRU.get(2))
+console.log(LRU.put(3, 3))
+console.log(LRU.put(4, 4))
+console.log(LRU.get(3))
+console.log(LRU.get(2))
+console.log(LRU.get(1))
+console.log(LRU.get(4))
+
+*/
+
+class LRUCache {
+	constructor(capacity) {
+		this.capacity = capacity
+		this.cache = new Map()
+	}
+
+	get(key) {
+		if (!this.cache.has(key)) return -1
+		const value = this.cache.get(key)
+		this.cache.delete(key)
+		this.cache.set(key, value)
+		return value
+	}
+
+	put(key, value) {
+		if (this.cache.has(key)) {
+			this.cache.delete(key)
+		} else {
+			if (this.cache.size === this.capacity) {
+				const delKey = this.cache.keys().next().value
+				this.cache.delete(delKey)
+			}
+		}
+		this.cache.set(key, value)
+	}
+}
 
 let LRU = new LRUCache(3)
 console.log(LRU.put(2, 2))

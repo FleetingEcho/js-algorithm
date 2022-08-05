@@ -1,5 +1,5 @@
 // 32 - III. 从上到下打印二叉树 III
-/* 
+/*
 请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，
 第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
 
@@ -23,40 +23,62 @@
 */
 
 var levelOrder = function (root) {
-	let res = []
+	let res = [];
 	if (root == null) {
-		return res
+		return res;
 	}
-	let queue = []
-	queue.push(root)
+	let queue = [];
+	queue.push(root);
 
-	while (queue.length != 0) {
+	while (queue.length !== 0) {
 		// list做临时存储使用
-		let level = []
-		const len = queue.length
+		let level = [];
+		const len = queue.length;
 		for (let i = 0; i < len; i++) {
-			let treeNode = queue.shift()
+			let treeNode = queue.shift();
 			// 提取节点
 			// =======================
 			// level
 			// 偶数行则 右-左
 			// 注意length为奇数的时候为偶数行，[1,2,3]
-			if (res.length % 2 == 0) {
+			if (res.length % 2 === 0) {
 				//第一行开始  左-右
-				level.push(treeNode.val)
+				level.push(treeNode.val);
 			} else {
 				// 奇数行则  右-左
-				level.unshift(treeNode.val)
+				level.unshift(treeNode.val);
 			}
 			// =======================
 			if (treeNode.left != null) {
-				queue.push(treeNode.left)
+				queue.push(treeNode.left);
 			}
 			if (treeNode.right != null) {
-				queue.push(treeNode.right)
+				queue.push(treeNode.right);
 			}
 		}
-		res.push(level)
+		res.push(level);
 	}
-	return res
-}
+	return res;
+};
+var levelOrder = function (root) {
+	let res = [];
+	if (!root == null) return res;
+	let queue = [];
+	queue.push(root);
+	while (queue.length !== 0) {
+		let level = [];
+		const size = queue.length;
+		for (let i = 0; i < size; i++) {
+			let treeNode = queue.shift();
+			if (res.length % 2 === 0) {
+				level.push(treeNode.val);
+			} else {
+				level.unshift(treeNode.val);
+			}
+			treeNode.left && queue.push(treeNode.left);
+			treeNode.right && queue.push(treeNode.right);
+		}
+		res.push(level);
+	}
+	return res;
+};

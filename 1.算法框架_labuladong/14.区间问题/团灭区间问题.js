@@ -8,7 +8,6 @@
 >    不同的相对位置我们的代码应该怎么去处理。
 */
 
-
 //> LeetCode 1288 删除被覆盖的区间
 /* 
 输入：intervals = [[1,4],[3,6],[2,8]]
@@ -17,46 +16,44 @@
 
 */
 function removeCoveredIntervals(intvs) {
-  // 按照起点升序排列，起点相同时降序排列
-  // ! 重要！ 
-  /* 
+	// 按照起点升序排列，起点相同时降序排列
+	// ! 重要！
+	/* 
   对于这两个起点相同的区间，我们需要保证长的那个区间在上面（按照终点降序），
   这样才会被判定为覆盖，否则会被错误地判定为相交，少算一个覆盖区间。
   */
-  intvs.sort((a, b) =>{
-    // 终点降序
-      if (a[0] == b[0]) {
-          return b[1] - a[1];
-      }
-      return a[0] - b[0]; 
-  });
+	intvs.sort((a, b) => {
+		// 终点降序
+		if (a[0] == b[0]) {
+			return b[1] - a[1]
+		}
+		return a[0] - b[0]
+	})
 
-  // 记录合并区间的起点和终点
-  let left = intvs[0][0];
-  let right = intvs[0][1];
+	// 记录合并区间的起点和终点
+	let left = intvs[0][0]
+	let right = intvs[0][1]
 
-  let res = 0;
-  for (let i = 1; i < intvs.length; i++) {
-      let intv = intvs[i];
-      // 情况一，找到覆盖区间
-      if (left <= intv[0] && right >= intv[1]) {
-          res++;
-      }
-      // 情况二，找到相交区间，合并
-      if (right >= intv[0] && right <= intv[1]) {
-          right = intv[1];
-      }
-      // 情况三，完全不相交，更新起点和终点
-      if (right < intv[0]) {
-          left = intv[0];
-          right = intv[1];
-      }
-  }
+	let res = 0
+	for (let i = 1; i < intvs.length; i++) {
+		let intv = intvs[i]
+		// 情况一，找到覆盖区间
+		if (left <= intv[0] && right >= intv[1]) {
+			res++
+		}
+		// 情况二，找到相交区间，合并
+		if (right >= intv[0] && right <= intv[1]) {
+			right = intv[1]
+		}
+		// 情况三，完全不相交，更新起点和终点
+		if (right < intv[0]) {
+			left = intv[0]
+			right = intv[1]
+		}
+	}
 
-  return intvs.length - res;
+	return intvs.length - res
 }
-
-
 
 // > 区间合并问题
 //> LeetCode 56   合并区间
@@ -73,7 +70,6 @@ function removeCoveredIntervals(intvs) {
 
 // ! intervals 形如 [[1,3],[2,6]...]
 
-
 /* 
 |    [1,2,3]
 |         [3,4,5]
@@ -83,51 +79,117 @@ function removeCoveredIntervals(intvs) {
 ↓
 
 */
-function merge(intervals){
-  if(intervals.length===0) return []
-  //  按区间的 start 升序排列
-  intervals.sort((a,b)=>a[0]-b[0])
-  let res = []
-  res.push(intervals[0])
+function merge(intervals) {
+	if (intervals.length === 0) return []
+	//  按区间的 start 升序排列
+	intervals.sort((a, b) => a[0] - b[0])
+	let res = []
+	res.push(intervals[0])
 
-  for(let i=1;i<intervals.length;i++){
-    curr = intervals[i]
-    //  res 中最后一个元素的引用
-    last = res[res.length-1]
-    if(curr[0] <= last[1])
-        //  找到最大的 end
-        last[1] = Math.max(last[1], curr[1])
-    else
-        // 处理下一个待合并区间
-        res.push(Array.from(curr))
-  }
-  return res
+	for (let i = 1; i < intervals.length; i++) {
+		curr = intervals[i]
+		//  res 中最后一个元素的引用
+		last = res[res.length - 1]
+		if (curr[0] <= last[1])
+			//  找到最大的 end
+			last[1] = Math.max(last[1], curr[1])
+		// 处理下一个待合并区间
+		else res.push(Array.from(curr))
+	}
+	return res
 }
 
-console.log(merge([[1,3],[2,6],[8,10],[15,18]]));
+console.log(
+	merge([
+		[1, 3],
+		[2, 6],
+		[8, 10],
+		[15, 18],
+	])
+)
 
-
-//>  区间交集问题  LeetCode 986 
-
+//>  区间交集问题  LeetCode 986
 
 // > 解决区间问题的思路一般是先排序，以便操作.
 
-var intervalIntersection=function(A,B){
-  let i=0,j=0; //双指针
-  let res=[];
-  while(i<A.length && j<B.length){
-    let a1=A[i][0], a2=A[i][1]
-    let b1=B[j][0], b2=B[j][1]
-    // 有交集
-    if(b2>=a1&&b1<=a2){
-      let temp=[ Math.max(a1,b1),Math.min(a2,b2)]
-      res.push(temp)
-    }
-    // 指针前进
-    if(b2<a2) j+=1;//判断B下一个
-    else i+=1 //判断A下一个
-  }
-  return res
+var intervalIntersection = function (A, B) {
+	let i = 0,
+		j = 0 //双指针
+	let res = []
+	while (i < A.length && j < B.length) {
+		let a1 = A[i][0],
+			a2 = A[i][1]
+		let b1 = B[j][0],
+			b2 = B[j][1]
+		// 有交集
+		if (b2 >= a1 && b1 <= a2) {
+			let temp = [Math.max(a1, b1), Math.min(a2, b2)]
+			res.push(temp)
+		}
+		// 指针前进
+		if (b2 < a2) j += 1 //判断B下一个
+		else i += 1 //判断A下一个
+	}
+	return res
 }
-console.log(intervalIntersection([[0,2],[5,10],[13,23],[24,25]],[[1,5],[8,12],[15,24],[25,26]]));
+console.log(
+	intervalIntersection(
+		[
+			[0, 2],
+			[5, 10],
+			[13, 23],
+			[24, 25],
+		],
+		[
+			[1, 5],
+			[8, 12],
+			[15, 24],
+			[25, 26],
+		]
+	)
+)
 // [ [ 1, 2 ], [ 5, 5 ], [ 8, 10 ], [ 15, 23 ], [ 24, 24 ], [ 25, 25 ] ]
+
+/* 
+Example: all time slots ['08:00',"08:30", '09:00',"09:30", '10:00',"10:30"]
+
+garage occupied time:
+{
+  "bay1":["08:00","08:30","09:00","09:30",null,null],// occupied time, default slot is 30 mins
+  "bay2":["08:00","08:30",null,null,null,null],
+  "bay3":["08:00","08:30",'09:00',"09:30", '10:00',"10:30"]
+}
+
+
+
+Front-end:
+AVAILABLE TIME: Monday: ["09:00","09:30","10:00","10:30"],  =>Select "10:00" Available bay: ["bay1","bay2"] (post to back-end with fulfilled forms) 
+*/
+
+// Example: all time slots ['08:00',"08:30", '09:00',"09:30", '10:00',"10:30"]
+const orders = {
+	booking1: { bay: 'bay1', usedSlot: ['08:00', '08:30', '09:00', '09:30'] }, // start-end: 08:00-10:00
+	booking2: { bay: 'bay2', usedSlot: ['08:00', '08:30'] }, // start-end: 08:00-09:00
+}
+//# to
+const occupiedTime = {
+	bay1: ['08:00', '08:30', '09:00', '09:30', null, null], // occupied time, default slot is 30 mins
+	bay2: ['08:00', '08:30', null, null, null, null],
+	bay3: ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30'],
+}
+// service time is 1 hour? => need continues 2 time slots.
+// find the available time
+//# to
+const availableTime = {
+	'2022-06-18': {
+		okTimeSlot: ['09:00', '09:30', '10:00'], //10:30 is not available for coming 1 hour
+		okBays: [['bay2'], ['bay2'], ['bay1', 'bay2']],
+	},
+	'2022-06-19': {
+		okTimeSlot: ['09:00', '09:30', '10:00'],
+		okBays: [['bay2'], ['bay2'], ['bay1', 'bay2']],
+	},
+}
+//# automatic send available bays to back-end, avoid re-calculating.
+
+//

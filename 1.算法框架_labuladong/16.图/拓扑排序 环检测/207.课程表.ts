@@ -55,3 +55,7 @@ namespace LeetCode207 {
 
 	canFinish(2, [[1, 0]])
 }
+
+/* 
+如果一个节点有多个边怎么办，答用bfs，hashmap的值用来存储所有出度的终点，循环到没有出度的点时，把它加进答案list里。
+ */

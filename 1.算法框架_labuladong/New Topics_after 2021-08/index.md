@@ -42,10 +42,8 @@ https://mp.weixin.qq.com/s/kcwz2lyRxxOsC3n11qdVSw
 美团面试官：你对二叉树后续遍历一无所知
 https://mp.weixin.qq.com/s/RST4Cujs0V0yiwRyu1fxCQ
 
-未完成:
-东哥手把手带你刷二叉树|第三期
-https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247487527&idx=1&sn=9cf2b0d8608ba26ea7c6a5c9b41d05a1&chksm=9bd7ee2faca0673916bf075539bf6fc3c01f3dcc0b298b3f507047692ef5c850ed9cfe82e4e6&scene=21#wechat_redirect
-https://mp.weixin.qq.com/s/kcwz2lyRxxOsC3n11qdVSw
+Prim 算法
+https://mp.weixin.qq.com/s/bvi0wGdbtB4nkYye0yzmqg
 
 第一期
 https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247488101&idx=1&sn=6041ddda5f20ccde8a7036d3e3a1482c&chksm=9bd7ec6daca0657b2ab20a936437e2c8206384c3b1485fe91747ad796fa3a5b08556b2f4911e&scene=21#wechat_redirect
@@ -53,10 +51,16 @@ https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247488101&idx=1&sn=6041dd
 第二期
 https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247488128&idx=2&sn=b8fb3fd2917f9ac86127054741cd5877&chksm=9bd7ec88aca0659ee0185b657663169169493e9df2063fa4d28b38a0b4d0dd698d0301937898&scene=21#wechat_redirect
 
-我写了一个套路，助你随心所欲运用二分搜索
-https://mp.weixin.qq.com/s/JgJ0jh2SJd6grQSPnN6Jww
+东哥手把手带你刷二叉树|第三期
+https://mp.weixin.qq.com/s/kcwz2lyRxxOsC3n11qdVSw
 
-<!--  -->
+手把手刷二叉树系列完结篇
+https://mp.weixin.qq.com/s/AzQzw-pC8A-0kS0NJn2eWw
+
+未完成:
+
+前缀树算法模板秒杀 5 道算法题
+https://mp.weixin.qq.com/s/hGrTUmM1zusPZZ0nA9aaNw
 
 「穷举」具体来说可以分为两点，看到一道算法题，可以从这两个维度去思考：
 

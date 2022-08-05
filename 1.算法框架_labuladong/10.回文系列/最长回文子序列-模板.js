@@ -52,7 +52,7 @@ function longestPalindromeSubseq(s) {
   for (let i = n - 1; i >= 0; i--) {
       for (let j = i + 1; j < n; j++) {
           // 状态转移方程
-          if (s[i] == s[j])
+          if (s[i] === s[j])
               dp[i][j] = dp[i + 1][j - 1] + 2;
           else
               dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);

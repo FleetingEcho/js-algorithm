@@ -36,35 +36,37 @@ dp[i - 1][j-nums[i-1]] 也很好理解：你如果装了第 i 个物品，
 也可恰好装满 j 的重量；否则的话，重量 j 肯定是装不满的。
 */
 
+/*
+ *背包问题 解决方法： dp[j] += dp[j - nums[i]];
+ */
 
 function canPartition(nums) {
-  let sum = 0;
-  for (let num of nums) sum += num;
-  // 和为奇数时，不可能划分成两个和相等的集合
-  if (sum % 2 != 0) return false;
-  let n = nums.length;
-  // > 一分为二，开始计算
-  sum = sum / 2;
-  let dp=new Array(n+1).fill(0).map(v=>new Array(sum+1).fill(false))
-  // base case 背包没有空间的时候，就相当于装满了，而当没有物品可选择的时候，肯定没办法装满背包。
-  for (let i = 0; i <= n; i++){
-    dp[i][0] = true;
-  }
-  // 开始状态转移
-  for (let i = 1; i <= n; i++) {
-      for (let j = 1; j <= sum; j++) {
-          if (j - nums[i - 1] < 0) {
-             // 背包容量不足，不能装入第 i 个物品
-              dp[i][j] = dp[i - 1][j]; 
-          } else {
-              // 装入或不装入背包
-              dp[i][j] = dp[i - 1][j] || dp[i - 1][j-nums[i-1]];
-          }
-      }
-  }
-  return dp[n][sum];
+	let sum = 0
+	for (let num of nums) sum += num
+	// 和为奇数时，不可能划分成两个和相等的集合
+	if (sum % 2 != 0) return false
+	let n = nums.length
+	// > 一分为二，开始计算
+	sum = sum / 2
+	let dp = new Array(n + 1).fill(0).map((v) => new Array(sum + 1).fill(false))
+	// base case 背包没有空间的时候，就相当于装满了，而当没有物品可选择的时候，肯定没办法装满背包。
+	for (let i = 0; i <= n; i++) {
+		dp[i][0] = true
+	}
+	// 开始状态转移
+	for (let i = 1; i <= n; i++) {
+		for (let j = 1; j <= sum; j++) {
+			if (j - nums[i - 1] < 0) {
+				// 背包容量不足，不能装入第 i 个物品
+				dp[i][j] = dp[i - 1][j]
+			} else {
+				// 装入或不装入背包
+				dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]]
+			}
+		}
+	}
+	return dp[n][sum]
 }
-
 
 // > 进行状态压缩
 /* 
@@ -80,26 +82,25 @@ i 每进行一轮迭代，dp[j] 其实就相当于 dp[i-1][j]，所以只需要�
 */
 
 function canPartition1(nums) {
-  let sum = 0, n = nums.length;
-  for (let num of nums) sum += num;
-  if (sum % 2 != 0) return false;
-  sum = sum / 2;
-  let dp=new Array(sum+1).fill(false);
-  // base case
-  dp[0] = true;
-  for (let i = 0; i < n; i++){
-    //  j 应该从后往前反向遍历，因为每个物品（或者说数字）只能用一次，以免之前的结果影响其他的结果。
-    for (let j = sum; j >= 0; j--){
-      if (j - nums[i] >= 0) 
-      dp[j] = dp[j] || dp[j - nums[i]];
-    }
-  }
-  return dp[sum];
+	let sum = 0,
+		n = nums.length
+	for (let num of nums) sum += num
+	if (sum % 2 != 0) return false
+	sum = sum / 2
+	let dp = new Array(sum + 1).fill(false)
+	// base case
+	dp[0] = true
+	for (let i = 0; i < n; i++) {
+		//  j 应该从后往前反向遍历，因为每个物品（或者说数字）只能用一次，以免之前的结果影响其他的结果。
+		for (let j = sum; j >= 0; j--) {
+			if (j - nums[i] >= 0) dp[j] = dp[j] || dp[j - nums[i]]
+		}
+	}
+	return dp[sum]
 }
 
-console.log(canPartition([1, 5, 11, 5])); //true
-console.log(canPartition1([1, 5, 11, 5])); //true
+console.log(canPartition([1, 5, 11, 5])) //true
+console.log(canPartition1([1, 5, 11, 5])) //true
 
-
-console.log(canPartition([1, 2, 3, 5])); //false
-console.log(canPartition1([1, 2, 3, 5])); //false
+console.log(canPartition([1, 2, 3, 5])) //false
+console.log(canPartition1([1, 2, 3, 5])) //false

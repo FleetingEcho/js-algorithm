@@ -22,50 +22,49 @@
 
 var levelOrder = function (root) {
 	// queue做临时存储使用
-	let queue = []
-	let res = []
+	let queue = [];
+	let res = [];
 	if (root == null) {
-		return res
+		return res;
 	}
-	queue.push(root)
+	queue.push(root);
 	while (queue.length != 0) {
 		//level做每层临时存储用
-		let level = []
-		const len = queue.length
+		let level = [];
+		const len = queue.length;
 		for (let i = 0; i < len; i++) {
 			// 核心不变
-			let node = queue.shift()
+			let node = queue.shift();
 			// 左---右
-			level.push(node.val)
+			level.push(node.val);
 			if (node.left != null) {
-				queue.push(node.left)
+				queue.push(node.left);
 			}
 			if (node.right != null) {
-				queue.push(node.right)
+				queue.push(node.right);
 			}
 		}
 		// 每一层push进去
-		res.push(level)
+		res.push(level);
 	}
-	return res
-}
+	return res;
+};
 
 const levelOrder = (root) => {
-	if (!root) return []
-	let res = []
-	let queue = []
-	queue.push(root)
+	if (!root) return [];
+	let res = [];
+	let queue = [];
+	queue.push(root);
 	while (queue.length !== 0) {
-		const total = queue.length
-		let level = []
+		const total = queue.length;
+		let level = [];
 		for (let i = 0; i < total; i++) {
-			const cur = queue.shift()
-			level.push(cur.val)
-			// 齐步走，一次补充整层的数据
-			if (cur.left) queue.push(cur.left)
-			if (cur.right) queue.push(cur.right)
+			const cur = queue.shift();
+			level.push(cur.val);
+			if (cur.left) queue.push(cur.left);
+			if (cur.right) queue.push(cur.right);
 		}
-		res.push(level)
+		res.push(level);
 	}
-	return res
-}
+	return res;
+};

@@ -309,6 +309,12 @@
 
 
 
+补充
+
++ Counter使用
+  + 如果一个列表a = [1,1,3,4,3]，你想要统计每项的出现次数，那么你使用b = Counter(a)，那么这时候b就像一个这样的字典{1:2,3:2,4:1}
+  + most_common(k)   返回最多出现的K个项， [(1,2),(3,2),(4,1)]
+
 
 
 # 五、数据结构
@@ -333,6 +339,84 @@
 
 + Heap堆 --小顶堆
 
+  + 解决topK问题
+
+    + 小顶推: 父节点比左右子节点都小
+      弹出的时候也是先弹出根节点，
+      当每次堆满了以后都会弹出最小的，所以最小堆里面最后只剩下k个最高频的数
+
+    + ```py
+      class Solution:
+          def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+              counter = collections.Counter(nums)
+              h = []
+              for key, val in counter.items():
+                  heapq.heappush(h, (val, key))
+                  if len(h) > k:
+                      heapq.heappop(h)
+              return [x[1] for x in h]
+          
+      #或者
+      class Solution:
+          def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+              count = collections.Counter(nums)
+              heap = []
+              for key, val in count.items():
+                  if len(heap) >= k:
+                      if val > heap[0][0]:
+                          heapq.heapreplace(heap, (val, key))
+                  else:
+                      heapq.heappush(heap, (val, key))
+              return [item[1] for item in heap]
+          
+      #或者构建最大堆
+      
+      class Solution:
+          def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+              myMap = collections.Counter(nums)
+              heap, res = [], []
+              for key in myMap:
+                  heapq.heappush(heap, (-myMap[key], key)) #将频次取负再入堆，就是大顶堆
+              for _ in range(k):
+                  res.append(heapq.heappop(heap)[1])
+              return res
+      ```
+
+  + Leetcode[692. Top K Frequent Words](https://leetcode.cn/problems/top-k-frequent-words/) 自定义排序 + 小顶堆/ 优先级队列
+
+    + ```py
+      class Word:
+          def __init__(self, word, cnt):
+              self.word = word
+              self.cnt = cnt
+      
+          def __lt__(self, other):  # True: self比other先淘汰
+              if self.cnt > other.cnt:  # freq小的先弹出
+                  return False
+              elif self.cnt < other.cnt:
+                  return True
+              else:
+                  return self.word > other.word  # 字典序大的先弹出
+      
+      
+      class Solution:
+          def topKFrequent(self, words: List[str], k: int) -> List[str]:
+              # time: nlogn
+              # space: n 
+              q = []
+              freq = collections.Counter(words)
+              for word, cnt in freq.items():
+                  heapq.heappush(q, Word(word, cnt))
+                  if len(q) > k:
+                      heapq.heappop(q)
+              res = []
+              while q:
+                  res.append(heapq.heappop(q).word)  # 先弹出的是频率较小的，结果要逆序
+              return res[::-1]
+      ```
+
+    + 
+
   + ```py
     import heapq
     
@@ -342,19 +426,17 @@
     heapq.heappop(nums)
     
     
-    heapreplace(nums, 5.5) #弹出最小的元素，将新元素插入
+    res=heapreplace(nums, 100) #弹出最小的元素，将新元素插入
     ```
 
   + 使用--用来寻找任何可迭代对象iter中的前n个最大的或前n个最小的元素。
 
     + ```py
-      from heapq import *
-      lst = [5, 8, 0, 4, 6, 7]
-      print(nsmallest(3, lst))
-      print(nlargest(3, lst))
+      import heapq
+      heap = [5, 8, 0, 4, 6, 7]
+      print(heapq.nsmallest(3, heap))
+      print(heapq.nlargest(3, heap))
       ```
-
-    + 
 
 + PriorityQueue 优先级队列
 
@@ -364,22 +446,24 @@
 
       Binary Search Tree
 
-  + ```py
-    from queue import PriorityQueue
-        
-    q=PriorityQueue()
+  + 基本使用
     
-    q.put((2,"jake"))
-    q.put((1, "Lucy"))
-    q.put((0, "Tom"))
+    + ```py
+      from queue import PriorityQueue
+          
+      q=PriorityQueue()
+      
+      q.put((2,"jake"))
+      q.put((1, "Lucy"))
+      q.put((0, "Tom"))
+      
+      while i<q.qsize():
+          print(q.get())
+      while not pq.empty():
+          print pq.get()
+          
+      ```
     
-    while i<q.qsize():
-        print(q.get())
-    while not pq.empty():
-        print pq.get()
-        
-    ```
-
   + 自定义排序
 
     + ```py
@@ -406,16 +490,6 @@
           print(que.get().name)
       
       ```
-
-    + 
-
-
-
-
-
-
-
-
 
 
 

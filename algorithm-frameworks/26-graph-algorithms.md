@@ -8,17 +8,17 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [743](https://leetcode.cn/problems/network-delay-time/) | 网络延迟时间 | 🟡 | Dijkstra | ⭐⭐ |
-| 2 | [1514](https://leetcode.cn/problems/path-with-maximum-probability/) | 概率最大的路径 | 🟡 | Dijkstra（最大概率） | ⭐⭐ |
-| 3 | [1631](https://leetcode.cn/problems/path-with-minimum-effort/) | 最小体力消耗路径 | 🟡 | Dijkstra 变种 | ⭐⭐⭐ |
-| 4 | [207](https://leetcode.cn/problems/course-schedule/) | 课程表 | 🟡 | 拓扑排序判环 | ⭐ |
-| 5 | [210](https://leetcode.cn/problems/course-schedule-ii/) | 课程表 II | 🟡 | 拓扑排序顺序 | ⭐⭐ |
-| 6 | [269](https://leetcode.cn/problems/alien-dictionary/) | 火星词典 | 🔴 | 拓扑排序建图 | ⭐⭐⭐ |
-| 7 | [785](https://leetcode.cn/problems/is-graph-bipartite/) | 判断二分图 | 🟡 | DFS/BFS 染色 | ⭐⭐ |
-| 8 | [886](https://leetcode.cn/problems/possible-bipartition/) | 可能的二分法 | 🟡 | 染色法 | ⭐⭐ |
-| 9 | [277](https://leetcode.cn/problems/find-the-celebrity/) | 搜寻名人 | 🟡 | 两遍遍历 | ⭐⭐ |
+| #   | 题号                                                                | 题目             | 难度 | 核心考点             | 推荐指数 |
+| --- | ------------------------------------------------------------------- | ---------------- | :--: | -------------------- | :------: |
+| 1   | [743](https://leetcode.cn/problems/network-delay-time/)             | 网络延迟时间     |  🟡  | Dijkstra             |   ⭐⭐   |
+| 2   | [1514](https://leetcode.cn/problems/path-with-maximum-probability/) | 概率最大的路径   |  🟡  | Dijkstra（最大概率） |   ⭐⭐   |
+| 3   | [1631](https://leetcode.cn/problems/path-with-minimum-effort/)      | 最小体力消耗路径 |  🟡  | Dijkstra 变种        |  ⭐⭐⭐  |
+| 4   | [207](https://leetcode.cn/problems/course-schedule/)                | 课程表           |  🟡  | 拓扑排序判环         |    ⭐    |
+| 5   | [210](https://leetcode.cn/problems/course-schedule-ii/)             | 课程表 II        |  🟡  | 拓扑排序顺序         |   ⭐⭐   |
+| 6   | [269](https://leetcode.cn/problems/alien-dictionary/)               | 火星词典         |  🔴  | 拓扑排序建图         |  ⭐⭐⭐  |
+| 7   | [785](https://leetcode.cn/problems/is-graph-bipartite/)             | 判断二分图       |  🟡  | DFS/BFS 染色         |   ⭐⭐   |
+| 8   | [886](https://leetcode.cn/problems/possible-bipartition/)           | 可能的二分法     |  🟡  | 染色法               |   ⭐⭐   |
+| 9   | [277](https://leetcode.cn/problems/find-the-celebrity/)             | 搜寻名人         |  🟡  | 两遍遍历             |   ⭐⭐   |
 
 ---
 
@@ -120,11 +120,11 @@ function isBipartite(graph: number[][]): boolean {
 
 ## 📊 复杂度速查表
 
-| 算法 | 时间复杂度 | 空间复杂度 | 适用场景 |
-|------|:--------:|:--------:|---------|
-| Dijkstra | O(E log V) | O(V) | 正权图最短路径 |
-| 拓扑排序 | O(V+E) | O(V) | DAG 排序判环 |
-| 二分图 | O(V+E) | O(V) | 相邻异色 |
+| 算法     | 时间复杂度 | 空间复杂度 | 适用场景       |
+| -------- | :--------: | :--------: | -------------- |
+| Dijkstra | O(E log V) |    O(V)    | 正权图最短路径 |
+| 拓扑排序 |   O(V+E)   |    O(V)    | DAG 排序判环   |
+| 二分图   |   O(V+E)   |    O(V)    | 相邻异色       |
 
 ---
 

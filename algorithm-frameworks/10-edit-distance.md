@@ -8,12 +8,12 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [72](https://leetcode.cn/problems/edit-distance/) | 编辑距离 | 🔴 | 二维 DP 经典 | ⭐⭐⭐ |
-| 2 | [161](https://leetcode.cn/problems/one-edit-distance/) | 相隔为 1 的编辑距离 | 🟡 | 一次编辑判断 | ⭐⭐ |
-| 3 | [583](https://leetcode.cn/problems/delete-operation-for-two-strings/) | 两个字符串的删除操作 | 🟡 | 只能删，LCS 变种 | ⭐⭐ |
-| 4 | [712](https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/) | 最小 ASCII 删除和 | 🟡 | 删 + ASCII 权重 | ⭐⭐⭐ |
+| #   | 题号                                                                          | 题目                 | 难度 | 核心考点         | 推荐指数 |
+| --- | ----------------------------------------------------------------------------- | -------------------- | :--: | ---------------- | :------: |
+| 1   | [72](https://leetcode.cn/problems/edit-distance/)                             | 编辑距离             |  🔴  | 二维 DP 经典     |  ⭐⭐⭐  |
+| 2   | [161](https://leetcode.cn/problems/one-edit-distance/)                        | 相隔为 1 的编辑距离  |  🟡  | 一次编辑判断     |   ⭐⭐   |
+| 3   | [583](https://leetcode.cn/problems/delete-operation-for-two-strings/)         | 两个字符串的删除操作 |  🟡  | 只能删，LCS 变种 |   ⭐⭐   |
+| 4   | [712](https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/) | 最小 ASCII 删除和    |  🟡  | 删 + ASCII 权重  |  ⭐⭐⭐  |
 
 ---
 
@@ -33,6 +33,7 @@
 > 输入 `word1 = "horse"`, `word2 = "ros"` → 输出 3
 
 **三种操作：**
+
 ```
 ① 插入（Insert）：在 word1 中插入一个字符
 ② 删除（Delete）：在 word1 中删除一个字符
@@ -79,18 +80,18 @@ flowchart TD
         NOT_EQUAL --> REPLACE["替换 dp[i-1][j-1] + 1"]
         INSERT & DELETE & REPLACE --> MIN["取最小值"]
     end
-    
+
     style EQUAL fill:#bfb,stroke:#333
     style NOT_EQUAL fill:#fbb,stroke:#333
 ```
 
 ```
-dp[i][j] = 
+dp[i][j] =
   if s1[i-1] === s2[j-1]:
     dp[i-1][j-1]              ← 字符匹配，不用操作
   else:
     min(
-      dp[i][j-1] + 1,          ← 插入 
+      dp[i][j-1] + 1,          ← 插入
       dp[i-1][j] + 1,          ← 删除
       dp[i-1][j-1] + 1         ← 替换
     )
@@ -104,9 +105,9 @@ dp[i][j] =
 // edit-distance.ts
 /**
  * 72. 编辑距离
- * 
+ *
  * dp[i][j] = word1[0..i-1] → word2[0..j-1] 的最小编辑距离
- * 
+ *
  * 时间复杂度 O(m×n)  空间复复杂度 O(m×n) → 可压缩到 O(min(m,n))
  */
 function minDistance(word1: string, word2: string): number {
@@ -114,13 +115,11 @@ function minDistance(word1: string, word2: string): number {
   const n = word2.length;
 
   // dp[i][j]：word1 前 i 个字符 → word2 前 j 个字符的编辑距离
-  const dp: number[][] = Array.from({ length: m + 1 }, () =>
-    new Array(n + 1).fill(0)
-  );
+  const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
 
   // base case
-  for (let i = 1; i <= m; i++) dp[i][0] = i;  // 删除 i 次
-  for (let j = 1; j <= n; j++) dp[0][j] = j;  // 插入 j 次
+  for (let i = 1; i <= m; i++) dp[i][0] = i; // 删除 i 次
+  for (let j = 1; j <= n; j++) dp[0][j] = j; // 插入 j 次
 
   // 填充 DP 表
   for (let i = 1; i <= m; i++) {
@@ -129,9 +128,9 @@ function minDistance(word1: string, word2: string): number {
         dp[i][j] = dp[i - 1][j - 1]; // 字符相等，不用操作
       } else {
         dp[i][j] = Math.min(
-          dp[i - 1][j] + 1,      // 删除 word1[i-1]
-          dp[i][j - 1] + 1,      // 插入 word2[j-1]
-          dp[i - 1][j - 1] + 1   // 替换 word1[i-1] → word2[j-1]
+          dp[i - 1][j] + 1, // 删除 word1[i-1]
+          dp[i][j - 1] + 1, // 插入 word2[j-1]
+          dp[i - 1][j - 1] + 1 // 替换 word1[i-1] → word2[j-1]
         );
       }
     }
@@ -141,8 +140,8 @@ function minDistance(word1: string, word2: string): number {
 }
 
 // --- 测试 ---
-console.log("编辑距离:", minDistance("horse", "ros"));     // 3
-console.log("编辑距离:", minDistance("intention", "execution")); // 5
+console.log('编辑距离:', minDistance('horse', 'ros')); // 3
+console.log('编辑距离:', minDistance('intention', 'execution')); // 5
 ```
 
 ---
@@ -190,9 +189,9 @@ function minDistanceCompressed(word1: string, word2: string): number {
         dpCurr[j] = dpPrev[j - 1];
       } else {
         dpCurr[j] = Math.min(
-          dpPrev[j] + 1,       // 删除
-          dpCurr[j - 1] + 1,   // 插入
-          dpPrev[j - 1] + 1    // 替换
+          dpPrev[j] + 1, // 删除
+          dpCurr[j - 1] + 1, // 插入
+          dpPrev[j - 1] + 1 // 替换
         );
       }
     }
@@ -219,9 +218,7 @@ function minDistanceCompressed(word1: string, word2: string): number {
 function minDistanceWithPath(word1: string, word2: string): [number, string[]] {
   const m = word1.length;
   const n = word2.length;
-  const dp: number[][] = Array.from({ length: m + 1 }, () =>
-    new Array(n + 1).fill(0)
-  );
+  const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
 
   for (let i = 1; i <= m; i++) dp[i][0] = i;
   for (let j = 1; j <= n; j++) dp[0][j] = j;
@@ -231,18 +228,15 @@ function minDistanceWithPath(word1: string, word2: string): [number, string[]] {
       if (word1[i - 1] === word2[j - 1]) {
         dp[i][j] = dp[i - 1][j - 1];
       } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j] + 1,
-          dp[i][j - 1] + 1,
-          dp[i - 1][j - 1] + 1
-        );
+        dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1);
       }
     }
   }
 
   // 回溯操作路径从 dp[m][n] → dp[0][0]
   const operations: string[] = [];
-  let i = m, j = n;
+  let i = m,
+    j = n;
   while (i > 0 || j > 0) {
     if (i > 0 && dp[i][j] === dp[i - 1][j] + 1) {
       operations.push(`删除 '${word1[i - 1]}'`);
@@ -254,7 +248,8 @@ function minDistanceWithPath(word1: string, word2: string): [number, string[]] {
       if (word1[i - 1] !== word2[j - 1]) {
         operations.push(`替换 '${word1[i - 1]}' → '${word2[j - 1]}'`);
       }
-      i--; j--;
+      i--;
+      j--;
     }
   }
 
@@ -262,7 +257,7 @@ function minDistanceWithPath(word1: string, word2: string): [number, string[]] {
 }
 
 // --- 测试 ---
-const [dist, ops] = minDistanceWithPath("horse", "ros");
+const [dist, ops] = minDistanceWithPath('horse', 'ros');
 console.log(`距离: ${dist}`);
 ops.forEach((op, i) => console.log(`  ${i + 1}. ${op}`));
 // 输出:
@@ -276,12 +271,12 @@ ops.forEach((op, i) => console.log(`  ${i + 1}. ${op}`));
 
 ## 📊 复杂度速查表
 
-| 版本 | 时间复杂度 | 空间复杂度 | 说明 |
-|------|:--------:|:--------:|------|
-| 暴力递归 | O(3^(m+n)) | O(m+n) | 指数级爆炸 |
-| 备忘录 | O(m×n) | O(m×n) | 自顶向下 |
-| DP 表 | O(m×n) | O(m×n) | 自底向上 |
-| 状态压缩 | O(m×n) | **O(min(m,n))** | 只保留一行 |
+| 版本     | 时间复杂度 |   空间复杂度    | 说明       |
+| -------- | :--------: | :-------------: | ---------- |
+| 暴力递归 | O(3^(m+n)) |     O(m+n)      | 指数级爆炸 |
+| 备忘录   |   O(m×n)   |     O(m×n)      | 自顶向下   |
+| DP 表    |   O(m×n)   |     O(m×n)      | 自底向上   |
+| 状态压缩 |   O(m×n)   | **O(min(m,n))** | 只保留一行 |
 
 ---
 
@@ -303,11 +298,7 @@ ops.forEach((op, i) => console.log(`  ${i + 1}. ${op}`));
 
 ```typescript
 // ✍️ 默写编辑距离
-function minDistance(word1: string, word2: string): number {
-
-
-
-}
+function minDistance(word1: string, word2: string): number {}
 ```
 
 ---

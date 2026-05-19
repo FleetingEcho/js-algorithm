@@ -10,32 +10,32 @@
 
 > 💡 刷题顺序：⭐ 必背 → ⭐⭐ 进阶 → ⭐⭐⭐ 挑战
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [111](https://leetcode.cn/problems/minimum-depth-of-binary-tree/) | 二叉树的最小深度 | 🟢 | BFS 模板入门 | ⭐ |
-| 2 | [102](https://leetcode.cn/problems/binary-tree-level-order-traversal/) | 二叉树的层序遍历 | 🟡 | BFS 分层输出 | ⭐ |
-| 3 | [107](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/) | 层序遍历 II | 🟡 | BFS + 反转 | ⭐ |
-| 4 | [199](https://leetcode.cn/problems/binary-tree-right-side-view/) | 二叉树的右视图 | 🟡 | BFS 每层最后一个 | ⭐⭐ |
-| 5 | [752](https://leetcode.cn/problems/open-the-lock/) | 打开转盘锁 | 🟡 | BFS + visited 去重 | ⭐⭐⭐ |
-| 6 | [127](https://leetcode.cn/problems/word-ladder/) | 单词接龙 | 🔴 | BFS + 单词转换 | ⭐⭐⭐ |
-| 7 | [433](https://leetcode.cn/problems/minimum-genetic-mutation/) | 最小基因变化 | 🟡 | BFS 标准模板 | ⭐⭐ |
-| 8 | [542](https://leetcode.cn/problems/01-matrix/) | 01 矩阵 | 🟡 | 多源 BFS | ⭐⭐⭐ |
-| 9 | [994](https://leetcode.cn/problems/rotting-oranges/) | 腐烂的橘子 | 🟡 | 多源 BFS | ⭐⭐ |
-| 10 | [200](https://leetcode.cn/problems/number-of-islands/) | 岛屿数量 | 🟡 | BFS/DFS 网格 | ⭐ |
-| 11 | [126](https://leetcode.cn/problems/word-ladder-ii/) | 单词接龙 II | 🔴 | BFS + DFS 回溯找路径 | ⭐⭐⭐ |
-| 12 | [133](https://leetcode.cn/problems/clone-graph/) | 克隆图 | 🟡 | BFS/DFS 拷贝图 | ⭐⭐ |
-| 13 | [207](https://leetcode.cn/problems/course-schedule/) | 课程表 | 🟡 | 拓扑排序（BFS/DFS） | ⭐⭐ |
-| 14 | [210](https://leetcode.cn/problems/course-schedule-ii/) | 课程表 II | 🟡 | 拓扑排序返回顺序 | ⭐⭐ |
-| 15 | [261](https://leetcode.cn/problems/graph-valid-tree/) | 以图判树 | 🟡 | BFS/DFS 连通性检测 | ⭐⭐ |
-| 16 | [286](https://leetcode.cn/problems/walls-and-gates/) | 墙与门 | 🟡 | 多源 BFS | ⭐⭐ |
-| 17 | [323](https://leetcode.cn/problems/number-of-connected-components-in-an-undirected-graph/) | 无向图中连通分量数目 | 🟡 | BFS/DFS 连通分量 | ⭐⭐ |
-| 18 | [490](https://leetcode.cn/problems/the-maze/) | 迷宫 | 🟡 | BFS 模拟球滚 | ⭐⭐ |
-| 19 | [505](https://leetcode.cn/problems/the-maze-ii/) | 迷宫 II | 🟡 | BFS 最短距离 | ⭐⭐⭐ |
-| 20 | [733](https://leetcode.cn/problems/flood-fill/) | 图像渲染 | 🟢 | BFS/DFS 填充 | ⭐ |
-| 21 | [773](https://leetcode.cn/problems/sliding-puzzle/) | 滑动谜题 | 🔴 | BFS 状态压缩 | ⭐⭐⭐ |
-| 22 | [841](https://leetcode.cn/problems/keys-and-rooms/) | 钥匙和房间 | 🟡 | BFS/DFS 可达性 | ⭐⭐ |
-| 23 | [909](https://leetcode.cn/problems/snakes-and-ladders/) | 蛇梯棋 | 🟡 | BFS + 棋盘映射 | ⭐⭐⭐ |
-| 24 | [1306](https://leetcode.cn/problems/jump-game-iii/) | 跳跃游戏 III | 🟡 | BFS/DFS 跳跃搜索 | ⭐⭐ |
+| #   | 题号                                                                                       | 题目                 | 难度 | 核心考点             | 推荐指数 |
+| --- | ------------------------------------------------------------------------------------------ | -------------------- | :--: | -------------------- | :------: |
+| 1   | [111](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)                          | 二叉树的最小深度     |  🟢  | BFS 模板入门         |    ⭐    |
+| 2   | [102](https://leetcode.cn/problems/binary-tree-level-order-traversal/)                     | 二叉树的层序遍历     |  🟡  | BFS 分层输出         |    ⭐    |
+| 3   | [107](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)                  | 层序遍历 II          |  🟡  | BFS + 反转           |    ⭐    |
+| 4   | [199](https://leetcode.cn/problems/binary-tree-right-side-view/)                           | 二叉树的右视图       |  🟡  | BFS 每层最后一个     |   ⭐⭐   |
+| 5   | [752](https://leetcode.cn/problems/open-the-lock/)                                         | 打开转盘锁           |  🟡  | BFS + visited 去重   |  ⭐⭐⭐  |
+| 6   | [127](https://leetcode.cn/problems/word-ladder/)                                           | 单词接龙             |  🔴  | BFS + 单词转换       |  ⭐⭐⭐  |
+| 7   | [433](https://leetcode.cn/problems/minimum-genetic-mutation/)                              | 最小基因变化         |  🟡  | BFS 标准模板         |   ⭐⭐   |
+| 8   | [542](https://leetcode.cn/problems/01-matrix/)                                             | 01 矩阵              |  🟡  | 多源 BFS             |  ⭐⭐⭐  |
+| 9   | [994](https://leetcode.cn/problems/rotting-oranges/)                                       | 腐烂的橘子           |  🟡  | 多源 BFS             |   ⭐⭐   |
+| 10  | [200](https://leetcode.cn/problems/number-of-islands/)                                     | 岛屿数量             |  🟡  | BFS/DFS 网格         |    ⭐    |
+| 11  | [126](https://leetcode.cn/problems/word-ladder-ii/)                                        | 单词接龙 II          |  🔴  | BFS + DFS 回溯找路径 |  ⭐⭐⭐  |
+| 12  | [133](https://leetcode.cn/problems/clone-graph/)                                           | 克隆图               |  🟡  | BFS/DFS 拷贝图       |   ⭐⭐   |
+| 13  | [207](https://leetcode.cn/problems/course-schedule/)                                       | 课程表               |  🟡  | 拓扑排序（BFS/DFS）  |   ⭐⭐   |
+| 14  | [210](https://leetcode.cn/problems/course-schedule-ii/)                                    | 课程表 II            |  🟡  | 拓扑排序返回顺序     |   ⭐⭐   |
+| 15  | [261](https://leetcode.cn/problems/graph-valid-tree/)                                      | 以图判树             |  🟡  | BFS/DFS 连通性检测   |   ⭐⭐   |
+| 16  | [286](https://leetcode.cn/problems/walls-and-gates/)                                       | 墙与门               |  🟡  | 多源 BFS             |   ⭐⭐   |
+| 17  | [323](https://leetcode.cn/problems/number-of-connected-components-in-an-undirected-graph/) | 无向图中连通分量数目 |  🟡  | BFS/DFS 连通分量     |   ⭐⭐   |
+| 18  | [490](https://leetcode.cn/problems/the-maze/)                                              | 迷宫                 |  🟡  | BFS 模拟球滚         |   ⭐⭐   |
+| 19  | [505](https://leetcode.cn/problems/the-maze-ii/)                                           | 迷宫 II              |  🟡  | BFS 最短距离         |  ⭐⭐⭐  |
+| 20  | [733](https://leetcode.cn/problems/flood-fill/)                                            | 图像渲染             |  🟢  | BFS/DFS 填充         |    ⭐    |
+| 21  | [773](https://leetcode.cn/problems/sliding-puzzle/)                                        | 滑动谜题             |  🔴  | BFS 状态压缩         |  ⭐⭐⭐  |
+| 22  | [841](https://leetcode.cn/problems/keys-and-rooms/)                                        | 钥匙和房间           |  🟡  | BFS/DFS 可达性       |   ⭐⭐   |
+| 23  | [909](https://leetcode.cn/problems/snakes-and-ladders/)                                    | 蛇梯棋               |  🟡  | BFS + 棋盘映射       |  ⭐⭐⭐  |
+| 24  | [1306](https://leetcode.cn/problems/jump-game-iii/)                                        | 跳跃游戏 III         |  🟡  | BFS/DFS 跳跃搜索     |   ⭐⭐   |
 
 ---
 
@@ -62,11 +62,11 @@ flowchart TD
     L1A --> L2A[D] & L2B[E]
     L1B --> L2C[F] & L2D[G]
     L1C --> L2E[H] & L2F[I]
-    
+
     S -->|step=0| S
     L1A & L1B & L1C -->|step=1| L1A
     L2A & L2B & L2C & L2D & L2E & L2F -->|step=2| L2A
-    
+
     style S fill:#ff9,stroke:#333,stroke-width:3px
     style L2D fill:#9f9,stroke:#333,stroke-width:3px
 ```
@@ -76,13 +76,13 @@ flowchart TD
 
 ### 什么时候用 BFS？
 
-| 场景 | 用 BFS？ | 原因 |
-|------|:--------:|------|
-| 求最短路径/最少步数 | ✅ **必须 BFS** | BFS 第一次到达即最优 |
-| 求所有解 | ❌ 用 DFS | DFS 空间小，方便递归回溯 |
-| 求是否存在一个解 | ✅ 都行 | BFS 更快找到，DFS 省空间 |
-| 图的无权最短路径 | ✅ **必须 BFS** | 无权图 BFS = Dijkstra |
-| 树的层序遍历 | ✅ BFS | 天然层级结构 |
+| 场景                |    用 BFS？     | 原因                     |
+| ------------------- | :-------------: | ------------------------ |
+| 求最短路径/最少步数 | ✅ **必须 BFS** | BFS 第一次到达即最优     |
+| 求所有解            |    ❌ 用 DFS    | DFS 空间小，方便递归回溯 |
+| 求是否存在一个解    |     ✅ 都行     | BFS 更快找到，DFS 省空间 |
+| 图的无权最短路径    | ✅ **必须 BFS** | 无权图 BFS = Dijkstra    |
+| 树的层序遍历        |     ✅ BFS      | 天然层级结构             |
 
 ---
 
@@ -112,7 +112,7 @@ flowchart TD
 // bfs-template.ts
 /**
  * BFS 算法通用框架 — 计算从 start 到 target 的最短距离
- * 
+ *
  * @param start  起点
  * @param target 终点
  * @returns 最短步数，不可达返回 -1
@@ -174,14 +174,14 @@ function getNeighbors(node: string): string[] {
 
 ## ⚔️ BFS vs DFS 对比
 
-| 对比维度 | BFS | DFS |
-|---------|:---:|:---:|
-| **数据结构** | 队列（Queue） | 栈（Stack）/ 递归 |
-| **空间复杂度** | O(w) 宽，可能很大 | O(h) 浅，通常较小 |
-| **最短路径** | ✅ 第一次遇到即最优 | ❌ 必须遍历全部 |
-| **实现方式** | 迭代 + while 循环 | 递归 + 回溯 |
-| **遍历特点** | **面** — 集体行动，层级推进 | **线** — 单打独斗，一条路走到黑 |
-| **适用场景** | 最短路径、层序遍历 | 所有解、排列组合、深度受限问题 |
+| 对比维度       |             BFS             |               DFS               |
+| -------------- | :-------------------------: | :-----------------------------: |
+| **数据结构**   |        队列（Queue）        |        栈（Stack）/ 递归        |
+| **空间复杂度** |      O(w) 宽，可能很大      |        O(h) 浅，通常较小        |
+| **最短路径**   |     ✅ 第一次遇到即最优     |         ❌ 必须遍历全部         |
+| **实现方式**   |      迭代 + while 循环      |           递归 + 回溯           |
+| **遍历特点**   | **面** — 集体行动，层级推进 | **线** — 单打独斗，一条路走到黑 |
+| **适用场景**   |     最短路径、层序遍历      | 所有解、排列组合、深度受限问题  |
 
 ```mermaid
 flowchart LR
@@ -191,7 +191,7 @@ flowchart LR
         B2(A) --- B3(B) --- B4(C)
         B5(D) -.- B6(E) -.- B7(F) -.- B8(G)
     end
-    
+
     subgraph DFS图 [DFS 路径]
         direction TB
         D1((S)) --> D2(A) --> D3(D) --> D4[...]
@@ -199,7 +199,7 @@ flowchart LR
         D1 --> D6(B)
         D1 --> D7(C)
     end
-    
+
     BFS图 -->|层层推进| BFS
     DFS图 -->|深入到底| DFS
 ```
@@ -223,9 +223,9 @@ class TreeNode<T> {
 
 /**
  * 二叉树的最小深度 — BFS 标准模板
- * 
+ *
  * 思路：层序遍历，遇到第一个叶子节点（无左右孩子）就返回当前深度
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(n) 最坏情况满二叉树
  */
 function minDepth(root: TreeNode<number> | null): number {
@@ -269,7 +269,7 @@ const root = new TreeNode(3);
 root.left = new TreeNode(9);
 root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
 
-console.log("最小深度:", minDepth(root)); // 输出: 2 (3→9)
+console.log('最小深度:', minDepth(root)); // 输出: 2 (3→9)
 ```
 
 > **注意：** 二叉树遍历不需要 `visited` 集合，因为树结构中没有子节点指向父节点的指针，不会走回头路。
@@ -288,10 +288,10 @@ flowchart TD
     START["0000<br/>step=0"] --> N1["1000"] & N2["9000"] & N3["0100"] & N4["0900"] & N5["0010"] & N6["0090"] & N7["0001"] & N8["0009"]
     N1 --> N11["1100"] & N12["..."]
     N3 --> N31["..."]
-    
+
     START -->|step=0| START
     N1 & N2 & N3 & N4 & N5 & N6 & N7 & N8 -->|step=1| N1
-    
+
     style START fill:#ff9,stroke:#333
     style N8 fill:#9f9,stroke:#333
 ```
@@ -304,9 +304,9 @@ flowchart TD
  * 例如 '0' → '1', '9' → '0'
  */
 function plusOne(s: string, i: number): string {
-  const arr = s.split("");
-  arr[i] = arr[i] === "9" ? "0" : String(Number(arr[i]) + 1);
-  return arr.join("");
+  const arr = s.split('');
+  arr[i] = arr[i] === '9' ? '0' : String(Number(arr[i]) + 1);
+  return arr.join('');
 }
 
 /**
@@ -314,22 +314,22 @@ function plusOne(s: string, i: number): string {
  * 例如 '0' → '9', '1' → '0'
  */
 function minusOne(s: string, i: number): string {
-  const arr = s.split("");
-  arr[i] = arr[i] === "0" ? "9" : String(Number(arr[i]) - 1);
-  return arr.join("");
+  const arr = s.split('');
+  arr[i] = arr[i] === '0' ? '9' : String(Number(arr[i]) - 1);
+  return arr.join('');
 }
 
 /**
  * 打开转盘锁 — BFS 标准模板
- * 
+ *
  * 思路：'0000' 为起点，每次有 8 种变化（4个拨轮 × 上下）
  * 用 visited 记录已访问密码，用 deadSet 跳过死亡密码
- * 
+ *
  * 时间复杂度 O(10^4 × 8) = O(1) 空间复杂度 O(10^4) = O(1)
  * 状态空间固定为 10000 种组合
  */
 function openLock(deadends: string[], target: string): number {
-  const start = "0000";
+  const start = '0000';
 
   // 特殊情况
   if (target === start) return 0;
@@ -374,9 +374,9 @@ function openLock(deadends: string[], target: string): number {
 }
 
 // --- 测试 ---
-const deadends1 = ["0201", "0101", "0102", "1212", "2002"];
-const target1 = "0202";
-console.log("最少步数:", openLock(deadends1, target1));
+const deadends1 = ['0201', '0101', '0102', '1212', '2002'];
+const target1 = '0202';
+console.log('最少步数:', openLock(deadends1, target1));
 // 输出: 6
 ```
 
@@ -398,7 +398,7 @@ flowchart TD
         R22 --> R33 & R34
         R31 -.-> T1((终点))
     end
-    
+
     subgraph 双向BFS [双向 BFS]
         direction LR
         S2((起点)) --> L1[A] & L1B[B]
@@ -409,7 +409,7 @@ flowchart TD
         R1B --> R2D[H]
         L2 -.->|相遇| R2
     end
-    
+
     传统BFS --> |扩散半径大| 传统BFS
     双向BFS --> |扩散半径减半| 双向BFS
 ```
@@ -421,10 +421,10 @@ flowchart TD
 
 /**
  * 双向 BFS 通用模板
- * 
+ *
  * 局限：必须知道终点在哪
  * 优势：扩散规模从 b^d 降到 2 × b^(d/2)，b 为分支因子
- * 
+ *
  * 适用于：开锁问题、单词接龙等已知终点的最短路径问题
  */
 function bidirectionalBFS(
@@ -482,10 +482,10 @@ function bidirectionalBFS(
 function getLockNeighbors(code: string): string[] {
   const neighbors: string[] = [];
   for (let i = 0; i < 4; i++) {
-    const up = code[i] === "9" ? "0" : String(Number(code[i]) + 1);
+    const up = code[i] === '9' ? '0' : String(Number(code[i]) + 1);
     neighbors.push(code.substring(0, i) + up + code.substring(i + 1));
 
-    const down = code[i] === "0" ? "9" : String(Number(code[i]) - 1);
+    const down = code[i] === '0' ? '9' : String(Number(code[i]) - 1);
     neighbors.push(code.substring(0, i) + down + code.substring(i + 1));
   }
   return neighbors;
@@ -495,7 +495,7 @@ function getLockNeighbors(code: string): string[] {
  * 双向 BFS 解决开锁问题
  */
 function openLockBidirectional(deadends: string[], target: string): number {
-  const start = "0000";
+  const start = '0000';
   if (target === start) return 0;
   if (deadends.includes(start)) return -1;
 
@@ -538,7 +538,7 @@ function openLockBidirectional(deadends: string[], target: string): number {
 }
 
 // --- 测试 ---
-console.log("双向BFS:", openLockBidirectional(deadends1, target1));
+console.log('双向BFS:', openLockBidirectional(deadends1, target1));
 // 输出: 6
 ```
 
@@ -550,11 +550,11 @@ console.log("双向BFS:", openLockBidirectional(deadends1, target1));
 
 ### 什么时候用？
 
-| 问题 | 为什么是多源 |
-|------|-------------|
-| [542. 01 矩阵](https://leetcode.cn/problems/01-matrix/) | 每个 0 是起点，计算所有 1 到最近 0 的距离 |
-| [994. 腐烂的橘子](https://leetcode.cn/problems/rotting-oranges/) | 所有烂橘子同时扩散，求全部腐烂的最少时间 |
-| [286. 墙与门](https://leetcode.cn/problems/walls-and-gates/) | 所有门是起点，计算房间到最近门的距离 |
+| 问题                                                             | 为什么是多源                              |
+| ---------------------------------------------------------------- | ----------------------------------------- |
+| [542. 01 矩阵](https://leetcode.cn/problems/01-matrix/)          | 每个 0 是起点，计算所有 1 到最近 0 的距离 |
+| [994. 腐烂的橘子](https://leetcode.cn/problems/rotting-oranges/) | 所有烂橘子同时扩散，求全部腐烂的最少时间  |
+| [286. 墙与门](https://leetcode.cn/problems/walls-and-gates/)     | 所有门是起点，计算房间到最近门的距离      |
 
 ### 多源 BFS 模板
 
@@ -563,7 +563,7 @@ flowchart TD
     subgraph 传统BFS [传统 BFS — 单源]
         S[一个起点] --> Q[入队] --> LOOP[扩散] --> T((目标))
     end
-    
+
     subgraph 多源BFS [多源 BFS]
         S1[起点1] & S2[起点2] & S3[...起点N] --> Q2[全部入队<br/>step=0] --> LOOP2[同时扩散] --> ALL[所有节点被访问]
     end
@@ -573,10 +573,10 @@ flowchart TD
 // multi-source-bfs.ts
 /**
  * 多源 BFS 模板
- * 
+ *
  * 思路：所有起点先入队，然后同时向外扩散
  * 适用：求每个位置到最近起点的距离
- * 
+ *
  * 时间复杂度 O(m×n)  空间复杂度 O(m×n)
  */
 function multiSourceBFS(grid: number[][]): number[][] {
@@ -596,7 +596,12 @@ function multiSourceBFS(grid: number[][]): number[][] {
   }
 
   // 四个方向
-  const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+  const dirs = [
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1],
+  ];
 
   // ② 同时扩散（跟普通 BFS 一模一样的逻辑！）
   while (queue.length > 0) {
@@ -620,9 +625,9 @@ function multiSourceBFS(grid: number[][]): number[][] {
 const matrix = [
   [0, 0, 0],
   [0, 1, 0],
-  [1, 1, 0]
+  [1, 1, 0],
 ];
-console.log("到最近 0 的距离:", multiSourceBFS(matrix));
+console.log('到最近 0 的距离:', multiSourceBFS(matrix));
 // 输出: [[0,0,0],[0,1,0],[2,1,0]]
 ```
 
@@ -630,14 +635,14 @@ console.log("到最近 0 的距离:", multiSourceBFS(matrix));
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键点 |
-|------|:--------:|:--------:|--------|
-| 二叉树最小深度 | O(n) | O(n) | 树不需要 visited |
-| 打开转盘锁 | O(10⁴) | O(10⁴) | 状态空间固定 |
-| 单词接龙 | O(n × 26^L) | O(n) | n=单词数，L=单词长度 |
-| 01 矩阵 | O(m × n) | O(m × n) | 多源 BFS |
-| 腐烂的橘子 | O(m × n) | O(m × n) | 多源 BFS + 时间记录 |
-| **双向 BFS** | **O(b^(d/2))** | **O(b^(d/2))** | **指数级优化！** |
+| 问题           |   时间复杂度   |   空间复杂度   | 关键点               |
+| -------------- | :------------: | :------------: | -------------------- |
+| 二叉树最小深度 |      O(n)      |      O(n)      | 树不需要 visited     |
+| 打开转盘锁     |     O(10⁴)     |     O(10⁴)     | 状态空间固定         |
+| 单词接龙       |  O(n × 26^L)   |      O(n)      | n=单词数，L=单词长度 |
+| 01 矩阵        |    O(m × n)    |    O(m × n)    | 多源 BFS             |
+| 腐烂的橘子     |    O(m × n)    |    O(m × n)    | 多源 BFS + 时间记录  |
+| **双向 BFS**   | **O(b^(d/2))** | **O(b^(d/2))** | **指数级优化！**     |
 
 > **b** = 分支因子（每个节点有几个邻居）
 > **d** = 最短路径长度
@@ -652,12 +657,12 @@ console.log("到最近 0 的距离:", multiSourceBFS(matrix));
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| ⭐ 入门 | BFS 模板 | 111 最小深度、102 层序遍历 | 理解分层逻辑 |
-| ⭐⭐ 进阶 | visited 使用 | 752 开锁、433 基因变化 | 图结构必须 visited |
-| ⭐⭐⭐ 挑战 | 多源 BFS | 542 01矩阵、994 腐烂橘子 | 多个起点同时入队 |
-| ⭐⭐⭐ 挑战 | 双向 BFS | 127 单词接龙 | 已知终点的优化 |
+| 阶段        | 目标         | 题目                       | 关键点             |
+| ----------- | ------------ | -------------------------- | ------------------ |
+| ⭐ 入门     | BFS 模板     | 111 最小深度、102 层序遍历 | 理解分层逻辑       |
+| ⭐⭐ 进阶   | visited 使用 | 752 开锁、433 基因变化     | 图结构必须 visited |
+| ⭐⭐⭐ 挑战 | 多源 BFS     | 542 01矩阵、994 腐烂橘子   | 多个起点同时入队   |
+| ⭐⭐⭐ 挑战 | 双向 BFS     | 127 单词接龙               | 已知终点的优化     |
 
 ### BFS 的自查清单
 
@@ -678,16 +683,7 @@ console.log("到最近 0 的距离:", multiSourceBFS(matrix));
 
 ```typescript
 // ✍️ 你的默写
-function bfs(start: string, target: string): number {
-
-
-
-
-
-
-
-
-}
+function bfs(start: string, target: string): number {}
 ```
 
 > 用一句话解释：为什么 BFS 能找到最短路径，而 DFS 不行？

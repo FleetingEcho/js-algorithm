@@ -10,16 +10,16 @@
 
 > 以下题目全部来自 `leetcode-questions-summary.md`「多指针 / 滑动窗口」分类
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [3](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) | 无重复字符的最长子串 | 🟡 | 窗口 + 哈希集 | ⭐ |
-| 2 | [76](https://leetcode.cn/problems/minimum-window-substring/) | 最小覆盖子串 | 🔴 | 窗口 + 计数数组 | ⭐⭐⭐ |
-| 3 | [567](https://leetcode.cn/problems/permutation-in-string/) | 字符串的排列 | 🟡 | 定长滑动窗口 | ⭐⭐ |
-| 4 | [209](https://leetcode.cn/problems/minimum-size-subarray-sum/) | 长度最小的子数组 | 🟡 | 和 ≥ target 时收缩 | ⭐ |
-| 5 | [713](https://leetcode.cn/problems/subarray-product-less-than-k/) | 乘积小于 K 的子数组 | 🟡 | 乘积 < k 时计数 | ⭐⭐ |
-| 6 | [727](https://leetcode.cn/problems/minimum-window-subsequence/) | 最小窗口子序列 | 🔴 | DP / 双指针逐字符匹配 | ⭐⭐⭐ |
-| 7 | [395](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/) | 至少有 K 个重复字符的最长子串 | 🟡 | 分治 / 字符种类枚举 | ⭐⭐⭐ |
-| 8 | Lint-604 | 滑动窗口内数的和 | 🟢 | 固定窗口求和 | ⭐ |
+| #   | 题号                                                                                        | 题目                          | 难度 | 核心考点              | 推荐指数 |
+| --- | ------------------------------------------------------------------------------------------- | ----------------------------- | :--: | --------------------- | :------: |
+| 1   | [3](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)           | 无重复字符的最长子串          |  🟡  | 窗口 + 哈希集         |    ⭐    |
+| 2   | [76](https://leetcode.cn/problems/minimum-window-substring/)                                | 最小覆盖子串                  |  🔴  | 窗口 + 计数数组       |  ⭐⭐⭐  |
+| 3   | [567](https://leetcode.cn/problems/permutation-in-string/)                                  | 字符串的排列                  |  🟡  | 定长滑动窗口          |   ⭐⭐   |
+| 4   | [209](https://leetcode.cn/problems/minimum-size-subarray-sum/)                              | 长度最小的子数组              |  🟡  | 和 ≥ target 时收缩    |    ⭐    |
+| 5   | [713](https://leetcode.cn/problems/subarray-product-less-than-k/)                           | 乘积小于 K 的子数组           |  🟡  | 乘积 < k 时计数       |   ⭐⭐   |
+| 6   | [727](https://leetcode.cn/problems/minimum-window-subsequence/)                             | 最小窗口子序列                |  🔴  | DP / 双指针逐字符匹配 |  ⭐⭐⭐  |
+| 7   | [395](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/) | 至少有 K 个重复字符的最长子串 |  🟡  | 分治 / 字符种类枚举   |  ⭐⭐⭐  |
+| 8   | Lint-604                                                                                    | 滑动窗口内数的和              |  🟢  | 固定窗口求和          |    ⭐    |
 
 ---
 
@@ -78,9 +78,9 @@ flowchart TD
 // sliding-window-template.ts
 /**
  * 滑动窗口通用框架（解决子串/子数组问题）
- * 
+ *
  * 思路：right 扩张直到满足条件，left 收缩优化结果
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(k) k=字符集大小
  */
 function slidingWindowTemplate(s: string): number {
@@ -133,13 +133,13 @@ flowchart LR
 // minimum-window-substring.ts
 /**
  * 76. 最小覆盖子串 — 滑动窗口最经典例题
- * 
+ *
  * 思路：
  *   1. 用 need 记录 T 中每个字符需要的次数
  *   2. 用 window 记录窗口中字符出现的次数
  *   3. valid 记录满足 need 条件的字符种类数
  *   4. 当 valid === need.size 时，所有字符都覆盖了，开始收缩
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(k)
  */
 function minWindow(s: string, t: string): string {
@@ -151,9 +151,11 @@ function minWindow(s: string, t: string): string {
     need.set(c, (need.get(c) || 0) + 1);
   }
 
-  let left = 0, right = 0;
+  let left = 0,
+    right = 0;
   let valid = 0; // 满足 need 条件的字符种类数
-  let start = 0, len = Infinity;
+  let start = 0,
+    len = Infinity;
 
   while (right < s.length) {
     // ① 右移窗口
@@ -188,11 +190,11 @@ function minWindow(s: string, t: string): string {
     }
   }
 
-  return len === Infinity ? "" : s.substring(start, start + len);
+  return len === Infinity ? '' : s.substring(start, start + len);
 }
 
 // --- 测试 ---
-console.log(minWindow("ADOBECODEBANC", "ABC")); // "BANC"
+console.log(minWindow('ADOBECODEBANC', 'ABC')); // "BANC"
 ```
 
 ---
@@ -206,13 +208,14 @@ console.log(minWindow("ADOBECODEBANC", "ABC")); // "BANC"
 // longest-substring-without-repeating.ts
 /**
  * 3. 无重复字符的最长子串
- * 
+ *
  * 收缩条件：窗口内出现重复字符
  * 用 Set 记录窗口内的字符
  */
 function lengthOfLongestSubstring(s: string): number {
   const set = new Set<string>();
-  let left = 0, right = 0;
+  let left = 0,
+    right = 0;
   let maxLen = 0;
 
   while (right < s.length) {
@@ -233,9 +236,9 @@ function lengthOfLongestSubstring(s: string): number {
 }
 
 // --- 测试 ---
-console.log(lengthOfLongestSubstring("abcabcbb")); // 3
-console.log(lengthOfLongestSubstring("bbbbb"));    // 1
-console.log(lengthOfLongestSubstring("pwwkew"));   // 3
+console.log(lengthOfLongestSubstring('abcabcbb')); // 3
+console.log(lengthOfLongestSubstring('bbbbb')); // 1
+console.log(lengthOfLongestSubstring('pwwkew')); // 3
 ```
 
 ---
@@ -249,7 +252,7 @@ console.log(lengthOfLongestSubstring("pwwkew"));   // 3
 // permutation-in-string.ts
 /**
  * 567. 字符串的排列
- * 
+ *
  * 判断 s2 是否包含 s1 的排列 — 定长滑动窗口
  * 窗口长度固定为 s1.length，判断窗口内字符计数是否匹配
  */
@@ -261,7 +264,8 @@ function checkInclusion(s1: string, s2: string): boolean {
     need.set(c, (need.get(c) || 0) + 1);
   }
 
-  let left = 0, right = 0;
+  let left = 0,
+    right = 0;
   let valid = 0;
 
   while (right < s2.length) {
@@ -291,8 +295,8 @@ function checkInclusion(s1: string, s2: string): boolean {
 }
 
 // --- 测试 ---
-console.log(checkInclusion("ab", "eidbaooo")); // true
-console.log(checkInclusion("ab", "eidboaoo")); // false
+console.log(checkInclusion('ab', 'eidbaooo')); // true
+console.log(checkInclusion('ab', 'eidboaoo')); // false
 ```
 
 ---
@@ -306,12 +310,13 @@ console.log(checkInclusion("ab", "eidboaoo")); // false
 // minimum-size-subarray-sum.ts
 /**
  * 209. 长度最小的子数组
- * 
+ *
  * 不用哈希表，窗口维护一个数值和
  * 收缩条件：sum >= target
  */
 function minSubArrayLen(target: number, nums: number[]): number {
-  let left = 0, right = 0;
+  let left = 0,
+    right = 0;
   let sum = 0;
   let minLen = Infinity;
 
@@ -332,7 +337,7 @@ function minSubArrayLen(target: number, nums: number[]): number {
 
 // --- 测试 ---
 console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3])); // 2
-console.log(minSubArrayLen(11, [1, 1, 1, 1, 1]));    // 0
+console.log(minSubArrayLen(11, [1, 1, 1, 1, 1])); // 0
 ```
 
 ### 乘积小于 K 的子数组
@@ -340,14 +345,15 @@ console.log(minSubArrayLen(11, [1, 1, 1, 1, 1]));    // 0
 ```typescript
 /**
  * 713. 乘积小于 K 的子数组
- * 
+ *
  * 收缩条件：乘积 ≥ k
  * 计数方式：每次右移时，新增的子数组个数 = right - left
  */
 function numSubarrayProductLessThanK(nums: number[], k: number): number {
   if (k <= 1) return 0;
 
-  let left = 0, right = 0;
+  let left = 0,
+    right = 0;
   let product = 1;
   let count = 0;
 
@@ -375,13 +381,13 @@ console.log(numSubarrayProductLessThanK([10, 5, 2, 6], 100)); // 8
 
 ## 📊 复杂度速查表
 
-| 问题 | 收缩条件 | 时间复杂度 | 空间复杂度 | 关键点 |
-|------|---------|:--------:|:--------:|--------|
-| 76 最小覆盖子串 | `valid === need.size` | O(n) | O(k) | 计数数组 + valid 标记 |
-| 3 无重复子串 | `set.has(c)` | O(n) | O(k) | 简单 Set |
-| 567 排列判断 | `right-left >= s1.length` | O(n) | O(k) | 定长窗口 |
-| 209 最短子数组 | `sum >= target` | O(n) | O(1) | 数值和 |
-| 713 积小于 K | `product >= k` | O(n) | O(1) | 计数技巧 |
+| 问题            | 收缩条件                  | 时间复杂度 | 空间复杂度 | 关键点                |
+| --------------- | ------------------------- | :--------: | :--------: | --------------------- |
+| 76 最小覆盖子串 | `valid === need.size`     |    O(n)    |    O(k)    | 计数数组 + valid 标记 |
+| 3 无重复子串    | `set.has(c)`              |    O(n)    |    O(k)    | 简单 Set              |
+| 567 排列判断    | `right-left >= s1.length` |    O(n)    |    O(k)    | 定长窗口              |
+| 209 最短子数组  | `sum >= target`           |    O(n)    |    O(1)    | 数值和                |
+| 713 积小于 K    | `product >= k`            |    O(n)    |    O(1)    | 计数技巧              |
 
 ---
 
@@ -411,14 +417,10 @@ console.log(numSubarrayProductLessThanK([10, 5, 2, 6], 100)); // 8
 
 ```typescript
 // 76. 最小覆盖子串
-function minWindow(s: string, t: string): string {
-
-}
+function minWindow(s: string, t: string): string {}
 
 // 3. 无重复字符的最长子串
-function lengthOfLongestSubstring(s: string): number {
-
-}
+function lengthOfLongestSubstring(s: string): number {}
 ```
 
 ---

@@ -10,18 +10,18 @@
 
 > 💡 刷题顺序：⭐ 必背 → ⭐⭐ 进阶 → ⭐⭐⭐ 挑战
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [509](https://leetcode.cn/problems/fibonacci-number/) | 斐波那契数 | 🟢 | DP 入门、状态压缩 | ⭐ |
-| 2 | [322](https://leetcode.cn/problems/coin-change/) | 零钱兑换 | 🟡 | 最值 DP、状态转移 | ⭐ |
-| 3 | [300](https://leetcode.cn/problems/longest-increasing-subsequence/) | 最长递增子序列 | 🟡 | LIS 模板、二分优化 | ⭐⭐ |
-| 4 | [1143](https://leetcode.cn/problems/longest-common-subsequence/) | 最长公共子序列 | 🟡 | 二维 DP、LCS 模板 | ⭐⭐ |
-| 5 | [583](https://leetcode.cn/problems/delete-operation-for-two-strings/) | 两个字符串的删除操作 | 🟡 | LCS 变种 | ⭐⭐ |
-| 6 | [712](https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/) | 两个字符串的最小 ASCII 删除和 | 🟡 | LCS 变种 | ⭐⭐⭐ |
-| 7 | [72](https://leetcode.cn/problems/edit-distance/) | 编辑距离 | 🔴 | 经典二维 DP | ⭐⭐⭐ |
-| 8 | [53](https://leetcode.cn/problems/maximum-subarray/) | 最大子数组和 | 🟡 | 一维 DP | ⭐⭐ |
-| 9 | [198](https://leetcode.cn/problems/house-robber/) | 打家劫舍 | 🟡 | DP 入门 | ⭐ |
-| 10 | [139](https://leetcode.cn/problems/word-break/) | 单词拆分 | 🟡 | 字符串 DP | ⭐⭐ |
+| #   | 题号                                                                          | 题目                          | 难度 | 核心考点           | 推荐指数 |
+| --- | ----------------------------------------------------------------------------- | ----------------------------- | :--: | ------------------ | :------: |
+| 1   | [509](https://leetcode.cn/problems/fibonacci-number/)                         | 斐波那契数                    |  🟢  | DP 入门、状态压缩  |    ⭐    |
+| 2   | [322](https://leetcode.cn/problems/coin-change/)                              | 零钱兑换                      |  🟡  | 最值 DP、状态转移  |    ⭐    |
+| 3   | [300](https://leetcode.cn/problems/longest-increasing-subsequence/)           | 最长递增子序列                |  🟡  | LIS 模板、二分优化 |   ⭐⭐   |
+| 4   | [1143](https://leetcode.cn/problems/longest-common-subsequence/)              | 最长公共子序列                |  🟡  | 二维 DP、LCS 模板  |   ⭐⭐   |
+| 5   | [583](https://leetcode.cn/problems/delete-operation-for-two-strings/)         | 两个字符串的删除操作          |  🟡  | LCS 变种           |   ⭐⭐   |
+| 6   | [712](https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/) | 两个字符串的最小 ASCII 删除和 |  🟡  | LCS 变种           |  ⭐⭐⭐  |
+| 7   | [72](https://leetcode.cn/problems/edit-distance/)                             | 编辑距离                      |  🔴  | 经典二维 DP        |  ⭐⭐⭐  |
+| 8   | [53](https://leetcode.cn/problems/maximum-subarray/)                          | 最大子数组和                  |  🟡  | 一维 DP            |   ⭐⭐   |
+| 9   | [198](https://leetcode.cn/problems/house-robber/)                             | 打家劫舍                      |  🟡  | DP 入门            |    ⭐    |
+| 10  | [139](https://leetcode.cn/problems/word-break/)                               | 单词拆分                      |  🟡  | 字符串 DP          |   ⭐⭐   |
 
 ---
 
@@ -72,19 +72,19 @@
 写 DP 之前，先回答这四个问题：
 
 ```
-                                                
-   ① base case 是什么？                         
-      └─ 最简单的情况，直接返回什么值？           
-                                                
-   ② 状态是什么？                              
-      └─ 什么变量在变化？→ 就是 dp 数组的维度     
-                                                
-   ③ 选择是什么？                              
-      └─ 每一步有哪些决策？→ 就是求最值的地方    
-                                                
-   ④ dp 数组/函数怎么定义？                    
-      └─ dp[i][j] 的含义是什么？                
-                                                
+
+   ① base case 是什么？
+      └─ 最简单的情况，直接返回什么值？
+
+   ② 状态是什么？
+      └─ 什么变量在变化？→ 就是 dp 数组的维度
+
+   ③ 选择是什么？
+      └─ 每一步有哪些决策？→ 就是求最值的地方
+
+   ④ dp 数组/函数怎么定义？
+      └─ dp[i][j] 的含义是什么？
+
 ```
 
 ```typescript
@@ -95,7 +95,6 @@
 function dpFramework(): void {
   // ① 初始化 base case
   // dp[0][0][...] = baseValue
-
   // ② 遍历所有状态
   // for (状态1 of 状态1的所有取值) {
   //   for (状态2 of 状态2的所有取值) {
@@ -124,9 +123,9 @@ flowchart TD
     F4 --> F3["fib(3)"] & F2R["fib(2)"]
     F3 --> F2["fib(2)"] & F1R["fib(1)"]
     F2 --> F1["fib(1)"] & F0["fib(0)"]
-    
+
     F3R --> F2RR["fib(2)"] & F1RR["fib(1)"]
-    
+
     style F3 fill:#f96,stroke:#333,stroke-width:3px
     style F3R fill:#f96,stroke:#333,stroke-width:3px
 ```
@@ -173,7 +172,8 @@ function fibDP(n: number): number {
 // fib-compressed.ts
 function fibCompressed(n: number): number {
   if (n === 0 || n === 1) return n;
-  let prev = 0, curr = 1;
+  let prev = 0,
+    curr = 1;
   for (let i = 2; i <= n; i++) {
     [prev, curr] = [curr, prev + curr];
   }
@@ -204,7 +204,7 @@ flowchart TD
     A["dp[11]"] --> B["dp[10] + 1"] & C["dp[9] + 1"] & D["dp[6] + 1"]
     B --> E["dp[9] + 1"] & F["dp[8] + 1"] & G["dp[5] + 1"]
     C --> H["dp[8] + 1"] & I["dp[7] + 1"] & J["dp[4] + 1"]
-    
+
     style A fill:#ff9,stroke:#333
 ```
 
@@ -212,10 +212,10 @@ flowchart TD
 // coin-change.ts
 /**
  * 零钱兑换
- * 
+ *
  * dp[i] = 凑出金额 i 需要的最少硬币数
  * dp[i] = min(dp[i - coin] + 1)  for coin in coins
- * 
+ *
  * 时间复杂度 O(amount × n)  空间复杂度 O(amount)
  */
 function coinChange(coins: number[], amount: number): number {
@@ -229,7 +229,7 @@ function coinChange(coins: number[], amount: number): number {
   for (let i = 0; i <= amount; i++) {
     // 遍历所有选择（硬币）
     for (const coin of coins) {
-      if (i - coin < 0) continue;  // 金额不够，跳过
+      if (i - coin < 0) continue; // 金额不够，跳过
       dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
     }
   }
@@ -238,8 +238,8 @@ function coinChange(coins: number[], amount: number): number {
 }
 
 // --- 测试 ---
-console.log("零钱兑换:", coinChange([1, 2, 5], 11));    // 3
-console.log("零钱兑换:", coinChange([2], 3));            // -1
+console.log('零钱兑换:', coinChange([1, 2, 5], 11)); // 3
+console.log('零钱兑换:', coinChange([2], 3)); // -1
 ```
 
 ### DP 表填充过程
@@ -263,13 +263,13 @@ dp[i]:    0  1  1  2  2  1  2  2  3  3  2   3
 ```
 ① base case: i === s1.length 或 j === s2.length → 0
 ② 状态: 两个指针 i (s1 的位置), j (s2 的位置)
-③ 选择: 
+③ 选择:
      s1[i] === s2[j] → 这个字符在 LCS 中 → dp+1
      s1[i] !== s2[j] → 至少有一个不在 → 取 max
 ④ dp 定义: dp[i][j] = s1[i..] 和 s2[j..] 的 LCS 长度
 ```
 
-```mermaid
+````mermaid
 flowchart TD
     subgraph DP表 [DP 表填充示意]
         direction LR
@@ -283,38 +283,36 @@ flowchart TD
       e   0  1  2  3
         ```"]
     end
-```
+````
 
 ```typescript
 // longest-common-subsequence.ts
 /**
  * 最长公共子序列 — 二维 DP
- * 
+ *
  * dp[i][j] = s1[0..i-1] 和 s2[0..j-1] 的 LCS 长度
- * 
+ *
  * 递推公式：
  *   s1[i-1] === s2[j-1] → dp[i][j] = dp[i-1][j-1] + 1
  *   s1[i-1] !== s2[j-1] → dp[i][j] = max(dp[i-1][j], dp[i][j-1])
- * 
+ *
  * 时间复杂度 O(m×n)  空间复杂度 O(m×n)
  */
 function longestCommonSubsequence(s1: string, s2: string): number {
   const m = s1.length;
   const n = s2.length;
-  
+
   // dp[i][j]：s1[0..i-1] 和 s2[0..j-1] 的 LCS 长度
-  const dp: number[][] = Array.from({ length: m + 1 }, () =>
-    new Array(n + 1).fill(0)
-  );
+  const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
       if (s1[i - 1] === s2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;        // 字符匹配，LCS 加一
+        dp[i][j] = dp[i - 1][j - 1] + 1; // 字符匹配，LCS 加一
       } else {
         dp[i][j] = Math.max(
-          dp[i - 1][j],    // s1[i-1] 不在 LCS 中
-          dp[i][j - 1]     // s2[j-1] 不在 LCS 中
+          dp[i - 1][j], // s1[i-1] 不在 LCS 中
+          dp[i][j - 1] // s2[j-1] 不在 LCS 中
         );
       }
     }
@@ -324,9 +322,9 @@ function longestCommonSubsequence(s1: string, s2: string): number {
 }
 
 // --- 测试 ---
-console.log("LCS:", longestCommonSubsequence("abcde", "ace")); // 3
-console.log("LCS:", longestCommonSubsequence("abc", "abc"));   // 3
-console.log("LCS:", longestCommonSubsequence("abc", "def"));   // 0
+console.log('LCS:', longestCommonSubsequence('abcde', 'ace')); // 3
+console.log('LCS:', longestCommonSubsequence('abc', 'abc')); // 3
+console.log('LCS:', longestCommonSubsequence('abc', 'def')); // 0
 ```
 
 ### LCS 的应用：删除操作（LeetCode 583）
@@ -353,7 +351,7 @@ flowchart LR
         TOP2 --> BASE[... → base case]
         BASE --> BACK["逐层返回结果"]
     end
-    
+
     subgraph 自底向上 [自底向上 — DP 表迭代]
         direction TB
         BOT["fib(0), fib(1) ← base case"] --> BOT2["→ fib(2)"]
@@ -362,13 +360,13 @@ flowchart LR
     end
 ```
 
-| 维度 | 自顶向下（递归+备忘录） | 自底向上（DP 表） |
-|------|:---------------------:|:----------------:|
-| 实现方式 | 递归 + 数组缓存 | for 循环迭代 |
-| 思考难度 | 更自然（从问题出发） | 需要先想好 DP 表顺序 |
-| 性能 | 递归有栈开销 | 通常更快 |
-| 状态压缩 | 相对难 | 容易（改几行代码） |
-| 适用场景 | 状态维度高，但只用到部分状态 | 所有状态都需要遍历 |
+| 维度     |   自顶向下（递归+备忘录）    |  自底向上（DP 表）   |
+| -------- | :--------------------------: | :------------------: |
+| 实现方式 |       递归 + 数组缓存        |     for 循环迭代     |
+| 思考难度 |     更自然（从问题出发）     | 需要先想好 DP 表顺序 |
+| 性能     |         递归有栈开销         |       通常更快       |
+| 状态压缩 |            相对难            |  容易（改几行代码）  |
+| 适用场景 | 状态维度高，但只用到部分状态 |  所有状态都需要遍历  |
 
 ---
 
@@ -380,11 +378,11 @@ flowchart LR
 // 斐波那契：从 O(n) → O(1)
 // 最大子数组和：dp[i] 只依赖 dp[i-1]
 function maxSubArray(nums: number[]): number {
-  let dpPrev = nums[0];  // dp[i-1]
+  let dpPrev = nums[0]; // dp[i-1]
   let max = nums[0];
 
   for (let i = 1; i < nums.length; i++) {
-    dpPrev = Math.max(nums[i], dpPrev + nums[i]);  // 要不要加上之前的？
+    dpPrev = Math.max(nums[i], dpPrev + nums[i]); // 要不要加上之前的？
     max = Math.max(max, dpPrev);
   }
 
@@ -399,14 +397,14 @@ function maxSubArray(nums: number[]): number {
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 状态压缩 |
-|------|:--------:|:--------:|:--------:|
-| 斐波那契（暴力） | O(2ⁿ) | O(n) | — |
-| 斐波那契（DP） | O(n) | O(n) | ✅ → O(1) |
-| 零钱兑换 | O(n × amount) | O(amount) | ❌（一维已最优） |
-| LCS | O(m × n) | O(m × n) | ✅ → O(min(m,n)) |
-| 编辑距离 | O(m × n) | O(m × n) | ✅ → O(min(m,n)) |
-| 最长递增子序列 | O(n²) | O(n) | ✅ 二分 → O(n log n) |
+| 问题             |  时间复杂度   | 空间复杂度 |       状态压缩       |
+| ---------------- | :-----------: | :--------: | :------------------: |
+| 斐波那契（暴力） |     O(2ⁿ)     |    O(n)    |          —           |
+| 斐波那契（DP）   |     O(n)      |    O(n)    |      ✅ → O(1)       |
+| 零钱兑换         | O(n × amount) | O(amount)  |   ❌（一维已最优）   |
+| LCS              |   O(m × n)    |  O(m × n)  |   ✅ → O(min(m,n))   |
+| 编辑距离         |   O(m × n)    |  O(m × n)  |   ✅ → O(min(m,n))   |
+| 最长递增子序列   |     O(n²)     |    O(n)    | ✅ 二分 → O(n log n) |
 
 ---
 
@@ -414,12 +412,12 @@ function maxSubArray(nums: number[]): number {
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| ⭐ | DP 思维入门 | 509 斐波那契、322 零钱兑换 | 四步走框架 |
-| ⭐⭐ | 一维 DP | 300 最长递增子序列、53 最大子数组 | dp[i] 的定义 |
-| ⭐⭐⭐ | 二维 DP | 1143 LCS、72 编辑距离 | 双指针状态 |
-| ⭐⭐⭐ | 综合 | 583 删除操作、712 ASCII 删除 | LCS 变种 |
+| 阶段   | 目标        | 题目                              | 关键点       |
+| ------ | ----------- | --------------------------------- | ------------ |
+| ⭐     | DP 思维入门 | 509 斐波那契、322 零钱兑换        | 四步走框架   |
+| ⭐⭐   | 一维 DP     | 300 最长递增子序列、53 最大子数组 | dp[i] 的定义 |
+| ⭐⭐⭐ | 二维 DP     | 1143 LCS、72 编辑距离             | 双指针状态   |
+| ⭐⭐⭐ | 综合        | 583 删除操作、712 ASCII 删除      | LCS 变种     |
 
 ### 自查清单
 
@@ -440,11 +438,7 @@ function maxSubArray(nums: number[]): number {
 
 ```typescript
 // ✍️ 你的默写
-function coinChange(coins: number[], amount: number): number {
-
-
-
-}
+function coinChange(coins: number[], amount: number): number {}
 ```
 
 > 一句话解释：什么是"最优子结构"？

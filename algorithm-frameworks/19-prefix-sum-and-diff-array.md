@@ -10,16 +10,16 @@
 
 > 以下题目来自 `leetcode-questions-summary.md`「多指针 / 前项和」和「多指针 / 数组」分类
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [303](https://leetcode.cn/problems/range-sum-query-immutable/) | 区域和检索 - 数组不可变 | 🟢 | 前缀和模板 | ⭐ |
-| 2 | [560](https://leetcode.cn/problems/subarray-sum-equals-k/) | 和为 K 的子数组 | 🟡 | 前缀和 + 哈希表 | ⭐⭐ |
-| 3 | [325](https://leetcode.cn/problems/maximum-size-subarray-sum-equals-k/) | 和为 K 的最长子数组 | 🟡 | 前缀和 + 存最早下标 | ⭐⭐⭐ |
-| 4 | [528](https://leetcode.cn/problems/random-pick-with-weight/) | 按权重随机选择 | 🟡 | 前缀和 + 二分搜索 | ⭐⭐⭐ |
-| 5 | [238](https://leetcode.cn/problems/product-of-array-except-self/) | 除自身以外数组的乘积 | 🟡 | 前缀积 + 后缀积 | ⭐⭐ |
-| 6 | [53](https://leetcode.cn/problems/maximum-subarray/) | 最大子数组和 | 🟡 | Kadane（前缀和最值） | ⭐ |
-| 7 | [1109](https://leetcode.cn/problems/corporate-flight-bookings/) | 航班预订统计 | 🟡 | 差分数组模板 | ⭐⭐ |
-| 8 | [1094](https://leetcode.cn/problems/car-pooling/) | 拼车 | 🟡 | 差分数组 | ⭐⭐ |
+| #   | 题号                                                                    | 题目                    | 难度 | 核心考点             | 推荐指数 |
+| --- | ----------------------------------------------------------------------- | ----------------------- | :--: | -------------------- | :------: |
+| 1   | [303](https://leetcode.cn/problems/range-sum-query-immutable/)          | 区域和检索 - 数组不可变 |  🟢  | 前缀和模板           |    ⭐    |
+| 2   | [560](https://leetcode.cn/problems/subarray-sum-equals-k/)              | 和为 K 的子数组         |  🟡  | 前缀和 + 哈希表      |   ⭐⭐   |
+| 3   | [325](https://leetcode.cn/problems/maximum-size-subarray-sum-equals-k/) | 和为 K 的最长子数组     |  🟡  | 前缀和 + 存最早下标  |  ⭐⭐⭐  |
+| 4   | [528](https://leetcode.cn/problems/random-pick-with-weight/)            | 按权重随机选择          |  🟡  | 前缀和 + 二分搜索    |  ⭐⭐⭐  |
+| 5   | [238](https://leetcode.cn/problems/product-of-array-except-self/)       | 除自身以外数组的乘积    |  🟡  | 前缀积 + 后缀积      |   ⭐⭐   |
+| 6   | [53](https://leetcode.cn/problems/maximum-subarray/)                    | 最大子数组和            |  🟡  | Kadane（前缀和最值） |    ⭐    |
+| 7   | [1109](https://leetcode.cn/problems/corporate-flight-bookings/)         | 航班预订统计            |  🟡  | 差分数组模板         |   ⭐⭐   |
+| 8   | [1094](https://leetcode.cn/problems/car-pooling/)                       | 拼车                    |  🟡  | 差分数组             |   ⭐⭐   |
 
 ---
 
@@ -61,7 +61,7 @@ sum(i, j) = pre[j+1] - pre[i]   ← O(1) 区间和查询
 // prefix-sum-template.ts
 /**
  * 前缀和模板
- * 
+ *
  * pre[i] = nums[0..i-1] 的和
  * sum(i, j) = pre[j+1] - pre[i]
  */
@@ -97,11 +97,11 @@ console.log(arr.sumRange(2, 5)); // -1 (3 + (-5) + 2 + (-1))
 // subarray-sum-equals-k.ts
 /**
  * 560. 和为 K 的子数组
- * 
+ *
  * 思路：遍历数组时计算前缀和 pre
  *       用 Map 记录每个前缀和出现的次数
  *       当 pre - k 存在于 Map 中时，说明有子数组和为 k
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(n)
  */
 function subarraySum(nums: number[], k: number): number {
@@ -141,10 +141,10 @@ console.log(subarraySum([1, 2, 3], 3)); // 2 ([1,2], [3])
 // product-of-array-except-self.ts
 /**
  * 238. 除自身以外数组的乘积
- * 
+ *
  * 思路：每个位置的结果 = 左边所有数的乘积 × 右边所有数的乘积
  *       先算前缀积，再算后缀积
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(1)（不算输出数组）
  */
 function productExceptSelf(nums: number[]): number[] {
@@ -154,15 +154,15 @@ function productExceptSelf(nums: number[]): number[] {
   // ① 算每个位置左边的乘积
   let left = 1;
   for (let i = 0; i < n; i++) {
-    result[i] = left;   // result[i] = 左边乘积
-    left *= nums[i];    // 更新左边乘积
+    result[i] = left; // result[i] = 左边乘积
+    left *= nums[i]; // 更新左边乘积
   }
 
   // ② 乘上右边的乘积
   let right = 1;
   for (let i = n - 1; i >= 0; i--) {
     result[i] *= right; // result[i] = 左边 × 右边
-    right *= nums[i];   // 更新右边乘积
+    right *= nums[i]; // 更新右边乘积
   }
 
   return result;
@@ -205,10 +205,10 @@ flowchart LR
 // corporate-flight-bookings.ts
 /**
  * 1109. 航班预订统计 — 差分数组模板
- * 
+ *
  * 输入：bookings = [[1,2,10], [2,3,20], [2,5,25]], n = 5
  * 输出：[10, 55, 45, 25, 25]
- * 
+ *
  * 解释：
  *   航班 1: 10
  *   航班 2: 10+20+25 = 55
@@ -221,8 +221,8 @@ function corpFlightBookings(bookings: number[][], n: number): number[] {
 
   // ① 构建差分数组
   for (const [first, last, seats] of bookings) {
-    diff[first - 1] += seats;       // 起始航班 + seats（⚠️ 题目从 1 开始）
-    diff[last] -= seats;            // 结束航班的下一个 -seats
+    diff[first - 1] += seats; // 起始航班 + seats（⚠️ 题目从 1 开始）
+    diff[last] -= seats; // 结束航班的下一个 -seats
   }
 
   // ② 还原结果
@@ -236,7 +236,16 @@ function corpFlightBookings(bookings: number[][], n: number): number[] {
 }
 
 // --- 测试 ---
-console.log(corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5));
+console.log(
+  corpFlightBookings(
+    [
+      [1, 2, 10],
+      [2, 3, 20],
+      [2, 5, 25],
+    ],
+    5
+  )
+);
 // [10, 55, 45, 25, 25]
 ```
 
@@ -244,14 +253,14 @@ console.log(corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5));
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 核心思路 |
-|------|:--------:|:--------:|---------|
-| 303 区域和 | O(n) 构建 / O(1) 查询 | O(n) | 前缀和模板 |
-| 560 和为 K | O(n) | O(n) | 前缀和 + 哈希表 |
-| 238 除自身外乘积 | O(n) | O(1) | 前缀积 × 后缀积 |
-| 528 权重随机 | O(n) 构建 / O(log n) 查询 | O(n) | 前缀和 + 二分 |
-| 1109 航班 | O(n+m) | O(n) | 差分数组 |
-| 1094 拼车 | O(n+m) | O(n) | 差分数组 |
+| 问题             |        时间复杂度         | 空间复杂度 | 核心思路        |
+| ---------------- | :-----------------------: | :--------: | --------------- |
+| 303 区域和       |   O(n) 构建 / O(1) 查询   |    O(n)    | 前缀和模板      |
+| 560 和为 K       |           O(n)            |    O(n)    | 前缀和 + 哈希表 |
+| 238 除自身外乘积 |           O(n)            |    O(1)    | 前缀积 × 后缀积 |
+| 528 权重随机     | O(n) 构建 / O(log n) 查询 |    O(n)    | 前缀和 + 二分   |
+| 1109 航班        |          O(n+m)           |    O(n)    | 差分数组        |
+| 1094 拼车        |          O(n+m)           |    O(n)    | 差分数组        |
 
 ---
 
@@ -283,19 +292,13 @@ console.log(corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5));
 ```typescript
 // 303. 前缀和
 class NumArray {
-  constructor(nums: number[]) {
+  constructor(nums: number[]) {}
 
-  }
-
-  sumRange(left: number, right: number): number {
-
-  }
+  sumRange(left: number, right: number): number {}
 }
 
 // 560. 和为 K
-function subarraySum(nums: number[], k: number): number {
-
-}
+function subarraySum(nums: number[], k: number): number {}
 ```
 
 ---

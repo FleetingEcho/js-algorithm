@@ -8,29 +8,29 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [100](https://leetcode.cn/problems/same-tree/) | 相同的树 | 🟢 | 递归比较 | ⭐ |
-| 2 | [101](https://leetcode.cn/problems/symmetric-tree/) | 对称二叉树 | 🟢 | 对称比较 | ⭐ |
-| 3 | [104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) | 二叉树的最大深度 | 🟢 | 后序求深度 | ⭐ |
-| 4 | [110](https://leetcode.cn/problems/balanced-binary-tree/) | 平衡二叉树 | 🟢 | 后序判断 | ⭐⭐ |
-| 5 | [112](https://leetcode.cn/problems/path-sum/) | 路径总和 | 🟢 | 递归减 target | ⭐ |
-| 6 | [113](https://leetcode.cn/problems/path-sum-ii/) | 路径总和 II | 🟡 | 递归回溯记录路径 | ⭐⭐ |
-| 7 | [114](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/) | 二叉树展开为链表 | 🟡 | 后序 + 前驱连接 | ⭐⭐ |
-| 8 | [116](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/) | 填充每个节点的下一个右侧节点 | 🟡 | 前序 + 跨节点连接 | ⭐⭐ |
-| 9 | [124](https://leetcode.cn/problems/binary-tree-maximum-path-sum/) | 二叉树中的最大路径和 | 🔴 | 后序 + 全局最大值 | ⭐⭐⭐ |
-| 10 | [199](https://leetcode.cn/problems/binary-tree-right-side-view/) | 二叉树的右视图 | 🟡 | BFS 每层最后一个 | ⭐⭐ |
-| 11 | [236](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/) | 二叉树的最近公共祖先 | 🟡 | 后序 + 子树判断 | ⭐⭐⭐ |
-| 12 | [297](https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/) | 二叉树的序列化与反序列化 | 🔴 | 层序/前序序列化 | ⭐⭐⭐ |
-| 13 | [331](https://leetcode.cn/problems/verify-preorder-serialization-of-a-binary-tree/) | 验证二叉树的前序序列化 | 🟡 | slot 计数 | ⭐⭐⭐ |
-| 14 | [449](https://leetcode.cn/problems/serialize-and-deserialize-bst/) | 序列化和反序列化二叉搜索树 | 🟡 | BST 前序复原 | ⭐⭐ |
-| 15 | [513](https://leetcode.cn/problems/find-bottom-left-tree-value/) | 找树左下角的值 | 🟡 | BFS 最后一层最左 | ⭐⭐ |
-| 16 | [652](https://leetcode.cn/problems/find-duplicate-subtrees/) | 寻找重复子树 | 🟡 | 后序 + 序列化 | ⭐⭐⭐ |
-| 17 | [98](https://leetcode.cn/problems/validate-binary-search-tree/) | 验证二叉搜索树 | 🟡 | BST 合法性 | ⭐ |
-| 18 | [700](https://leetcode.cn/problems/search-in-a-binary-search-tree/) | 二叉搜索树中的搜索 | 🟢 | BST 查找 | ⭐ |
-| 19 | [701](https://leetcode.cn/problems/insert-into-a-binary-search-tree/) | 二叉搜索树中的插入操作 | 🟡 | BST 插入 | ⭐⭐ |
-| 20 | [450](https://leetcode.cn/problems/delete-node-in-a-bst/) | 删除二叉搜索树中的节点 | 🟡 | BST 删除（最难） | ⭐⭐⭐ |
-| 21 | [230](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/) | 二叉搜索树中第 K 小的元素 | 🟡 | 中序 = 升序 | ⭐⭐ |
+| #   | 题号                                                                                | 题目                         | 难度 | 核心考点          | 推荐指数 |
+| --- | ----------------------------------------------------------------------------------- | ---------------------------- | :--: | ----------------- | :------: |
+| 1   | [100](https://leetcode.cn/problems/same-tree/)                                      | 相同的树                     |  🟢  | 递归比较          |    ⭐    |
+| 2   | [101](https://leetcode.cn/problems/symmetric-tree/)                                 | 对称二叉树                   |  🟢  | 对称比较          |    ⭐    |
+| 3   | [104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)                   | 二叉树的最大深度             |  🟢  | 后序求深度        |    ⭐    |
+| 4   | [110](https://leetcode.cn/problems/balanced-binary-tree/)                           | 平衡二叉树                   |  🟢  | 后序判断          |   ⭐⭐   |
+| 5   | [112](https://leetcode.cn/problems/path-sum/)                                       | 路径总和                     |  🟢  | 递归减 target     |    ⭐    |
+| 6   | [113](https://leetcode.cn/problems/path-sum-ii/)                                    | 路径总和 II                  |  🟡  | 递归回溯记录路径  |   ⭐⭐   |
+| 7   | [114](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)             | 二叉树展开为链表             |  🟡  | 后序 + 前驱连接   |   ⭐⭐   |
+| 8   | [116](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)    | 填充每个节点的下一个右侧节点 |  🟡  | 前序 + 跨节点连接 |   ⭐⭐   |
+| 9   | [124](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)                   | 二叉树中的最大路径和         |  🔴  | 后序 + 全局最大值 |  ⭐⭐⭐  |
+| 10  | [199](https://leetcode.cn/problems/binary-tree-right-side-view/)                    | 二叉树的右视图               |  🟡  | BFS 每层最后一个  |   ⭐⭐   |
+| 11  | [236](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)        | 二叉树的最近公共祖先         |  🟡  | 后序 + 子树判断   |  ⭐⭐⭐  |
+| 12  | [297](https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/)          | 二叉树的序列化与反序列化     |  🔴  | 层序/前序序列化   |  ⭐⭐⭐  |
+| 13  | [331](https://leetcode.cn/problems/verify-preorder-serialization-of-a-binary-tree/) | 验证二叉树的前序序列化       |  🟡  | slot 计数         |  ⭐⭐⭐  |
+| 14  | [449](https://leetcode.cn/problems/serialize-and-deserialize-bst/)                  | 序列化和反序列化二叉搜索树   |  🟡  | BST 前序复原      |   ⭐⭐   |
+| 15  | [513](https://leetcode.cn/problems/find-bottom-left-tree-value/)                    | 找树左下角的值               |  🟡  | BFS 最后一层最左  |   ⭐⭐   |
+| 16  | [652](https://leetcode.cn/problems/find-duplicate-subtrees/)                        | 寻找重复子树                 |  🟡  | 后序 + 序列化     |  ⭐⭐⭐  |
+| 17  | [98](https://leetcode.cn/problems/validate-binary-search-tree/)                     | 验证二叉搜索树               |  🟡  | BST 合法性        |    ⭐    |
+| 18  | [700](https://leetcode.cn/problems/search-in-a-binary-search-tree/)                 | 二叉搜索树中的搜索           |  🟢  | BST 查找          |    ⭐    |
+| 19  | [701](https://leetcode.cn/problems/insert-into-a-binary-search-tree/)               | 二叉搜索树中的插入操作       |  🟡  | BST 插入          |   ⭐⭐   |
+| 20  | [450](https://leetcode.cn/problems/delete-node-in-a-bst/)                           | 删除二叉搜索树中的节点       |  🟡  | BST 删除（最难）  |  ⭐⭐⭐  |
+| 21  | [230](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)                  | 二叉搜索树中第 K 小的元素    |  🟡  | 中序 = 升序       |   ⭐⭐   |
 
 ---
 
@@ -65,12 +65,12 @@ class TreeNode<T> {
 
 /**
  * 后序序列化 — 子树结果合并
- * 
+ *
  * 空节点用 '#' 表示，节点值用 ',' 分隔
  * 后序：先序列化子树，再合并
  */
 function serializePostorder(root: TreeNode<number> | null): string {
-  if (root === null) return "#";
+  if (root === null) return '#';
 
   const left = serializePostorder(root.left);
   const right = serializePostorder(root.right);
@@ -98,7 +98,7 @@ console.log(serializePostorder(root)); // "#,#,2,#,#,3,1"
 // find-duplicate-subtrees.ts
 /**
  * 寻找重复子树
- * 
+ *
  * 思路：
  *   1. 后序遍历序列化每棵子树
  *   2. 用 Map 记录每个序列出现的次数
@@ -109,7 +109,7 @@ function findDuplicateSubtrees(root: TreeNode<number> | null): TreeNode<number>[
   const result: TreeNode<number>[] = [];
 
   function traverse(node: TreeNode<number> | null): string {
-    if (node === null) return "#";
+    if (node === null) return '#';
 
     const left = traverse(node.left);
     const right = traverse(node.right);
@@ -143,9 +143,9 @@ function findDuplicateSubtrees(root: TreeNode<number> | null): TreeNode<number>[
 flowchart TD
     ROOT((5)) --> LEFT((2<br/>min=-∞, max=5))
     ROOT --> RIGHT((7<br/>min=5, max=+∞))
-    
+
     LEFT --> L1((1<br/>min=-∞, max=2))
-    LEFT --> L2((4<br/>min=2, max=5)) 
+    LEFT --> L2((4<br/>min=2, max=5))
     L2 --> L2L((3<br/>min=2, max=4 ✅))
     L2 --> L2R((6<br/>❌ 6 > 5? <br/>6 不在 [2,4] 内))
 ```
@@ -154,7 +154,7 @@ flowchart TD
 // validate-bst.ts
 /**
  * 验证 BST 合法性
- * 
+ *
  * 关键：每个节点都要在 (min, max) 范围内
  * 不能只检查左右子节点 — 右子树的左子树可能小于根节点！
  */
@@ -172,10 +172,7 @@ function isValidBST(root: TreeNode<number> | null): boolean {
 
     // 左子树：所有节点 < root.val → max = root
     // 右子树：所有节点 > root.val → min = root
-    return (
-      isValid(node.left, min, node) &&
-      isValid(node.right, node, max)
-    );
+    return isValid(node.left, min, node) && isValid(node.right, node, max);
   }
 
   return isValid(root, null, null);
@@ -190,7 +187,7 @@ function isValidBST(root: TreeNode<number> | null): boolean {
 // search-bst.ts
 /**
  * BST 查找
- * 
+ *
  * 利用 BST 的性质：左小右大
  * 普通二叉树 O(n)，BST 平均 O(log n)
  */
@@ -212,7 +209,7 @@ function searchBST(root: TreeNode<number> | null, target: number): TreeNode<numb
 // insert-bst.ts
 /**
  * BST 插入
- * 
+ *
  * 思路：找到空位插入（总在叶子节点插入）
  */
 function insertIntoBST(root: TreeNode<number> | null, val: number): TreeNode<number> | null {
@@ -240,7 +237,7 @@ flowchart TD
     DELETE[删除节点] --> CASE1[情况1: 叶子节点<br/>直接删除]
     DELETE --> CASE2[情况2: 只有一个子节点<br/>子节点替换]
     DELETE --> CASE3[情况3: 有两个子节点<br/>找右子树最小节点替换]
-    
+
     CASE3 --> MIN["右子树最左边的节点"]
     MIN --> SWAP["替换值 + 递归删除那个节点"]
 ```
@@ -249,7 +246,7 @@ flowchart TD
 // delete-bst.ts
 /**
  * BST 删除 — 三种情况
- * 
+ *
  * 时间复杂度 O(log n) 平均
  */
 function deleteNode(root: TreeNode<number> | null, key: number): TreeNode<number> | null {
@@ -269,10 +266,10 @@ function deleteNode(root: TreeNode<number> | null, key: number): TreeNode<number
     root.val = minNode.val;
     // 递归删除右子树中的那个最小节点
     root.right = deleteNode(root.right, minNode.val);
-
   } else if (key < root.val) {
     root.left = deleteNode(root.left, key);
-  } else { // key > root.val
+  } else {
+    // key > root.val
     root.right = deleteNode(root.right, key);
   }
 
@@ -294,7 +291,7 @@ function getMin(root: TreeNode<number>): TreeNode<number> {
 // bst-framework.ts
 /**
  * BST 操作统一框架
- * 
+ *
  * 增删查改都遵循这个模式：
  *   1. 先判断 root.val 和 target 的关系
  *   2. 去左子树或右子树递归操作
@@ -322,14 +319,14 @@ function bstTemplate(root: TreeNode<number> | null, target: number): TreeNode<nu
 
 ## 📊 复杂度速查表
 
-| 操作 | 时间复杂度 | 空间复杂度 | 说明 |
-|------|:--------:|:--------:|------|
-| 序列化 | O(n) | O(n) | 后序遍历 |
-| 查找重复子树 | O(n) | O(n) | 后序 + Map |
-| BST 合法性 | O(n) | O(h) | 传递 min/max |
-| BST 查找 | O(log n) 平均 | O(h) | 二分查找思想 |
-| BST 插入 | O(log n) 平均 | O(h) | 总是在叶子 |
-| BST 删除 | O(log n) 平均 | O(h) | 三种情况中最难 |
+| 操作         |  时间复杂度   | 空间复杂度 | 说明           |
+| ------------ | :-----------: | :--------: | -------------- |
+| 序列化       |     O(n)      |    O(n)    | 后序遍历       |
+| 查找重复子树 |     O(n)      |    O(n)    | 后序 + Map     |
+| BST 合法性   |     O(n)      |    O(h)    | 传递 min/max   |
+| BST 查找     | O(log n) 平均 |    O(h)    | 二分查找思想   |
+| BST 插入     | O(log n) 平均 |    O(h)    | 总是在叶子     |
+| BST 删除     | O(log n) 平均 |    O(h)    | 三种情况中最难 |
 
 ---
 
@@ -351,14 +348,10 @@ function bstTemplate(root: TreeNode<number> | null, target: number): TreeNode<nu
 
 ```typescript
 // BST 合法性判断
-function isValidBST(root: TreeNode<number> | null): boolean {
-
-}
+function isValidBST(root: TreeNode<number> | null): boolean {}
 
 // BST 删除
-function deleteNode(root: TreeNode<number> | null, key: number): TreeNode<number> | null {
-
-}
+function deleteNode(root: TreeNode<number> | null, key: number): TreeNode<number> | null {}
 ```
 
 ---

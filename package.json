@@ -1,22 +1,25 @@
 {
   "name": "js-algorithm",
   "version": "1.0.0",
-  "description": "**The fastest way to master the algorithm framework**",
-  "main": "index.js",
+  "description": "JavaScript 算法训练集 — labuladong 框架思维 + 数据结构 + 剑指Offer",
   "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JakeZT/js-algorithm.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JakeZT/js-algorithm/issues"
+  "devDependencies": {
+    "@oxlint/binding-darwin-arm64": "^1.66.0",
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.66.0",
+    "prettier": "^3.8.3"
   },
-  "homepage": "https://github.com/JakeZT/js-algorithm#readme",
   "dependencies": {
     "typescript": "^4.3.2"
   }

@@ -8,16 +8,16 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [416](https://leetcode.cn/problems/partition-equal-subset-sum/) | 分割等和子集 | 🟡 | 0-1 背包（判断能否装满） | ⭐ |
-| 2 | [474](https://leetcode.cn/problems/ones-and-zeroes/) | 一和零 | 🟡 | 二维 0-1 背包 | ⭐⭐ |
-| 3 | [494](https://leetcode.cn/problems/target-sum/) | 目标和 | 🟡 | 0-1 背包变种 | ⭐⭐ |
-| 4 | [1049](https://leetcode.cn/problems/last-stone-weight-ii/) | 最后一块石头的重量 II | 🟡 | 0-1 背包变种 | ⭐⭐ |
-| 5 | [322](https://leetcode.cn/problems/coin-change/) | 零钱兑换 | 🟡 | 完全背包（最少硬币） | ⭐ |
-| 6 | [518](https://leetcode.cn/problems/coin-change-ii/) | 零钱兑换 II | 🟡 | **完全背包（组合数）** | ⭐⭐ |
-| 7 | [279](https://leetcode.cn/problems/perfect-squares/) | 完全平方数 | 🟡 | 完全背包 | ⭐⭐ |
-| 8 | [377](https://leetcode.cn/problems/combination-sum-iv/) | 组合总和 Ⅳ | 🟡 | **排列数（注意区别！）** | ⭐⭐⭐ |
+| #   | 题号                                                            | 题目                  | 难度 | 核心考点                 | 推荐指数 |
+| --- | --------------------------------------------------------------- | --------------------- | :--: | ------------------------ | :------: |
+| 1   | [416](https://leetcode.cn/problems/partition-equal-subset-sum/) | 分割等和子集          |  🟡  | 0-1 背包（判断能否装满） |    ⭐    |
+| 2   | [474](https://leetcode.cn/problems/ones-and-zeroes/)            | 一和零                |  🟡  | 二维 0-1 背包            |   ⭐⭐   |
+| 3   | [494](https://leetcode.cn/problems/target-sum/)                 | 目标和                |  🟡  | 0-1 背包变种             |   ⭐⭐   |
+| 4   | [1049](https://leetcode.cn/problems/last-stone-weight-ii/)      | 最后一块石头的重量 II |  🟡  | 0-1 背包变种             |   ⭐⭐   |
+| 5   | [322](https://leetcode.cn/problems/coin-change/)                | 零钱兑换              |  🟡  | 完全背包（最少硬币）     |    ⭐    |
+| 6   | [518](https://leetcode.cn/problems/coin-change-ii/)             | 零钱兑换 II           |  🟡  | **完全背包（组合数）**   |   ⭐⭐   |
+| 7   | [279](https://leetcode.cn/problems/perfect-squares/)            | 完全平方数            |  🟡  | 完全背包                 |   ⭐⭐   |
+| 8   | [377](https://leetcode.cn/problems/combination-sum-iv/)         | 组合总和 Ⅳ            |  🟡  | **排列数（注意区别！）** |  ⭐⭐⭐  |
 
 ---
 
@@ -41,25 +41,26 @@
 flowchart TD
     KNAPSACK[背包问题] --> ZEROONE[0-1 背包<br/>每个物品最多选一次]
     KNAPSACK --> UNBOUNDED[完全背包<br/>每个物品可选无限次]
-    
+
     ZEROONE --> Z1["内层循环 j: 倒序 ←"]
     ZEROONE --> Z2["dp[j] = dp[j] OR dp[j-w[i]]"]
-    
+
     UNBOUNDED --> U1["内层循环 j: 正序 →"]
     UNBOUNDED --> U2["dp[j] = dp[j] + dp[j-w[i]]"]
-    
+
     style Z1 fill:#fbb,stroke:#333
     style U1 fill:#bfb,stroke:#333
 ```
 
-| 维度 | 0-1 背包 | 完全背包 |
-|------|:--------:|:--------:|
-| 每个物品 | 选一次 | 选无限次 |
-| 内层循环方向 | **倒序** `j--` | **正序** `j++` |
+| 维度             |              0-1 背包              |             完全背包             |
+| ---------------- | :--------------------------------: | :------------------------------: |
+| 每个物品         |               选一次               |             选无限次             |
+| 内层循环方向     |           **倒序** `j--`           |          **正序** `j++`          |
 | 状态转移（一维） | `dp[j] = dp[j] \|\| dp[j-nums[i]]` | `dp[j] = dp[j] + dp[j-coins[i]]` |
-| 典型问题 | 子集和、分割等和 | 零钱兑换、完全平方数 |
+| 典型问题         |          子集和、分割等和          |       零钱兑换、完全平方数       |
 
 > **为什么方向不同？**
+>
 > - 倒序 `j--`：保证每个物品只被用一次（新值不会覆盖本轮已用的旧值）
 > - 正序 `j++`：每个物品可以被反复使用（新值会覆盖，下一轮又可以用）
 
@@ -71,12 +72,12 @@ flowchart TD
 // knapsack-01-template.ts
 /**
  * 0-1 背包通用模板
- * 
+ *
  * 问题：有 N 个物品，每个物品重量 w[i]，价值 v[i]，
  *       背包容量 W，求能装入的最大价值
- * 
+ *
  * dp[j] = 容量为 j 的背包能装的最大价值
- * 
+ *
  * 时间 O(N×W)  空间 O(W)
  */
 function knapsack01(weights: number[], values: number[], W: number): number {
@@ -87,8 +88,8 @@ function knapsack01(weights: number[], values: number[], W: number): number {
     // ⚠️ 倒序！保证每个物品只用一次
     for (let j = W; j >= weights[i]; j--) {
       dp[j] = Math.max(
-        dp[j],                              // 不装
-        dp[j - weights[i]] + values[i]       // 装
+        dp[j], // 不装
+        dp[j - weights[i]] + values[i] // 装
       );
     }
   }
@@ -105,10 +106,10 @@ function knapsack01(weights: number[], values: number[], W: number): number {
 // knapsack-unbounded-template.ts
 /**
  * 完全背包通用模板
- * 
+ *
  * 问题：有无限个物品，每个物品重量 w[i]，价值 v[i]，
  *       背包容量 W，求能装入的最大价值
- * 
+ *
  * 时间 O(N×W)  空间 O(W)
  */
 function knapsackUnbounded(weights: number[], values: number[], W: number): number {
@@ -119,8 +120,8 @@ function knapsackUnbounded(weights: number[], values: number[], W: number): numb
     // ⚠️ 正序！保证每个物品可以重复使用
     for (let j = weights[i]; j <= W; j++) {
       dp[j] = Math.max(
-        dp[j],                              // 不装
-        dp[j - weights[i]] + values[i]       // 装（还可以再装）
+        dp[j], // 不装
+        dp[j - weights[i]] + values[i] // 装（还可以再装）
       );
     }
   }
@@ -141,7 +142,7 @@ function knapsackUnbounded(weights: number[], values: number[], W: number): numb
 
 ### 二维 DP 表填充过程
 
-```mermaid
+````mermaid
 flowchart TD
     subgraph DP表 [dp[i][j] — 前 i 个数能否凑出 j]
         direction LR
@@ -157,16 +158,16 @@ i
 4 (5)   T  T  F  F  F  T  T  F  F  F  F  T  ← dp[4][11] = T ✅
         ```"]
     end
-```
+````
 
 ```typescript
 // partition-equal-subset-sum.ts
 /**
  * 416. 分割等和子集
- * 
+ *
  * 转化为 0-1 背包：容量 = sum/2，每个数字是一个物品
  * dp[j] = 是否存在子集的和等于 j
- * 
+ *
  * 时间复杂度 O(n × sum)  空间复杂度 O(sum)
  */
 function canPartition(nums: number[]): boolean {
@@ -189,8 +190,8 @@ function canPartition(nums: number[]): boolean {
 }
 
 // --- 测试 ---
-console.log("可以分割?", canPartition([1, 5, 11, 5]));  // true
-console.log("可以分割?", canPartition([1, 2, 3, 5]));   // false
+console.log('可以分割?', canPartition([1, 5, 11, 5])); // true
+console.log('可以分割?', canPartition([1, 2, 3, 5])); // false
 ```
 
 ---
@@ -203,7 +204,7 @@ console.log("可以分割?", canPartition([1, 2, 3, 5]));   // false
 /**
  * 二维版本（不压缩）
  * dp[i][j] = 前 i 个物品能否凑出 j
- * 
+ *
  * 状态压缩的核心观察：
  * dp[i][j] 只依赖 dp[i-1][..]，不依赖更早的行
  * → 可以只保留一行，每次迭代时"从右往左"更新
@@ -214,9 +215,7 @@ function canPartition2D(nums: number[]): boolean {
   const target = sum / 2;
   const n = nums.length;
 
-  const dp: boolean[][] = Array.from({ length: n + 1 }, () =>
-    new Array(target + 1).fill(false)
-  );
+  const dp: boolean[][] = Array.from({ length: n + 1 }, () => new Array(target + 1).fill(false));
 
   // base case: 容量为 0 时总能装满
   for (let i = 0; i <= n; i++) dp[i][0] = true;
@@ -224,10 +223,11 @@ function canPartition2D(nums: number[]): boolean {
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= target; j++) {
       if (j - nums[i - 1] < 0) {
-        dp[i][j] = dp[i - 1][j];          // 装不下
+        dp[i][j] = dp[i - 1][j]; // 装不下
       } else {
-        dp[i][j] = dp[i - 1][j] ||        // 不装
-                   dp[i - 1][j - nums[i - 1]];  // 装
+        dp[i][j] =
+          dp[i - 1][j] || // 不装
+          dp[i - 1][j - nums[i - 1]]; // 装
       }
     }
   }
@@ -251,13 +251,13 @@ function canPartition2D(nums: number[]): boolean {
 // coin-change-ii.ts
 /**
  * 518. 零钱兑换 II — 完全背包（组合数）
- * 
+ *
  * dp[j] = 凑出金额 j 的硬币组合数
- * 
+ *
  * ⚠️ 外层循环硬币，内层循环金额（正序）
  *    这样每个硬币可以无限使用，且统计的是组合数
  *    如果内外层调换，统计的是排列数！
- * 
+ *
  * 时间复杂度 O(N×amount)  空间 O(amount)
  */
 function change(amount: number, coins: number[]): number {
@@ -276,7 +276,7 @@ function change(amount: number, coins: number[]): number {
 }
 
 // --- 测试 ---
-console.log("零钱兑换II:", change(5, [1, 2, 5]));  // 4
+console.log('零钱兑换II:', change(5, [1, 2, 5])); // 4
 ```
 
 ### DP 表填充过程
@@ -287,7 +287,7 @@ coins=[1,2,5], amount=5
 初始化: dp[0]=1, dp[1..5]=0
 
 用硬币 1:  dp = [1, 1, 1, 1, 1, 1]
-用硬币 2:  dp = [1, 1, 2, 2, 3, 3]  
+用硬币 2:  dp = [1, 1, 2, 2, 3, 3]
 用硬币 5:  dp = [1, 1, 2, 2, 3, 4]  ← 答案 4
 ```
 
@@ -300,7 +300,7 @@ coins=[1,2,5], amount=5
 ```typescript
 /**
  * 组合数（上面的 change 函数）
- * 
+ *
  * 外层 coins → 内层 amount：
  *   保证硬币的顺序固定（先 1 后 2），不会出现 {2,1}
  *   结果：{1,1,1,1,1}, {1,1,1,2}, {1,2,2}, {5} → 4 种
@@ -308,8 +308,10 @@ coins=[1,2,5], amount=5
 function combination(amount: number, coins: number[]): number {
   const dp: number[] = new Array(amount + 1).fill(0);
   dp[0] = 1;
-  for (const coin of coins) {            // 外层：硬币
-    for (let j = coin; j <= amount; j++) { // 内层：金额
+  for (const coin of coins) {
+    // 外层：硬币
+    for (let j = coin; j <= amount; j++) {
+      // 内层：金额
       dp[j] += dp[j - coin];
     }
   }
@@ -318,17 +320,19 @@ function combination(amount: number, coins: number[]): number {
 
 /**
  * 排列数（LeetCode 377. 组合总和 Ⅳ）
- * 
+ *
  * 外层 amount → 内层 coins：
  *   每个金额都重新考虑所有硬币
- *   结果：{1,1,1,1,1}, {1,1,1,2}, {1,1,2,1}, {1,2,1,1}, 
+ *   结果：{1,1,1,1,1}, {1,1,1,2}, {1,1,2,1}, {1,2,1,1},
  *         {2,1,1,1}, {1,2,2}, {2,1,2}, {2,2,1}, {5} → 9 种
  */
 function permutation(amount: number, coins: number[]): number {
   const dp: number[] = new Array(amount + 1).fill(0);
   dp[0] = 1;
-  for (let j = 1; j <= amount; j++) {    // 外层：金额
-    for (const coin of coins) {           // 内层：硬币
+  for (let j = 1; j <= amount; j++) {
+    // 外层：金额
+    for (const coin of coins) {
+      // 内层：硬币
       if (j >= coin) {
         dp[j] += dp[j - coin];
       }
@@ -338,11 +342,12 @@ function permutation(amount: number, coins: number[]): number {
 }
 
 // --- 对比 ---
-console.log("组合:", combination(5, [1, 2, 5]));  // 4
-console.log("排列:", permutation(5, [1, 2, 5]));  // 9
+console.log('组合:', combination(5, [1, 2, 5])); // 4
+console.log('排列:', permutation(5, [1, 2, 5])); // 9
 ```
 
 > **💡 记忆口诀：**
+>
 > - **组合**：先硬币（物品）后金额（容量）— 防止重复顺序
 > - **排列**：先金额（容量）后硬币（物品）— 每个位置都有全部选择
 
@@ -350,14 +355,14 @@ console.log("排列:", permutation(5, [1, 2, 5]));  // 9
 
 ## 📊 复杂度速查表
 
-| 问题 | 类型 | 时间复杂度 | 空间复杂度 | 循环方向 |
-|------|:----:|:--------:|:--------:|:--------:|
-| 分割等和子集 | 0-1 判断 | O(n×sum) | O(sum) | 倒序 |
-| 目标和 | 0-1 计数 | O(n×sum) | O(sum) | 倒序 |
-| 一和零 | 0-1 二维 | O(n×m×n) | O(m×n) | 倒序×2 |
-| 零钱兑换（最少） | 完全 最值 | O(N×amount) | O(amount) | 正序 |
-| 零钱兑换 II（组合） | 完全 计数 | O(N×amount) | O(amount) | 正序 |
-| 组合总和 IV（排列） | 完全 排列 | O(N×amount) | O(amount) | 正序（内外互换） |
+| 问题                |   类型    | 时间复杂度  | 空间复杂度 |     循环方向     |
+| ------------------- | :-------: | :---------: | :--------: | :--------------: |
+| 分割等和子集        | 0-1 判断  |  O(n×sum)   |   O(sum)   |       倒序       |
+| 目标和              | 0-1 计数  |  O(n×sum)   |   O(sum)   |       倒序       |
+| 一和零              | 0-1 二维  |  O(n×m×n)   |   O(m×n)   |      倒序×2      |
+| 零钱兑换（最少）    | 完全 最值 | O(N×amount) | O(amount)  |       正序       |
+| 零钱兑换 II（组合） | 完全 计数 | O(N×amount) | O(amount)  |       正序       |
+| 组合总和 IV（排列） | 完全 排列 | O(N×amount) | O(amount)  | 正序（内外互换） |
 
 ---
 
@@ -365,12 +370,12 @@ console.log("排列:", permutation(5, [1, 2, 5]));  // 9
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| ⭐ | 0-1 背包判断 | 416 分割等和子集 | 倒序，`dp[j] \|\| dp[j-num]` |
-| ⭐⭐ | 0-1 背包计数 | 494 目标和、1049 石头 II | 状态压缩 |
-| ⭐⭐ | 完全背包 | 518 零钱兑换 II | 正序，内外层顺序 |
-| ⭐⭐⭐ | 排列 vs 组合 | 377 组合总和 IV | 内外层交换对比 |
+| 阶段   | 目标         | 题目                     | 关键点                       |
+| ------ | ------------ | ------------------------ | ---------------------------- |
+| ⭐     | 0-1 背包判断 | 416 分割等和子集         | 倒序，`dp[j] \|\| dp[j-num]` |
+| ⭐⭐   | 0-1 背包计数 | 494 目标和、1049 石头 II | 状态压缩                     |
+| ⭐⭐   | 完全背包     | 518 零钱兑换 II          | 正序，内外层顺序             |
+| ⭐⭐⭐ | 排列 vs 组合 | 377 组合总和 IV          | 内外层交换对比               |
 
 ### 自查清单
 

@@ -10,26 +10,26 @@
 
 > 💡 刷题顺序：⭐ 必背 → ⭐⭐ 进阶 → ⭐⭐⭐ 挑战
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [46](https://leetcode.cn/problems/permutations/) | 全排列 | 🟡 | 回溯模板入门 | ⭐ |
-| 2 | [78](https://leetcode.cn/problems/subsets/) | 子集 | 🟡 | `start` 参数防重复 | ⭐ |
-| 3 | [77](https://leetcode.cn/problems/combinations/) | 组合 | 🟡 | 子集 + 长度限制 | ⭐ |
-| 4 | [39](https://leetcode.cn/problems/combination-sum/) | 组合总和 | 🟡 | 可重复使用元素 | ⭐⭐ |
-| 5 | [22](https://leetcode.cn/problems/generate-parentheses/) | 括号生成 | 🟡 | 括号合法性剪枝 | ⭐⭐ |
-| 6 | [17](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/) | 电话号码的字母组合 | 🟡 | 映射 + 回溯 | ⭐ |
-| 7 | [47](https://leetcode.cn/problems/permutations-ii/) | 全排列 II | 🟡 | 重复元素去重 | ⭐⭐ |
-| 8 | [40](https://leetcode.cn/problems/combination-sum-ii/) | 组合总和 II | 🟡 | 去重 + 剪枝 | ⭐⭐ |
-| 9 | [90](https://leetcode.cn/problems/subsets-ii/) | 子集 II | 🟡 | 有重复子集去重 | ⭐⭐ |
-| 10 | [131](https://leetcode.cn/problems/palindrome-partitioning/) | 分割回文串 | 🟡 | 字符串分割回溯 | ⭐⭐ |
-| 11 | [93](https://leetcode.cn/problems/restore-ip-addresses/) | 复原 IP 地址 | 🟡 | 字符串 + 多剪枝 | ⭐⭐ |
-| 12 | [79](https://leetcode.cn/problems/word-search/) | 单词搜索 | 🟡 | 二维网格 DFS | ⭐⭐ |
-| 13 | [200](https://leetcode.cn/problems/number-of-islands/) | 岛屿数量 | 🟡 | 网格 DFS（感染法） | ⭐ |
-| 14 | [51](https://leetcode.cn/problems/n-queens/) | N 皇后 | 🔴 | 二维棋盘 + 合法性 | ⭐⭐⭐ |
-| 15 | [37](https://leetcode.cn/problems/sudoku-solver/) | 解数独 | 🔴 | 二维 + 多重约束 | ⭐⭐⭐ |
-| 16 | [301](https://leetcode.cn/problems/remove-invalid-parentheses/) | 删除无效的括号 | 🔴 | 最少删除 + BFS/DFS | ⭐⭐⭐ |
-| 17 | [698](https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/) | 划分为 k 个相等的子集 | 🟡 | 剪枝优化 | ⭐⭐⭐ |
-| 18 | [489](https://leetcode.cn/problems/robot-room-cleaner/) | 扫地机器人 | 🔴 | 带方向回溯 | ⭐⭐⭐ |
+| #   | 题号                                                                      | 题目                  | 难度 | 核心考点           | 推荐指数 |
+| --- | ------------------------------------------------------------------------- | --------------------- | :--: | ------------------ | :------: |
+| 1   | [46](https://leetcode.cn/problems/permutations/)                          | 全排列                |  🟡  | 回溯模板入门       |    ⭐    |
+| 2   | [78](https://leetcode.cn/problems/subsets/)                               | 子集                  |  🟡  | `start` 参数防重复 |    ⭐    |
+| 3   | [77](https://leetcode.cn/problems/combinations/)                          | 组合                  |  🟡  | 子集 + 长度限制    |    ⭐    |
+| 4   | [39](https://leetcode.cn/problems/combination-sum/)                       | 组合总和              |  🟡  | 可重复使用元素     |   ⭐⭐   |
+| 5   | [22](https://leetcode.cn/problems/generate-parentheses/)                  | 括号生成              |  🟡  | 括号合法性剪枝     |   ⭐⭐   |
+| 6   | [17](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/) | 电话号码的字母组合    |  🟡  | 映射 + 回溯        |    ⭐    |
+| 7   | [47](https://leetcode.cn/problems/permutations-ii/)                       | 全排列 II             |  🟡  | 重复元素去重       |   ⭐⭐   |
+| 8   | [40](https://leetcode.cn/problems/combination-sum-ii/)                    | 组合总和 II           |  🟡  | 去重 + 剪枝        |   ⭐⭐   |
+| 9   | [90](https://leetcode.cn/problems/subsets-ii/)                            | 子集 II               |  🟡  | 有重复子集去重     |   ⭐⭐   |
+| 10  | [131](https://leetcode.cn/problems/palindrome-partitioning/)              | 分割回文串            |  🟡  | 字符串分割回溯     |   ⭐⭐   |
+| 11  | [93](https://leetcode.cn/problems/restore-ip-addresses/)                  | 复原 IP 地址          |  🟡  | 字符串 + 多剪枝    |   ⭐⭐   |
+| 12  | [79](https://leetcode.cn/problems/word-search/)                           | 单词搜索              |  🟡  | 二维网格 DFS       |   ⭐⭐   |
+| 13  | [200](https://leetcode.cn/problems/number-of-islands/)                    | 岛屿数量              |  🟡  | 网格 DFS（感染法） |    ⭐    |
+| 14  | [51](https://leetcode.cn/problems/n-queens/)                              | N 皇后                |  🔴  | 二维棋盘 + 合法性  |  ⭐⭐⭐  |
+| 15  | [37](https://leetcode.cn/problems/sudoku-solver/)                         | 解数独                |  🔴  | 二维 + 多重约束    |  ⭐⭐⭐  |
+| 16  | [301](https://leetcode.cn/problems/remove-invalid-parentheses/)           | 删除无效的括号        |  🔴  | 最少删除 + BFS/DFS |  ⭐⭐⭐  |
+| 17  | [698](https://leetcode.cn/problems/partition-to-k-equal-sum-subsets/)     | 划分为 k 个相等的子集 |  🟡  | 剪枝优化           |  ⭐⭐⭐  |
+| 18  | [489](https://leetcode.cn/problems/robot-room-cleaner/)                   | 扫地机器人            |  🔴  | 带方向回溯         |  ⭐⭐⭐  |
 
 ---
 
@@ -49,12 +49,12 @@
 
 ### 什么时候用 DFS / 回溯？
 
-| 场景 | 适合的算法 |
-|------|-----------|
-| **求所有解**（排列、组合、子集） | 回溯 (DFS) |
-| **求是否存在一个解** | 回溯（找到即返回） |
+| 场景                                   | 适合的算法                 |
+| -------------------------------------- | -------------------------- |
+| **求所有解**（排列、组合、子集）       | 回溯 (DFS)                 |
+| **求是否存在一个解**                   | 回溯（找到即返回）         |
 | **求最优解**（最短路径、最小编辑距离） | 动态规划（有重叠子问题时） |
-| **求最优解**（无重叠子问题） | 回溯（暴力枚举所有解） |
+| **求最优解**（无重叠子问题）           | 回溯（暴力枚举所有解）     |
 
 > **DFS 搜全部解，BFS 搜最短路径。**
 > 当求解目标必须走到最深（如树的叶子节点）才能得到一个解时，用 DFS。
@@ -187,7 +187,7 @@ function permute(nums: number[]): number[][] {
 
 // --- 测试 ---
 const input = [1, 2, 3];
-console.log("全排列结果：", permute(input));
+console.log('全排列结果：', permute(input));
 // 输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
 
@@ -281,7 +281,7 @@ function permuteUnique(nums: number[]): number[][] {
 }
 
 // --- 测试 ---
-console.log("有重复全排列：", permuteUnique([1, 1, 2]));
+console.log('有重复全排列：', permuteUnique([1, 1, 2]));
 // 输出：[[1,1,2],[1,2,1],[2,1,1]]
 ```
 
@@ -330,9 +330,7 @@ function solveNQueens(n: number): string[][] {
   const result: string[][] = [];
 
   // 初始化棋盘，全部填 '.'
-  const board: string[][] = Array.from({ length: n }, () =>
-    new Array(n).fill(".")
-  );
+  const board: string[][] = Array.from({ length: n }, () => new Array(n).fill('.'));
 
   /**
    * 检查在 (row, col) 位置放置皇后是否合法
@@ -341,17 +339,17 @@ function solveNQueens(n: number): string[][] {
   function isValid(row: number, col: number): boolean {
     // ① 检查同一列是否有皇后
     for (let i = 0; i < row; i++) {
-      if (board[i][col] === "Q") return false;
+      if (board[i][col] === 'Q') return false;
     }
 
     // ② 检查左上方对角线 ↖
     for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-      if (board[i][j] === "Q") return false;
+      if (board[i][j] === 'Q') return false;
     }
 
     // ③ 检查右上方对角线 ↗
     for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
-      if (board[i][j] === "Q") return false;
+      if (board[i][j] === 'Q') return false;
     }
 
     return true;
@@ -361,7 +359,7 @@ function solveNQueens(n: number): string[][] {
     // 结束条件：所有行都成功放置了皇后
     if (row === n) {
       // 将棋盘转为字符串数组格式：每行拼成一个字符串
-      result.push(board.map((row) => row.join("")));
+      result.push(board.map((row) => row.join('')));
       return;
     }
 
@@ -370,13 +368,13 @@ function solveNQueens(n: number): string[][] {
       if (!isValid(row, col)) continue;
 
       // 做选择
-      board[row][col] = "Q";
+      board[row][col] = 'Q';
 
       // 进入下一行
       backtrack(row + 1);
 
       // 撤销选择
-      board[row][col] = ".";
+      board[row][col] = '.';
     }
   }
 
@@ -413,14 +411,14 @@ solutions.forEach((solution, i) => {
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键优化 |
-|------|-----------|-----------|---------|
-| 全排列（无重复） | O(n! × n) | O(n) | `track.includes()` 剪枝 |
-| 全排列（有重复） | O(n! × n) | O(n) | 排序 + `used[]` 去重 |
-| 全排列（优化版） | O(n!) | O(n) | 用 `swap` 代替 `includes`（见下文） |
-| N 皇后 | O(n!) | O(n²) | `isValid()` 提前剪枝 |
-| 子集 | O(2ⁿ) | O(n) | `start` 参数防重复 |
-| 组合 | O(C(n,k)) | O(n) | `start` 参数 + 剪枝 |
+| 问题             | 时间复杂度 | 空间复杂度 | 关键优化                            |
+| ---------------- | ---------- | ---------- | ----------------------------------- |
+| 全排列（无重复） | O(n! × n)  | O(n)       | `track.includes()` 剪枝             |
+| 全排列（有重复） | O(n! × n)  | O(n)       | 排序 + `used[]` 去重                |
+| 全排列（优化版） | O(n!)      | O(n)       | 用 `swap` 代替 `includes`（见下文） |
+| N 皇后           | O(n!)      | O(n²)      | `isValid()` 提前剪枝                |
+| 子集             | O(2ⁿ)      | O(n)       | `start` 参数防重复                  |
+| 组合             | O(C(n,k))  | O(n)       | `start` 参数 + 剪枝                 |
 
 ### 💡 全排列的优化技巧
 
@@ -456,25 +454,25 @@ function permuteSwap(nums: number[]): number[][] {
 
 ### 先从这些开始（按难度排序）
 
-| 难度 | 题目 | 关键考点 |
-|------|------|---------|
-| ⭐ | [46. 全排列](https://leetcode.cn/problems/permutations/) | 回溯模板入门 |
-| ⭐ | [78. 子集](https://leetcode.cn/problems/subsets/) | 用 `start` 参数防止重复 |
-| ⭐⭐ | [77. 组合](https://leetcode.cn/problems/combinations/) | 子集 + 长度限制 |
-| ⭐⭐ | [47. 全排列 II](https://leetcode.cn/problems/permutations-ii/) | 重复元素去重 |
-| ⭐⭐⭐ | [51. N 皇后](https://leetcode.cn/problems/n-queens/) | 二维棋盘 + 合法性检查 |
-| ⭐⭐⭐ | [37. 解数独](https://leetcode.cn/problems/sudoku-solver/) | 二维 + 多重剪枝 |
+| 难度   | 题目                                                           | 关键考点                |
+| ------ | -------------------------------------------------------------- | ----------------------- |
+| ⭐     | [46. 全排列](https://leetcode.cn/problems/permutations/)       | 回溯模板入门            |
+| ⭐     | [78. 子集](https://leetcode.cn/problems/subsets/)              | 用 `start` 参数防止重复 |
+| ⭐⭐   | [77. 组合](https://leetcode.cn/problems/combinations/)         | 子集 + 长度限制         |
+| ⭐⭐   | [47. 全排列 II](https://leetcode.cn/problems/permutations-ii/) | 重复元素去重            |
+| ⭐⭐⭐ | [51. N 皇后](https://leetcode.cn/problems/n-queens/)           | 二维棋盘 + 合法性检查   |
+| ⭐⭐⭐ | [37. 解数独](https://leetcode.cn/problems/sudoku-solver/)      | 二维 + 多重剪枝         |
 
 ## ✂️ 剪枝策略对比
 
 回溯算法的性能全看剪枝。以下是 4 种核心剪枝策略：
 
-| 策略 | 适用场景 | 代码模式 | 效果 |
-|------|---------|---------|:----:|
-| **`track.includes()` 跳过已选** | 全排列（无重复） | `if (track.includes(nums[i])) continue` | 避免选同一个元素 |
-| **`used[]` 标记已选** | 全排列（有重复） | `if (used[i]) continue` | O(1) 检查，比 includes 快 |
-| **`start` 参数控制** | 子集/组合 | `backtrack(start + 1)` 中传 i+1 | 防止重复子集，保证顺序 |
-| **`used[i-1]` 同层去重** | 有重复元素的排列 | `if (i>0 && nums[i]===nums[i-1] && !used[i-1])` | 确保同一层没有重复分支 |
+| 策略                            | 适用场景         | 代码模式                                        |           效果            |
+| ------------------------------- | ---------------- | ----------------------------------------------- | :-----------------------: |
+| **`track.includes()` 跳过已选** | 全排列（无重复） | `if (track.includes(nums[i])) continue`         |     避免选同一个元素      |
+| **`used[]` 标记已选**           | 全排列（有重复） | `if (used[i]) continue`                         | O(1) 检查，比 includes 快 |
+| **`start` 参数控制**            | 子集/组合        | `backtrack(start + 1)` 中传 i+1                 |  防止重复子集，保证顺序   |
+| **`used[i-1]` 同层去重**        | 有重复元素的排列 | `if (i>0 && nums[i]===nums[i-1] && !used[i-1])` |  确保同一层没有重复分支   |
 
 ```typescript
 // 四种模式速查：

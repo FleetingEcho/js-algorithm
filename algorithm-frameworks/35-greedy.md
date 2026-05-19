@@ -6,15 +6,15 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [435](https://leetcode.cn/problems/non-overlapping-intervals/) | 无重叠区间 | 🟡 | 最早结束优先 | ⭐ |
-| 2 | [452](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | 用最少数量的箭引爆气球 | 🟡 | 区间贪心 | ⭐⭐ |
-| 3 | [55](https://leetcode.cn/problems/jump-game/) | 跳跃游戏 | 🟡 | 最远可达距离 | ⭐ |
-| 4 | [45](https://leetcode.cn/problems/jump-game-ii/) | 跳跃游戏 II | 🟡 | 最少跳跃次数 | ⭐⭐ |
-| 5 | [134](https://leetcode.cn/problems/gas-station/) | 加油站 | 🟡 | 总油量 + 起始点 | ⭐⭐ |
-| 6 | [1024](https://leetcode.cn/problems/video-stitching/) | 视频拼接 | 🟡 | 区间覆盖 | ⭐⭐ |
-| 7 | [253](https://leetcode.cn/problems/meeting-rooms-ii/) | 会议室 II | 🟡 | 扫描线/最小堆 | ⭐⭐ |
+| #   | 题号                                                                            | 题目                   | 难度 | 核心考点        | 推荐指数 |
+| --- | ------------------------------------------------------------------------------- | ---------------------- | :--: | --------------- | :------: |
+| 1   | [435](https://leetcode.cn/problems/non-overlapping-intervals/)                  | 无重叠区间             |  🟡  | 最早结束优先    |    ⭐    |
+| 2   | [452](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | 用最少数量的箭引爆气球 |  🟡  | 区间贪心        |   ⭐⭐   |
+| 3   | [55](https://leetcode.cn/problems/jump-game/)                                   | 跳跃游戏               |  🟡  | 最远可达距离    |    ⭐    |
+| 4   | [45](https://leetcode.cn/problems/jump-game-ii/)                                | 跳跃游戏 II            |  🟡  | 最少跳跃次数    |   ⭐⭐   |
+| 5   | [134](https://leetcode.cn/problems/gas-station/)                                | 加油站                 |  🟡  | 总油量 + 起始点 |   ⭐⭐   |
+| 6   | [1024](https://leetcode.cn/problems/video-stitching/)                           | 视频拼接               |  🟡  | 区间覆盖        |   ⭐⭐   |
+| 7   | [253](https://leetcode.cn/problems/meeting-rooms-ii/)                           | 会议室 II              |  🟡  | 扫描线/最小堆   |   ⭐⭐   |
 
 ---
 
@@ -75,7 +75,9 @@ function canJump(nums: number[]): boolean {
  * 45. 跳跃游戏 II — 最少跳跃次数
  */
 function jump(nums: number[]): number {
-  let jumps = 0, curEnd = 0, farthest = 0;
+  let jumps = 0,
+    curEnd = 0,
+    farthest = 0;
 
   for (let i = 0; i < nums.length - 1; i++) {
     farthest = Math.max(farthest, i + nums[i]);
@@ -94,13 +96,13 @@ function jump(nums: number[]): number {
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键点 |
-|------|:--------:|:--------:|--------|
-| 435 无重叠区间 | O(n log n) | O(1) | 按 end 排序 |
-| 55 跳跃游戏 | O(n) | O(1) | 最远可达 |
-| 45 跳跃 II | O(n) | O(1) | 边界更新 |
-| 134 加油站 | O(n) | O(1) | 总油量+起点 |
-| 253 会议室 II | O(n log n) | O(n) | 扫描线/堆 |
+| 问题           | 时间复杂度 | 空间复杂度 | 关键点      |
+| -------------- | :--------: | :--------: | ----------- |
+| 435 无重叠区间 | O(n log n) |    O(1)    | 按 end 排序 |
+| 55 跳跃游戏    |    O(n)    |    O(1)    | 最远可达    |
+| 45 跳跃 II     |    O(n)    |    O(1)    | 边界更新    |
+| 134 加油站     |    O(n)    |    O(1)    | 总油量+起点 |
+| 253 会议室 II  | O(n log n) |    O(n)    | 扫描线/堆   |
 
 ---
 

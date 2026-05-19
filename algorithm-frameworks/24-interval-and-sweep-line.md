@@ -6,15 +6,15 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [56](https://leetcode.cn/problems/merge-intervals/) | 合并区间 | 🟡 | 排序 + 合并 | ⭐ |
-| 2 | [57](https://leetcode.cn/problems/insert-interval/) | 插入区间 | 🟡 | 三段式插入 | ⭐⭐ |
-| 3 | [252](https://leetcode.cn/problems/meeting-rooms/) | 会议室 | 🟢 | 排序判重叠 | ⭐ |
-| 4 | [253](https://leetcode.cn/problems/meeting-rooms-ii/) | 会议室 II | 🟡 | 扫描线 / 最小堆 | ⭐⭐ |
-| 5 | [435](https://leetcode.cn/problems/non-overlapping-intervals/) | 无重叠区间 | 🟡 | 最早结束优先 | ⭐⭐ |
-| 6 | [452](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | 气球引爆 | 🟡 | 区间交集 | ⭐⭐ |
-| 7 | [986](https://leetcode.cn/problems/interval-list-intersections/) | 区间列表交集 | 🟡 | 双指针 | ⭐⭐ |
+| #   | 题号                                                                            | 题目         | 难度 | 核心考点        | 推荐指数 |
+| --- | ------------------------------------------------------------------------------- | ------------ | :--: | --------------- | :------: |
+| 1   | [56](https://leetcode.cn/problems/merge-intervals/)                             | 合并区间     |  🟡  | 排序 + 合并     |    ⭐    |
+| 2   | [57](https://leetcode.cn/problems/insert-interval/)                             | 插入区间     |  🟡  | 三段式插入      |   ⭐⭐   |
+| 3   | [252](https://leetcode.cn/problems/meeting-rooms/)                              | 会议室       |  🟢  | 排序判重叠      |    ⭐    |
+| 4   | [253](https://leetcode.cn/problems/meeting-rooms-ii/)                           | 会议室 II    |  🟡  | 扫描线 / 最小堆 |   ⭐⭐   |
+| 5   | [435](https://leetcode.cn/problems/non-overlapping-intervals/)                  | 无重叠区间   |  🟡  | 最早结束优先    |   ⭐⭐   |
+| 6   | [452](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | 气球引爆     |  🟡  | 区间交集        |   ⭐⭐   |
+| 7   | [986](https://leetcode.cn/problems/interval-list-intersections/)                | 区间列表交集 |  🟡  | 双指针          |   ⭐⭐   |
 
 ---
 
@@ -46,13 +46,14 @@ function merge(intervals: number[][]): number[][] {
 function minMeetingRooms(intervals: number[][]): number {
   const events: number[][] = [];
   for (const [start, end] of intervals) {
-    events.push([start, 1]);  // 开始 → +1
-    events.push([end, -1]);   // 结束 → -1
+    events.push([start, 1]); // 开始 → +1
+    events.push([end, -1]); // 结束 → -1
   }
 
   events.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
 
-  let maxRooms = 0, curr = 0;
+  let maxRooms = 0,
+    curr = 0;
   for (const [, delta] of events) {
     curr += delta;
     maxRooms = Math.max(maxRooms, curr);

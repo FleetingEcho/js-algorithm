@@ -8,16 +8,16 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [496](https://leetcode.cn/problems/next-greater-element-i/) | 下一个更大元素 I | 🟢 | 单调栈模板 | ⭐ |
-| 2 | [503](https://leetcode.cn/problems/next-greater-element-ii/) | 下一个更大元素 II | 🟡 | 环形数组 + 单调栈 | ⭐⭐ |
-| 3 | [739](https://leetcode.cn/problems/daily-temperatures/) | 每日温度 | 🟡 | 单调栈存索引 | ⭐ |
-| 4 | [1019](https://leetcode.cn/problems/next-greater-node-in-linked-list/) | 链表中的下一个更大节点 | 🟡 | 链表 + 单调栈 | ⭐⭐ |
-| 5 | [84](https://leetcode.cn/problems/largest-rectangle-in-histogram/) | 柱状图中最大的矩形 | 🔴 | 单调栈（左右扩展） | ⭐⭐⭐ |
-| 6 | [42](https://leetcode.cn/problems/trapping-rain-water/) | 接雨水 | 🔴 | 单调栈 / 双指针 | ⭐⭐⭐ |
-| 7 | [901](https://leetcode.cn/problems/online-stock-span/) | 股票价格跨度 | 🟡 | 单调栈存跨度 | ⭐⭐ |
-| 8 | [907](https://leetcode.cn/problems/sum-of-subarray-minimums/) | 子数组的最小值之和 | 🟡 | 单调栈 + 贡献法 | ⭐⭐⭐ |
+| #   | 题号                                                                   | 题目                   | 难度 | 核心考点           | 推荐指数 |
+| --- | ---------------------------------------------------------------------- | ---------------------- | :--: | ------------------ | :------: |
+| 1   | [496](https://leetcode.cn/problems/next-greater-element-i/)            | 下一个更大元素 I       |  🟢  | 单调栈模板         |    ⭐    |
+| 2   | [503](https://leetcode.cn/problems/next-greater-element-ii/)           | 下一个更大元素 II      |  🟡  | 环形数组 + 单调栈  |   ⭐⭐   |
+| 3   | [739](https://leetcode.cn/problems/daily-temperatures/)                | 每日温度               |  🟡  | 单调栈存索引       |    ⭐    |
+| 4   | [1019](https://leetcode.cn/problems/next-greater-node-in-linked-list/) | 链表中的下一个更大节点 |  🟡  | 链表 + 单调栈      |   ⭐⭐   |
+| 5   | [84](https://leetcode.cn/problems/largest-rectangle-in-histogram/)     | 柱状图中最大的矩形     |  🔴  | 单调栈（左右扩展） |  ⭐⭐⭐  |
+| 6   | [42](https://leetcode.cn/problems/trapping-rain-water/)                | 接雨水                 |  🔴  | 单调栈 / 双指针    |  ⭐⭐⭐  |
+| 7   | [901](https://leetcode.cn/problems/online-stock-span/)                 | 股票价格跨度           |  🟡  | 单调栈存跨度       |   ⭐⭐   |
+| 8   | [907](https://leetcode.cn/problems/sum-of-subarray-minimums/)          | 子数组的最小值之和     |  🟡  | 单调栈 + 贡献法    |  ⭐⭐⭐  |
 
 ---
 
@@ -57,7 +57,7 @@ flowchart TD
 // monotonic-stack-template.ts
 /**
  * 单调栈通用模板 — 找下一个更大元素
- * 
+ *
  * 原理：从右向左遍历，维护一个单调递减栈
  *       栈顶元素比当前元素小 → 弹出（小值不配做大值的"下一个更大"）
  *       栈顶元素比当前元素大 → 它就是当前元素的"下一个更大元素"
@@ -99,7 +99,7 @@ console.log(nextGreaterElementTemplate([2, 1, 2, 4, 3])); // [4, 2, 4, -1, -1]
 // next-greater-element.ts
 /**
  * 496. 下一个更大元素 I
- * 
+ *
  * 思路：用单调栈预处理 nums2 中每个元素的下一个更大元素
  *       存到 Map 中，然后查表
  */
@@ -117,7 +117,7 @@ function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
   }
 
   // 查表返回结果
-  return nums1.map(n => map.get(n)!);
+  return nums1.map((n) => map.get(n)!);
 }
 
 // --- 测试 ---
@@ -135,7 +135,7 @@ console.log(nextGreaterElement([4, 1, 2], [1, 3, 4, 2])); // [-1, 3, -1]
 // daily-temperatures.ts
 /**
  * 739. 每日温度
- * 
+ *
  * 和下一个更大元素的区别：存索引而不是值
  * 结果 = 索引差（天数）
  */
@@ -175,7 +175,7 @@ console.log(dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]));
 // next-greater-element-ii.ts
 /**
  * 503. 下一个更大元素 II — 环形数组
- * 
+ *
  * 技巧：数组长度翻倍（虚拟），i 从 2n-1 遍历到 0
  *       用 i % n 访问实际元素
  */
@@ -211,14 +211,14 @@ console.log(nextGreaterElements([2, 1, 2, 4, 3])); // [4, 2, 4, -1, 4]
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键点 |
-|------|:--------:|:--------:|--------|
-| 496 下一个更大 I | O(n+m) | O(n) | 单调栈 + Map 查询 |
-| 503 下一个更大 II | O(n) | O(n) | 数组翻倍技巧 |
-| 739 每日温度 | O(n) | O(n) | 栈存索引 |
-| 84 最大矩形 | O(n) | O(n) | 左右各一次单调栈 |
-| 42 接雨水 | O(n) | O(n) | 单调递减栈 |
-| 907 子数组最小值 | O(n) | O(n) | 贡献法 |
+| 问题              | 时间复杂度 | 空间复杂度 | 关键点            |
+| ----------------- | :--------: | :--------: | ----------------- |
+| 496 下一个更大 I  |   O(n+m)   |    O(n)    | 单调栈 + Map 查询 |
+| 503 下一个更大 II |    O(n)    |    O(n)    | 数组翻倍技巧      |
+| 739 每日温度      |    O(n)    |    O(n)    | 栈存索引          |
+| 84 最大矩形       |    O(n)    |    O(n)    | 左右各一次单调栈  |
+| 42 接雨水         |    O(n)    |    O(n)    | 单调递减栈        |
+| 907 子数组最小值  |    O(n)    |    O(n)    | 贡献法            |
 
 ---
 
@@ -240,14 +240,10 @@ console.log(nextGreaterElements([2, 1, 2, 4, 3])); // [4, 2, 4, -1, 4]
 
 ```typescript
 // 496. 下一个更大元素
-function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
-
-}
+function nextGreaterElement(nums1: number[], nums2: number[]): number[] {}
 
 // 739. 每日温度
-function dailyTemperatures(temperatures: number[]): number[] {
-
-}
+function dailyTemperatures(temperatures: number[]): number[] {}
 ```
 
 ---

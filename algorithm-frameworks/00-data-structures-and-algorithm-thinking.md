@@ -10,20 +10,20 @@
 
 > 💡 刷题顺序：⭐ 必背 → ⭐⭐ 进阶 → ⭐⭐⭐ 挑战
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [206](https://leetcode.cn/problems/reverse-linked-list/) | 反转链表 | 🟢 | 链表迭代/递归遍历 | ⭐ |
-| 2 | [141](https://leetcode.cn/problems/linked-list-cycle/) | 环形链表 | 🟢 | 快慢指针遍历链表 | ⭐ |
-| 3 | [70](https://leetcode.cn/problems/climbing-stairs/) | 爬楼梯 | 🟢 | 递归→DP 入门 | ⭐ |
-| 4 | [104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) | 二叉树最大深度 | 🟢 | 递归遍历二叉树 | ⭐ |
-| 5 | [144](https://leetcode.cn/problems/binary-tree-preorder-traversal/) | 二叉树前序遍历 | 🟢 | 二叉树遍历框架 | ⭐ |
-| 6 | [94](https://leetcode.cn/problems/binary-tree-inorder-traversal/) | 二叉树中序遍历 | 🟢 | 二叉树遍历框架 | ⭐ |
-| 7 | [145](https://leetcode.cn/problems/binary-tree-postorder-traversal/) | 二叉树后序遍历 | 🟢 | 二叉树遍历框架 | ⭐ |
-| 8 | [102](https://leetcode.cn/problems/binary-tree-level-order-traversal/) | 层序遍历 | 🟡 | 队列 + 迭代遍历 | ⭐⭐ |
-| 9 | [124](https://leetcode.cn/problems/binary-tree-maximum-path-sum/) | 二叉树最大路径和 | 🔴 | 后序遍历 + 贡献值 | ⭐⭐⭐ |
-| 10 | [99](https://leetcode.cn/problems/recover-binary-search-tree/) | 恢复二叉搜索树 | 🟡 | 中序遍历 + 错误交换 | ⭐⭐⭐ |
-| 11 | [114](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/) | 二叉树展开为链表 | 🟡 | 前序遍历 + 链表构建 | ⭐⭐ |
-| 12 | [116](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/) | 填充每个节点的下一个右侧节点 | 🟡 | 层级遍历/递归 | ⭐⭐ |
+| #   | 题号                                                                             | 题目                         | 难度 | 核心考点            | 推荐指数 |
+| --- | -------------------------------------------------------------------------------- | ---------------------------- | :--: | ------------------- | :------: |
+| 1   | [206](https://leetcode.cn/problems/reverse-linked-list/)                         | 反转链表                     |  🟢  | 链表迭代/递归遍历   |    ⭐    |
+| 2   | [141](https://leetcode.cn/problems/linked-list-cycle/)                           | 环形链表                     |  🟢  | 快慢指针遍历链表    |    ⭐    |
+| 3   | [70](https://leetcode.cn/problems/climbing-stairs/)                              | 爬楼梯                       |  🟢  | 递归→DP 入门        |    ⭐    |
+| 4   | [104](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)                | 二叉树最大深度               |  🟢  | 递归遍历二叉树      |    ⭐    |
+| 5   | [144](https://leetcode.cn/problems/binary-tree-preorder-traversal/)              | 二叉树前序遍历               |  🟢  | 二叉树遍历框架      |    ⭐    |
+| 6   | [94](https://leetcode.cn/problems/binary-tree-inorder-traversal/)                | 二叉树中序遍历               |  🟢  | 二叉树遍历框架      |    ⭐    |
+| 7   | [145](https://leetcode.cn/problems/binary-tree-postorder-traversal/)             | 二叉树后序遍历               |  🟢  | 二叉树遍历框架      |    ⭐    |
+| 8   | [102](https://leetcode.cn/problems/binary-tree-level-order-traversal/)           | 层序遍历                     |  🟡  | 队列 + 迭代遍历     |   ⭐⭐   |
+| 9   | [124](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)                | 二叉树最大路径和             |  🔴  | 后序遍历 + 贡献值   |  ⭐⭐⭐  |
+| 10  | [99](https://leetcode.cn/problems/recover-binary-search-tree/)                   | 恢复二叉搜索树               |  🟡  | 中序遍历 + 错误交换 |  ⭐⭐⭐  |
+| 11  | [114](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)          | 二叉树展开为链表             |  🟡  | 前序遍历 + 链表构建 |   ⭐⭐   |
+| 12  | [116](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/) | 填充每个节点的下一个右侧节点 |  🟡  | 层级遍历/递归       |   ⭐⭐   |
 
 ---
 
@@ -62,13 +62,13 @@
 
 ### 数组 vs 链表对比
 
-| 特性 | 数组 | 链表 |
-|------|:----:|:----:|
-| 内存 | 连续紧凑 | 分散，通过指针连接 |
-| 随机访问 | ✅ O(1) 通过索引 | ❌ O(n) 必须遍历 |
-| 扩容 | ❌ O(n) 需要新数组+拷贝 | ✅ 只需改指针 |
-| 存储开销 | 小（仅数据） | 大（数据 + 前后指针） |
-| 适用场景 | 频繁随机访问、内存敏感 | 频繁插入/删除、大小不确定 |
+| 特性     |          数组           |           链表            |
+| -------- | :---------------------: | :-----------------------: |
+| 内存     |        连续紧凑         |    分散，通过指针连接     |
+| 随机访问 |    ✅ O(1) 通过索引     |     ❌ O(n) 必须遍历      |
+| 扩容     | ❌ O(n) 需要新数组+拷贝 |       ✅ 只需改指针       |
+| 存储开销 |      小（仅数据）       |   大（数据 + 前后指针）   |
+| 适用场景 | 频繁随机访问、内存敏感  | 频繁插入/删除、大小不确定 |
 
 ```typescript
 // 数组 — 连续内存，随机访问
@@ -96,13 +96,13 @@ class ListNode<T> {
 flowchart TD
     TRAV[数据结构遍历方式] --> LINEAR[线性遍历]
     TRAV --> NONLINEAR[非线性遍历]
-    
+
     LINEAR --> FOR[for / while 循环]
     LINEAR --> ITER[迭代访问]
-    
+
     NONLINEAR --> RECUR[递归]
     NONLINEAR --> BT[二叉树模型]
-    
+
     FOR --> EX1[数组: for i++<br/>链表: while p.next]
     RECUR --> EX2[树: traverse left/right<br/>图: DFS visited]
 ```
@@ -113,7 +113,7 @@ flowchart TD
 // array-traverse.ts
 function traverseArray<T>(arr: T[]): void {
   for (let i = 0; i < arr.length; i++) {
-    console.log("迭代访问 arr[%d] =", i, arr[i]);
+    console.log('迭代访问 arr[%d] =', i, arr[i]);
   }
 }
 traverseArray([10, 20, 30]);
@@ -134,7 +134,7 @@ class ListNode<T> {
 function traverseIterative<T>(head: ListNode<T> | null): void {
   let p = head;
   while (p !== null) {
-    console.log("迭代访问:", p.val);
+    console.log('迭代访问:', p.val);
     p = p.next;
   }
 }
@@ -142,9 +142,9 @@ function traverseIterative<T>(head: ListNode<T> | null): void {
 // 递归遍历
 function traverseRecursive<T>(head: ListNode<T> | null): void {
   if (head === null) return;
-  console.log("递归前序访问:", head.val);
+  console.log('递归前序访问:', head.val);
   traverseRecursive(head.next);
-  console.log("递归后序访问:", head.val); // 倒序！
+  console.log('递归后序访问:', head.val); // 倒序！
 }
 
 // 倒序打印链表
@@ -179,16 +179,16 @@ class TreeNode<T> {
 
 /** 二叉树遍历框架 — 递归三要素 */
 function traverse<T>(root: TreeNode<T> | null): void {
-  if (root === null) return;  // ① 结束条件
+  if (root === null) return; // ① 结束条件
 
   // ② 前序位置：进入节点时
-  console.log("前序:", root.val);
+  console.log('前序:', root.val);
 
-  traverse(root.left);        // ③ 递归左子树
-  traverse(root.right);       // ④ 递归右子树
+  traverse(root.left); // ③ 递归左子树
+  traverse(root.right); // ④ 递归右子树
 
   // ⑤ 后序位置：离开节点时
-  console.log("后序:", root.val);
+  console.log('后序:', root.val);
 }
 ```
 
@@ -205,7 +205,7 @@ flowchart LR
     subgraph 后序 [后序位置]
         A3[右子树回来后执行]
     end
-    
+
     ROOT((root)) --> 前序 --> LEFT[左子树] --> 中序 --> RIGHT[右子树] --> 后序
 ```
 
@@ -213,7 +213,7 @@ flowchart LR
 // order-position-demo.ts
 /**
  * 三种遍历位置的实际含义：
- * 
+ *
  *   前序位置 → 刚进入一个节点的时候 → 适合"复制"、"构建"等操作
  *   中序位置 → 左子树遍历完，准备进右子树 → BST 中序 = 升序
  *   后序位置 → 左右子树都遍历完了 → 适合"统计"、"合并"等操作
@@ -275,7 +275,7 @@ class NaryTreeNode<T> {
 /** N 叉树的递归遍历 */
 function traverseNary<T>(root: NaryTreeNode<T> | null): void {
   if (root === null) return;
-  console.log("访问节点:", root.val);
+  console.log('访问节点:', root.val);
   for (const child of root.children) {
     traverseNary(child);
   }
@@ -283,16 +283,12 @@ function traverseNary<T>(root: NaryTreeNode<T> | null): void {
 }
 
 /** 图的 DFS 遍历 — 需要 visited 防止走回头路 */
-function traverseGraph<T>(
-  node: T,
-  neighbors: Map<T, T[]>,
-  visited: Set<T>
-): void {
-  if (visited.has(node)) return;  // 防止环
+function traverseGraph<T>(node: T, neighbors: Map<T, T[]>, visited: Set<T>): void {
+  if (visited.has(node)) return; // 防止环
   visited.add(node);
 
-  console.log("访问节点:", node);
-  for (const neighbor of (neighbors.get(node) || [])) {
+  console.log('访问节点:', node);
+  for (const neighbor of neighbors.get(node) || []) {
     traverseGraph(neighbor, neighbors, visited);
   }
 }
@@ -320,7 +316,7 @@ class TreeNode<T> {
 /**
  * 每个节点返回：以该节点为起点的最大"贡献值"
  * （只能选一条路：左或右，不能同时选，否则路径分叉无效）
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(h) h = 树高
  */
 function maxPathSum(root: TreeNode<number> | null): number {
@@ -355,7 +351,7 @@ const root = new TreeNode(10);
 root.left = new TreeNode(5, new TreeNode(3), new TreeNode(2));
 root.right = new TreeNode(-3, null, new TreeNode(11));
 
-console.log("最大路径和:", maxPathSum(root)); // 输出: 28  (5 → 10 → -3 → 11)
+console.log('最大路径和:', maxPathSum(root)); // 输出: 28  (5 → 10 → -3 → 11)
 // 实际上应该是 10 + 5 + 3 = 18 或者 10 + -3 + 11 = 18... 不对
 // 正确的最大路径是 11 → -3 → 10 → 5 → 3 = 26
 ```
@@ -383,12 +379,12 @@ class TreeNode<T> {
 
 /**
  * 恢复二叉搜索树 — 中序遍历找两个错误节点
- * 
+ *
  * 思路：
  *   第一个错误节点：prev.val > curr.val 时的 prev（较大那个）
  *   第二个错误节点：prev.val > curr.val 时的 curr（较小那个）
  *   最后交换两个错误节点的值
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(h)
  */
 function recoverTree(root: TreeNode<number> | null): void {
@@ -405,9 +401,9 @@ function recoverTree(root: TreeNode<number> | null): void {
     if (prev !== null && node.val < prev.val) {
       // 出现逆序
       if (firstError === null) {
-        firstError = prev;  // 第一个错误：prev 太大了
+        firstError = prev; // 第一个错误：prev 太大了
       }
-      secondError = node;   // 第二个错误：node 太小了（可能会更新多次，最后一次是对的）
+      secondError = node; // 第二个错误：node 太小了（可能会更新多次，最后一次是对的）
     }
     prev = node;
 
@@ -439,7 +435,7 @@ const root = new TreeNode(3);
 root.left = new TreeNode(1);
 root.right = new TreeNode(4, new TreeNode(2), new TreeNode(5));
 
-console.log("恢复前中序遍历:");
+console.log('恢复前中序遍历:');
 // 这里简化测试，实际需要遍历函数
 
 recoverTree(root);
@@ -452,13 +448,13 @@ recoverTree(root);
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| 1. 数组遍历 | 熟悉迭代框架 | 遍数组基础题 | for 循环 |
-| 2. 链表遍历 | 掌握两种方式 | 206 反转链表、141 环形链表 | 迭代 + 递归 |
-| 3. 树遍历 | 死磕二叉树 | 144/94/145 三序、102 层序 | 理解三种位置的含义 |
+| 阶段        | 目标         | 题目                         | 关键点             |
+| ----------- | ------------ | ---------------------------- | ------------------ |
+| 1. 数组遍历 | 熟悉迭代框架 | 遍数组基础题                 | for 循环           |
+| 2. 链表遍历 | 掌握两种方式 | 206 反转链表、141 环形链表   | 迭代 + 递归        |
+| 3. 树遍历   | 死磕二叉树   | 144/94/145 三序、102 层序    | 理解三种位置的含义 |
 | 4. 递归应用 | 后序位置妙用 | 124 最大路径和、114 展开链表 | **后序位置的威力** |
-| 5. 中序特性 | BST 性质 | 99 恢复 BST、230 第 K 小 | 中序 = 升序 |
+| 5. 中序特性 | BST 性质     | 99 恢复 BST、230 第 K 小     | 中序 = 升序        |
 
 ### 常见坑点自查
 
@@ -476,15 +472,15 @@ recoverTree(root);
 
 > 面试中 90% 的算法题可以用以下复杂度分析覆盖：
 
-| 复杂度 | 名称 | 常见场景 | N=100 时估算 |
-|--------|------|---------|:----------:|
-| O(1) | 常数时间 | 数组随机访问、哈希表查找 | 1 |
-| O(log n) | 对数时间 | 二分搜索、平衡树查找 | ~7 |
-| O(n) | 线性时间 | 数组遍历、链表遍历 | 100 |
-| O(n log n) | 线性对数 | 归并排序、快速排序(平均) | ~664 |
-| O(n²) | 平方时间 | 双层循环、朴素排序 | 10,000 |
-| O(2ⁿ) | 指数时间 | 回溯、子集枚举 | 1.27e30 ❌ |
-| O(n!) | 阶乘时间 | 全排列 | 9.3e157 ❌❌ |
+| 复杂度     | 名称     | 常见场景                 | N=100 时估算 |
+| ---------- | -------- | ------------------------ | :----------: |
+| O(1)       | 常数时间 | 数组随机访问、哈希表查找 |      1       |
+| O(log n)   | 对数时间 | 二分搜索、平衡树查找     |      ~7      |
+| O(n)       | 线性时间 | 数组遍历、链表遍历       |     100      |
+| O(n log n) | 线性对数 | 归并排序、快速排序(平均) |     ~664     |
+| O(n²)      | 平方时间 | 双层循环、朴素排序       |    10,000    |
+| O(2ⁿ)      | 指数时间 | 回溯、子集枚举           |  1.27e30 ❌  |
+| O(n!)      | 阶乘时间 | 全排列                   | 9.3e157 ❌❌ |
 
 > **💡 刷题铁律：** N ≤ 20 → 回溯 O(2ⁿ) 勉强能过；N ≤ 10⁵ → 必须 O(n) 或 O(n log n)
 
@@ -518,17 +514,17 @@ recoverTree(root);
 
 ### 模式速查表
 
-| 看到什么 | 想到什么 |
-|---------|---------|
-| 求最值 | DP、贪心 |
-| 所有解 / 路径 | 回溯 (DFS) |
-| 最短路径 / 最少步数 | BFS |
-| 排序数组 + 搜索 | 二分搜索 |
-| 子串 / 子数组 | 滑动窗口、前缀和 |
-| 链表环 / 中点 | 快慢指针 |
-| 区间重叠 | 贪心（最早结束优先） |
-| 树上的递归 | 后序位置 = 合并子结果 |
-| O(1) 查增删 | 哈希表 + 双向链表 |
+| 看到什么            | 想到什么              |
+| ------------------- | --------------------- |
+| 求最值              | DP、贪心              |
+| 所有解 / 路径       | 回溯 (DFS)            |
+| 最短路径 / 最少步数 | BFS                   |
+| 排序数组 + 搜索     | 二分搜索              |
+| 子串 / 子数组       | 滑动窗口、前缀和      |
+| 链表环 / 中点       | 快慢指针              |
+| 区间重叠            | 贪心（最早结束优先）  |
+| 树上的递归          | 后序位置 = 合并子结果 |
+| O(1) 查增删         | 哈希表 + 双向链表     |
 
 ---
 
@@ -538,13 +534,7 @@ recoverTree(root);
 
 ```typescript
 // ✍️ 你的默写
-function traverse<T>(root: TreeNode<T> | null): void {
-
-
-
-
-
-}
+function traverse<T>(root: TreeNode<T> | null): void {}
 ```
 
 > 用一句话解释：为什么后序遍历位置适合做"合并"操作？

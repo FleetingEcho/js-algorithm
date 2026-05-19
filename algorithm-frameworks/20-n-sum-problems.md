@@ -10,16 +10,16 @@
 
 > 以下题目全部来自 `leetcode-questions-summary.md`「多指针 / 和差问题」分类
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [1](https://leetcode.cn/problems/two-sum/) | 两数之和 | 🟢 | 哈希表 / 双指针 | ⭐ |
-| 2 | [167](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/) | 两数之和 II | 🟢 | 有序数组双指针 | ⭐ |
-| 3 | [15](https://leetcode.cn/problems/3sum/) | 三数之和 | 🟡 | 固定一个 + 双指针 | ⭐⭐ |
-| 4 | [18](https://leetcode.cn/problems/4sum/) | 四数之和 | 🟡 | 固定两个 + 双指针 | ⭐⭐ |
-| 5 | [170](https://leetcode.cn/problems/two-sum-iii-data-structure-design/) | 两数之和 III | 🟢 | 哈希表设计 | ⭐ |
-| 6 | [653](https://leetcode.cn/problems/two-sum-iv-input-is-a-bst/) | 两数之和 IV | 🟢 | BST + 哈希集 | ⭐ |
-| 7 | [1099](https://leetcode.cn/problems/two-sum-less-than-k/) | 小于 K 的两数之和 | 🟢 | 排序 + 双指针 | ⭐⭐ |
-| 8 | [259](https://leetcode.cn/problems/3sum-smaller/) | 较小的三数之和 | 🟡 | 排序 + 双指针计数 | ⭐⭐ |
+| #   | 题号                                                                   | 题目              | 难度 | 核心考点          | 推荐指数 |
+| --- | ---------------------------------------------------------------------- | ----------------- | :--: | ----------------- | :------: |
+| 1   | [1](https://leetcode.cn/problems/two-sum/)                             | 两数之和          |  🟢  | 哈希表 / 双指针   |    ⭐    |
+| 2   | [167](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/)  | 两数之和 II       |  🟢  | 有序数组双指针    |    ⭐    |
+| 3   | [15](https://leetcode.cn/problems/3sum/)                               | 三数之和          |  🟡  | 固定一个 + 双指针 |   ⭐⭐   |
+| 4   | [18](https://leetcode.cn/problems/4sum/)                               | 四数之和          |  🟡  | 固定两个 + 双指针 |   ⭐⭐   |
+| 5   | [170](https://leetcode.cn/problems/two-sum-iii-data-structure-design/) | 两数之和 III      |  🟢  | 哈希表设计        |    ⭐    |
+| 6   | [653](https://leetcode.cn/problems/two-sum-iv-input-is-a-bst/)         | 两数之和 IV       |  🟢  | BST + 哈希集      |    ⭐    |
+| 7   | [1099](https://leetcode.cn/problems/two-sum-less-than-k/)              | 小于 K 的两数之和 |  🟢  | 排序 + 双指针     |   ⭐⭐   |
+| 8   | [259](https://leetcode.cn/problems/3sum-smaller/)                      | 较小的三数之和    |  🟡  | 排序 + 双指针计数 |   ⭐⭐   |
 
 ---
 
@@ -64,13 +64,13 @@ flowchart TD
 // nsum-template.ts
 /**
  * nSum 通用递归框架
- * 
+ *
  * 思路：
  *   1. 先排序
  *   2. 递归：固定一个数 → 找 (n-1)Sum
  *   3. base case: twoSum 用双指针
  *   4. 结果去重：跳过相同元素
- * 
+ *
  * 时间复杂度 O(n^(k-1))  空间复杂度 O(n)
  */
 function nSum(nums: number[], target: number, n: number): number[][] {
@@ -78,12 +78,7 @@ function nSum(nums: number[], target: number, n: number): number[][] {
   return nSumSorted(nums, target, n, 0);
 }
 
-function nSumSorted(
-  nums: number[],
-  target: number,
-  n: number,
-  start: number
-): number[][] {
+function nSumSorted(nums: number[], target: number, n: number, start: number): number[][] {
   const result: number[][] = [];
 
   // base case: twoSum — 双指针
@@ -155,11 +150,11 @@ console.log(nSum([1, 0, -1, 0, -2, 2], 0, 4));
 // two-sum-ii.ts
 /**
  * 167. 两数之和 II — 有序数组双指针
- * 
+ *
  * 思路：left 指向开头，right 指向结尾
  *       sum > target → right--（减小和）
  *       sum < target → left++（增大和）
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(1)
  */
 function twoSum(numbers: number[], target: number): number[] {
@@ -196,7 +191,7 @@ console.log(twoSum([2, 7, 11, 15], 9)); // [1, 2]
 // three-sum.ts
 /**
  * 15. 三数之和 — 排序 + 固定一个 + 双指针
- * 
+ *
  * 去重关键：
  *   1. 固定数去重：if (i > 0 && nums[i] === nums[i-1]) continue
  *   2. 双指针去重：找到一个结果后，跳过相同元素
@@ -250,7 +245,7 @@ console.log(threeSum([-1, 0, 1, 2, -1, -4]));
 // four-sum.ts
 /**
  * 18. 四数之和
- * 
+ *
  * 思路：两层固定 + 双指针
  *       i 从 0 遍历，j 从 i+1 遍历
  *       内部用双指针找剩下的两个数
@@ -297,13 +292,13 @@ function fourSum(nums: number[], target: number): number[][] {
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键点是 |
-|------|:--------:|:--------:|---------|
-| 两数之和（哈希） | O(n) | O(n) | 哈希表存补数 |
-| 两数之和（双指针） | O(n log n) | O(1) | 需要先排序 |
-| 三数之和 | O(n²) | O(1) | 固定 + 双指针 |
-| 四数之和 | O(n³) | O(1) | 双层固定 + 双指针 |
-| nSum 通用框架 | O(n^(k-1)) | O(n) | 递归到 twoSum |
+| 问题               | 时间复杂度 | 空间复杂度 | 关键点是          |
+| ------------------ | :--------: | :--------: | ----------------- |
+| 两数之和（哈希）   |    O(n)    |    O(n)    | 哈希表存补数      |
+| 两数之和（双指针） | O(n log n) |    O(1)    | 需要先排序        |
+| 三数之和           |   O(n²)    |    O(1)    | 固定 + 双指针     |
+| 四数之和           |   O(n³)    |    O(1)    | 双层固定 + 双指针 |
+| nSum 通用框架      | O(n^(k-1)) |    O(n)    | 递归到 twoSum     |
 
 ---
 
@@ -325,9 +320,7 @@ function fourSum(nums: number[], target: number): number[][] {
 
 ```typescript
 // 15. 三数之和
-function threeSum(nums: number[]): number[][] {
-
-}
+function threeSum(nums: number[]): number[][] {}
 ```
 
 ---

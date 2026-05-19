@@ -10,18 +10,18 @@
 
 > 💡 刷题顺序：⭐ 必背 → ⭐⭐ 进阶 → ⭐⭐⭐ 挑战
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [78](https://leetcode.cn/problems/subsets/) | 子集 | 🟡 | `start` 参数、回溯入门 | ⭐ |
-| 2 | [90](https://leetcode.cn/problems/subsets-ii/) | 子集 II | 🟡 | 有重复 + 去重剪枝 | ⭐⭐ |
-| 3 | [77](https://leetcode.cn/problems/combinations/) | 组合 | 🟡 | `start` + 长度限制 k | ⭐ |
-| 4 | [39](https://leetcode.cn/problems/combination-sum/) | 组合总和 | 🟡 | 可重复使用元素（`i` 不 +1） | ⭐⭐ |
-| 5 | [40](https://leetcode.cn/problems/combination-sum-ii/) | 组合总和 II | 🟡 | 有重复 + 去重 | ⭐⭐ |
-| 6 | [216](https://leetcode.cn/problems/combination-sum-iii/) | 组合总和 III | 🟡 | `start` + 长度+sum 双约束 | ⭐⭐ |
-| 7 | [46](https://leetcode.cn/problems/permutations/) | 全排列 | 🟡 | `used[]` / `includes` | ⭐ |
-| 8 | [47](https://leetcode.cn/problems/permutations-ii/) | 全排列 II | 🟡 | 重复元素 + `used[i-1]` | ⭐⭐ |
-| 9 | [784](https://leetcode.cn/problems/letter-case-permutation/) | 字母大小写全排列 | 🟡 | 变种排列 | ⭐⭐ |
-| 10 | [320](https://leetcode.cn/problems/generalized-abbreviation/) | 列举单词的全部缩写 | 🟡 | 子集变种 | ⭐⭐⭐ |
+| #   | 题号                                                          | 题目               | 难度 | 核心考点                    | 推荐指数 |
+| --- | ------------------------------------------------------------- | ------------------ | :--: | --------------------------- | :------: |
+| 1   | [78](https://leetcode.cn/problems/subsets/)                   | 子集               |  🟡  | `start` 参数、回溯入门      |    ⭐    |
+| 2   | [90](https://leetcode.cn/problems/subsets-ii/)                | 子集 II            |  🟡  | 有重复 + 去重剪枝           |   ⭐⭐   |
+| 3   | [77](https://leetcode.cn/problems/combinations/)              | 组合               |  🟡  | `start` + 长度限制 k        |    ⭐    |
+| 4   | [39](https://leetcode.cn/problems/combination-sum/)           | 组合总和           |  🟡  | 可重复使用元素（`i` 不 +1） |   ⭐⭐   |
+| 5   | [40](https://leetcode.cn/problems/combination-sum-ii/)        | 组合总和 II        |  🟡  | 有重复 + 去重               |   ⭐⭐   |
+| 6   | [216](https://leetcode.cn/problems/combination-sum-iii/)      | 组合总和 III       |  🟡  | `start` + 长度+sum 双约束   |   ⭐⭐   |
+| 7   | [46](https://leetcode.cn/problems/permutations/)              | 全排列             |  🟡  | `used[]` / `includes`       |    ⭐    |
+| 8   | [47](https://leetcode.cn/problems/permutations-ii/)           | 全排列 II          |  🟡  | 重复元素 + `used[i-1]`      |   ⭐⭐   |
+| 9   | [784](https://leetcode.cn/problems/letter-case-permutation/)  | 字母大小写全排列   |  🟡  | 变种排列                    |   ⭐⭐   |
+| 10  | [320](https://leetcode.cn/problems/generalized-abbreviation/) | 列举单词的全部缩写 |  🟡  | 子集变种                    |  ⭐⭐⭐  |
 
 ---
 
@@ -52,14 +52,14 @@ flowchart TD
         S1 --> A2[2] --> B2[3]
         S1 --> A3[3]
     end
-    
+
     subgraph 组合 [组合 C⁴₂ — 只在叶子节点收集]
         direction TB
         S2((start=1)) --> D1[1] --> E1[2✅] & E2[3✅] & E3[4✅]
         S2 --> D2[2] --> E4[3✅] & E5[4✅]
         S2 --> D3[3] --> E6[4✅]
     end
-    
+
     subgraph 排列 [排列 P₃ — 全对称]
         direction TB
         S3(([])) --> F1[1] --> G1[2] --> H1[3✅]
@@ -71,11 +71,11 @@ flowchart TD
     end
 ```
 
-| 问题 | 收集时机 | 参数控制 | 回溯树形状 |
-|------|---------|---------|-----------|
-| **子集** | **每个节点**都收集 | `start` 防回头 | 所有组合的总和 |
-| **组合** | **叶子节点**（长度 = k）收集 | `start` + 长度限制 | 向右倾斜 |
-| **排列** | **叶子节点**（长度 = n）收集 | `used[]` 防重复选择 | 全对称 |
+| 问题     | 收集时机                     | 参数控制            | 回溯树形状     |
+| -------- | ---------------------------- | ------------------- | -------------- |
+| **子集** | **每个节点**都收集           | `start` 防回头      | 所有组合的总和 |
+| **组合** | **叶子节点**（长度 = k）收集 | `start` + 长度限制  | 向右倾斜       |
+| **排列** | **叶子节点**（长度 = n）收集 | `used[]` 防重复选择 | 全对称         |
 
 ---
 
@@ -89,10 +89,10 @@ flowchart TD
 // subsets.ts
 /**
  * 子集 — 回溯法
- * 
+ *
  * 思路：每次递归时 track 都是当前子集，直接收集。
  *       用 start 参数控制只能往后选，不能往前回头。
- * 
+ *
  * 时间复杂度 O(2ⁿ × n)  空间复杂度 O(n)
  */
 function subsets(nums: number[]): number[][] {
@@ -105,9 +105,9 @@ function subsets(nums: number[]): number[][] {
 
     // 从 start 开始，避免重复
     for (let i = start; i < nums.length; i++) {
-      track.push(nums[i]);             // 做选择
-      backtrack(i + 1);                // 递归，只能往后选
-      track.pop();                     // 撤销选择
+      track.push(nums[i]); // 做选择
+      backtrack(i + 1); // 递归，只能往后选
+      track.pop(); // 撤销选择
     }
   }
 
@@ -116,7 +116,7 @@ function subsets(nums: number[]): number[][] {
 }
 
 // --- 测试 ---
-console.log("子集:", subsets([1, 2, 3]));
+console.log('子集:', subsets([1, 2, 3]));
 // [[], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3]]
 ```
 
@@ -143,9 +143,9 @@ subsets([1,2,3]) = subsets([1,2]) ∪ { [3], [1,3], [2,3], [1,2,3] }
 // combinations.ts
 /**
  * 组合 — 回溯法
- * 
+ *
  * 和子集的区别：子集收所有节点，组合只收长度 == k 的叶子节点
- * 
+ *
  * 时间复杂度 O(C(n,k) × k)  空间复杂度 O(k)
  */
 function combine(n: number, k: number): number[][] {
@@ -174,12 +174,12 @@ function combine(n: number, k: number): number[][] {
 }
 
 // --- 测试 ---
-console.log("组合:", combine(4, 2));
+console.log('组合:', combine(4, 2));
 // [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
 
 /**
  * 🌟 剪枝优化版本
- * 
+ *
  * 当剩余数字不够凑 k 个时，提前结束循环
  * 比如 n=5, k=3, 当前 track=[1]，还需要 2 个
  * 最多从 5-2+1 = 4 开始，即 i ≤ 4
@@ -221,11 +221,11 @@ function combineOptimized(n: number, k: number): number[][] {
 // permutations.ts
 /**
  * 全排列 — 回溯法
- * 
+ *
  * 和组合/子集的区别：
  *   - 组合用 start 控制顺序，防止回头
  *   - 排列用 used[] 标记已选，因为可以选之前的元素
- * 
+ *
  * 时间复杂度 O(n! × n)  空间复杂度 O(n)
  */
 function permute(nums: number[]): number[][] {
@@ -240,7 +240,7 @@ function permute(nums: number[]): number[][] {
     }
 
     for (let i = 0; i < nums.length; i++) {
-      if (used[i]) continue;  // 跳过已选
+      if (used[i]) continue; // 跳过已选
 
       used[i] = true;
       track.push(nums[i]);
@@ -255,7 +255,7 @@ function permute(nums: number[]): number[][] {
 }
 
 // --- 测试 ---
-console.log("排列:", permute([1, 2, 3]));
+console.log('排列:', permute([1, 2, 3]));
 // [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
 
@@ -265,51 +265,51 @@ console.log("排列:", permute([1, 2, 3]));
 
 > 三种问题用同一套回溯模板，**唯一区别**用红字标出：
 
-| 维度 | **子集** | **组合** | **排列** |
-|------|:-------:|:--------:|:--------:|
-| **收集时机** | 每个节点 | 叶子 (`length === k`) | 叶子 (`length === n`) |
-| **防重机制** | `start` 参数 | `start` 参数 | `used[]` 布尔数组 |
-| **递归参数** | `backtrack(i+1)` | `backtrack(i+1)` | `backtrack()` 不加参数 |
-| **选元素范围** | `i` 从 `start` 开始 | `i` 从 `start` 开始 | `i` 从 0 开始（跳过 used） |
-| **结果数量** | 2ⁿ | C(n, k) | n! |
-| **代码差异** | `result.push` 在开头 | 加 `if length === k` | `if used[i] continue` |
+| 维度           |       **子集**       |       **组合**        |          **排列**          |
+| -------------- | :------------------: | :-------------------: | :------------------------: |
+| **收集时机**   |       每个节点       | 叶子 (`length === k`) |   叶子 (`length === n`)    |
+| **防重机制**   |     `start` 参数     |     `start` 参数      |     `used[]` 布尔数组      |
+| **递归参数**   |   `backtrack(i+1)`   |   `backtrack(i+1)`    |   `backtrack()` 不加参数   |
+| **选元素范围** | `i` 从 `start` 开始  |  `i` 从 `start` 开始  | `i` 从 0 开始（跳过 used） |
+| **结果数量**   |          2ⁿ          |        C(n, k)        |             n!             |
+| **代码差异**   | `result.push` 在开头 | 加 `if length === k`  |   `if used[i] continue`    |
 
 ```typescript
 // 三合一模板对比
-function threeInOne(nums: number[], type: "subset" | "combine", k?: number): number[][] {
+function threeInOne(nums: number[], type: 'subset' | 'combine', k?: number): number[][] {
   const result: number[][] = [];
   const track: number[] = [];
   const used: boolean[] = new Array(nums.length).fill(false);
 
   function backtrack(start: number): void {
     // 子集：每个节点都收集
-    if (type === "subset") result.push([...track]);
+    if (type === 'subset') result.push([...track]);
 
     // 组合/排列：叶子节点收集
-    if (type === "combine" && track.length === k) {
+    if (type === 'combine' && track.length === k) {
       result.push([...track]);
       return;
     }
-    if (type === "permute" && track.length === nums.length) {
+    if (type === 'permute' && track.length === nums.length) {
       result.push([...track]);
       return;
     }
 
     // 遍历范围不同！
-    const begin = type === "permute" ? 0 : start;
-    const end = type === "permute" ? nums.length : nums.length;
+    const begin = type === 'permute' ? 0 : start;
+    const end = type === 'permute' ? nums.length : nums.length;
 
     for (let i = begin; i < end; i++) {
       // 排列用 used 跳过，组合/子集用 start 跳过
-      if (type === "permute" && used[i]) continue;
+      if (type === 'permute' && used[i]) continue;
 
       track.push(nums[i]);
-      if (type === "permute") {
+      if (type === 'permute') {
         used[i] = true;
-        backtrack(start);      // 排列：不增加 start
+        backtrack(start); // 排列：不增加 start
         used[i] = false;
       } else {
-        backtrack(i + 1);      // 组合/子集：增加 start
+        backtrack(i + 1); // 组合/子集：增加 start
       }
       track.pop();
     }
@@ -331,7 +331,7 @@ flowchart TD
     subgraph 不去重 [不去的后果]
         A["nums = [1,2,2]"] --> B["❌ 重复子集: [1,2] 出现两次"]
     end
-    
+
     subgraph 去重 [去重三件套]
         C["① 先排序"] --> D["② used[] 标记"]
         D --> E["③ 剪枝: i>0 && nums[i]===nums[i-1] && !used[i-1]"]
@@ -342,11 +342,11 @@ flowchart TD
 // subsets-with-duplicates.ts
 /**
  * 子集 II — 有重复元素的子集
- * 
+ *
  * 去重口诀：排序 + used + 同层跳过
  */
 function subsetsWithDup(nums: number[]): number[][] {
-  nums.sort((a, b) => a - b);  // ① 排序让相同元素相邻
+  nums.sort((a, b) => a - b); // ① 排序让相同元素相邻
   const result: number[][] = [];
   const track: number[] = [];
 
@@ -368,7 +368,7 @@ function subsetsWithDup(nums: number[]): number[][] {
 }
 
 // --- 测试 ---
-console.log("子集去重:", subsetsWithDup([1, 2, 2]));
+console.log('子集去重:', subsetsWithDup([1, 2, 2]));
 // [[], [1], [1,2], [1,2,2], [2], [2,2]]
 // 注意没有重复的 [1,2]
 
@@ -409,10 +409,10 @@ function permuteUnique(nums: number[]): number[][] {
 
 ### 去重口诀
 
-| 问题类型 | 去重写法 | 说明 |
-|---------|---------|------|
-| **子集/组合** 有重复 | `if (i > start && nums[i] === nums[i-1]) continue` | 用 `start` 判断同层 |
-| **排列** 有重复 | `if (i > 0 && nums[i] === nums[i-1] && !used[i-1]) continue` | 用 `!used[i-1]` 判断同层 |
+| 问题类型             | 去重写法                                                     | 说明                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------ |
+| **子集/组合** 有重复 | `if (i > start && nums[i] === nums[i-1]) continue`           | 用 `start` 判断同层      |
+| **排列** 有重复      | `if (i > 0 && nums[i] === nums[i-1] && !used[i-1]) continue` | 用 `!used[i-1]` 判断同层 |
 
 ---
 
@@ -426,7 +426,7 @@ function permuteUnique(nums: number[]): number[][] {
 // combination-sum.ts
 /**
  * 组合总和 — 元素可重复使用
- * 
+ *
  * 和普通组合的两个关键区别：
  *   1. 递归时传 i 而不是 i+1（允许重复使用当前元素）
  *   2. 剪枝：sum > target 时提前返回
@@ -458,11 +458,12 @@ function combinationSum(candidates: number[], target: number): number[][] {
 }
 
 // --- 测试 ---
-console.log("组合总和:", combinationSum([2, 3, 6, 7], 7));
+console.log('组合总和:', combinationSum([2, 3, 6, 7], 7));
 // [[2,2,3], [7]]
 ```
 
 > **💡 `backtrack(i)` vs `backtrack(i+1)` 的区别：**
+>
 > - `backtrack(i+1)` — **组合**：每个元素只能用一次
 > - `backtrack(i)` — **组合总和**：每个元素可以重复使用无限次
 
@@ -470,13 +471,13 @@ console.log("组合总和:", combinationSum([2, 3, 6, 7], 7));
 
 ## 📊 复杂度速查表
 
-| 问题 | 时间复杂度 | 空间复杂度 | 关键特征 |
-|------|:--------:|:--------:|----------|
-| 子集 (n 个元素) | O(2ⁿ × n) | O(n) | 每个节点都收集 |
-| 组合 C(n, k) | O(C(n,k) × k) | O(k) | 剪枝：`i ≤ n-(k-len)+1` |
-| 排列 (n 个元素) | O(n! × n) | O(n) | `used[]` 防重复 |
-| 子集 II (有重复) | O(2ⁿ × n) | O(n) | 排序 + 同层去重 |
-| 组合总和 | O(n^(t/m+1)) | O(t/m) | 可重复使用，target 剪枝 |
+| 问题             |  时间复杂度   | 空间复杂度 | 关键特征                |
+| ---------------- | :-----------: | :--------: | ----------------------- |
+| 子集 (n 个元素)  |   O(2ⁿ × n)   |    O(n)    | 每个节点都收集          |
+| 组合 C(n, k)     | O(C(n,k) × k) |    O(k)    | 剪枝：`i ≤ n-(k-len)+1` |
+| 排列 (n 个元素)  |   O(n! × n)   |    O(n)    | `used[]` 防重复         |
+| 子集 II (有重复) |   O(2ⁿ × n)   |    O(n)    | 排序 + 同层去重         |
+| 组合总和         | O(n^(t/m+1))  |   O(t/m)   | 可重复使用，target 剪枝 |
 
 ---
 
@@ -484,12 +485,12 @@ console.log("组合总和:", combinationSum([2, 3, 6, 7], 7));
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| ⭐ | 理解三者的代码差异 | 78 子集、77 组合、46 排列 | 对比它们的回溯树 |
-| ⭐⭐ | 去重 | 90 子集 II、47 排列 II | 排序 + 同层剪枝 |
-| ⭐⭐ | 变种 | 39 组合总和、40 组合总和 II | 可重复 / 不可重复 |
-| ⭐⭐⭐ | 综合 | 216 组合总和 III | 多约束剪枝 |
+| 阶段   | 目标               | 题目                        | 关键点            |
+| ------ | ------------------ | --------------------------- | ----------------- |
+| ⭐     | 理解三者的代码差异 | 78 子集、77 组合、46 排列   | 对比它们的回溯树  |
+| ⭐⭐   | 去重               | 90 子集 II、47 排列 II      | 排序 + 同层剪枝   |
+| ⭐⭐   | 变种               | 39 组合总和、40 组合总和 II | 可重复 / 不可重复 |
+| ⭐⭐⭐ | 综合               | 216 组合总和 III            | 多约束剪枝        |
 
 ### 自查清单
 
@@ -510,19 +511,13 @@ console.log("组合总和:", combinationSum([2, 3, 6, 7], 7));
 
 ```typescript
 // 子集：______  收集时机：______
-function subsets(nums: number[]): number[][] {
-
-}
+function subsets(nums: number[]): number[][] {}
 
 // 组合：______  收集时机：______
-function combine(n: number, k: number): number[][] {
-
-}
+function combine(n: number, k: number): number[][] {}
 
 // 排列：______  收集时机：______
-function permute(nums: number[]): number[][] {
-
-}
+function permute(nums: number[]): number[][] {}
 ```
 
 ---

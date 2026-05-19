@@ -8,14 +8,14 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | k 值 | 特殊条件 |
-|---|------|------|:----:|:----:|---------|
-| 1 | [121](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/) | 买卖股票的最佳时机 | 🟢 | k=1 | 无 |
-| 2 | [122](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/) | 买卖股票的最佳时机 II | 🟡 | k=+∞ | 无 |
-| 3 | [123](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/) | 买卖股票的最佳时机 III | 🔴 | k=2 | 无 |
-| 4 | [188](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/) | 买卖股票的最佳时机 IV | 🔴 | k=任意 | 无 |
-| 5 | [309](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | 最佳买卖股票时机含冷冻期 | 🟡 | k=+∞ | 卖出后冻结 1 天 |
-| 6 | [714](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | 买卖股票的最佳时机含手续费 | 🟡 | k=+∞ | 每次交易扣费 |
+| #   | 题号                                                                                      | 题目                       | 难度 |  k 值  | 特殊条件        |
+| --- | ----------------------------------------------------------------------------------------- | -------------------------- | :--: | :----: | --------------- |
+| 1   | [121](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/)                      | 买卖股票的最佳时机         |  🟢  |  k=1   | 无              |
+| 2   | [122](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)                   | 买卖股票的最佳时机 II      |  🟡  |  k=+∞  | 无              |
+| 3   | [123](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/)                  | 买卖股票的最佳时机 III     |  🔴  |  k=2   | 无              |
+| 4   | [188](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/)                   | 买卖股票的最佳时机 IV      |  🔴  | k=任意 | 无              |
+| 5   | [309](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/)        | 最佳买卖股票时机含冷冻期   |  🟡  |  k=+∞  | 卖出后冻结 1 天 |
+| 6   | [714](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | 买卖股票的最佳时机含手续费 |  🟡  |  k=+∞  | 每次交易扣费    |
 
 ---
 
@@ -45,7 +45,7 @@ flowchart LR
         S1["第 i 天"] --> S2["最多交易 k 次"]
         S2 --> S3["持股状态 s: <br/>0=未持股, 1=持股"]
     end
-    
+
     subgraph 选择 [每天三种选择]
         BUY["买入 🟢<br/>(消耗一次交易)"] --> HOLD["持股"]
         SELL["卖出 🔴<br/>(获得利润)"] --> CASH["空仓"]
@@ -72,7 +72,7 @@ flowchart LR
     CASH -->|buy 🟢| HOLD_NEXT["dp[i+1][k-1][1]"]
     HOLD["持仓<br/>dp[i][k][1]"] -->|rest| HOLD_NEXT2["dp[i+1][k][1]"]
     HOLD -->|sell 🔴| CASH_NEXT2["dp[i+1][k][0] + prices[i]"]
-    
+
     style BUY fill:#bfb,stroke:#333
     style SELL fill:#fbb,stroke:#333
 ```
@@ -104,7 +104,7 @@ dp[i][0][1]  = -Infinity  ← 不允许交易，不可能持仓
 // stock-template.ts
 /**
  * 股票买卖 — 通用 DP 框架
- * 
+ *
  * @param kMax  最大交易次数（+Infinity 表示无限）
  * @param prices 每日价格
  * @param cooldown 冷冻期天数（默认 0）
@@ -142,7 +142,7 @@ function maxProfitGeneral(
       // 状态转移
       dp[i][k][0] = Math.max(
         dp[i - 1][k][0],
-        dp[i - 1][k][1] + prices[i] - fee  // 卖出（扣手续费）
+        dp[i - 1][k][1] + prices[i] - fee // 卖出（扣手续费）
       );
 
       // 买入时需要考虑冷冻期：如果 i-1 天是冷冻期，不能从 dp[i-2] 转移
@@ -161,30 +161,20 @@ function maxProfitGeneral(
  * 无限次交易（k = +∞）的简化版本
  * k 不在状态中，去掉 k 维度
  */
-function maxProfitUnlimited(
-  prices: number[],
-  cooldown: number = 0,
-  fee: number = 0
-): number {
+function maxProfitUnlimited(prices: number[], cooldown: number = 0, fee: number = 0): number {
   const n = prices.length;
   if (n === 0) return 0;
 
-  let dp_i_0 = 0;          // dp[i][0]
-  let dp_i_1 = -Infinity;  // dp[i][1]
-  let dp_prev_0 = 0;       // dp[i-1][0]（用于冷冻期）
+  let dp_i_0 = 0; // dp[i][0]
+  let dp_i_1 = -Infinity; // dp[i][1]
+  let dp_prev_0 = 0; // dp[i-1][0]（用于冷冻期）
 
   for (let i = 0; i < n; i++) {
     const temp = dp_i_0;
-    
-    dp_i_0 = Math.max(
-      dp_i_0,
-      dp_i_1 + prices[i] - fee
-    );
-    
-    dp_i_1 = Math.max(
-      dp_i_1,
-      (cooldown > 0 ? dp_prev_0 : dp_i_0) - prices[i]
-    );
+
+    dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i] - fee);
+
+    dp_i_1 = Math.max(dp_i_1, (cooldown > 0 ? dp_prev_0 : dp_i_0) - prices[i]);
 
     if (cooldown > 0) dp_prev_0 = temp;
   }
@@ -204,10 +194,10 @@ function maxProfitUnlimited(
 // stock-1.ts
 /**
  * k=1 — 只能买卖一次
- * 
+ *
  * 其实就是找 max(prices[j] - prices[i])，其中 j > i
  * 可以简化为：记录历史最低点，每天计算"如果今天卖能赚多少"
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(1)
  */
 function maxProfitOnce(prices: number[]): number {
@@ -215,7 +205,7 @@ function maxProfitOnce(prices: number[]): number {
   let maxProfit = 0;
 
   for (const price of prices) {
-    minPrice = Math.min(minPrice, price);     // 历史最低买入价
+    minPrice = Math.min(minPrice, price); // 历史最低买入价
     maxProfit = Math.max(maxProfit, price - minPrice); // 今天卖能赚多少？
   }
 
@@ -239,7 +229,7 @@ function maxProfitOnceDP(prices: number[]): number {
 }
 
 // --- 测试 ---
-console.log("一次交易:", maxProfitOnce([7, 1, 5, 3, 6, 4])); // 5（1买6卖）
+console.log('一次交易:', maxProfitOnce([7, 1, 5, 3, 6, 4])); // 5（1买6卖）
 ```
 
 ---
@@ -253,10 +243,10 @@ console.log("一次交易:", maxProfitOnce([7, 1, 5, 3, 6, 4])); // 5（1买6卖
 // stock-unlimited.ts
 /**
  * k=+∞ — 无限次交易
- * 
+ *
  * 因为 k 和 k-1 在无穷大时没有区别，去掉 k 维度
  * 等价于：所有上涨日都买卖，所有下跌日都空仓
- * 
+ *
  * 贪心思路：只要今天比昨天高，就昨天买今天卖
  * 时间复杂度 O(n)  空间复杂度 O(1)
  */
@@ -285,7 +275,7 @@ function maxProfitUnlimitedDP(prices: number[]): number {
 }
 
 // --- 测试 ---
-console.log("无限次:", maxProfitUnlimitedSimple([7, 1, 5, 3, 6, 4])); // 7
+console.log('无限次:', maxProfitUnlimitedSimple([7, 1, 5, 3, 6, 4])); // 7
 // 解释: 1买5卖=4, 3买6卖=3, 总=7
 ```
 
@@ -299,18 +289,18 @@ console.log("无限次:", maxProfitUnlimitedSimple([7, 1, 5, 3, 6, 4])); // 7
 // stock-k2.ts
 /**
  * k=2 — 最多两次交易
- * 
+ *
  * k 比较小，手动展开所有状态
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(1)
  */
 function maxProfitTwo(prices: number[]): number {
   // 第一次交易
-  let dp1_0 = 0;          // 第一次交易后空仓
-  let dp1_1 = -Infinity;  // 第一次交易后持仓
+  let dp1_0 = 0; // 第一次交易后空仓
+  let dp1_1 = -Infinity; // 第一次交易后持仓
   // 第二次交易
-  let dp2_0 = 0;          // 第二次交易后空仓
-  let dp2_1 = -Infinity;  // 第二次交易后持仓
+  let dp2_0 = 0; // 第二次交易后空仓
+  let dp2_1 = -Infinity; // 第二次交易后持仓
 
   for (const price of prices) {
     // 第二次交易空仓 = max(之前空仓, 第二次持仓 + 今天卖出)
@@ -327,7 +317,7 @@ function maxProfitTwo(prices: number[]): number {
 }
 
 // --- 测试 ---
-console.log("两次交易:", maxProfitTwo([3, 3, 5, 0, 0, 3, 1, 4])); // 6
+console.log('两次交易:', maxProfitTwo([3, 3, 5, 0, 0, 3, 1, 4])); // 6
 // 解释: 3买5卖=2, 0买4卖=4, 总=6
 ```
 
@@ -342,15 +332,15 @@ console.log("两次交易:", maxProfitTwo([3, 3, 5, 0, 0, 3, 1, 4])); // 6
 // stock-with-cooldown.ts
 /**
  * 含冷冻期 — 卖出后隔一天才能买
- * 
+ *
  * 区别：买入时要从 i-2 的状态转移（跳过冷冻期的 i-1 天）
- * 
+ *
  * 时间复杂度 O(n)  空间 O(1)
  */
 function maxProfitWithCooldown(prices: number[]): number {
-  let dp_i_0 = 0;          // dp[i][0]
-  let dp_i_1 = -Infinity;  // dp[i][1]
-  let dp_prev_0 = 0;       // dp[i-1][0]（冷冻期专用）
+  let dp_i_0 = 0; // dp[i][0]
+  let dp_i_1 = -Infinity; // dp[i][1]
+  let dp_prev_0 = 0; // dp[i-1][0]（冷冻期专用）
 
   for (let i = 0; i < prices.length; i++) {
     const temp = dp_i_0;
@@ -369,7 +359,7 @@ function maxProfitWithCooldown(prices: number[]): number {
 }
 
 // --- 测试 ---
-console.log("冷冻期:", maxProfitWithCooldown([1, 2, 3, 0, 2])); // 3
+console.log('冷冻期:', maxProfitWithCooldown([1, 2, 3, 0, 2])); // 3
 // 解释: 1买2卖=1, 0买2卖=2, 总=3（注意中间有冷冻期）
 ```
 
@@ -383,9 +373,9 @@ console.log("冷冻期:", maxProfitWithCooldown([1, 2, 3, 0, 2])); // 3
 // stock-with-fee.ts
 /**
  * 含手续费 — 每次交易扣 fee
- * 
+ *
  * 区别：卖出时扣掉手续费
- * 
+ *
  * 时间复杂度 O(n)  空间 O(1)
  */
 function maxProfitWithFee(prices: number[], fee: number): number {
@@ -401,7 +391,7 @@ function maxProfitWithFee(prices: number[], fee: number): number {
 }
 
 // --- 测试 ---
-console.log("手续费:", maxProfitWithFee([1, 3, 2, 8, 4, 9], 2)); // 8
+console.log('手续费:', maxProfitWithFee([1, 3, 2, 8, 4, 9], 2)); // 8
 // 解释: 1买8卖-2=5, 4买9卖-2=3, 总=8
 ```
 
@@ -409,14 +399,14 @@ console.log("手续费:", maxProfitWithFee([1, 3, 2, 8, 4, 9], 2)); // 8
 
 ## 📊 复杂度速查表
 
-| 问题 | k | 时间复杂度 | 空间复杂度 | 和基础版的区别 |
-|------|:---:|:--------:|:--------:|--------------|
-| 一次交易 | 1 | O(n) | O(1) | 记录历史最低点 |
-| 无限次交易 | +∞ | O(n) | O(1) | k 维度消失 |
-| 两次交易 | 2 | O(n) | O(1) | 手动展开 k=1,2 |
-| 任意次交易 | K | O(nK) | O(K) | 三维 DP |
-| 冷冻期 | +∞ | O(n) | O(1) | 买入用 dp[i-2] |
-| 手续费 | +∞ | O(n) | O(1) | 卖出扣 fee |
+| 问题       |  k  | 时间复杂度 | 空间复杂度 | 和基础版的区别 |
+| ---------- | :-: | :--------: | :--------: | -------------- |
+| 一次交易   |  1  |    O(n)    |    O(1)    | 记录历史最低点 |
+| 无限次交易 | +∞  |    O(n)    |    O(1)    | k 维度消失     |
+| 两次交易   |  2  |    O(n)    |    O(1)    | 手动展开 k=1,2 |
+| 任意次交易 |  K  |   O(nK)    |    O(K)    | 三维 DP        |
+| 冷冻期     | +∞  |    O(n)    |    O(1)    | 买入用 dp[i-2] |
+| 手续费     | +∞  |    O(n)    |    O(1)    | 卖出扣 fee     |
 
 ---
 
@@ -424,12 +414,12 @@ console.log("手续费:", maxProfitWithFee([1, 3, 2, 8, 4, 9], 2)); // 8
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 关键点 |
-|------|------|------|--------|
-| ⭐ | 理解状态机 | 121 一次交易、122 无限次 | 两种维度简化 |
-| ⭐⭐ | 展开 k | 123 两次交易 | 手动展开 k 个状态 |
-| ⭐⭐⭐ | 完整 DP | 188 任意次交易 | 完整三维 dp |
-| ⭐⭐⭐ | 变种 | 309 冷冻期、714 手续费 | 微调转移公式 |
+| 阶段   | 目标       | 题目                     | 关键点            |
+| ------ | ---------- | ------------------------ | ----------------- |
+| ⭐     | 理解状态机 | 121 一次交易、122 无限次 | 两种维度简化      |
+| ⭐⭐   | 展开 k     | 123 两次交易             | 手动展开 k 个状态 |
+| ⭐⭐⭐ | 完整 DP    | 188 任意次交易           | 完整三维 dp       |
+| ⭐⭐⭐ | 变种       | 309 冷冻期、714 手续费   | 微调转移公式      |
 
 ### 自查清单
 
@@ -450,11 +440,7 @@ console.log("手续费:", maxProfitWithFee([1, 3, 2, 8, 4, 9], 2)); // 8
 
 ```typescript
 // ✍️ 你的默写
-function maxProfitUnlimited(prices: number[]): number {
-
-
-
-}
+function maxProfitUnlimited(prices: number[]): number {}
 ```
 
 > 一句话解释为什么 k=+∞ 时 k 维度可以去掉？

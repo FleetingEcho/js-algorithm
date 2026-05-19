@@ -8,12 +8,12 @@
 
 ## 📋 模式速查
 
-| 模式 | 指针移动方式 | 典型场景 | 时间复杂度 |
-|------|------------|---------|:--------:|
-| **快慢指针** | 一个走两步，一个走一步 | 判环、找中点、去重 | O(n) |
-| **左右夹逼** | left→, ←right 向中间靠拢 | 有序数组两数之和、反转 | O(n) |
-| **归并双指针** | 各遍历一个有序序列 | 合并有序数组/链表 | O(n+m) |
-| **三指针分区** | low/mid/high 三个指针 | 荷兰国旗、按值分区 | O(n) |
+| 模式           | 指针移动方式             | 典型场景               | 时间复杂度 |
+| -------------- | ------------------------ | ---------------------- | :--------: |
+| **快慢指针**   | 一个走两步，一个走一步   | 判环、找中点、去重     |    O(n)    |
+| **左右夹逼**   | left→, ←right 向中间靠拢 | 有序数组两数之和、反转 |    O(n)    |
+| **归并双指针** | 各遍历一个有序序列       | 合并有序数组/链表      |   O(n+m)   |
+| **三指针分区** | low/mid/high 三个指针    | 荷兰国旗、按值分区     |    O(n)    |
 
 ---
 
@@ -23,46 +23,46 @@
 
 ### 快慢指针
 
-| # | 题号 | 题目 | 难度 | 核心思路 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [141](https://leetcode.cn/problems/linked-list-cycle/) | 环形链表 | 🟢 | 快慢指针相遇判环 | ⭐ |
-| 2 | [142](https://leetcode.cn/problems/linked-list-cycle-ii/) | 环形链表 II | 🟡 | 相遇后从头同步走找入口 | ⭐⭐ |
-| 3 | [876](https://leetcode.cn/problems/middle-of-the-linked-list/) | 链表中间结点 | 🟢 | 快指针到末尾时慢指针在中点 | ⭐ |
-| 4 | [160](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | 相交链表 | 🟢 | 双指针各走 A+B | ⭐ |
-| 5 | [234](https://leetcode.cn/problems/palindrome-linked-list/) | 回文链表 | 🟢 | 快慢找中点 + 反转后半 | ⭐ |
-| 6 | [328](https://leetcode.cn/problems/odd-even-linked-list/) | 奇偶链表 | 🟡 | 奇偶双指针分离再合并 | ⭐⭐ |
-| 7 | [287](https://leetcode.cn/problems/find-the-duplicate-number/) | 寻找重复数 | 🟡 | 值域映射为链表，快慢指针找环入口 | ⭐⭐⭐ |
-| 8 | [26](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/) | 删除有序数组中的重复项 | 🟢 | 快指针读，慢指针写 | ⭐ |
-| 6 | [80](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/) | 删除有序数组中的重复项 II | 🟡 | 允许最多两个重复 | ⭐⭐ |
-| 7 | [283](https://leetcode.cn/problems/move-zeroes/) | 移动零 | 🟢 | 快慢指针非零前移，末尾补零 | ⭐ |
+| #   | 题号                                                                       | 题目                      | 难度 | 核心思路                         | 推荐指数 |
+| --- | -------------------------------------------------------------------------- | ------------------------- | :--: | -------------------------------- | :------: |
+| 1   | [141](https://leetcode.cn/problems/linked-list-cycle/)                     | 环形链表                  |  🟢  | 快慢指针相遇判环                 |    ⭐    |
+| 2   | [142](https://leetcode.cn/problems/linked-list-cycle-ii/)                  | 环形链表 II               |  🟡  | 相遇后从头同步走找入口           |   ⭐⭐   |
+| 3   | [876](https://leetcode.cn/problems/middle-of-the-linked-list/)             | 链表中间结点              |  🟢  | 快指针到末尾时慢指针在中点       |    ⭐    |
+| 4   | [160](https://leetcode.cn/problems/intersection-of-two-linked-lists/)      | 相交链表                  |  🟢  | 双指针各走 A+B                   |    ⭐    |
+| 5   | [234](https://leetcode.cn/problems/palindrome-linked-list/)                | 回文链表                  |  🟢  | 快慢找中点 + 反转后半            |    ⭐    |
+| 6   | [328](https://leetcode.cn/problems/odd-even-linked-list/)                  | 奇偶链表                  |  🟡  | 奇偶双指针分离再合并             |   ⭐⭐   |
+| 7   | [287](https://leetcode.cn/problems/find-the-duplicate-number/)             | 寻找重复数                |  🟡  | 值域映射为链表，快慢指针找环入口 |  ⭐⭐⭐  |
+| 8   | [26](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/)    | 删除有序数组中的重复项    |  🟢  | 快指针读，慢指针写               |    ⭐    |
+| 6   | [80](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/) | 删除有序数组中的重复项 II |  🟡  | 允许最多两个重复                 |   ⭐⭐   |
+| 7   | [283](https://leetcode.cn/problems/move-zeroes/)                           | 移动零                    |  🟢  | 快慢指针非零前移，末尾补零       |    ⭐    |
 
 ### 左右指针
 
-| # | 题号 | 题目 | 难度 | 核心思路 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 8 | [167](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/) | 两数之和 II | 🟢 | 有序数组，左右夹逼 | ⭐ |
-| 9 | [125](https://leetcode.cn/problems/valid-palindrome/) | 验证回文串 | 🟢 | 左右指针忽略非字母数字 | ⭐ |
-| 10 | [345](https://leetcode.cn/problems/reverse-vowels-of-a-string/) | 反转字符串中的元音字母 | 🟢 | 左右指针找元音互换 | ⭐ |
-| 11 | [680](https://leetcode.cn/problems/valid-palindrome-ii/) | 验证回文串 II | 🟢 | 最多跳过一个字符 | ⭐⭐ |
-| 12 | [5](https://leetcode.cn/problems/longest-palindromic-substring/) | 最长回文子串 | 🟡 | 中心扩展双指针 | ⭐⭐ |
-| 13 | [11](https://leetcode.cn/problems/container-with-most-water/) | 盛最多水的容器 | 🟡 | 左右指针，短板决定高度 | ⭐⭐ |
-| 14 | [42](https://leetcode.cn/problems/trapping-rain-water/) | 接雨水 | 🔴 | 左右最大高度夹逼 | ⭐⭐⭐ |
-| 15 | [845](https://leetcode.cn/problems/longest-mountain-in-array/) | 数组中的最长山脉 | 🟡 | 双指针向左右扩展 | ⭐⭐ |
+| #   | 题号                                                                  | 题目                   | 难度 | 核心思路               | 推荐指数 |
+| --- | --------------------------------------------------------------------- | ---------------------- | :--: | ---------------------- | :------: |
+| 8   | [167](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/) | 两数之和 II            |  🟢  | 有序数组，左右夹逼     |    ⭐    |
+| 9   | [125](https://leetcode.cn/problems/valid-palindrome/)                 | 验证回文串             |  🟢  | 左右指针忽略非字母数字 |    ⭐    |
+| 10  | [345](https://leetcode.cn/problems/reverse-vowels-of-a-string/)       | 反转字符串中的元音字母 |  🟢  | 左右指针找元音互换     |    ⭐    |
+| 11  | [680](https://leetcode.cn/problems/valid-palindrome-ii/)              | 验证回文串 II          |  🟢  | 最多跳过一个字符       |   ⭐⭐   |
+| 12  | [5](https://leetcode.cn/problems/longest-palindromic-substring/)      | 最长回文子串           |  🟡  | 中心扩展双指针         |   ⭐⭐   |
+| 13  | [11](https://leetcode.cn/problems/container-with-most-water/)         | 盛最多水的容器         |  🟡  | 左右指针，短板决定高度 |   ⭐⭐   |
+| 14  | [42](https://leetcode.cn/problems/trapping-rain-water/)               | 接雨水                 |  🔴  | 左右最大高度夹逼       |  ⭐⭐⭐  |
+| 15  | [845](https://leetcode.cn/problems/longest-mountain-in-array/)        | 数组中的最长山脉       |  🟡  | 双指针向左右扩展       |   ⭐⭐   |
 
 ### 归并双指针
 
-| # | 题号 | 题目 | 难度 | 核心思路 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 14 | [88](https://leetcode.cn/problems/merge-sorted-array/) | 合并两个有序数组 | 🟢 | 从后往前双指针 | ⭐ |
-| 15 | [21](https://leetcode.cn/problems/merge-two-sorted-lists/) | 合并两个有序链表 | 🟢 | dummy 头 + 双指针 | ⭐ |
-| 16 | [349](https://leetcode.cn/problems/intersection-of-two-arrays/) | 两个数组的交集 | 🟢 | 排序 + 双指针 / 哈希集 | ⭐ |
+| #   | 题号                                                            | 题目             | 难度 | 核心思路               | 推荐指数 |
+| --- | --------------------------------------------------------------- | ---------------- | :--: | ---------------------- | :------: |
+| 14  | [88](https://leetcode.cn/problems/merge-sorted-array/)          | 合并两个有序数组 |  🟢  | 从后往前双指针         |    ⭐    |
+| 15  | [21](https://leetcode.cn/problems/merge-two-sorted-lists/)      | 合并两个有序链表 |  🟢  | dummy 头 + 双指针      |    ⭐    |
+| 16  | [349](https://leetcode.cn/problems/intersection-of-two-arrays/) | 两个数组的交集   |  🟢  | 排序 + 双指针 / 哈希集 |    ⭐    |
 
 ### 三指针分区
 
-| # | 题号 | 题目 | 难度 | 核心思路 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 17 | [75](https://leetcode.cn/problems/sort-colors/) | 颜色分类 | 🟡 | 三指针 low/mid/high 荷兰国旗 | ⭐⭐ |
-| 18 | [86](https://leetcode.cn/problems/partition-list/) | 分隔链表 | 🟡 | 双链表分别收集，再合并 | ⭐⭐ |
+| #   | 题号                                               | 题目     | 难度 | 核心思路                     | 推荐指数 |
+| --- | -------------------------------------------------- | -------- | :--: | ---------------------------- | :------: |
+| 17  | [75](https://leetcode.cn/problems/sort-colors/)    | 颜色分类 |  🟡  | 三指针 low/mid/high 荷兰国旗 |   ⭐⭐   |
+| 18  | [86](https://leetcode.cn/problems/partition-list/) | 分隔链表 |  🟡  | 双链表分别收集，再合并       |   ⭐⭐   |
 
 ---
 
@@ -124,10 +124,10 @@ class ListNode<T> {
 
 /**
  * 141. 环形链表 — 快慢指针判环
- * 
+ *
  * 思路：快指针每次两步，慢指针每次一步
  *       如果相遇 → 有环；快指针到末尾 → 无环
- * 
+ *
  * 为什么一定相遇？ 进入环后，快指针每次比慢指针多一步，
  * 相对速度 1 步，一定会追上。
  */
@@ -136,8 +136,8 @@ function hasCycle<T>(head: ListNode<T> | null): boolean {
   let fast = head;
 
   while (fast !== null && fast.next !== null) {
-    slow = slow!.next;       // 一步
-    fast = fast.next.next;   // 两步
+    slow = slow!.next; // 一步
+    fast = fast.next.next; // 两步
     if (slow === fast) return true; // 相遇 → 有环
   }
 
@@ -146,10 +146,10 @@ function hasCycle<T>(head: ListNode<T> | null): boolean {
 
 /**
  * 142. 环形链表 II — 找环入口
- * 
+ *
  * 思路：相遇后，让一个指针从头开始，两个指针同步走
  *       再次相遇的点就是环入口
- * 
+ *
  * 数学证明：设 head 到入口 = a，入口到相遇点 = b，环长 = L
  *           slow 走了 a+b，fast 走了 a+b+kL
  *           2(a+b) = a+b+kL → a = kL - b（即从头到入口 = 相遇点绕圈到入口）
@@ -179,7 +179,7 @@ function detectCycle<T>(head: ListNode<T> | null): ListNode<T> | null {
 
 /**
  * 876. 链表的中间结点
- * 
+ *
  * 快指针到末尾时，慢指针正好在中点
  */
 function middleNode<T>(head: ListNode<T> | null): ListNode<T> | null {
@@ -201,7 +201,7 @@ function middleNode<T>(head: ListNode<T> | null): ListNode<T> | null {
 // remove-duplicates.ts
 /**
  * 26. 删除有序数组中的重复项
- * 
+ *
  * 快慢指针：快指针遍历，慢指针写不重复的元素
  * 保证 [0..slow] 都是不重复的
  */
@@ -222,7 +222,7 @@ function removeDuplicates(nums: number[]): number {
 
 /**
  * 80. 删除有序数组中的重复项 II — 最多保留两个
- * 
+ *
  * 扩展：比较 nums[fast] 和 nums[slow-1]（隔一个比）
  */
 function removeDuplicatesII(nums: number[]): number {
@@ -251,7 +251,7 @@ console.log(removeDuplicatesII([1, 1, 1, 2, 2, 3])); // 5
 // move-zeroes.ts
 /**
  * 283. 移动零
- * 
+ *
  * 快慢指针：非零往前移，最后补零
  */
 function moveZeroes(nums: number[]): void {
@@ -296,7 +296,7 @@ flowchart LR
 // two-pointers-left-right.ts
 /**
  * 167. 两数之和 II — 有序数组左右夹逼
- * 
+ *
  * 思路：left=0, right=n-1
  *       sum > target → right--（和太大了）
  *       sum < target → left++（和太小了）
@@ -321,7 +321,7 @@ function twoSumSorted(numbers: number[], target: number): number[] {
 
 /**
  * 125. 验证回文串 — 左右指针
- * 
+ *
  * 忽略非字母数字，统一小写
  */
 function isPalindrome(s: string): boolean {
@@ -348,7 +348,7 @@ function isAlphanumeric(c: string): boolean {
 
 /**
  * 680. 验证回文串 II — 最多删一个字符
- * 
+ *
  * 思路：遇到不匹配时，尝试跳过左边或跳过右边
  */
 function validPalindrome(s: string): boolean {
@@ -358,8 +358,7 @@ function validPalindrome(s: string): boolean {
   while (left < right) {
     if (s[left] !== s[right]) {
       // 尝试跳过 left 或跳过 right
-      return isSubPalindrome(s, left + 1, right) ||
-             isSubPalindrome(s, left, right - 1);
+      return isSubPalindrome(s, left + 1, right) || isSubPalindrome(s, left, right - 1);
     }
     left++;
     right--;
@@ -379,7 +378,7 @@ function isSubPalindrome(s: string, left: number, right: number): boolean {
 
 /**
  * 11. 盛最多水的容器
- * 
+ *
  * 思路：左右指针，面积 = (r-l) × min(height[left], height[right])
  *       每次移动较短的那一边（因为移动长边面积只会变小）
  */
@@ -405,8 +404,8 @@ function maxArea(height: number[]): number {
 
 // --- 测试 ---
 console.log(twoSumSorted([2, 7, 11, 15], 9)); // [1, 2]
-console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
-console.log(validPalindrome("abca")); // true（删除 'c'）
+console.log(isPalindrome('A man, a plan, a canal: Panama')); // true
+console.log(validPalindrome('abca')); // true（删除 'c'）
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])); // 49
 ```
 
@@ -422,13 +421,13 @@ console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])); // 49
 // merge-two-sorted.ts
 /**
  * 88. 合并两个有序数组 — 从后往前
- * 
+ *
  * 思路：从后往前放最大的，避免覆盖 nums1 的原有元素
  */
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
-  let p1 = m - 1;     // nums1 的最后一个有效元素
-  let p2 = n - 1;     // nums2 的最后一个元素
-  let p = m + n - 1;  // 合并后的最后一个位置
+  let p1 = m - 1; // nums1 的最后一个有效元素
+  let p2 = n - 1; // nums2 的最后一个元素
+  let p = m + n - 1; // 合并后的最后一个位置
 
   while (p2 >= 0) {
     if (p1 >= 0 && nums1[p1] > nums2[p2]) {
@@ -492,7 +491,7 @@ flowchart LR
 // sort-colors.ts
 /**
  * 75. 颜色分类 — 三指针（荷兰国旗）
- * 
+ *
  * 三指针：[0, low) 全是 0，[low, mid) 全是 1，(high, n-1] 全是 2
  */
 function sortColors(nums: number[]): void {
@@ -507,7 +506,8 @@ function sortColors(nums: number[]): void {
       mid++;
     } else if (nums[mid] === 1) {
       mid++;
-    } else { // nums[mid] === 2
+    } else {
+      // nums[mid] === 2
       [nums[mid], nums[high]] = [nums[high], nums[mid]];
       high--;
     }
@@ -516,7 +516,7 @@ function sortColors(nums: number[]): void {
 
 /**
  * 86. 分隔链表 — 分成 < x 和 ≥ x 两部分
- * 
+ *
  * 双指针链表：两个 dummy 头分别收集，最后合并
  */
 function partition<T>(head: ListNode<T> | null, x: T): ListNode<T> | null {
@@ -537,7 +537,7 @@ function partition<T>(head: ListNode<T> | null, x: T): ListNode<T> | null {
     curr = curr.next;
   }
 
-  larger.next = null;       // 避免环
+  larger.next = null; // 避免环
   smaller.next = largerDummy.next; // 连接两个链表
 
   return smallerDummy.next;
@@ -559,18 +559,18 @@ console.log(colors); // [0, 0, 1, 1, 2, 2]
 // trapping-rain-water.ts
 /**
  * 42. 接雨水 — 双指针
- * 
+ *
  * 思路：每个位置能接的雨水 = min(左边最高, 右边最高) - height[i]
  *       双指针法：leftMax 和 rightMax 分别维护左右两边的最高
  *       哪边的 max 更小，就处理哪边（短板效应）
- * 
+ *
  * 时间复杂度 O(n)  空间复杂度 O(1)
  */
 function trap(height: number[]): number {
   let left = 0;
   let right = height.length - 1;
-  let leftMax = 0;   // 左边遇到的最大值
-  let rightMax = 0;  // 右边遇到的最大值
+  let leftMax = 0; // 左边遇到的最大值
+  let rightMax = 0; // 右边遇到的最大值
   let total = 0;
 
   while (left < right) {
@@ -604,18 +604,18 @@ console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
 
 ## 📊 复杂度速查表
 
-| 问题 | 模式 | 时间复杂度 | 空间复杂度 | 关键点 |
-|------|:----:|:--------:|:--------:|--------|
-| 141/142 环检测 | 快慢指针 | O(n) | O(1) | 相对速度 1 步 |
-| 876 链表中点 | 快慢指针 | O(n) | O(1) | 快两步慢一步 |
-| 26/80 去重 | 快慢指针 | O(n) | O(1) | 慢指针负责写 |
-| 283 移动零 | 快慢指针 | O(n) | O(1) | 交换而非覆盖 |
-| 167 两数之和 II | 左右夹逼 | O(n) | O(1) | 有序才夹逼 |
-| 125/680 回文串 | 左右夹逼 | O(n) | O(1) | 跳字符逻辑 |
-| 11 盛水 | 左右夹逼 | O(n) | O(1) | 移动短板 |
-| 42 接雨水 | 左右夹逼 | O(n) | O(1) | 左右最大高度 |
-| 88 合并数组 | 归并双指针 | O(n+m) | O(1) | 从后往前 |
-| 75 颜色分类 | 三指针 | O(n) | O(1) | 荷兰国旗 |
+| 问题            |    模式    | 时间复杂度 | 空间复杂度 | 关键点        |
+| --------------- | :--------: | :--------: | :--------: | ------------- |
+| 141/142 环检测  |  快慢指针  |    O(n)    |    O(1)    | 相对速度 1 步 |
+| 876 链表中点    |  快慢指针  |    O(n)    |    O(1)    | 快两步慢一步  |
+| 26/80 去重      |  快慢指针  |    O(n)    |    O(1)    | 慢指针负责写  |
+| 283 移动零      |  快慢指针  |    O(n)    |    O(1)    | 交换而非覆盖  |
+| 167 两数之和 II |  左右夹逼  |    O(n)    |    O(1)    | 有序才夹逼    |
+| 125/680 回文串  |  左右夹逼  |    O(n)    |    O(1)    | 跳字符逻辑    |
+| 11 盛水         |  左右夹逼  |    O(n)    |    O(1)    | 移动短板      |
+| 42 接雨水       |  左右夹逼  |    O(n)    |    O(1)    | 左右最大高度  |
+| 88 合并数组     | 归并双指针 |   O(n+m)   |    O(1)    | 从后往前      |
+| 75 颜色分类     |   三指针   |    O(n)    |    O(1)    | 荷兰国旗      |
 
 ---
 
@@ -639,13 +639,13 @@ console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
 
 ### 推荐练习路线
 
-| 阶段 | 目标 | 题目 | 核心考点 |
-|------|------|------|---------|
-| ⭐ | 快慢指针入门 | 141 环形链表、876 链表中点 | 相对速度 |
-| ⭐ | 左右夹逼入门 | 167 两数之和、125 回文串 | 有序/对称 |
-| ⭐⭐ | 数组去重 | 26 去重、283 移动零 | 慢指针写 |
-| ⭐⭐ | 三指针进阶 | 75 颜色分类 | 三区间划分 |
-| ⭐⭐⭐ | 综合应用 | 42 接雨水、11 盛水 | 短板效应 |
+| 阶段   | 目标         | 题目                       | 核心考点   |
+| ------ | ------------ | -------------------------- | ---------- |
+| ⭐     | 快慢指针入门 | 141 环形链表、876 链表中点 | 相对速度   |
+| ⭐     | 左右夹逼入门 | 167 两数之和、125 回文串   | 有序/对称  |
+| ⭐⭐   | 数组去重     | 26 去重、283 移动零        | 慢指针写   |
+| ⭐⭐   | 三指针进阶   | 75 颜色分类                | 三区间划分 |
+| ⭐⭐⭐ | 综合应用     | 42 接雨水、11 盛水         | 短板效应   |
 
 ### 自查清单
 
@@ -664,19 +664,13 @@ console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
 
 ```typescript
 // 141. 判环
-function hasCycle<T>(head: ListNode<T> | null): boolean {
-
-}
+function hasCycle<T>(head: ListNode<T> | null): boolean {}
 
 // 167. 两数之和 II（有序数组）
-function twoSum(numbers: number[], target: number): number[] {
-
-}
+function twoSum(numbers: number[], target: number): number[] {}
 
 // 26. 去重
-function removeDuplicates(nums: number[]): number {
-
-}
+function removeDuplicates(nums: number[]): number {}
 ```
 
 ---

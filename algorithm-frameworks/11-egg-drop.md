@@ -8,10 +8,10 @@
 
 ## 🎯 经典 LeetCode 题目
 
-| # | 题号 | 题目 | 难度 | 核心考点 | 推荐指数 |
-|---|------|------|:----:|----------|:--------:|
-| 1 | [887](https://leetcode.cn/problems/super-egg-drop/) | 鸡蛋掉落 | 🔴 | DP + 二分优化 | ⭐⭐⭐ |
-| 2 | [1884](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/) | 鸡蛋掉落-两枚鸡蛋 | 🟡 | 简化版 | ⭐⭐ |
+| #   | 题号                                                                    | 题目              | 难度 | 核心考点      | 推荐指数 |
+| --- | ----------------------------------------------------------------------- | ----------------- | :--: | ------------- | :------: |
+| 1   | [887](https://leetcode.cn/problems/super-egg-drop/)                     | 鸡蛋掉落          |  🔴  | DP + 二分优化 |  ⭐⭐⭐  |
+| 2   | [1884](https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/) | 鸡蛋掉落-两枚鸡蛋 |  🟡  | 简化版        |   ⭐⭐   |
 
 ---
 
@@ -45,7 +45,7 @@ flowchart TD
     START["在 x 层扔鸡蛋"] --> BROKEN{"碎了还是没碎?"}
     BROKEN -->|碎了 💔<br/>鸡蛋 -1| DOWN["问题缩小到<br/>1~x-1 层<br/>K-1 个鸡蛋"]
     BROKEN -->|没碎 ✅| UP["问题缩小到<br/>x+1~N 层<br/>K 个鸡蛋"]
-    
+
     DOWN --> NEXT["继续..."]
     UP --> NEXT
 ```
@@ -76,11 +76,11 @@ flowchart TD
 // egg-drop-basic.ts
 /**
  * 887. 鸡蛋掉落 — 基础 DP（O(K×N²)，超时但思路清晰）
- * 
+ *
  * dp(K, N) = min( max( dp(K-1, x-1), dp(K, N-x) ) + 1 )  for x in [1, N]
  *                ↑                       ↑
  *             碎了（楼下）            没碎（楼上）
- * 
+ *
  * 时间复杂度 O(K×N²)  空间复杂度 O(K×N)
  */
 function superEggDropBasic(K: number, N: number): number {
@@ -88,8 +88,8 @@ function superEggDropBasic(K: number, N: number): number {
 
   function dp(k: number, n: number): number {
     // base case
-    if (k === 1) return n;          // 只剩 1 个鸡蛋 → 线性扫描
-    if (n === 0) return 0;          // 没有楼层 → 0 次
+    if (k === 1) return n; // 只剩 1 个鸡蛋 → 线性扫描
+    if (n === 0) return 0; // 没有楼层 → 0 次
 
     const key = `${k}-${n}`;
     if (memo.has(key)) return memo.get(key)!;
@@ -101,9 +101,9 @@ function superEggDropBasic(K: number, N: number): number {
       res = Math.min(
         res,
         Math.max(
-          dp(k - 1, x - 1),  // 碎了 → 楼下
-          dp(k, n - x)        // 没碎 → 楼上
-        ) + 1                 // 当前这次扔
+          dp(k - 1, x - 1), // 碎了 → 楼下
+          dp(k, n - x) // 没碎 → 楼上
+        ) + 1 // 当前这次扔
       );
     }
 
@@ -137,10 +137,10 @@ flowchart TD
 // egg-drop-binary-search.ts
 /**
  * 鸡蛋掉落 — DP + 二分优化
- * 
+ *
  * 利用 dp(K-1, x-1) 单调递增，dp(K, N-x) 单调递减的特性
  * 用二分查找最优的 x，而不是线性遍历
- * 
+ *
  * 时间复杂度 O(K×N×logN)  空间复杂度 O(K×N)
  */
 function superEggDropBinary(K: number, N: number): number {
@@ -153,14 +153,15 @@ function superEggDropBinary(K: number, N: number): number {
     const key = `${k}-${n}`;
     if (memo.has(key)) return memo.get(key)!;
 
-    let lo = 1, hi = n;
+    let lo = 1,
+      hi = n;
     let res = Infinity;
 
     while (lo <= hi) {
       const mid = Math.floor((lo + hi) / 2);
 
-      const broken = dp(k - 1, mid - 1);      // 碎了
-      const notBroken = dp(k, n - mid);       // 没碎
+      const broken = dp(k - 1, mid - 1); // 碎了
+      const notBroken = dp(k, n - mid); // 没碎
 
       // 取最坏情况
       const worst = Math.max(broken, notBroken) + 1;
@@ -184,8 +185,8 @@ function superEggDropBinary(K: number, N: number): number {
 }
 
 // --- 测试 ---
-console.log("DP+二分:", superEggDropBinary(3, 14)); // 4
-console.log("DP+二分:", superEggDropBinary(2, 6));  // 3
+console.log('DP+二分:', superEggDropBinary(3, 14)); // 4
+console.log('DP+二分:', superEggDropBinary(2, 6)); // 3
 ```
 
 ---
@@ -198,7 +199,7 @@ console.log("DP+二分:", superEggDropBinary(2, 6));  // 3
 ```mermaid
 flowchart TD
     FORMULA["dp[k][m] = dp[k][m-1] + dp[k-1][m-1] + 1"]
-    
+
     FORMULA --> EXP1["dp[k][m-1]: 鸡蛋没碎 → 剩下的还能测的层数"]
     FORMULA --> EXP2["dp[k-1][m-1]: 鸡蛋碎了 → 楼下还能测的层数"]
     FORMULA --> EXP3["+1: 当前这层"]
@@ -218,19 +219,17 @@ dp[k][m] = 用 k 个鸡蛋，允许扔 m 次，最多能测多少层楼
 // egg-drop-optimal.ts
 /**
  * 鸡蛋掉落 — 反向 DP（最优解）
- * 
+ *
  * dp[k][m] = k 个鸡蛋，m 次扔的机会，最多能测试的楼层数
- * 
+ *
  * 当 dp[K][m] >= N 时，m 就是答案
- * 
+ *
  * 时间复杂度 O(K×m)  m 是答案的大小（≤ N）
  * 空间复杂度 O(K×m) → 可以压缩到 O(K)
  */
 function superEggDrop(K: number, N: number): number {
   // dp[k][m] = 用 k 个鸡蛋扔 m 次能测的最大楼层
-  const dp: number[][] = Array.from({ length: K + 1 }, () =>
-    new Array(N + 1).fill(0)
-  );
+  const dp: number[][] = Array.from({ length: K + 1 }, () => new Array(N + 1).fill(0));
 
   let m = 0; // 扔鸡蛋次数
 
@@ -262,9 +261,9 @@ function superEggDropCompressed(K: number, N: number): number {
 }
 
 // --- 测试 ---
-console.log("反向DP:", superEggDrop(3, 14));        // 4
-console.log("反向DP:", superEggDrop(2, 6));         // 3
-console.log("压缩版:", superEggDropCompressed(3, 14)); // 4
+console.log('反向DP:', superEggDrop(3, 14)); // 4
+console.log('反向DP:', superEggDrop(2, 6)); // 3
+console.log('压缩版:', superEggDropCompressed(3, 14)); // 4
 ```
 
 ### DP 表填充过程（K=3, N=14）
@@ -272,8 +271,8 @@ console.log("压缩版:", superEggDropCompressed(3, 14)); // 4
 ```
 m=0: dp[1][0]=0  dp[2][0]=0  dp[3][0]=0
 m=1: dp[1][1]=1  dp[2][1]=1  dp[3][1]=1   ← 扔1次最多测1层
-m=2: dp[1][2]=2  dp[2][2]=3  dp[3][2]=3   
-m=3: dp[1][3]=3  dp[2][3]=6  dp[3][3]=7   
+m=2: dp[1][2]=2  dp[2][2]=3  dp[3][2]=3
+m=3: dp[1][3]=3  dp[2][3]=6  dp[3][3]=7
 m=4: dp[1][4]=4  dp[2][4]=10 dp[3][4]=14  ✅ ≥ N=14 → return 4
 ```
 
@@ -281,11 +280,11 @@ m=4: dp[1][4]=4  dp[2][4]=10 dp[3][4]=14  ✅ ≥ N=14 → return 4
 
 ## 📊 三种方法对比
 
-| 方法 | 时间复杂度 | 空间复杂度 | 思路 |
-|------|:--------:|:--------:|------|
-| 基础 DP | O(K×N²) | O(K×N) | 每层都试 → 超时 |
-| DP + 二分 | O(K×N×logN) | O(K×N) | 利用单调性二分 |
-| **反向 DP 🔥** | **O(K×m)** | **O(K)** | 换角度：测多少层而不是扔几次 |
+| 方法           | 时间复杂度  | 空间复杂度 | 思路                         |
+| -------------- | :---------: | :--------: | ---------------------------- |
+| 基础 DP        |   O(K×N²)   |   O(K×N)   | 每层都试 → 超时              |
+| DP + 二分      | O(K×N×logN) |   O(K×N)   | 利用单调性二分               |
+| **反向 DP 🔥** | **O(K×m)**  |  **O(K)**  | 换角度：测多少层而不是扔几次 |
 
 > **反向 DP 的 m 最大不会超过 N**（最坏情况线性扫描）。
 > K=3, N=10000 时，m ≈ 45，效率碾压前面的方法。
@@ -311,11 +310,7 @@ m=4: dp[1][4]=4  dp[2][4]=10 dp[3][4]=14  ✅ ≥ N=14 → return 4
 > 写出反向 DP 的最优解：
 
 ```typescript
-function superEggDrop(K: number, N: number): number {
-
-
-
-}
+function superEggDrop(K: number, N: number): number {}
 ```
 
 > 一句话解释：`dp[k][m] = dp[k][m-1] + dp[k-1][m-1] + 1` 中的三项分别代表什么？

@@ -5,6 +5,10 @@
     "no-unused-vars": "warn",
     "no-empty-file": "off",
     "no-undef": "off",
-    "eqeqeq": "warn"
-  }
+    "eqeqeq": "warn",
+    "no-empty": "warn",
+    "no-debugger": "off",
+    "no-unreachable": "warn"
+  },
+  "ignorePatterns": ["legacy/**"]
 }

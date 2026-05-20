@@ -1,6 +1,6 @@
 # 📘 Algorithm Frameworks
 
-> 基于 labuladong 算法框架思维的结构化总结 —— 将 40+ 个零散的笔记重构为 **39 篇结构化 Markdown**，覆盖 **269 道 LeetCode 高频题**。
+> 算法框架思维的结构化总结 —— 将 40+ 个零散的笔记重构为 **39 篇结构化 Markdown**，覆盖 **269 道 LeetCode 高频题**。
 >
 > 每篇文章包含：核心思想 → 可运行 TypeScript 代码 → Mermaid 流程图 → 复杂度分析 → 刷题路线
 
@@ -40,6 +40,7 @@ flowchart LR
 
     subgraph 数据结构 [Phase 3 数据结构]
         D0["12 二叉树遍历"] --> D1["13 二叉树操作"]
+        D14["14 二叉树进阶"]
         D2["15 双指针"] --> D3["16 滑动窗口"]
         D4["18 单调栈"] --> D5["20 前缀和"]
         D6["19 链表"] --> D7["21 nSum"]
@@ -67,7 +68,7 @@ flowchart TD
     START([开始]) --> CHOOSE{你的目标?}
 
     CHOOSE -->|系统性学习| SYSTEMATIC["00 数据结构框架思维"]
-    CHOOSE -->|面试速刷| QUICK["36 模式识别总结"]
+    CHOOSE -->|面试速刷| QUICK["34 模式识别总结"]
 
     SYSTEMATIC --> S01["01 递归与分治"]
     S01 --> S02["12 二叉树遍历"]
@@ -123,12 +124,13 @@ flowchart TD
 | 10  | [编辑距离](10-edit-distance.md)                         | 二维 DP 表、增删改操作可视化、路径回溯            |    4     |
 | 11  | [高楼扔鸡蛋](11-egg-drop.md)                            | DP + 二分优化、反向 DP 最优解                     |    2     |
 
-### 🔷 Phase 3 — 数据结构 (13 篇)
+### 🔷 Phase 3 — 数据结构 (16 篇)
 
 | #   | 文件                                                     | 一句话总结                                       | 核心题数 |
 | --- | -------------------------------------------------------- | ------------------------------------------------ | :------: |
 | 12  | [二叉树遍历框架](12-binary-tree-traversal.md)            | 前/中/后序本质、迭代遍历、快排=前序归并=后序     |    17    |
 | 13  | [二叉树常见操作与 BST](13-binary-tree-operations.md)     | 序列化、BST 增删查、合法性判断、重复子树         |    21    |
+| 14  | [二叉树进阶](14-binary-tree-advanced.md)                  | LCA、序列化、路径综合、BST 迭代器                 |    10    |
 | 15  | [双指针技巧](15-two-pointers.md)                         | 快慢/左右/归并/三指针 四种模式、接雨水           |    18    |
 | 16  | [滑动窗口](16-sliding-window.md)                         | 万能滑动窗口模板、最小覆盖子串、定长窗口         |    8     |
 | 17  | [排序算法合集](17-sorting-algorithms.md)                 | 10 大排序算法、Mermaid 流程、三语言实现          |    12    |
@@ -143,17 +145,18 @@ flowchart TD
 | 26  | [并查集 Union-Find](26-union-find.md)                    | 路径压缩 + 按秩合并、岛屿数量、账户合并          |    7     |
 | 27  | [图算法](27-graph-algorithms.md)                         | Dijkstra、拓扑排序、二分图染色                   |    9     |
 
-### 🔷 Phase 4 — 进阶专题 (7 篇)
+### 🔷 Phase 4 — 进阶专题 (8 篇)
 
 | #   | 文件                                                    | 一句话总结                          | 核心题数 |
 | --- | ------------------------------------------------------- | ----------------------------------- | :------: |
-| 14  | [二叉树进阶](14-binary-tree-advanced.md)                | LCA、序列化、路径综合、BST 迭代器   |    10    |
+| 28  | [字符串匹配](28-string-matching.md)                     | KMP / Rabin-Karp / Z-Algorithm     |    6     |
 | 29  | [LRU & LFU 缓存](29-lru-and-lfu-cache.md)               | 哈希表 + 双向链表、频率桶淘汰       |    2     |
 | 30  | [Trie 前缀树](30-trie-prefix-tree.md)                   | 插入/搜索/前缀搜索模板、通配符匹配  |    4     |
 | 31  | [位运算](31-bit-manipulation-and-math.md)               | 异或性质、n&(n-1)、位掩码枚举子集   |    6     |
 | 32  | [设计与 OOD](32-design-and-ood.md)                      | 最小栈、O(1)随机访问、LFU、文件系统 |    12    |
 | 33  | [贪心算法](33-greedy.md)                                | 区间调度、跳跃游戏、加油站          |    7     |
 | 34  | [算法模式识别总结](34-algorithm-pattern-recognition.md) | 看到什么→想到什么速查表 + 面试策略  |    —     |
+| 35  | [线段树与树状数组](35-segment-tree-and-bit.md)           | Fenwick / Segment Tree / 区间查询  |    4     |
 
 ### 🔷 Phase 5 — 补充专题 (4 篇)
 
@@ -185,8 +188,3 @@ flowchart TD
 面试速刷路径：
   34 → 05 → 06 → 02 → 15 → 16 → 21 → 07 → 08 → 19 → 23 → 24 → 33
 ```
-
----
-
-> 原笔记仓库：`1.算法框架_labuladong/1.必备算法框架/` ← 原始 `.js`/`.ts` 文件
-> 重构产出：`algorithm-frameworks/` ← 本目录

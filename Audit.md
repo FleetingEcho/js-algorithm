@@ -16,7 +16,7 @@
 | 核心一句话覆盖 | 除 `INDEX.md` / `README.md` 入口文件外，专题文件已覆盖 |
 | 关联阅读覆盖 | 除 `INDEX.md` / `README.md` 入口文件外，专题文件已覆盖 |
 | 新增复盘工具 | `90-review-and-pattern-training.md`, `91-interview-day-cheatsheet.md` |
-| 新增维护索引 | `indexes/ALGORITHM-INDEX.md`, `indexes/QUESTION-INDEX.md`, `docs/92-quality-audit.md` |
+| 新增维护索引 | `indexes/ALGORITHM-INDEX.md`, `indexes/QUESTION-INDEX.md`, `Audit.md` |
 
 ---
 

@@ -214,7 +214,7 @@ flowchart LR
 |---|---|---|---|
 | 0-5 分钟 | 随机抽 5-10 个题名，只说模式和触发词 | `39`, `90` | 题名 → 模式 |
 | 5-15 分钟 | 默写一个模板，不看答案 | 对应专题文件 | TypeScript 或 Python 核心代码 |
-| 15-25 分钟 | 限时写一道中等题 | `39` 或 `list.md` | 可运行解法 |
+| 15-25 分钟 | 限时写一道中等题 | `39` 或 `List.md` | 可运行解法 |
 | 25-28 分钟 | 记录错因和下次触发规则 | `90` | 一条复盘记录 |
 | 28-30 分钟 | 口述复杂度、边界和替代方案 | `38`, `90` | 面试表达闭环 |
 
@@ -269,4 +269,4 @@ flowchart LR
 
 ---
 
-> **关联阅读：** [34 模式识别](../algorithm-frameworks/34-algorithm-pattern-recognition.md) → [38 面试表达](../algorithm-frameworks/38-interview-explanation-patterns.md) → [39 必背题](../algorithm-frameworks/39-must-solve-list.md) → [92 质量审计](../docs/92-quality-audit.md)
+> **关联阅读：** [34 模式识别](../algorithm-frameworks/34-algorithm-pattern-recognition.md) → [38 面试表达](../algorithm-frameworks/38-interview-explanation-patterns.md) → [39 必背题](../algorithm-frameworks/39-must-solve-List.md) → [92 质量审计](../Audit.md)

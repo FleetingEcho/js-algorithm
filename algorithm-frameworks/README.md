@@ -10,4 +10,4 @@
 | 详细专题索引 | [../indexes/ALGORITHM-INDEX.md](../indexes/ALGORITHM-INDEX.md) |
 | 错题复盘与题型训练 | [../training/90-review-and-pattern-training.md](../training/90-review-and-pattern-training.md) |
 | 面试当天速查 | [../training/91-interview-day-cheatsheet.md](../training/91-interview-day-cheatsheet.md) |
-| 文档质量审计 | [../docs/92-quality-audit.md](../docs/92-quality-audit.md) |
+| 文档质量审计 | [../Audit.md](../Audit.md) |

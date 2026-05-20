@@ -14,7 +14,7 @@
 | 错题复盘与题型训练 | [90 错题复盘与题型训练](training/90-review-and-pattern-training.md) |
 | 必背模板题 | [39 必背题清单](algorithm-frameworks/39-must-solve-list.md) |
 | TypeScript / Python / 手写结构 | [95 语言基础与手写结构参考](reference/95-basic-coding-challenges.md) |
-| 原始分类题库 | [list.md](list.md) |
+| 原始分类题库 | [List.md](List.md) |
 | 重新生成题号索引 | `node scripts/generate-question-index.mjs` |
 | 一键质量审计 | `node scripts/audit-docs.mjs` |
 
@@ -134,7 +134,7 @@ flowchart TD
 | #   | 文件                  | 一句话总结                       | 核心题数 |
 | --- | --------------------- | -------------------------------- | :------: |
 | —   | [详细专题索引](indexes/ALGORITHM-INDEX.md)  | 按题目触发词和分类跳转到专题     |    —     |
-| —   | [题号索引](indexes/QUESTION-INDEX.md)  | 从 `list.md` 生成的完整题号映射   |    —     |
+| —   | [题号索引](indexes/QUESTION-INDEX.md)  | 从 `List.md` 生成的完整题号映射   |    —     |
 
 ### 🔷 Phase 0 — 思维基础 (2 篇)
 
@@ -207,7 +207,7 @@ flowchart TD
 | --- | ----------------------------------------- | ---------------------------------- | :------: |
 | 90  | [错题复盘与题型训练手册](training/90-review-and-pattern-training.md) | 错题复盘、题型触发、相似模式对比、间隔复习 |    —     |
 | 91  | [面试当天速查](training/91-interview-day-cheatsheet.md) | 30-60 分钟最后速查：触发词、复杂度、边界 |    —     |
-| 92  | [文档质量审计](docs/92-quality-audit.md)       | 统计、围栏、双语代码块检查命令     |    —     |
+| 92  | [文档质量审计](Audit.md)       | 统计、围栏、双语代码块检查命令     |    —     |
 
 ### 🔷 Phase 6 — 补充专题 (2 篇)
 
@@ -263,7 +263,7 @@ flowchart TD
 ```
 1. 遮住代码，只看核心一句话，尝试默写模板
 2. 随机翻到某篇的复杂度表，回忆每种操作的时间复杂度
-3. 做 list.md 中标记 ✅ 的题，限时 15 分钟
+3. 做 List.md 中标记 ✅ 的题，限时 15 分钟
 4. 用 34-模式识别 的速查表反向训练：看到题目特征 → 想到对应算法
 5. 用 90 训练：只看题名说模式，再判断相似模式为什么不用
 6. 用 90 的每日 30 分钟方案保持手感：题名识别 → 模板默写 → 限时题 → 复盘

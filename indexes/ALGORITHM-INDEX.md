@@ -32,7 +32,7 @@ flowchart TD
 | 错题复盘、题型触发、相似模式对比 | [90 错题复盘与题型训练](../training/90-review-and-pattern-training.md) |
 | TypeScript / Python / 手写结构速查 | [95 语言基础与手写结构参考](../reference/95-basic-coding-challenges.md) |
 | 剑指 Offer | [99 剑指 Offer 题解](../reference/99-jianzhi-offer.md) |
-| 文档质量检查 | [92 文档质量审计](../docs/92-quality-audit.md) |
+| 文档质量检查 | [92 文档质量审计](../Audit.md) |
 
 ---
 
@@ -87,9 +87,9 @@ flowchart TD
 
 ---
 
-## 按 `list.md` 分类跳转
+## 按 `List.md` 分类跳转
 
-| `list.md` 分类 | 典型题号 | 对应专题 |
+| `List.md` 分类 | 典型题号 | 对应专题 |
 |---|---|---|
 | 基础 / 字符串 / 数组热身 | 37, 214, 241, 463, 484 | [95 语言基础](../reference/95-basic-coding-challenges.md), [17 排序](../algorithm-frameworks/17-sorting-algorithms.md) |
 | 链表基础 | 225, 466, 483 | [19 链表](../algorithm-frameworks/19-linked-list-techniques.md) |

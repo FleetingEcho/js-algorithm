@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const listPath = path.join(root, 'list.md');
+const listPath = path.join(root, 'List.md');
 const outPath = path.join(root, 'indexes', 'QUESTION-INDEX.md');
 
 const topicRules = [
@@ -105,7 +105,7 @@ function render(rows) {
   const lines = [];
   lines.push('# 题号索引');
   lines.push('');
-  lines.push('> 核心一句话：**这是从 `list.md` 生成的完整题号跳转索引，用来按题号、题名、分类快速跳到对应算法专题。**');
+  lines.push('> 核心一句话：**这是从 `List.md` 生成的完整题号跳转索引，用来按题号、题名、分类快速跳到对应算法专题。**');
   lines.push('>');
   lines.push('> 生成方式：`node scripts/generate-question-index.mjs`');
   lines.push('');
@@ -127,8 +127,8 @@ function render(rows) {
   lines.push(`| 项目 | 数量 |`);
   lines.push(`|---|---:|`);
   lines.push(`| 索引条目数 | ${rows.length} |`);
-  lines.push(`| 来源文件 | \`list.md\` |`);
-  lines.push(`| 说明 | 包含 \`list.md\` 中主库、补充题和 LintCode/Premium 条目 |`);
+  lines.push(`| 来源文件 | \`List.md\` |`);
+  lines.push(`| 说明 | 包含 \`List.md\` 中主库、补充题和 LintCode/Premium 条目 |`);
   lines.push('');
   lines.push('---');
   lines.push('');

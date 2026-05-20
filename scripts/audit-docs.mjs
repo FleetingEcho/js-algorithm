@@ -20,7 +20,7 @@ const metadataExempt = new Set([
 const languageExempt = new Set([
   path.join(algorithmDir, '34-algorithm-pattern-recognition.md'),
   path.join(algorithmDir, '38-interview-explanation-patterns.md'),
-  path.join(algorithmDir, '39-must-solve-list.md'),
+  path.join(algorithmDir, '39-must-solve-List.md'),
   path.join(algorithmDir, 'README.md'),
 ]);
 

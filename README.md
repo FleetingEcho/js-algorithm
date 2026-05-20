@@ -14,7 +14,7 @@
 | 错题复盘与题型训练 | [90 错题复盘与题型训练](training/90-review-and-pattern-training.md) |
 | 必背模板题 | [39 必背题清单](algorithm-frameworks/39-must-solve-list.md) |
 | TypeScript / Python / 手写结构 | [95 语言基础与手写结构参考](reference/95-basic-coding-challenges.md) |
-| 原始分类题库 | [List.md](List.md) |
+| 原始分类题库 | [List.md](./List.md) |
 | 重新生成题号索引 | `node scripts/generate-question-index.mjs` |
 | 一键质量审计 | `node scripts/audit-docs.mjs` |
 
@@ -207,7 +207,7 @@ flowchart TD
 | --- | ----------------------------------------- | ---------------------------------- | :------: |
 | 90  | [错题复盘与题型训练手册](training/90-review-and-pattern-training.md) | 错题复盘、题型触发、相似模式对比、间隔复习 |    —     |
 | 91  | [面试当天速查](training/91-interview-day-cheatsheet.md) | 30-60 分钟最后速查：触发词、复杂度、边界 |    —     |
-| 92  | [文档质量审计](Audit.md)       | 统计、围栏、双语代码块检查命令     |    —     |
+| 92  | [文档质量审计](./Audit.md)       | 统计、围栏、双语代码块检查命令     |    —     |
 
 ### 🔷 Phase 6 — 补充专题 (2 篇)
 

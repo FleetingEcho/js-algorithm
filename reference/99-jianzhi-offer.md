@@ -2363,4 +2363,4 @@ def sumNums(n: int) -> int:
 
 ---
 
-> **关联阅读：** [39 必背题](../algorithm-frameworks/39-must-solve-List.md) → [90 复盘训练](../training/90-review-and-pattern-training.md)
+> **关联阅读：** [39 必背题](../algorithm-frameworks/39-must-solve-list.md) → [90 复盘训练](../training/90-review-and-pattern-training.md)

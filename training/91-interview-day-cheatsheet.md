@@ -115,4 +115,4 @@ flowchart TD
 
 ---
 
-> **关联阅读：** [34 模式识别](../algorithm-frameworks/34-algorithm-pattern-recognition.md) → [39 必背题](../algorithm-frameworks/39-must-solve-List.md) → [90 复盘训练](90-review-and-pattern-training.md)
+> **关联阅读：** [34 模式识别](../algorithm-frameworks/34-algorithm-pattern-recognition.md) → [39 必背题](../algorithm-frameworks/39-must-solve-list.md) → [90 复盘训练](90-review-and-pattern-training.md)

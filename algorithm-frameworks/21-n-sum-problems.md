@@ -56,6 +56,18 @@ flowchart TD
     end
 ```
 
+```mermaid
+flowchart TD
+    START["nSum 题"] --> PRE["先排序"]
+    PRE --> FIX{"n 是否等于 2?"}
+    FIX -->|是| TWO["双指针 twoSum"]
+    FIX -->|否| LOOP["枚举固定 nums[i]"]
+    LOOP --> PRUNE["跳过重复元素<br/>必要时剪枝"]
+    PRUNE --> SUB["递归求 (n-1)Sum<br/>target - nums[i]"]
+    SUB --> COMBINE["把 nums[i] 拼回结果"]
+    COMBINE --> LOOP
+```
+
 ---
 
 ## 📐 nSum 递归统一框架

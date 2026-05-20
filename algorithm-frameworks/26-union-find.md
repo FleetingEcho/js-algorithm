@@ -4,6 +4,29 @@
 
 ---
 
+## 🗺️ 并查集决策图
+
+```mermaid
+flowchart TD
+    START["连通性 / 等价关系题"] --> ASK{"操作是什么?"}
+    ASK -->|合并两个元素| UNION["union(x,y)<br/>连接两个集合"]
+    ASK -->|判断是否同组| FIND["find(x) == find(y)"]
+    ASK -->|统计连通分量| COUNT["初始化 count=n<br/>成功 union 时 count--"]
+    ASK -->|动态加点| DYNAMIC["先标记 active<br/>与四邻域 union"]
+    ASK -->|等式 / 不等式| EQ["先合并等式<br/>再检查不等式冲突"]
+```
+
+## 🧬 路径压缩示意
+
+```mermaid
+flowchart LR
+    A["x"] --> B["parent[x]"]
+    B --> C["root"]
+    A -. "find 后直接指向" .-> C
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                                       | 题目               | 难度 | 核心考点      | 推荐指数 |
@@ -67,6 +90,83 @@ class UnionFind {
 }
 ```
 
+```python
+class UnionFind:
+    def __init__(self, n: int):
+        self.parent = list(range(n))
+        self.rank = [1] * n
+        self.count = n
+
+    def find(self, x: int) -> int:
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union(self, x: int, y: int) -> None:
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return
+
+        if self.rank[root_x] < self.rank[root_y]:
+            self.parent[root_x] = root_y
+        elif self.rank[root_x] > self.rank[root_y]:
+            self.parent[root_y] = root_x
+        else:
+            self.parent[root_y] = root_x
+            self.rank[root_x] += 1
+
+        self.count -= 1
+
+    def connected(self, x: int, y: int) -> bool:
+        return self.find(x) == self.find(y)
+```
+
+## 🧠 常见应用模板
+
+### 等式方程可满足性
+
+```typescript
+function equationsPossible(equations: string[]): boolean {
+  const uf = new UnionFind(26);
+  for (const eq of equations) {
+    if (eq[1] === '=') {
+      uf.union(eq.charCodeAt(0) - 97, eq.charCodeAt(3) - 97);
+    }
+  }
+  for (const eq of equations) {
+    if (eq[1] === '!' && uf.connected(eq.charCodeAt(0) - 97, eq.charCodeAt(3) - 97)) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+```python
+def equations_possible(equations: list[str]) -> bool:
+    uf = UnionFind(26)
+    for eq in equations:
+        if eq[1] == "=":
+            uf.union(ord(eq[0]) - ord("a"), ord(eq[3]) - ord("a"))
+
+    for eq in equations:
+        if eq[1] == "!" and uf.connected(ord(eq[0]) - ord("a"), ord(eq[3]) - ord("a")):
+            return False
+
+    return True
+```
+
+## 🎯 易错点
+
+```
+[ ] union 前必须先 find 根节点，不能直接 parent[x] = y。
+[ ] count 只有在两个不同集合成功合并时才减少。
+[ ] 网格题要把 (r,c) 映射成 id = r * cols + c。
+[ ] 动态岛屿题要先判断格子是否已经 active，避免重复加岛。
+[ ] 等式/不等式题先 union 所有等式，再检查不等式。
+```
+
 ---
 
 ## 📊 复杂度
@@ -81,4 +181,4 @@ class UnionFind {
 
 ---
 
-> **关联阅读：** `27-graph-algorithms.md` → `27-topological-sorting.md`（此文件暂缺）
+> **关联阅读：** `27-graph-algorithms.md` → `03-bfs-framework.md`

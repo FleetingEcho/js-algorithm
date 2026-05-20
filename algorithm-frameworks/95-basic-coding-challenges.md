@@ -1,7 +1,196 @@
-# 基础编程练习
+# 语言基础与手写结构参考
 
-> 初级编程挑战题集，覆盖字符串、数组、递归等基础操作。
-> 适合热身和巩固语言基础。
+> 核心一句话：**语言参考只服务一个目标：刷题时 TypeScript / Python 语法不拖后腿，基础函数和手写数据结构能稳定落地。**
+
+---
+
+## 🗺️ 语言与手写参考路线图
+
+```mermaid
+flowchart TD
+    START["语言与手写参考"] --> BASIC["基础练习<br/>字符串 / 数组 / 递归"]
+    START --> TS["TypeScript<br/>Map / Set / Array / BigInt"]
+    START --> PY["Python<br/>dict / set / heapq / deque / bisect"]
+    START --> DS["手写结构<br/>链表 / 栈队列 / 堆 / 图"]
+    BASIC --> PRACTICE["小函数热身"]
+    TS --> TEMPLATE["TS 模板"]
+    PY --> TEMPLATE
+    DS --> TEMPLATE
+```
+
+---
+
+## TypeScript 刷题速查
+
+| 场景 | 写法 |
+|---|---|
+| 哈希计数 | `const cnt = new Map<string, number>()` |
+| 去重 | `const set = new Set<number>()` |
+| 数组排序 | `nums.sort((a, b) => a - b)` |
+| 栈 | `const stack: number[] = []; stack.push(x); stack.pop()` |
+| 队列 | 用数组 + head 指针，避免频繁 `shift()` |
+| 大整数 | `BigInt`, `123n` |
+| 字符编码 | `s.charCodeAt(i)`, `String.fromCharCode(x)` |
+
+```typescript
+// TypeScript 常用刷题骨架
+function countByKey(items: string[]): Map<string, number> {
+  const count = new Map<string, number>();
+  for (const item of items) {
+    count.set(item, (count.get(item) ?? 0) + 1);
+  }
+  return count;
+}
+
+class Queue<T> {
+  private data: T[] = [];
+  private head = 0;
+
+  push(x: T): void {
+    this.data.push(x);
+  }
+
+  pop(): T | undefined {
+    if (this.head >= this.data.length) return undefined;
+    return this.data[this.head++];
+  }
+
+  get length(): number {
+    return this.data.length - this.head;
+  }
+}
+```
+
+---
+
+## Python 刷题速查
+
+| 场景 | 写法 |
+|---|---|
+| 哈希计数 | `dict`, `defaultdict(int)`, `Counter` |
+| 去重 | `set()` |
+| 队列 / BFS | `collections.deque` |
+| 堆 | `heapq`，默认小顶堆 |
+| 二分位置 | `bisect_left`, `bisect_right` |
+| 记忆化 | `functools.cache` / `lru_cache` |
+| 排序 key | `arr.sort(key=lambda x: x[0])` |
+
+```python
+# Python 常用刷题骨架
+from collections import Counter, defaultdict, deque
+from functools import cache
+import heapq
+import bisect
+
+def count_by_key(items: list[str]) -> dict[str, int]:
+    count = defaultdict(int)
+    for item in items:
+        count[item] += 1
+    return count
+
+def bfs(start: int, graph: dict[int, list[int]]) -> list[int]:
+    q = deque([start])
+    seen = {start}
+    order = []
+    while q:
+        node = q.popleft()
+        order.append(node)
+        for nxt in graph.get(node, []):
+            if nxt not in seen:
+                seen.add(nxt)
+                q.append(nxt)
+    return order
+```
+
+---
+
+## 手写数据结构最小模板
+
+| 结构 | TypeScript / Python 重点 | 关联专题 |
+|---|---|---|
+| 链表 | dummy 头、前后指针、反转顺序 | `19` |
+| 双向链表 | `prev/next` 同步更新 | `29` |
+| 栈 | 数组尾部 push/pop | `18` |
+| 队列 | TS 用 head 指针，Python 用 `deque` | `03`, `36` |
+| 堆 | TS 需要手写，Python 用 `heapq` | `24` |
+| Trie | children + isEnd | `30` |
+| 并查集 | parent + size/rank + path compression | `26` |
+| 图 | 邻接表 + visited / indegree / dist | `27` |
+
+```typescript
+// TypeScript 最小堆模板
+class MinHeap {
+  private heap: number[] = [];
+
+  push(x: number): void {
+    this.heap.push(x);
+    this.swim(this.heap.length - 1);
+  }
+
+  pop(): number | undefined {
+    if (this.heap.length === 0) return undefined;
+    const top = this.heap[0];
+    const last = this.heap.pop()!;
+    if (this.heap.length > 0) {
+      this.heap[0] = last;
+      this.sink(0);
+    }
+    return top;
+  }
+
+  private swim(i: number): void {
+    while (i > 0) {
+      const p = Math.floor((i - 1) / 2);
+      if (this.heap[p] <= this.heap[i]) break;
+      [this.heap[p], this.heap[i]] = [this.heap[i], this.heap[p]];
+      i = p;
+    }
+  }
+
+  private sink(i: number): void {
+    const n = this.heap.length;
+    while (true) {
+      let smallest = i;
+      const l = i * 2 + 1, r = i * 2 + 2;
+      if (l < n && this.heap[l] < this.heap[smallest]) smallest = l;
+      if (r < n && this.heap[r] < this.heap[smallest]) smallest = r;
+      if (smallest === i) break;
+      [this.heap[i], this.heap[smallest]] = [this.heap[smallest], this.heap[i]];
+      i = smallest;
+    }
+  }
+}
+```
+
+```python
+# Python 堆和并查集最小模板
+import heapq
+
+heap: list[int] = []
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 1)
+smallest = heapq.heappop(heap)
+
+class UnionFind:
+    def __init__(self, n: int):
+        self.parent = list(range(n))
+        self.size = [1] * n
+
+    def find(self, x: int) -> int:
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union(self, a: int, b: int) -> bool:
+        ra, rb = self.find(a), self.find(b)
+        if ra == rb:
+            return False
+        if self.size[ra] < self.size[rb]:
+            ra, rb = rb, ra
+        self.parent[rb] = ra
+        self.size[ra] += self.size[rb]
+        return True
+```
 
 ---
 
@@ -500,3 +689,7 @@ def max_loading(weights: list[int], capacity: int) -> int:
     dfs(0, 0)
     return max_w
 ```
+
+---
+
+> **关联阅读：** `24-heap-and-priority-queue.md` → `26-union-find.md` → `29-lru-and-lfu-cache.md` → `30-trie-prefix-tree.md`

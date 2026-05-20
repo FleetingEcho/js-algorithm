@@ -4,6 +4,31 @@
 
 ---
 
+## 🗺️ 设计题数据结构组合图
+
+```mermaid
+flowchart TD
+    START["设计题"] --> NEED{"要保证什么复杂度?"}
+    NEED -->|O(1) 查找 + 最近使用淘汰| LRU["LRU<br/>HashMap + 双向链表"]
+    NEED -->|O(1) 查找 + 最少频率淘汰| LFU["LFU<br/>keyMap + freqMap + minFreq"]
+    NEED -->|O(1) 插入删除随机| RAND["RandomizedSet<br/>数组 + value->index"]
+    NEED -->|O(1) 获取最小值| MINSTACK["MinStack<br/>普通栈 + 最小栈"]
+    NEED -->|按时间查询历史值| TIME["TimeMap<br/>key -> 有序数组 + 二分"]
+    NEED -->|路径 / 文件系统| FS["Trie 树节点<br/>目录 children + 内容"]
+```
+
+## 🔀 O(1) 随机集合删除
+
+```mermaid
+flowchart LR
+    DEL["删除 val"] --> IDX["通过 map 找 idx"]
+    IDX --> SWAP["把数组最后一个元素搬到 idx"]
+    SWAP --> UPDATE["更新 last 的 index"]
+    UPDATE --> POP["pop 尾部并删除 val 映射"]
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                 | 题目                  | 难度 | 核心数据结构           | 推荐指数 |
@@ -75,6 +100,76 @@ class RandomizedSet {
   }
 }
 ```
+
+```python
+class MinStack:
+    def __init__(self):
+        self.stack: list[int] = []
+        self.min_stack: list[int] = [float("inf")]
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        self.min_stack.append(min(val, self.min_stack[-1]))
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.min_stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.min_stack[-1]
+
+
+class RandomizedSet:
+    def __init__(self):
+        self.nums: list[int] = []
+        self.pos: dict[int, int] = {}
+
+    def insert(self, val: int) -> bool:
+        if val in self.pos:
+            return False
+        self.pos[val] = len(self.nums)
+        self.nums.append(val)
+        return True
+
+    def remove(self, val: int) -> bool:
+        if val not in self.pos:
+            return False
+        idx = self.pos[val]
+        last = self.nums[-1]
+        self.nums[idx] = last
+        self.pos[last] = idx
+        self.nums.pop()
+        del self.pos[val]
+        return True
+
+    def getRandom(self) -> int:
+        import random
+        return random.choice(self.nums)
+```
+
+## 🧠 设计题拆解步骤
+
+```
+1. 先列 API：constructor / get / put / insert / remove。
+2. 写复杂度目标：哪些操作必须 O(1)，哪些可以 O(log n)。
+3. 反推数据结构组合：查找用 Map，顺序用链表，随机用数组，历史查询用有序数组。
+4. 明确同步点：每次更新时，多个结构都必须同时维护。
+5. 处理边界：容量为 0、重复插入、删除不存在、时间戳相等。
+```
+
+## 📊 设计模式速查表
+
+| 目标 | 数据结构组合 | 代表题 |
+|---|---|---|
+| 最近使用淘汰 | HashMap + 双向链表 | LRU |
+| 最少频率淘汰 | HashMap + freq buckets | LFU |
+| O(1) 随机 | Array + value->index | RandomizedSet |
+| 历史版本查询 | HashMap + sorted list + binary search | TimeMap |
+| 文件路径 | Trie / tree node | FileSystem |
+| 最大频率栈 | freq map + freq->stack | FreqStack |
 
 ---
 

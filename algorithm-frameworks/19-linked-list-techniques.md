@@ -27,6 +27,35 @@
 
 ---
 
+## 🗺️ 链表题型决策图
+
+```mermaid
+flowchart TD
+    START["链表题"] --> TYPE{"核心操作是什么?"}
+    TYPE -->|查位置| POS{"位置从哪来?"}
+    POS -->|中点 / 环| FAST["快慢指针"]
+    POS -->|倒数第 N 个| GAP["前后指针保持 N 距离"]
+    POS -->|相交节点| AB["双指针走 A+B"]
+
+    TYPE -->|改结构| STRUCT{"怎么改?"}
+    STRUCT -->|整体 / 区间反转| REV["三指针反转<br/>prev / curr / next"]
+    STRUCT -->|分区 / 奇偶| SPLIT["两个 dummy 链表收集后拼接"]
+    STRUCT -->|合并 / 排序| MERGE["归并链表<br/>dummy + tail"]
+    STRUCT -->|K 个一组| KREV["分段检查长度<br/>局部反转 + 连接"]
+```
+
+## 🔁 反转指针过程
+
+```mermaid
+flowchart LR
+    A["prev"] --> N0["null"]
+    B["curr"] --> C["next"]
+    C --> D["..."]
+    STEP["保存 next<br/>curr.next = prev<br/>prev = curr<br/>curr = next"]
+```
+
+---
+
 ## 📋 目录
 
 1. [核心规律](#-核心规律)

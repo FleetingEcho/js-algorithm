@@ -6,6 +6,21 @@
 
 ---
 
+## 🗺️ 字符串匹配选型图
+
+```mermaid
+flowchart TD
+    START["字符串匹配题"] --> ASK{"匹配对象是什么?"}
+    ASK -->|单模式串查找| SINGLE{"需要解释失配回退吗?"}
+    SINGLE -->|是| KMP["KMP 前缀函数"]
+    SINGLE -->|也可| Z["Z-Algorithm"]
+    ASK -->|重复子串 / 最长重复| HASH["滚动哈希 + 二分长度"]
+    ASK -->|多模式匹配| TRIE["Trie / AC 自动机"]
+    ASK -->|回文前缀| PAL["KMP 拼接<br/>s + # + reverse(s)"]
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                                          | 题目                 | 难度 | 核心考点            | 推荐指数 |
@@ -44,6 +59,17 @@ flowchart TD
     P3 --> P4["π[3] = 2  (a b a b)"]
     P4 --> P5["π[4] = 3  (a b a b a)"]
     P5 --> P6["π[5] = 1  (a b a b a a)"]
+```
+
+```mermaid
+flowchart LR
+    MATCH["text[i] == pattern[j]"] --> ADV["i++, j++"]
+    FAIL["失配"] --> BACK["j = pi[j-1]"]
+    BACK --> RETRY{"j > 0 且仍失配?"}
+    RETRY -->|是| BACK
+    RETRY -->|否| COMPARE["重新比较 text[i] 与 pattern[j]"]
+    ADV --> FULL{"j == m?"}
+    FULL -->|是| HIT["记录匹配位置<br/>j = pi[j-1]"]
 ```
 
 ```typescript
@@ -228,3 +254,7 @@ def z_function(s: str) -> list[int]:
 | KMP | O(m) | O(n) | O(m) | π 数组是核心 |
 | Rabin-Karp | O(m) | O(n) 平均 | O(1) | 最坏 O(nm) — 哈希冲突 |
 | Z-Algorithm | O(n) | — | O(n) | Z 数组可做匹配（拼串） |
+
+---
+
+> **关联阅读：** `22-palindrome-and-string-techniques.md` → `30-trie-prefix-tree.md` → `23-hash-table-techniques.md`

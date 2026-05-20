@@ -1,8 +1,36 @@
 # 剑指 Offer 题解
 
-> 经典面试题分类整理，含核心思路与 TypeScript / Python 实现。
+> 核心一句话：**剑指 Offer 是中文面试高频题的压缩题库，适合按数据结构、搜索、DP、位运算做最后一轮查漏。**
 >
 > 题号格式：`剑指 XX` 对应原书题号，`LeetCode XXX` 为 LeetCode 对应编号。
+
+---
+
+## 🗺️ 剑指 Offer 分类路线图
+
+```mermaid
+flowchart TD
+    START["剑指 Offer 71 题"] --> LIST["链表<br/>dummy / 双指针 / 反转"]
+    START --> STACK["栈和队列<br/>辅助栈 / 双栈 / 单调队列"]
+    START --> TREE["二叉树<br/>递归 / BFS / 序列化"]
+    START --> SEARCH["BFS / DFS<br/>网格 / 路径 / 连通"]
+    START --> ARR["数组 + 字符串<br/>双指针 / 哈希 / 二分"]
+    START --> DP["动态规划<br/>状态定义 / 状态压缩"]
+    START --> BACKTRACK["回溯<br/>排列组合"]
+    START --> BIT["位运算<br/>异或 / 位计数"]
+    START --> REGEX["正则 / 递归<br/>状态匹配"]
+```
+
+## 🧭 复习顺序建议
+
+```mermaid
+flowchart LR
+    A["链表 / 栈队列"] --> B["数组 / 字符串"]
+    B --> C["二叉树 / BFS / DFS"]
+    C --> D["动态规划"]
+    D --> E["回溯 / 位运算"]
+    E --> F["正则 / 综合题"]
+```
 
 ---
 
@@ -2332,3 +2360,7 @@ def sumNums(n: int) -> int:
 | 递归 | 16 | 数值的整数次方 | 🟡 | O(log n) | O(log n) |
 | 递归 | 26 | 树的子结构 | 🟡 | O(mn) | O(h) |
 | 递归 | 64 | 求 1+2+…+n | 🟡 | O(n) | O(n) |
+
+---
+
+> **关联阅读：** `39-must-solve-list.md` → `90-review-and-pattern-training.md`

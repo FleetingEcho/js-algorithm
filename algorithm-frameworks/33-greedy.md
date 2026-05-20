@@ -4,6 +4,30 @@
 
 ---
 
+## 🗺️ 贪心题型决策图
+
+```mermaid
+flowchart TD
+    START["贪心题"] --> PROOF{"能证明局部最优安全吗?"}
+    PROOF -->|区间选择| INTERVAL["按结束时间排序<br/>选最早结束"]
+    PROOF -->|区间覆盖| COVER["按起点排序<br/>每轮扩展最远右端"]
+    PROOF -->|跳跃游戏| JUMP["维护当前边界与最远可达"]
+    PROOF -->|加油站| GAS["总油量 >= 总耗油<br/>亏空后换起点"]
+    PROOF -->|每步取最大收益| HEAP["大顶堆辅助贪心"]
+    PROOF -->|无法证明| DP["考虑 DP / 搜索<br/>不要硬贪心"]
+```
+
+## ✅ 贪心证明套路
+
+```mermaid
+flowchart LR
+    CHOICE["选择局部最优"] --> EXCHANGE["交换论证<br/>替换后不更差"]
+    EXCHANGE --> SUB["剩余子问题结构不变"]
+    SUB --> OPT["得到全局最优"]
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                            | 题目                   | 难度 | 核心考点        | 推荐指数 |
@@ -53,6 +77,23 @@ function eraseOverlapIntervals(intervals: number[][]): number {
 }
 ```
 
+```python
+def erase_overlap_intervals(intervals: list[list[int]]) -> int:
+    if not intervals:
+        return 0
+
+    intervals.sort(key=lambda x: x[1])
+    count = 1
+    end = intervals[0][1]
+
+    for start, finish in intervals[1:]:
+        if start >= end:
+            count += 1
+            end = finish
+
+    return len(intervals) - count
+```
+
 ### 跳跃游戏
 
 ```typescript
@@ -90,6 +131,48 @@ function jump(nums: number[]): number {
 
   return jumps;
 }
+```
+
+```python
+def can_jump(nums: list[int]) -> bool:
+    max_reach = 0
+    for i, jump in enumerate(nums):
+        if i > max_reach:
+            return False
+        max_reach = max(max_reach, i + jump)
+    return True
+
+
+def jump(nums: list[int]) -> int:
+    jumps = 0
+    cur_end = 0
+    farthest = 0
+
+    for i in range(len(nums) - 1):
+        farthest = max(farthest, i + nums[i])
+        if i == cur_end:
+            jumps += 1
+            cur_end = farthest
+
+    return jumps
+```
+
+## 🧠 贪心证明方法
+
+| 方法 | 怎么说 | 适用题 |
+|---|---|---|
+| 交换论证 | 把最优解中的某个选择换成贪心选择，结果不更差 | 区间调度 |
+| 反证法 | 假设贪心选择不是最优，会推出矛盾 | 加油站 |
+| 保持不变量 | 每一步维护“当前能达到的最远/最好状态” | 跳跃游戏 |
+| 局部覆盖最远 | 每一轮覆盖范围内选择能扩展最远的点 | 视频拼接 |
+
+## 🎯 易错点
+
+```
+[ ] 贪心不是“看起来选最大/最小”，必须能证明。
+[ ] 区间选择通常按 end 排序，不是 start。
+[ ] 跳跃游戏 II 在 i == curEnd 时才增加步数。
+[ ] 加油站题总和小于 0 必然无解；局部 tank 负数就换起点。
 ```
 
 ---

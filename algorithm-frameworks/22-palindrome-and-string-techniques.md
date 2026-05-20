@@ -4,6 +4,33 @@
 
 ---
 
+## 🗺️ 回文题型决策图
+
+```mermaid
+flowchart TD
+    START["回文 / 字符串题"] --> ASK{"题目问什么?"}
+    ASK -->|判断是否回文| CHECK["双指针<br/>左右向中间夹逼"]
+    ASK -->|最多删一个字符| SKIP["双指针遇冲突<br/>尝试跳 left 或 right"]
+    ASK -->|最长回文子串| SUBSTR{"需要 O(n) 吗?"}
+    SUBSTR -->|不需要| CENTER["中心扩展<br/>枚举奇偶中心"]
+    SUBSTR -->|需要| MANACHER["Manacher<br/>半径数组"]
+    ASK -->|回文子序列| SUBSEQ["区间 DP<br/>dp[i][j]"]
+    ASK -->|最短回文 / 前缀回文| KMP["KMP / rolling hash<br/>找最长回文前缀"]
+```
+
+## 🔍 中心扩展流程
+
+```mermaid
+flowchart LR
+    CENTER["选择中心 i"] --> ODD["奇数中心<br/>left=i,right=i"]
+    CENTER --> EVEN["偶数中心<br/>left=i,right=i+1"]
+    ODD --> EXPAND["相等就向两边扩展"]
+    EVEN --> EXPAND
+    EXPAND --> UPDATE["更新最长区间"]
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                 | 题目                   | 难度 | 核心考点            | 推荐指数 |
@@ -59,6 +86,79 @@ function longestPalindrome(s: string): string {
 
   return s.substring(start, start + maxLen);
 }
+```
+
+```python
+def longest_palindrome(s: str) -> str:
+    start = 0
+    max_len = 0
+
+    def expand(left: int, right: int) -> None:
+        nonlocal start, max_len
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            if right - left + 1 > max_len:
+                start = left
+                max_len = right - left + 1
+            left -= 1
+            right += 1
+
+    for i in range(len(s)):
+        expand(i, i)
+        expand(i, i + 1)
+
+    return s[start:start + max_len]
+```
+
+## 🔢 验证回文串 II
+
+```typescript
+function validPalindrome(s: string): boolean {
+  function isPal(left: number, right: number): boolean {
+    while (left < right) {
+      if (s[left++] !== s[right--]) return false;
+    }
+    return true;
+  }
+
+  let left = 0;
+  let right = s.length - 1;
+  while (left < right) {
+    if (s[left] !== s[right]) {
+      return isPal(left + 1, right) || isPal(left, right - 1);
+    }
+    left++;
+    right--;
+  }
+  return true;
+}
+```
+
+```python
+def valid_palindrome(s: str) -> bool:
+    def is_pal(left: int, right: int) -> bool:
+        while left < right:
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return is_pal(left + 1, right) or is_pal(left, right - 1)
+        left += 1
+        right -= 1
+    return True
+```
+
+## 🎯 易错点
+
+```
+[ ] 回文子串是连续的，回文子序列可以不连续。
+[ ] 中心扩展要枚举奇数中心和偶数中心。
+[ ] 最多删除一个字符时，只在第一次冲突处分两种情况。
+[ ] 区间 DP 通常按长度从短到长枚举。
 ```
 
 ---

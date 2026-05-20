@@ -4,6 +4,22 @@
 
 ---
 
+## 🗺️ 位运算题型决策图
+
+```mermaid
+flowchart TD
+    START["位运算题"] --> ASK{"看到什么特征?"}
+    ASK -->|一个数出现一次，其余两次| XOR["全体异或<br/>a xor a = 0"]
+    ASK -->|一个数出现一次，其余三次| MOD3["逐位计数 mod 3"]
+    ASK -->|两个数出现一次| SPLIT["先异或得到 diff<br/>用 lowbit 分组"]
+    ASK -->|判断 2 的幂| POWER["n > 0 且 n & (n-1) == 0"]
+    ASK -->|统计 1 的个数| COUNT["循环 n &= n-1"]
+    ASK -->|枚举子集| MASK["mask 从 0 到 2^n-1"]
+    ASK -->|树状数组 lowbit| LOWBIT["x & -x"]
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                   | 题目                 | 难度 | 核心考点          | 推荐指数 |
@@ -69,6 +85,58 @@ function subsetsBitmask(nums: number[]): number[][] {
   }
   return result;
 }
+```
+
+```python
+def is_odd(x: int) -> bool:
+    return (x & 1) == 1
+
+
+def remove_lowest_bit(x: int) -> int:
+    return x & (x - 1)
+
+
+def lowest_bit(x: int) -> int:
+    return x & -x
+
+
+def is_power_of_two(n: int) -> bool:
+    return n > 0 and (n & (n - 1)) == 0
+
+
+def count_bits(n: int) -> int:
+    count = 0
+    while n:
+        n &= n - 1
+        count += 1
+    return count
+
+
+def single_number(nums: list[int]) -> int:
+    ans = 0
+    for num in nums:
+        ans ^= num
+    return ans
+
+
+def subsets_bitmask(nums: list[int]) -> list[list[int]]:
+    result = []
+    for mask in range(1 << len(nums)):
+        subset = []
+        for i, num in enumerate(nums):
+            if mask & (1 << i):
+                subset.append(num)
+        result.append(subset)
+    return result
+```
+
+## 🎯 易错点
+
+```
+[ ] JavaScript/TypeScript 位运算会转成 32-bit signed int，大数要小心。
+[ ] 判断 2 的幂必须先检查 n > 0。
+[ ] x & -x 取最低位 1，常用于树状数组。
+[ ] 子集枚举复杂度是 O(n * 2^n)，n 通常不能太大。
 ```
 
 ---

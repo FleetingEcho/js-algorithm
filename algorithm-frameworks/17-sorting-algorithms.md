@@ -1552,3 +1552,7 @@ flowchart LR
 ---
 
 > **最终心法：** 理解排序的本质是**消除逆序对**。冒泡和插入每次消除 1 个，快排消除一片，归并平整消除。掌握了这个视角，10 种算法不再是一个个孤立的点，而是一张关于"如何消除逆序"的策略地图。🚀
+
+---
+
+> **关联阅读：** `01-recursion-and-divide-conquer.md` → `24-heap-and-priority-queue.md` → `21-n-sum-problems.md`

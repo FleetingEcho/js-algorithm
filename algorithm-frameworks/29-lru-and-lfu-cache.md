@@ -1,6 +1,6 @@
 # LRU & LFU 缓存
 
-> **LRU (Least Recently Used)** — 淘汰最久未使用的；**LFU (Least Frequently Used)** — 淘汰使用次数最少的。
+> 核心一句话：**LRU = 淘汰最久未使用的；LFU = 淘汰使用次数最少的。两者的关键都是用哈希表把访问定位降到 O(1)。**
 >
 > 面试最高频的设计题，核心都是 **哈希表 + 双向链表** 的组合。
 
@@ -12,6 +12,21 @@
 | --- | ---------------------------------------------- | -------- | :--: | ----------------- | :------: |
 | 1   | [146](https://leetcode.cn/problems/lru-cache/) | LRU 缓存 |  🟡  | 哈希表 + 双向链表 |  ⭐⭐⭐  |
 | 2   | [460](https://leetcode.cn/problems/lfu-cache/) | LFU 缓存 |  🔴  | 哈希表 + 频率链表 |  ⭐⭐⭐  |
+
+---
+
+## 🗺️ 缓存淘汰策略图
+
+```mermaid
+flowchart TD
+    START["缓存设计题"] --> ASK{"淘汰规则是什么?"}
+    ASK -->|最久未使用| LRU["LRU<br/>HashMap + 双向链表"]
+    ASK -->|最少使用次数| LFU["LFU<br/>keyMap + freqMap + minFreq"]
+    LRU --> OP1["get/put 后移动到链表头"]
+    LRU --> EVICT1["容量满时删除链表尾"]
+    LFU --> OP2["访问后 freq + 1<br/>移动到下一频率桶"]
+    LFU --> EVICT2["淘汰 minFreq 桶中最旧节点"]
+```
 
 ---
 
@@ -34,6 +49,20 @@ flowchart LR
     MAP["Map: key → node"] -.-> N1
     MAP -.-> N2
     MAP -.-> N3
+```
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Map
+    participant List
+    Client->>Map: get(key)
+    Map-->>Client: node or miss
+    alt hit
+        Client->>List: moveToHead(node)
+    else miss
+        Client-->>Client: return -1
+    end
 ```
 
 ```typescript
@@ -404,4 +433,4 @@ class LFUCache:
 
 ---
 
-> **关联阅读：** `30-trie-prefix-tree.md` → `32-design-and-ood.md` → `97-data-structures-implementations.md`
+> **关联阅读：** `30-trie-prefix-tree.md` → `32-design-and-ood.md` → `95-basic-coding-challenges.md`

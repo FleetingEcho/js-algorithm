@@ -21,6 +21,33 @@
 
 ---
 
+## 🗺️ 背包题型决策图
+
+```mermaid
+flowchart TD
+    START["背包 / 子集选择题"] --> ASK{"每个物品能选几次?"}
+    ASK -->|最多一次| ZERO["0-1 背包<br/>内层容量倒序"]
+    ASK -->|无限次| FULL["完全背包<br/>内层容量正序"]
+    ASK -->|固定次数 / 多重| MULTI["多重背包<br/>拆分或单调队列优化"]
+
+    ZERO --> GOAL{"目标是什么?"}
+    FULL --> GOAL
+    GOAL -->|能否装满| BOOL["boolean dp[j]"]
+    GOAL -->|最大 / 最小价值| OPT["max/min dp[j]"]
+    GOAL -->|方案数| COUNT["计数 dp[j] += dp[j-w]"]
+    GOAL -->|排列数| PERM["容量外层<br/>物品内层"]
+```
+
+## 🔁 一维压缩方向
+
+```mermaid
+flowchart LR
+    Z["0-1 背包"] --> ZD["j 从 W 到 w 倒序<br/>避免同一物品重复使用"]
+    F["完全背包"] --> FU["j 从 w 到 W 正序<br/>允许本轮继续使用当前物品"]
+```
+
+---
+
 ## 📋 目录
 
 1. [0-1 背包 vs 完全背包](#-0-1-背包-vs-完全背包)

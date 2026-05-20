@@ -6,6 +6,31 @@
 
 ---
 
+## 🗺️ 堆题型决策图
+
+```mermaid
+flowchart TD
+    START["堆 / 优先级队列题"] --> ASK{"动态维护什么?"}
+    ASK -->|第 K 大 / Top K 大| TOPKMAX["小顶堆维护 K 个最大值"]
+    ASK -->|第 K 小 / Top K 小| TOPKMIN["大顶堆维护 K 个最小值"]
+    ASK -->|数据流中位数| MEDIAN["双堆<br/>小半大顶堆 + 大半小顶堆"]
+    ASK -->|合并 K 路有序| MERGE["小顶堆存每路当前头"]
+    ASK -->|每次取当前最大收益| GREEDY["大顶堆 + 贪心"]
+    ASK -->|延迟删除窗口元素| LAZY["双堆 + lazy map"]
+```
+
+## 🌗 双堆中位数结构
+
+```mermaid
+flowchart LR
+    LEFT["大顶堆 small<br/>保存较小一半"] --> MID["中位数"]
+    RIGHT["小顶堆 large<br/>保存较大一半"] --> MID
+    BALANCE["保持 size 差不超过 1"] --> LEFT
+    BALANCE --> RIGHT
+```
+
+---
+
 ## 🎯 经典 LeetCode 题目
 
 | #   | 题号                                                                 | 题目                  | 难度 | 核心考点             | 推荐指数 |
@@ -330,4 +355,4 @@ def mergeKLists(lists):
 
 ---
 
-> **关联阅读：** `29-lru-and-lfu-cache.md` → `25-interval-and-sweep-line.md` → `97-data-structures-implementations.md`
+> **关联阅读：** `29-lru-and-lfu-cache.md` → `25-interval-and-sweep-line.md` → `95-basic-coding-challenges.md`

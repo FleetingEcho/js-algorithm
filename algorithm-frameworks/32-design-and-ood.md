@@ -9,10 +9,10 @@
 ```mermaid
 flowchart TD
     START["设计题"] --> NEED{"要保证什么复杂度?"}
-    NEED -->|O(1) 查找 + 最近使用淘汰| LRU["LRU<br/>HashMap + 双向链表"]
-    NEED -->|O(1) 查找 + 最少频率淘汰| LFU["LFU<br/>keyMap + freqMap + minFreq"]
-    NEED -->|O(1) 插入删除随机| RAND["RandomizedSet<br/>数组 + value->index"]
-    NEED -->|O(1) 获取最小值| MINSTACK["MinStack<br/>普通栈 + 最小栈"]
+    NEED -->|O1 查找 + 最近使用淘汰| LRU["LRU<br/>HashMap + 双向链表"]
+    NEED -->|O1 查找 + 最少频率淘汰| LFU["LFU<br/>keyMap + freqMap + minFreq"]
+    NEED -->|O1 插入删除随机| RAND["RandomizedSet<br/>数组 + value->index"]
+    NEED -->|O1 获取最小值| MINSTACK["MinStack<br/>普通栈 + 最小栈"]
     NEED -->|按时间查询历史值| TIME["TimeMap<br/>key -> 有序数组 + 二分"]
     NEED -->|路径 / 文件系统| FS["Trie 树节点<br/>目录 children + 内容"]
 ```

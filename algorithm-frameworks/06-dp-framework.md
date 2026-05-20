@@ -269,21 +269,13 @@ dp[i]:    0  1  1  2  2  1  2  2  3  3  2   3
 ④ dp 定义: dp[i][j] = s1[i..] 和 s2[j..] 的 LCS 长度
 ```
 
-````mermaid
+```mermaid
 flowchart TD
     subgraph DP表 [DP 表填充示意]
         direction LR
-        A["s1='abcde', s2='ace'"] --> TABLE["```
-         '' a  c  e
-      ''  0  0  0  0
-      a   0  1  1  1
-      b   0  1  1  1
-      c   0  1  2  2
-      d   0  1  2  2
-      e   0  1  2  3
-        ```"]
+        A["s1='abcde', s2='ace'"] --> TABLE["#  a  c  e<br/>#  0  0  0  0<br/>a  0  1  1  1<br/>b  0  1  1  1<br/>c  0  1  2  2<br/>d  0  1  2  2<br/>e  0  1  2  3"]
     end
-````
+```
 
 ```typescript
 // longest-common-subsequence.ts

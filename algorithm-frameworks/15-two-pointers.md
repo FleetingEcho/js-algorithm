@@ -481,9 +481,9 @@ flowchart LR
         INIT["[2,0,2,1,1,0]"] --> LOW["low=0<br/>存 0"]
         INIT --> MID["mid=0<br/>当前遍历"]
         INIT --> HIGH["high=5<br/>存 2"]
-        MID -->|nums[mid]=0| SWAP0["swap(low, mid)<br/>low++ mid++"]
-        MID -->|nums[mid]=1| MIDINC["mid++"]
-        MID -->|nums[mid]=2| SWAP2["swap(mid, high)<br/>high--"]
+        MID -->|numsmid=0| SWAP0["swap(low, mid)<br/>low++ mid++"]
+        MID -->|numsmid=1| MIDINC["mid++"]
+        MID -->|numsmid=2| SWAP2["swap(mid, high)<br/>high--"]
     end
 ```
 

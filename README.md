@@ -34,6 +34,8 @@
 ③ 面试前速刷 → 看 34-模式识别总结.md + 复杂度速查表
 ```
 
+> **💡 Mermaid 说明**：GitHub 对 Mermaid 流程图的支持有限（某些语法或复杂图表可能无法正确渲染）。如果图表显示异常，可以 `git clone` 本仓库后在本地用支持 Mermaid 的 Markdown 编辑器（如 VS Code + Markdown Preview Mermaid Support 插件）查看。
+
 ### 🗺️ 知识体系总图
 
 ```mermaid

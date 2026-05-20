@@ -142,13 +142,13 @@ function findDuplicateSubtrees(root: TreeNode<number> | null): TreeNode<number>[
 
 ```mermaid
 flowchart TD
-    ROOT((5)) --> LEFT((2<br/>min=-∞, max=5))
-    ROOT --> RIGHT((7<br/>min=5, max=+∞))
+    ROOT((5)) --> LEFT["2<br/>min=-∞, max=5"]
+    ROOT --> RIGHT["7<br/>min=5, max=+∞"]
 
-    LEFT --> L1((1<br/>min=-∞, max=2))
-    LEFT --> L2((4<br/>min=2, max=5))
-    L2 --> L2L((3<br/>min=2, max=4 ✅))
-    L2 --> L2R((6<br/>❌ 6 > 5? <br/>6 不在 [2,4] 内))
+    LEFT --> L1["1<br/>min=-∞, max=2"]
+    LEFT --> L2["4<br/>min=2, max=5"]
+    L2 --> L2L["3<br/>min=2, max=4 ✅"]
+    L2 --> L2R["6<br/>❌ 6 > 5? <br/>6 不在 [2,4] 内"]
 ```
 
 ```typescript
@@ -331,9 +331,9 @@ def convertBST(root: TreeNode | None) -> TreeNode | None:
 
 ```mermaid
 flowchart TD
-    DELETE[删除节点] --> CASE1[情况1: 叶子节点<br/>直接删除]
-    DELETE --> CASE2[情况2: 只有一个子节点<br/>子节点替换]
-    DELETE --> CASE3[情况3: 有两个子节点<br/>找右子树最小节点替换]
+    DELETE[删除节点] --> CASE1["情况1: 叶子节点<br/>直接删除"]
+    DELETE --> CASE2["情况2: 只有一个子节点<br/>子节点替换"]
+    DELETE --> CASE3["情况3: 有两个子节点<br/>找右子树最小节点替换"]
 
     CASE3 --> MIN["右子树最左边的节点"]
     MIN --> SWAP["替换值 + 递归删除那个节点"]

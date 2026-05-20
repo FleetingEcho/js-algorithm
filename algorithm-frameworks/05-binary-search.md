@@ -58,10 +58,10 @@
 ```mermaid
 flowchart TD
     INIT["[left, right] 整个数组"] --> MID["mid = (left+right)/2"]
-    MID --> CMP{比较 nums[mid] 和 target}
-    CMP -->|nums[mid] < target| L["left = mid + 1<br/>搜索右半"]
-    CMP -->|nums[mid] > target| R["right = mid - 1<br/>搜索左半"]
-    CMP -->|nums[mid] === target| FOUND["✅ 找到! (基本)<br/>或收缩边界 (左/右)"]
+    MID --> CMP{"比较 nums[mid] 和 target"}
+    CMP -->|numsmid < target| L["left = mid + 1<br/>搜索右半"]
+    CMP -->|numsmid > target| R["right = mid - 1<br/>搜索左半"]
+    CMP -->|numsmid === target| FOUND["✅ 找到! (基本)<br/>或收缩边界 (左/右)"]
     L --> MID
     R --> MID
 ```

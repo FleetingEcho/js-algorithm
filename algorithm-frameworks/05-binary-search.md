@@ -542,4 +542,29 @@ function rightBound(nums: number[], target: number): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def lower_bound(nums: list[int], target: int) -> int:
+    left, right = 0, len(nums)
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+    return left
+
+def binary_answer(left: int, right: int, check) -> int:
+    while left < right:
+        mid = (left + right) // 2
+        if check(mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
+```
+
+---
+
 > **关联阅读：** `15-two-pointers.md` → `16-sliding-window.md` → `11-egg-drop.md`

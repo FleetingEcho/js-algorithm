@@ -355,4 +355,4 @@ def mergeKLists(lists):
 
 ---
 
-> **关联阅读：** `29-lru-and-lfu-cache.md` → `25-interval-and-sweep-line.md` → `95-basic-coding-challenges.md`
+> **关联阅读：** `29-lru-and-lfu-cache.md` → `25-interval-and-sweep-line.md` → `../reference/95-basic-coding-challenges.md`

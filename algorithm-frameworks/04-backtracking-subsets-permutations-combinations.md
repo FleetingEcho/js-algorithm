@@ -522,4 +522,38 @@ function permute(nums: number[]): number[][] {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def subsets(nums: list[int]) -> list[list[int]]:
+    ans, path = [], []
+    def backtrack(start: int):
+        ans.append(path[:])
+        for i in range(start, len(nums)):
+            path.append(nums[i])
+            backtrack(i + 1)
+            path.pop()
+    backtrack(0)
+    return ans
+
+def permutations(nums: list[int]) -> list[list[int]]:
+    ans, path, used = [], [], [False] * len(nums)
+    def backtrack():
+        if len(path) == len(nums):
+            ans.append(path[:])
+            return
+        for i, x in enumerate(nums):
+            if used[i]:
+                continue
+            used[i] = True
+            path.append(x)
+            backtrack()
+            path.pop()
+            used[i] = False
+    backtrack()
+    return ans
+```
+
+---
+
 > **关联阅读：** `02-dfs-backtracking.md` → `06-dp-framework.md` → `15-two-pointers.md`

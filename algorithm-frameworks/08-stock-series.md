@@ -447,4 +447,24 @@ function maxProfitUnlimited(prices: number[]): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def max_profit_one_transaction(prices: list[int]) -> int:
+    min_price = float('inf')
+    ans = 0
+    for p in prices:
+        min_price = min(min_price, p)
+        ans = max(ans, p - min_price)
+    return ans
+
+def max_profit_unlimited(prices: list[int]) -> int:
+    profit = 0
+    for i in range(1, len(prices)):
+        profit += max(0, prices[i] - prices[i - 1])
+    return profit
+```
+
+---
+
 > **关联阅读：** `06-dp-framework.md` → `07-knapsack-problems.md` → `09-house-robber-and-interval-dp.md`

@@ -690,4 +690,28 @@ function bfs(start: string, target: string): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+from collections import deque
+
+def bfs_shortest(start, is_target, neighbors):
+    q = deque([start])
+    seen = {start}
+    step = 0
+    while q:
+        for _ in range(len(q)):
+            cur = q.popleft()
+            if is_target(cur):
+                return step
+            for nxt in neighbors(cur):
+                if nxt not in seen:
+                    seen.add(nxt)
+                    q.append(nxt)
+        step += 1
+    return -1
+```
+
+---
+
 > **关联阅读：** `02-dfs-backtracking.md` → `04-backtracking-subsets-permutations-combinations.md` → `15-two-pointers.md` → `16-sliding-window.md`

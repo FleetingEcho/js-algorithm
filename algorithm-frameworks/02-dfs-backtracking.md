@@ -521,4 +521,33 @@ function patternDedup(nums: number[]): void {
 
 ---
 
+## Python 核心模板补充
+
+```python
+def dfs_graph(graph: dict[int, list[int]], start: int) -> list[int]:
+    seen, order = set(), []
+    def dfs(node: int):
+        if node in seen:
+            return
+        seen.add(node)
+        order.append(node)
+        for nxt in graph.get(node, []):
+            dfs(nxt)
+    dfs(start)
+    return order
+
+def backtrack_template(choices):
+    ans, path = [], []
+    def backtrack(start: int):
+        ans.append(path[:])
+        for i in range(start, len(choices)):
+            path.append(choices[i])
+            backtrack(i + 1)
+            path.pop()
+    backtrack(0)
+    return ans
+```
+
+---
+
 > **关联阅读：** `03-bfs-framework.md` → `04-backtracking-subsets-permutations-combinations.md` → `05-binary-search.md`

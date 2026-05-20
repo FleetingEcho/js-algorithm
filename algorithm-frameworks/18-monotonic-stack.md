@@ -259,4 +259,19 @@ function dailyTemperatures(temperatures: number[]): number[] {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def next_greater(nums: list[int]) -> list[int]:
+    ans = [-1] * len(nums)
+    stack = []
+    for i, x in enumerate(nums):
+        while stack and nums[stack[-1]] < x:
+            ans[stack.pop()] = x
+        stack.append(i)
+    return ans
+```
+
+---
+
 > **关联阅读：** `16-sliding-window.md` → `21-n-sum-problems.md` → `22-palindrome-and-string-techniques.md`

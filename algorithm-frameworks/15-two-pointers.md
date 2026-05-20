@@ -675,4 +675,30 @@ function removeDuplicates(nums: number[]): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def remove_duplicates(nums: list[int]) -> int:
+    slow = 0
+    for fast, x in enumerate(nums):
+        if fast == 0 or x != nums[fast - 1]:
+            nums[slow] = x
+            slow += 1
+    return slow
+
+def two_sum_sorted(nums: list[int], target: int) -> tuple[int, int] | None:
+    left, right = 0, len(nums) - 1
+    while left < right:
+        s = nums[left] + nums[right]
+        if s == target:
+            return left, right
+        if s < target:
+            left += 1
+        else:
+            right -= 1
+    return None
+```
+
+---
+
 > **关联阅读：** `16-sliding-window.md` → `21-n-sum-problems.md` → `22-palindrome-and-string-techniques.md`

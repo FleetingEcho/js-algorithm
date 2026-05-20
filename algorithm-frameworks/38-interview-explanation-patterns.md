@@ -203,4 +203,4 @@ put(key, value):
 
 ---
 
-> **关联阅读：** `34-algorithm-pattern-recognition.md` → `90-review-and-pattern-training.md`
+> **关联阅读：** `34-algorithm-pattern-recognition.md` → `../training/90-review-and-pattern-training.md`

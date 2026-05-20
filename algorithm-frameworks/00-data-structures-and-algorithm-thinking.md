@@ -541,4 +541,33 @@ function traverse<T>(root: TreeNode<T> | null): void {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def traverse_array(nums: list[int]) -> int:
+    total = 0
+    for x in nums:
+        total += x
+    return total
+
+def traverse_tree(root: TreeNode | None) -> list[int]:
+    ans = []
+    def dfs(node):
+        if not node:
+            return
+        ans.append(node.val)
+        dfs(node.left)
+        dfs(node.right)
+    dfs(root)
+    return ans
+```
+
+---
+
 > **关联阅读：** `01-recursion-and-divide-conquer.md` → `02-dfs-backtracking.md` → `12-binary-tree-traversal.md`

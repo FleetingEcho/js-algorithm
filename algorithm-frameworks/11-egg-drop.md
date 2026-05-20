@@ -317,4 +317,20 @@ function superEggDrop(K: number, N: number): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def super_egg_drop(k: int, n: int) -> int:
+    # dp[e] 表示当前操作次数下，e 个鸡蛋最多能覆盖多少层
+    dp = [0] * (k + 1)
+    moves = 0
+    while dp[k] < n:
+        moves += 1
+        for e in range(k, 0, -1):
+            dp[e] = dp[e] + dp[e - 1] + 1
+    return moves
+```
+
+---
+
 > **关联阅读：** `05-binary-search.md` → `06-dp-framework.md` → `07-knapsack-problems.md`

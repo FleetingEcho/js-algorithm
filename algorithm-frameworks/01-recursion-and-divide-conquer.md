@@ -563,4 +563,30 @@ function mergeSort(arr: number[]): number[] {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def recursive_template(state):
+    if is_base_case(state):
+        return base_value(state)
+    sub = recursive_template(next_state(state))
+    return merge(state, sub)
+
+def merge_sort(nums: list[int]) -> list[int]:
+    if len(nums) <= 1:
+        return nums
+    mid = len(nums) // 2
+    left = merge_sort(nums[:mid])
+    right = merge_sort(nums[mid:])
+    ans, i, j = [], 0, 0
+    while i < len(left) or j < len(right):
+        if j == len(right) or (i < len(left) and left[i] <= right[j]):
+            ans.append(left[i]); i += 1
+        else:
+            ans.append(right[j]); j += 1
+    return ans
+```
+
+---
+
 > **关联阅读：** `00-data-structures-and-algorithm-thinking.md` → `02-dfs-backtracking.md` → `05-binary-search.md` → `06-dp-framework.md`

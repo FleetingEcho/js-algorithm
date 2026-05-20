@@ -8,21 +8,28 @@
 
 | 项目 | 结果 |
 |---|---|
-| 专题文件数 | 46 个 Markdown 文件（不含根 README 时以 `find` 为准） |
+| 核心算法框架文件数 | 40 个 Markdown 文件（`algorithm-frameworks/00-39`） |
+| 内容文件数 | 47 个 Markdown 文件（不含 README） |
 | Mermaid 图数量 | 126 个 |
 | Markdown 代码围栏 | 已检查未发现未闭合代码块 |
 | 坏链接残留 | 已检查旧的暂缺关联阅读引用 |
 | 核心一句话覆盖 | 除 `INDEX.md` / `README.md` 入口文件外，专题文件已覆盖 |
 | 关联阅读覆盖 | 除 `INDEX.md` / `README.md` 入口文件外，专题文件已覆盖 |
 | 新增复盘工具 | `90-review-and-pattern-training.md`, `91-interview-day-cheatsheet.md` |
-| 新增维护索引 | `INDEX.md`, `39-must-solve-list.md`, `92-quality-audit.md` |
+| 新增维护索引 | `indexes/ALGORITHM-INDEX.md`, `indexes/QUESTION-INDEX.md`, `docs/92-quality-audit.md` |
 
 ---
 
 ## 建议检查命令
 
 ```bash
-# 专题文件数，不含 algorithm-frameworks/README.md
+# 一键完整审计
+node scripts/audit-docs.mjs
+
+# 重新生成完整题号索引
+node scripts/generate-question-index.mjs
+
+# 核心算法框架文件数，不含 algorithm-frameworks/README.md
 find algorithm-frameworks -maxdepth 1 -name '*.md' ! -name README.md | wc -l
 
 # Mermaid 图数量
@@ -47,8 +54,8 @@ for f in algorithm-frameworks/*.md; do
 done
 
 # 检查核心一句话和关联阅读覆盖
-for f in algorithm-frameworks/*.md; do
-  case "$f" in algorithm-frameworks/INDEX.md|algorithm-frameworks/README.md) continue;; esac
+for f in algorithm-frameworks/*.md training/*.md reference/*.md docs/*.md; do
+  case "$f" in algorithm-frameworks/README.md) continue;; esac
   core=$(rg -c '核心一句话' "$f" || true)
   rel=$(rg -c '关联阅读' "$f" || true)
   if [ "$core" = "0" ] || [ "$rel" = "0" ]; then
@@ -56,11 +63,11 @@ for f in algorithm-frameworks/*.md; do
   fi
 done
 
-# 检查 INDEX.md 中的相对 Markdown 链接是否存在
-perl -nE 'while (/\]\(([^)#]+\.md)/g) { say $1 }' algorithm-frameworks/INDEX.md |
+# 检查专题索引中的相对 Markdown 链接是否存在
+perl -nE 'while (/\]\(([^)#]+\.md)/g) { say $1 }' indexes/ALGORITHM-INDEX.md |
   sort -u |
   while read f; do
-    test -f "algorithm-frameworks/$f" || printf 'missing index link %s\n' "$f"
+    test -f "indexes/$f" || printf 'missing index link %s\n' "$f"
   done
 ```
 
@@ -99,11 +106,11 @@ perl -nE 'while (/\]\(([^)#]+\.md)/g) { say $1 }' algorithm-frameworks/INDEX.md 
 
 | 频率 | 检查内容 |
 |---|---|
-| 每次新增文件后 | README 统计、文件总览、关联阅读 |
+| 每次新增文件后 | README 统计、文件总览、关联阅读、索引链接 |
 | 每周 | 代码围栏、坏引用、错题集是否更新 |
 | 每月 | 必背题清单是否调整、薄弱专题是否需要扩写 |
-| 面试前一周 | 按 `90-review-and-pattern-training.md` 的 7 天冲刺表和每日 30 分钟方案执行 |
+| 面试前一周 | 按 `training/90-review-and-pattern-training.md` 的 7 天冲刺表和每日 30 分钟方案执行 |
 
 ---
 
-> **关联阅读：** `INDEX.md` → `90-review-and-pattern-training.md`
+> **关联阅读：** `../indexes/ALGORITHM-INDEX.md` → `../training/90-review-and-pattern-training.md`

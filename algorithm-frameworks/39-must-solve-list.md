@@ -134,4 +134,4 @@ flowchart TD
 
 ---
 
-> **关联阅读：** `34-algorithm-pattern-recognition.md` → `90-review-and-pattern-training.md` → `38-interview-explanation-patterns.md`
+> **关联阅读：** `34-algorithm-pattern-recognition.md` → `../training/90-review-and-pattern-training.md` → `38-interview-explanation-patterns.md`

@@ -261,4 +261,32 @@ function reverseList<T>(head: ListNode<T> | null): ListNode<T> | null {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverse_list(head: ListNode | None) -> ListNode | None:
+    prev, cur = None, head
+    while cur:
+        nxt = cur.next
+        cur.next = prev
+        prev, cur = cur, nxt
+    return prev
+
+def has_cycle(head: ListNode | None) -> bool:
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow is fast:
+            return True
+    return False
+```
+
+---
+
 > **关联阅读：** `15-two-pointers.md` → `21-n-sum-problems.md`

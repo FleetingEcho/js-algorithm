@@ -433,4 +433,4 @@ class LFUCache:
 
 ---
 
-> **关联阅读：** `30-trie-prefix-tree.md` → `32-design-and-ood.md` → `95-basic-coding-challenges.md`
+> **关联阅读：** `30-trie-prefix-tree.md` → `32-design-and-ood.md` → `../reference/95-basic-coding-challenges.md`

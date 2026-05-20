@@ -425,4 +425,31 @@ function lengthOfLongestSubstring(s: string): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+from collections import defaultdict
+
+def min_window(s: str, t: str) -> str:
+    need = defaultdict(int)
+    for c in t:
+        need[c] += 1
+    missing = len(t)
+    left = start = end = 0
+    for right, c in enumerate(s, 1):
+        if need[c] > 0:
+            missing -= 1
+        need[c] -= 1
+        while missing == 0:
+            if end == 0 or right - left < end - start:
+                start, end = left, right
+            need[s[left]] += 1
+            if need[s[left]] > 0:
+                missing += 1
+            left += 1
+    return s[start:end]
+```
+
+---
+
 > **关联阅读：** `18-monotonic-stack.md` → `20-prefix-sum-and-diff-array.md` → `21-n-sum-problems.md`

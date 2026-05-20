@@ -337,4 +337,39 @@ function threeSum(nums: number[]): number[][] {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def two_sum_sorted(nums: list[int], target: int, start: int = 0) -> list[list[int]]:
+    ans = []
+    left, right = start, len(nums) - 1
+    while left < right:
+        s = nums[left] + nums[right]
+        if s == target:
+            ans.append([nums[left], nums[right]])
+            left += 1
+            right -= 1
+            while left < right and nums[left] == nums[left - 1]:
+                left += 1
+            while left < right and nums[right] == nums[right + 1]:
+                right -= 1
+        elif s < target:
+            left += 1
+        else:
+            right -= 1
+    return ans
+
+def three_sum(nums: list[int]) -> list[list[int]]:
+    nums.sort()
+    ans = []
+    for i, x in enumerate(nums):
+        if i > 0 and x == nums[i - 1]:
+            continue
+        for pair in two_sum_sorted(nums, -x, i + 1):
+            ans.append([x] + pair)
+    return ans
+```
+
+---
+
 > **关联阅读：** `15-two-pointers.md` → `20-prefix-sum-and-diff-array.md` → `22-palindrome-and-string-techniques.md`

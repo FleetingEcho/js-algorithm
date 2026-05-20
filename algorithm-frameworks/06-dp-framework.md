@@ -445,4 +445,29 @@ function coinChange(coins: number[], amount: number): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+from functools import cache
+
+def memo_dfs(n: int) -> int:
+    @cache
+    def dp(i: int) -> int:
+        if i <= 1:
+            return i
+        return dp(i - 1) + dp(i - 2)
+    return dp(n)
+
+def bottom_up(nums: list[int]) -> int:
+    if not nums:
+        return 0
+    dp = [0] * len(nums)
+    dp[0] = nums[0]
+    for i in range(1, len(nums)):
+        dp[i] = max(dp[i - 1], nums[i])
+    return dp[-1]
+```
+
+---
+
 > **关联阅读：** `07-knapsack-problems.md` → `10-edit-distance.md` → `08-stock-series.md`

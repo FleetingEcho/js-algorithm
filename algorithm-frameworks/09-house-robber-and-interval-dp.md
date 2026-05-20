@@ -307,4 +307,27 @@ function rob(nums: number[]): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+def rob_linear(nums: list[int]) -> int:
+    prev2 = prev1 = 0
+    for x in nums:
+        prev2, prev1 = prev1, max(prev1, prev2 + x)
+    return prev1
+
+def interval_dp(n: int, score) -> int:
+    dp = [[0] * n for _ in range(n)]
+    for length in range(2, n + 1):
+        for left in range(n - length + 1):
+            right = left + length - 1
+            dp[left][right] = max(
+                score(left, k, right) + dp[left][k] + dp[k + 1][right]
+                for k in range(left, right)
+            )
+    return dp[0][n - 1]
+```
+
+---
+
 > **关联阅读：** `06-dp-framework.md` → `08-stock-series.md` → `12-binary-tree-traversal.md`

@@ -303,4 +303,34 @@ function subarraySum(nums: number[], k: number): number {}
 
 ---
 
+## Python 核心模板补充
+
+```python
+from collections import defaultdict
+
+def subarray_sum(nums: list[int], k: int) -> int:
+    count = defaultdict(int)
+    count[0] = 1
+    pre = ans = 0
+    for x in nums:
+        pre += x
+        ans += count[pre - k]
+        count[pre] += 1
+    return ans
+
+def apply_diff(n: int, updates: list[tuple[int, int, int]]) -> list[int]:
+    diff = [0] * (n + 1)
+    for left, right, delta in updates:
+        diff[left] += delta
+        if right + 1 < len(diff):
+            diff[right + 1] -= delta
+    ans, cur = [], 0
+    for i in range(n):
+        cur += diff[i]
+        ans.append(cur)
+    return ans
+```
+
+---
+
 > **关联阅读：** `16-sliding-window.md` → `21-n-sum-problems.md` → `22-palindrome-and-string-techniques.md`

@@ -27,6 +27,7 @@
 | 15  | [106](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | 从中序与后序遍历构造二叉树       |  🟡  | 分治构建          |  ⭐⭐⭐  |
 | 16  | [236](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)                    | 二叉树的最近公共祖先             |  🟡  | 后序 + 子树判断   |  ⭐⭐⭐  |
 | 17  | [652](https://leetcode.cn/problems/find-duplicate-subtrees/)                                    | 寻找重复子树                     |  🟡  | 后序 + 序列化     |  ⭐⭐⭐  |
+| 18  | [654](https://leetcode.cn/problems/maximum-binary-tree/)                                       | 最大二叉树                       |  🟡  | 前序分治构造      |   ⭐⭐   |
 
 ---
 
@@ -39,8 +40,9 @@
 5. [实战：翻转二叉树（前序应用）](#-实战翻转二叉树前序应用)
 6. [实战：展开为链表（后序应用）](#-实战展开为链表后序应用)
 7. [实战：填充右侧指针（跨节点连接）](#-实战填充右侧指针跨节点连接)
-8. [复杂度速查表](#-复杂度速查表)
-9. [刷题建议](#-刷题建议)
+8. [实战：构造最大二叉树（前序分治）](#-实战构造最大二叉树前序分治)
+9. [复杂度速查表](#-复杂度速查表)
+10. [刷题建议](#-刷题建议)
 
 ---
 
@@ -127,15 +129,6 @@ function postorder<T>(root: TreeNode<T> | null): T[] {
   dfs(root);
   return result;
 }
-
-// --- 测试 ---
-//       1
-//      / \
-//     2   3
-const root = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-console.log('前序:', preorder(root)); // [1, 2, 3]
-console.log('中序:', inorder(root)); // [2, 1, 3]
-console.log('后序:', postorder(root)); // [2, 3, 1]
 ```
 
 ---
@@ -344,6 +337,68 @@ function connectTwo<T>(node1: LinkedTreeNode<T> | null, node2: LinkedTreeNode<T>
   // 连接跨父节点的子节点
   connectTwo(node1.right, node2.left);
 }
+```
+
+---
+
+---
+
+## 🔢 实战：构造最大二叉树（前序分治）
+
+> [654. 最大二叉树](https://leetcode.cn/problems/maximum-binary-tree/)
+>
+> **核心思想：** 找到区间最大值作为根节点，递归构造左右子树。本质是前序位置的分治。
+
+```typescript
+// maximum-binary-tree.ts
+/**
+ * 构造最大二叉树
+ *
+ * 思路：
+ *   1. 在 [lo, hi] 中找到最大值 maxVal 和对应索引 index
+ *   2. 用 maxVal 构造根节点
+ *   3. 递归构造左子树 (lo, index-1) 和右子树 (index+1, hi)
+ */
+function constructMaximumBinaryTree(nums: number[]): TreeNode<number> | null {
+  function build(lo: number, hi: number): TreeNode<number> | null {
+    if (lo > hi) return null;
+
+    // ⭐ 前序位置：找到最大值和索引
+    let index = lo;
+    for (let i = lo; i <= hi; i++) {
+      if (nums[i] > nums[index]) index = i;
+    }
+
+    const root = new TreeNode(nums[index]);
+    root.left = build(lo, index - 1);
+    root.right = build(index + 1, hi);
+
+    return root;
+  }
+
+  return build(0, nums.length - 1);
+}
+```
+
+```python
+# maximum-binary-tree.py
+def constructMaximumBinaryTree(nums: list[int]) -> TreeNode | None:
+    def build(lo: int, hi: int) -> TreeNode | None:
+        if lo > hi:
+            return None
+
+        # 找到最大值及其索引
+        idx = lo
+        for i in range(lo, hi + 1):
+            if nums[i] > nums[idx]:
+                idx = i
+
+        root = TreeNode(nums[idx])
+        root.left = build(lo, idx - 1)
+        root.right = build(idx + 1, hi)
+        return root
+
+    return build(0, len(nums) - 1)
 ```
 
 ---

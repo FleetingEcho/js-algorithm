@@ -31,6 +31,10 @@
 | 19  | [701](https://leetcode.cn/problems/insert-into-a-binary-search-tree/)               | 二叉搜索树中的插入操作       |  🟡  | BST 插入          |   ⭐⭐   |
 | 20  | [450](https://leetcode.cn/problems/delete-node-in-a-bst/)                           | 删除二叉搜索树中的节点       |  🟡  | BST 删除（最难）  |  ⭐⭐⭐  |
 | 21  | [230](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)                  | 二叉搜索树中第 K 小的元素    |  🟡  | 中序 = 升序       |   ⭐⭐   |
+| 22  | [538](https://leetcode.cn/problems/convert-bst-to-greater-tree/)                    | 把二叉搜索树转换为累加树     |  🟡  | 反序中序遍历      |   ⭐⭐   |
+| 23  | [96](https://leetcode.cn/problems/unique-binary-search-trees/)                      | 不同的二叉搜索树             |  🟡  | 递归计数 + 备忘录 |   ⭐⭐   |
+| 24  | [95](https://leetcode.cn/problems/unique-binary-search-trees-ii/)                   | 不同的二叉搜索树 II          |  🟡  | 递归构造 + 组合   |  ⭐⭐⭐  |
+| 25  | [1373](https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/)                | 二叉搜索子树的最大键值和     |  🔴  | 后序 + BST 判断   |  ⭐⭐⭐  |
 
 ---
 
@@ -42,9 +46,13 @@
 4. [BST 查找](#-bst-查找)
 5. [BST 插入](#-bst-插入)
 6. [BST 删除（三种情况）](#-bst-删除三种情况)
-7. [BST 遍历框架总结](#-bst-遍历框架总结)
-8. [复杂度速查表](#-复杂度速查表)
-9. [刷题建议](#-刷题建议)
+7. [BST 转为累加树](#-bst-转为累加树)
+8. [BST 最大键值和（后序应用）](#-bst-最大键值和后序应用)
+9. [BST 遍历框架总结](#-bst-遍历框架总结)
+10. [不同的二叉搜索树（计数）](#-不同的二叉搜索树计数)
+11. [不同的二叉搜索树 II（构造）](#-不同的二叉搜索树-ii构造)
+12. [复杂度速查表](#-复杂度速查表)
+13. [刷题建议](#-刷题建议)
 
 ---
 
@@ -78,13 +86,6 @@ function serializePostorder(root: TreeNode<number> | null): string {
   // ⭐ 后序位置：左右子树都序列化了，再合并
   return `${left},${right},${root.val}`;
 }
-
-// --- 测试 ---
-//       1
-//      / \
-//     2   3
-const root = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-console.log(serializePostorder(root)); // "#,#,2,#,#,3,1"
 ```
 
 ---
@@ -179,6 +180,21 @@ function isValidBST(root: TreeNode<number> | null): boolean {
 }
 ```
 
+```python
+# validate-bst.py
+def isValidBST(root: TreeNode | None) -> bool:
+    def is_valid(node: TreeNode | None, min_node: TreeNode | None, max_node: TreeNode | None) -> bool:
+        if node is None:
+            return True
+        if min_node is not None and node.val <= min_node.val:
+            return False
+        if max_node is not None and node.val >= max_node.val:
+            return False
+        return is_valid(node.left, min_node, node) and is_valid(node.right, node, max_node)
+
+    return is_valid(root, None, None)
+```
+
 ---
 
 ## 🔢 BST 查找
@@ -199,6 +215,18 @@ function searchBST(root: TreeNode<number> | null, target: number): TreeNode<numb
   // target > root.val
   return searchBST(root.right, target);
 }
+```
+
+```python
+# search-bst.py
+def searchBST(root: TreeNode | None, target: int) -> TreeNode | None:
+    if root is None:
+        return None
+    if root.val == target:
+        return root
+    if target < root.val:
+        return searchBST(root.left, target)
+    return searchBST(root.right, target)
 ```
 
 ---
@@ -224,6 +252,75 @@ function insertIntoBST(root: TreeNode<number> | null, val: number): TreeNode<num
 
   return root;
 }
+```
+
+```python
+# insert-bst.py
+def insertIntoBST(root: TreeNode | None, val: int) -> TreeNode | None:
+    if root is None:
+        return TreeNode(val)
+    if val < root.val:
+        root.left = insertIntoBST(root.left, val)
+    elif val > root.val:
+        root.right = insertIntoBST(root.right, val)
+    return root
+```
+
+---
+
+## 🔢 BST 转为累加树
+
+> [538. 把二叉搜索树转换为累加树](https://leetcode.cn/problems/convert-bst-to-greater-tree/)
+>
+> **核心思想：** 反序中序遍历（右→根→左），累加节点值。BST 中序是升序，反序就是降序。
+
+```typescript
+// convert-bst.ts
+/**
+ * 把 BST 转为累加树（Greater Tree）
+ *
+ * 思路：降序遍历（右 → 根 → 左），维护外部累加和
+ * 每个节点的值 = 原值 + 所有比它大的节点值之和
+ */
+function convertBST(root: TreeNode<number> | null): TreeNode<number> | null {
+  let sum = 0;
+
+  function traverse(node: TreeNode<number> | null): void {
+    if (node === null) return;
+
+    // 先遍历右子树（更大的值）
+    traverse(node.right);
+
+    // ⭐ 中序位置：累加并赋值
+    sum += node.val;
+    node.val = sum;
+
+    // 再遍历左子树（更小的值）
+    traverse(node.left);
+  }
+
+  traverse(root);
+  return root;
+}
+```
+
+```python
+# convert-bst.py
+def convertBST(root: TreeNode | None) -> TreeNode | None:
+    total = 0
+
+    def traverse(node: TreeNode | None) -> None:
+        nonlocal total
+        if node is None:
+            return
+        # 先右后左的中序遍历（降序）
+        traverse(node.right)
+        total += node.val
+        node.val = total
+        traverse(node.left)
+
+    traverse(root)
+    return root
 ```
 
 ---
@@ -283,6 +380,109 @@ function getMin(root: TreeNode<number>): TreeNode<number> {
 }
 ```
 
+```python
+# delete-bst.py
+def deleteNode(root: TreeNode | None, key: int) -> TreeNode | None:
+    if root is None:
+        return None
+
+    if root.val == key:
+        # 情况 1 & 2: 叶子或只有一个子节点
+        if root.left is None:
+            return root.right
+        if root.right is None:
+            return root.left
+        # 情况 3: 有两个子节点，找右子树最小节点
+        min_node = root.right
+        while min_node.left is not None:
+            min_node = min_node.left
+        root.val = min_node.val
+        root.right = deleteNode(root.right, min_node.val)
+    elif key < root.val:
+        root.left = deleteNode(root.left, key)
+    else:
+        root.right = deleteNode(root.right, key)
+
+    return root
+```
+
+---
+
+## 🔢 BST 最大键值和（后序应用）
+
+> [1373. 二叉搜索子树的最大键值和](https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/)
+>
+> **核心思想：** 后序遍历。对每个节点判断左右子树是否为 BST，收集 min/max/sum 信息向上传递。
+
+```typescript
+// max-sum-bst.ts
+/**
+ * 找出所有 BST 子树中，节点值之和的最大值
+ *
+ * 后序遍历返回 [isBST, min, max, sum]
+ *   isBST: 1 表示是 BST，0 表示不是
+ *   min: 子树最小值
+ *   max: 子树最大值
+ *   sum: 子树所有节点之和
+ */
+function maxSumBST(root: TreeNode<number> | null): number {
+  let maxSum = 0;
+
+  function traverse(node: TreeNode<number> | null): number[] {
+    if (node === null) {
+      return [1, Infinity, -Infinity, 0]; // [是BST, 最小值, 最大值, 和]
+    }
+
+    const left = traverse(node.left);
+    const right = traverse(node.right);
+
+    // ⭐ 后序位置：判断当前节点为根的树是否为 BST
+    if (left[0] === 1 && right[0] === 1 &&
+        node.val > left[2] && node.val < right[1]) {
+      const sum = left[3] + right[3] + node.val;
+      maxSum = Math.max(maxSum, sum);
+      return [
+        1,
+        Math.min(left[1], node.val),
+        Math.max(right[2], node.val),
+        sum
+      ];
+    }
+
+    // 不是 BST，标记为 0
+    return [0, 0, 0, 0];
+  }
+
+  traverse(root);
+  return maxSum;
+}
+```
+
+```python
+# max-sum-bst.py
+def maxSumBST(root: TreeNode | None) -> int:
+    max_sum = 0
+
+    def traverse(node: TreeNode | None) -> list:
+        nonlocal max_sum
+        if node is None:
+            return [True, float('inf'), float('-inf'), 0]
+
+        left = traverse(node.left)
+        right = traverse(node.right)
+
+        if (left[0] and right[0] and
+                left[2] < node.val < right[1]):
+            total = left[3] + right[3] + node.val
+            max_sum = max(max_sum, total)
+            return [True, min(left[1], node.val), max(right[2], node.val), total]
+
+        return [False, 0, 0, 0]
+
+    traverse(root)
+    return max_sum
+```
+
 ---
 
 ## 📐 BST 遍历框架总结
@@ -317,6 +517,150 @@ function bstTemplate(root: TreeNode<number> | null, target: number): TreeNode<nu
 
 ---
 
+## 🔢 不同的二叉搜索树（计数）
+
+> [96. 不同的二叉搜索树](https://leetcode.cn/problems/unique-binary-search-trees/)
+>
+> **核心思想：** 以每个数字为根，左右子树分别计数，乘积求和。用备忘录避免重复计算。
+
+```typescript
+// num-trees.ts
+/**
+ * 计算 1..n 能构成多少种不同的 BST
+ *
+ * 思路：对每个数字 i 作为根节点
+ *   左子树由 [1..i-1] 构成 → count(lo, i-1)
+ *   右子树由 [i+1..hi] 构成 → count(i+1, hi)
+ *   组合数 = 左 × 右
+ *   总和 = Σ(左 × 右) 对每个 i
+ */
+function numTrees(n: number): number {
+  // memo[lo][hi] 缓存区间 [lo, hi] 的结果
+  const memo: number[][] = Array.from({ length: n + 1 }, () => new Array(n + 1).fill(0));
+
+  function count(lo: number, hi: number): number {
+    if (lo > hi) return 1; // 空树也算一种
+
+    if (memo[lo][hi] !== 0) return memo[lo][hi];
+
+    let res = 0;
+    for (let i = lo; i <= hi; i++) {
+      const left = count(lo, i - 1);
+      const right = count(i + 1, hi);
+      res += left * right;
+    }
+
+    memo[lo][hi] = res;
+    return res;
+  }
+
+  return count(1, n);
+}
+```
+
+```python
+# num-trees.py
+def numTrees(n: int) -> int:
+    memo = [[0] * (n + 1) for _ in range(n + 1)]
+
+    def count(lo: int, hi: int) -> int:
+        if lo > hi:
+            return 1
+        if memo[lo][hi] != 0:
+            return memo[lo][hi]
+
+        res = 0
+        for i in range(lo, hi + 1):
+            left = count(lo, i - 1)
+            right = count(i + 1, hi)
+            res += left * right
+
+        memo[lo][hi] = res
+        return res
+
+    return count(1, n)
+```
+
+---
+
+## 🔢 不同的二叉搜索树 II（构造）
+
+> [95. 不同的二叉搜索树 II](https://leetcode.cn/problems/unique-binary-search-trees-ii/)
+>
+> **核心思想：** 穷举每个数字作为根节点，递归构造所有可能的左右子树，然后组合。
+
+```typescript
+// generate-trees.ts
+/**
+ * 构造 1..n 所有不同的 BST
+ *
+ * 思路：
+ *   1. 穷举 root 节点的所有可能 (i from lo to hi)
+ *   2. 递归构造左右子树的所有合法 BST
+ *   3. 给 root 节点组合所有左右子树
+ */
+function generateTrees(n: number): Array<TreeNode<number> | null> {
+  if (n === 0) return [];
+
+  function build(lo: number, hi: number): Array<TreeNode<number> | null> {
+    const res: Array<TreeNode<number> | null> = [];
+
+    if (lo > hi) {
+      res.push(null);
+      return res;
+    }
+
+    for (let i = lo; i <= hi; i++) {
+      const leftTrees = build(lo, i - 1);
+      const rightTrees = build(i + 1, hi);
+
+      for (const left of leftTrees) {
+        for (const right of rightTrees) {
+          const root = new TreeNode(i);
+          root.left = left;
+          root.right = right;
+          res.push(root);
+        }
+      }
+    }
+
+    return res;
+  }
+
+  return build(1, n);
+}
+```
+
+```python
+# generate-trees.py
+def generateTrees(n: int) -> list[TreeNode | None]:
+    if n == 0:
+        return []
+
+    def build(lo: int, hi: int) -> list[TreeNode | None]:
+        res = []
+        if lo > hi:
+            res.append(None)
+            return res
+
+        for i in range(lo, hi + 1):
+            left_trees = build(lo, i - 1)
+            right_trees = build(i + 1, hi)
+
+            for left in left_trees:
+                for right in right_trees:
+                    root = TreeNode(i)
+                    root.left = left
+                    root.right = right
+                    res.append(root)
+
+        return res
+
+    return build(1, n)
+```
+
+---
+
 ## 📊 复杂度速查表
 
 | 操作         |  时间复杂度   | 空间复杂度 | 说明           |
@@ -327,6 +671,10 @@ function bstTemplate(root: TreeNode<number> | null, target: number): TreeNode<nu
 | BST 查找     | O(log n) 平均 |    O(h)    | 二分查找思想   |
 | BST 插入     | O(log n) 平均 |    O(h)    | 总是在叶子     |
 | BST 删除     | O(log n) 平均 |    O(h)    | 三种情况中最难 |
+| BST 转为累加树   |     O(n)    |    O(h)    | 反序中序遍历   |
+| BST 最大键值和   |     O(n)    |    O(h)    | 后序 + BST 判断 |
+| 不同 BST（计数）  |  O(n²)      |    O(n²)   | 递归 + 备忘录  |
+| 不同 BST II（构造）| 卡特兰数   |    O(n²)   | 递归构造 + 组合 |
 
 ---
 

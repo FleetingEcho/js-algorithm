@@ -690,4 +690,4 @@ function bfs(start: string, target: string): number {}
 
 ---
 
-> **关联阅读：** `02-dfs-backtracking.md` → `04-backtracking-subsets-permutations-combinations.md` → `19-two-pointers.md` → `20-sliding-window.md`
+> **关联阅读：** `02-dfs-backtracking.md` → `04-backtracking-subsets-permutations-combinations.md` → `15-two-pointers.md` → `16-sliding-window.md`

@@ -1,1 +1,0 @@
-// 752. Open the Lock.ts

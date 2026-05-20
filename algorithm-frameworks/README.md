@@ -1,6 +1,6 @@
 # 📘 Algorithm Frameworks
 
-> 算法框架思维的结构化总结 —— 将 40+ 个零散的笔记重构为 **39 篇结构化 Markdown**，覆盖 **269 道 LeetCode 高频题**。
+> 算法框架思维的结构化总结 —— 将 40+ 个零散的笔记重构为 **40 篇结构化 Markdown**，覆盖 **269 道 LeetCode 高频题**。
 >
 > 每篇文章包含：核心思想 → 可运行 TypeScript 代码 → Mermaid 流程图 → 复杂度分析 → 刷题路线
 
@@ -95,7 +95,7 @@ flowchart TD
 
 ---
 
-## 📦 文件总览 (39 篇)
+## 📦 文件总览 (40 篇)
 
 ### 🔷 Phase 0 — 思维基础 (2 篇)
 
@@ -158,13 +158,14 @@ flowchart TD
 | 34  | [算法模式识别总结](34-algorithm-pattern-recognition.md) | 看到什么→想到什么速查表 + 面试策略  |    —     |
 | 35  | [线段树与树状数组](35-segment-tree-and-bit.md)           | Fenwick / Segment Tree / 区间查询  |    4     |
 
-### 🔷 Phase 5 — 补充专题 (4 篇)
+### 🔷 Phase 5 — 补充专题 (5 篇)
 
 | #   | 文件                                                                    | 一句话总结                     | 核心题数 |
 | --- | ----------------------------------------------------------------------- | ------------------------------ | :------: |
 | 95  | [基础编程练习](95-basic-coding-challenges.md)                           | 字符串/数组/递归等基础编程练习 |    20    |
 | 96  | [JS 基础知识参考](96-js-basics.md)                                       | BigInt / Map / Set / Array 等  |    —     |
 | 97  | [数据结构手写实现](97-data-structures-implementations.md)                 | 11 种数据结构的 TS + Python 实现|    —     |
+| 98  | [Python 基础知识参考](98-python-basics.md)                               | 列表/字典/堆/队列/排序等语法速查 |    —     |
 | 99  | [剑指 Offer 题解](99-jianzhi-offer.md)                                   | 71 道经典面试题，11 个分类     |    71    |
 
 ---

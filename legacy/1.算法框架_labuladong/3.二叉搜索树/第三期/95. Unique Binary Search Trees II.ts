@@ -9,7 +9,7 @@ namespace LeetCode95 {
       this.right = right === undefined ? null : right;
     }
   }
-  /* 
+  /*
 
 明白了上道题构造合法 BST 的方法，这道题的思路也是一样的：
 

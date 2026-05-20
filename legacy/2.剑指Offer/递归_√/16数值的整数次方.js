@@ -1,10 +1,10 @@
 // 16数值的整数次方
-/* 
+/*
 实现函数double Power(double base, int exponent)，求base的exponent次方。
 不得使用库函数，同时不需要考虑大数问题。
 */
 
-/* 
+/*
 
 输入: 2.00000, 10
 输出: 1024.00000
@@ -33,7 +33,7 @@ const myPow = function (x, n) {
 };
 // 位运算
 
-/* 
+/*
 ! 二分法！！！
 为了方便讨论，假设指数exponent是正数。那么递归式如下：
 

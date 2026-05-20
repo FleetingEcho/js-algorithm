@@ -1,5 +1,5 @@
 // 图是一组由边连接的节点（或顶点）。学习图是重要的，因为任何二元关系都可以用图来表示。
-/* 
+/*
 一个图 G = (V, E)由以下元素组成。
 V：一组顶点
 E：一组边，连接 V 中的顶点
@@ -108,7 +108,7 @@ graph.addEdge('B', 'F');
 graph.addEdge('E', 'I');
 console.log(graph.toString());
 
-/* 
+/*
 
 A -> B C D 
 B -> A E F

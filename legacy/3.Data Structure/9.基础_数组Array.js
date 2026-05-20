@@ -1,5 +1,5 @@
 // array.splice(index,1，3,4,5); 从index开始删除1个数字，添加3,4,5
-/* 
+/*
 ! 创建一个递增数组，从0开始
     方法1
   let dp=new Array(amount+1);
@@ -34,7 +34,7 @@ console.log(temp); //[ 3, 4, 5, 6, 7 ]
 //!  backtrack(Array.from(track));//为了递归，深拷贝一份
 //!  backtrack(Array.of(...track));//为了递归，深拷贝一份
 //* concat
-/* 
+/*
 const zero = 0; 
 const positiveNumbers = [1, 2, 3]; 
 const negativeNumbers = [-3, -2, -1]; 
@@ -44,7 +44,7 @@ console.log(negativeNumbers); // ! concat不会改变原数组
 */
 
 // * every 方法会迭代数组中的每个元素，直到返回 false，，   必须return true 才会进下一个循环
-/* 
+/*
 const temp = [1,2,3,4,5,6,7,8,9,10]
 temp.every((item,index,self)=>{
   if(item>3 && item<8){
@@ -68,7 +68,7 @@ temp.some((item,index,self)=>{
 
 // *  map方法  return是到下一次循环，不关注return的是true/false   break和continue无效
 
-/* 
+/*
 const temp = [1,2,3,4,5,6,7,8,9,10]
 temp.map((item,index,self)=>{
   if(item>3 && item<8){
@@ -80,7 +80,7 @@ temp.map((item,index,self)=>{
 
 // ! filter函数     只筛选返回true的数组元素。
 
-/* 
+/*
 const temp = [1,2,3,4,5,6,7,8,9,10]
 const temp1=temp.filter((item,index,self)=>{
   if(item>3 && item<8){
@@ -92,7 +92,7 @@ const temp1=temp.filter((item,index,self)=>{
 console.log(temp1); //新数组只包含返回true的值[ 1, 2, 3, 8, 9, 10 ]
 */
 
-/* 
+/*
 
 * copyWithin 复制数组中一系列元素到同一数组指定的起始位置
 * keys 返回包含数组所有索引的@@iterator
@@ -156,7 +156,7 @@ const temp4=temp.keys()  //返回的是下标index
 const temp2=Object.values(temp) //返回的也就是数组本身，
 console.log(temp2); //返回的是迭代器 */
 
-/* 
+/*
 想打印数值的话
 
 
@@ -262,7 +262,7 @@ console.log(numbers.lastIndexOf(9));//  从后面找起， index=9
 
 //! find()方法  和 findIndex()
 //  find() 返回满足提供的函数的第一个元素的值
-/* let numbers = [13,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; 
+/* let numbers = [13,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 function multipleOf13(element, index, array) { 
 return (element===13); 
 } 
@@ -290,7 +290,7 @@ console.log(arr.join('-')); //1-2-3-4-5-6-7-8-9-10
 
 // ! 类型数组   用于存储单一类型的数据
 // let myArray = new TypedArray (length)   TypedArray可以换成以下任意类型
-/* 
+/*
 Int8Array    8 位二进制补码整数
 Uint8Array    8 位无符号整数
 Uint8ClampedArray   8 位无符号整数

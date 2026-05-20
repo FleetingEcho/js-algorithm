@@ -1,5 +1,5 @@
 // 19. 正则表达式匹配
-/* 
+/*
 请实现一个函数用来匹配包含'. '和'*'的正则表达式。
 字符'.'表示任意一个字符，
 而'*'表示它前面的字符可以出现任意次（含0次）。
@@ -77,7 +77,7 @@ function isMatch(A, B) {
   return f[n][m];
 }
 
-/* 
+/*
 ! 方法1:直接使用正则
 var isMatch = function(target, reg) {
   let Reg=RegExp("^("+reg+")$");

@@ -31,7 +31,7 @@ const initializeColor = (points) => {
 };
 
 // 广度优先搜索算法
-/* 
+/*
 A -> B C D 
 B -> A E F
 C -> A D G
@@ -79,7 +79,7 @@ export const BFS_Graph = (graph, startVertex, callback) => {
 从 v 到 u 的距离 distances[u]；
 前溯点 predecessors[u]，用来推导出从 v 到其他每个顶点 u 的最短路径。
  */
-/* 
+/*
 {
   distances: { A: 0, B: 1, C: 1, D: 1, E: 2, F: 2, G: 2, H: 2, I: 3 },
   predecessors: {
@@ -172,7 +172,7 @@ graph.addEdge('E', 'I');
 const shortestPathA = BFS(graph, myVertices[0]);
 console.log(shortestPathA);
 
-/* 
+/*
 
 {
   distances: { A: 0, B: 1, C: 1, D: 1, E: 2, F: 2, G: 2, H: 2, I: 3 },
@@ -211,7 +211,7 @@ for (let i = 1; i < myVertices.length; i++) {
   console.log(s); // {19}
 }
 
-/* 
+/*
 A - B
 A - C
 A - D

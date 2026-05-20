@@ -19,7 +19,7 @@ function removeKdigits(num, k) {
   return result == '' ? '0' : result;
 }
 
-/* 
+/*
 每次丢弃一次，k 减去 1。当 k 减到 0 ，我们可以提前终止遍历。
 而当遍历完成，如果 k 仍然大于 0。不妨假设最终还剩下 x 个需要丢弃，那么我们需要选择删除末尾 x 个元素。
 

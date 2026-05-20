@@ -1,4 +1,4 @@
-/* 
+/*
 https://labuladong.gitbook.io/algo/gao-pin-mian-shi-xi-lie/bian-ji-ju-li
 给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
 你可以对一个单词进行如下三种操作：
@@ -29,12 +29,12 @@ exention -> exection (将 'n' 替换为 'c')
 exection -> execution (插入 'u')
 */
 
-/* 
+/*
 ! 前文「最长公共子序列」说过，解决两个字符串的动态规划问题，
 ! 一般都是用两个指针 i,j 分别指向两个字符串的最后，然后一步步往前走，缩小问题的规模。
 */
 
-/* 
+/*
 
 if s1[i] == s2[j]:
     啥都别做（skip）
@@ -80,7 +80,7 @@ function minDistance(s1, s2) {
 //! 方法2: 动态规划进行优化　　　－－优化方法无非是备忘录或者 DP table。
 
 // ! 2.1 备忘录优化
-/* 
+/*
 def minDistance(s1, s2) -> int:
 
     memo = dict() # 备忘录
@@ -104,7 +104,7 @@ def minDistance(s1, s2) -> int:
 //* 既然 dp 数组和递归 dp 函数含义一样，也就可以直接套用之前的思路写代码，
 //* 唯一不同的是，DP table 是自底向上求解，递归解法是自顶向下求解：
 
-/* 
+/*
 创建二维数组的两种方式
 ! 方式1： 
 let dp = new Array(4).fill(0).map((item,index,self)=>{
@@ -118,7 +118,7 @@ let dp = new Array(4).fill(0).map(v=>new Array(6).fill(0));
 console.log(dp);
 */
 
-/* 
+/*
 ! dp(i, j) 返回 s1[0..i] 和 s2[0..j] 的最小编辑距离
 
 ! dp[i-1][j-1] 存储 s1[0..i] 和 s2[0..j] 的最小编辑距离

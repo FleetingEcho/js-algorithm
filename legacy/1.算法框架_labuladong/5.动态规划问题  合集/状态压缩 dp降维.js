@@ -1,4 +1,4 @@
-/* 
+/*
 https://labuladong.gitbook.io/algo/dong-tai-gui-hua-xi-lie/zhuang-tai-ya-suo-ji-qiao
 
 ! 你看我们对 dp[i][j] 的更新，
@@ -25,7 +25,7 @@ for (let i = n - 2; i >= 0; i--) {
     else dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
   }
 }
-/* 
+/*
 在代码中注释的位置，将要进行状态转移，更新 dp[j]，那么我们要来思考两个问题：
 1、在对 dp[j] 赋新值之前，dp[j] 对应着二维 dp 数组中的什么位置？
   答: 在对 dp[j] 赋新值之前，dp[j] 的值就是外层 for 循环上一次迭代算出来的值，

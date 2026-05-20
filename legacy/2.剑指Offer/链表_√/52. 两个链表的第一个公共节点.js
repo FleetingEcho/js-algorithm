@@ -1,6 +1,6 @@
 // 52. 两个链表的第一个公共节点
 // 如果map中有重复值，则直接返回
-/* 
+/*
 时间复杂度是O(N)O(N)，空间复杂度是O(N)O(N)。
 */
 const getIntersectionNode = function (headA, headB) {
@@ -19,7 +19,7 @@ const getIntersectionNode = function (headA, headB) {
   return null;
 };
 
-/* 
+/*
 ! 快慢指针法
 */
 const getIntersectionNode1 = function (headA, headB) {

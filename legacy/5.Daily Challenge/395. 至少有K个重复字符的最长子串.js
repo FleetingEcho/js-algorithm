@@ -9,7 +9,7 @@ const longestSubstring = function (s, k, h = {}, n = []) {
     : s.length;
 };
 
-/* 
+/*
 输入:
 s = "ababbc", k = 2
 输出:

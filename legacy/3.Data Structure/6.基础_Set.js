@@ -30,7 +30,7 @@ if (set.has(100)) {
 
 // * Set中的键名和键值 完全相同
 // * Set 可以用for...of 遍历  set.keys(),  set.values(),  set.entries()
-/* 
+/*
 keys() ：   返回 键名   的遍历器 
 values() ： 返回 键值   的遍历器 
 entries() ：返回 键值对 的遍历器 
@@ -40,7 +40,7 @@ forEach() ：使用回调函数遍历每个成员
 for (let item of set1) {
   // console.log(item);
 }
-/* 
+/*
 for (let item of set.keys()){
    console.log(item);   //
 }

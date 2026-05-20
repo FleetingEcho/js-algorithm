@@ -9,7 +9,7 @@ console.log(setA);
 console.log([...setA]); //[1 2 3 10]
 console.log(setA.has(1)); //true
 
-/* 
+/*
 Set { 1, 2, 3, 10 }
 [1 2 3 10]
 true
@@ -93,7 +93,7 @@ arr.forEach((value) => {
   }
 });
 
-/* 
+/*
 1)结束本次循环进入下一次循环：
 ! 如果有两层for循环，内层continue只结束内层本次循环，内层break只结束内层循环
 continue：for循环 、 for in 、 for of

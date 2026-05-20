@@ -20,40 +20,40 @@
 ```tsx
 /* 二叉树遍历框架 */
 function traverse(root: TreeNode) {
-	if (root == null) return
-	traverse(root.left)
-	traverse(root.right)
+  if (root == null) return;
+  traverse(root.left);
+  traverse(root.right);
 }
 
 /* 多叉树遍历框架 */
 function traverseNTree(root: Node) {
-	if (root == null) return
-	for (let child of root.children) traverse(child)
+  if (root == null) return;
+  for (let child of root.children) traverse(child);
 }
 
 /* 图遍历框架 */
-let visited: boolean[] = []
+let visited: boolean[] = [];
 function traverseMap(graph: Graph, v: number) {
-	// 防止走回头路进入死循环
-	if (visited[v]) return
-	// 前序遍历位置，标记节点 v 已访问
-	visited[v] = true
-	for (let neighbor of graph.neighbors(v)) {
-		traverse(graph, neighbor)
-	}
+  // 防止走回头路进入死循环
+  if (visited[v]) return;
+  // 前序遍历位置，标记节点 v 已访问
+  visited[v] = true;
+  for (let neighbor of graph.neighbors(v)) {
+    traverse(graph, neighbor);
+  }
 }
 
 /* 图遍历框架2, Visited换种写法 */
-let visited: boolean[] = []
+let visited: boolean[] = [];
 function traverse(graph: Graph, v: number) {
-	// 前序遍历位置，标记节点 v 已访问
-	visited[v] = true
-	for (let neighbor of graph.neighbors(v)) {
-		if (!visited[neighbor]) {
-			// 只遍历没标记过的相邻节点
-			traverse(graph, neighbor)
-		}
-	}
+  // 前序遍历位置，标记节点 v 已访问
+  visited[v] = true;
+  for (let neighbor of graph.neighbors(v)) {
+    if (!visited[neighbor]) {
+      // 只遍历没标记过的相邻节点
+      traverse(graph, neighbor);
+    }
+  }
 }
 ```
 
@@ -62,19 +62,19 @@ function traverse(graph: Graph, v: number) {
 ```tsx
 /* 二分图遍历框架 */
 function traverse(graph: Graph, visited: boolean[], v: number) {
-	visited[v] = true
-	// 遍历节点 v 的所有相邻节点 neighbor
-	for (let neighbor of graph.neighbors(v)) {
-		if (!visited[neighbor]) {
-			// 相邻节点 neighbor 没有被访问过
-			// 那么应该给节点 neighbor 涂上和节点 v 不同的颜色
-			traverse(graph, visited, neighbor)
-		} else {
-			// 相邻节点 neighbor 已经被访问过
-			// 那么应该比较节点 neighbor 和节点 v 的颜色
-			// 若相同，则此图不是二分图
-		}
-	}
+  visited[v] = true;
+  // 遍历节点 v 的所有相邻节点 neighbor
+  for (let neighbor of graph.neighbors(v)) {
+    if (!visited[neighbor]) {
+      // 相邻节点 neighbor 没有被访问过
+      // 那么应该给节点 neighbor 涂上和节点 v 不同的颜色
+      traverse(graph, visited, neighbor);
+    } else {
+      // 相邻节点 neighbor 已经被访问过
+      // 那么应该比较节点 neighbor 和节点 v 的颜色
+      // 若相同，则此图不是二分图
+    }
+  }
 }
 ```
 

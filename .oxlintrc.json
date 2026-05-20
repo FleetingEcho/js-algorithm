@@ -9,6 +9,5 @@
     "no-empty": "warn",
     "no-debugger": "off",
     "no-unreachable": "warn"
-  },
-  "ignorePatterns": ["legacy/**"]
+  }
 }

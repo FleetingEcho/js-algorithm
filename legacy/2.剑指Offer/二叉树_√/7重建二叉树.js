@@ -1,5 +1,5 @@
 // 7重建二叉树
-/* 
+/*
 前序遍历 preorder = [3,9,20,15,7]
 中序遍历 inorder = [9,3,15,20,7]
 
@@ -22,7 +22,7 @@ const buildTree = function (preorder, inorder) {
   const index = inorder.indexOf(rootVal);
   // preorder.slice(1,index+1)是左子树的前序遍历
   // inorder.slice(0,index) 是左子树的中序遍历
-  /* 
+  /*
     前序遍历 preorder = [3,9,20,15,7]
     中序遍历 inorder = [9,3,15,20,7]
     */

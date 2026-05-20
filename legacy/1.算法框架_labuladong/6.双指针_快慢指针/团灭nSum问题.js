@@ -1,4 +1,4 @@
-/* 
+/*
 ! 编一道 2Sum问题：
 如果假设输入一个数组 nums 和一个目标和 target，
 请你返回 nums 中能够凑出 target 的两个元素的值，
@@ -7,7 +7,7 @@
 */
 
 //> n Sum和  框架:
-/* 
+/*
 ! 注意：调用这个函数之前一定要先给 nums 排序
 >  nums=nums.sort((a,b)=>a-b); 
 */
@@ -76,7 +76,7 @@ function twoSum(nums, target) {
 // console.log(twoSum([1,3,5,6],9)); //[1.3] 返回两个值的index
 
 // >升级题目难度
-/* 
+/*
 题目告诉我们可以假设 nums 中有且只有一个答案，且需要我们返回对应元素的索引，
 现在修改这些条件：nums 中可能有多对元素之和都等于 target，
 请你的算法返回所有和为 target 的元素对儿，其中不能出现重复。
@@ -185,7 +185,7 @@ function threeSumTarget1(nums, target) {
 }
 // console.log(threeSumTarget1([-1,0,1,2,-1,4],0)); //[ [ -1, 2, -1 ], [ 0, 1, -1 ] ]
 
-/* 
+/*
 关键点在于，不能让第一个数重复，至于后面的两个数，
 我们复用的 twoSum 函数会保证它们不重复。
 所以代码中必须用一个 while 循环来保证 3Sum 中第一个元素不重复。
@@ -232,7 +232,7 @@ function threeSumTarget(nums, start, target) {
   }
   return res;
 }
-/* 
+/*
 [ 
 [ 0, 2, -1, -2 ], 
 [ 1, 2, 0, -2 ], 
@@ -243,7 +243,7 @@ function threeSumTarget(nums, start, target) {
 
 //> 100Sum问题？
 
-/* 
+/*
 ! 注意：调用这个函数之前一定要先给 nums 排序
 >  nums=nums.sort((a,b)=>a-b); 
 */
@@ -287,7 +287,7 @@ function nSumTarget(nums, n, start, target) {
   return res;
 }
 
-/* 
+/*
 例如： 
 1.四数之和调用：
 var fourSum = function(nums, target) {

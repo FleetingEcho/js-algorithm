@@ -19,7 +19,7 @@ function monotoneIncreasingDigits(N) {
   return Number(arr.join(''));
 }
 
-/* 
+/*
 将N转化为数组
 判断右边是否比左边大，如果是，把左边减一，右边变成9
 从头遍历

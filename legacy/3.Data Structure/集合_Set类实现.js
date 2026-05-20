@@ -50,7 +50,7 @@ class Set_ES6 {
       smallerSet = values;
     }
     smallerSet.forEach((value) => {
-      /* 
+      /*
       const array1 = [1, 2, 3];
       从第0位开始查找2
       console.log(array1.includes(2,0));  //true
@@ -124,7 +124,7 @@ setC.add(4);
 console.log(setA.isSubsetOf(setB)); //true
 console.log(setA.isSubsetOf(setC)); //false
 
-/* 
+/*
 
 Set_ES6 { set: Set { 1, 2, 3, 10 } }
 [ 1, 2, 3, 10 ]
@@ -134,7 +134,7 @@ true
 false
 false
 */
-/* 
+/*
 ! 若不是Set类的实现，可以
 
 

@@ -1,4 +1,4 @@
-/* 
+/*
 127.单词接龙
 
 beginWord = "hit",
@@ -84,7 +84,7 @@ var ladderLength2 = function (beginWord, endWord, wordList) {
   return 0;
 };
 
-/* 
+/*
 "hit"
 "cog"
 ["hot","dot","dog","lot","log","cog"]
@@ -190,7 +190,7 @@ let ladderLength = function (beginWord, endWord, wordList) {
   return 0;
 };
 
-/* 
+/*
 "hit"
 "cog"
 ["hot","dot","dog","lot","log","cog"]

@@ -1,4 +1,4 @@
-/* 
+/*
 Input: root = [3,1,4,null,2], k = 1
    3
   / \
@@ -8,7 +8,7 @@ Input: root = [3,1,4,null,2], k = 1
 Output: 1
 */
 
-/* 
+/*
 错误做法：
       if(root.val>stack[stack.length-1]){stack.push(root.val)}
       else if(root.val<stack[0]){stack.unshift(root.val)

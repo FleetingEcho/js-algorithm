@@ -6,30 +6,30 @@
 ```tsx
 // 二叉树遍历框架
 function traverse(root: TreeNode) {
-	traverse(root.left)
-	traverse(root.right)
+  traverse(root.left);
+  traverse(root.right);
 }
 
 //二维矩阵的 DFS 代码框架
 function dfs(grid: number[][], i: number, j: number, visited: boolean[][]) {
-	let m = grid.length,
-		n = grid[0].length
-	if (i < 0 || j < 0 || i >= m || j >= n) {
-		// 超出索引边界
-		return
-	}
-	if (visited[i][j]) {
-		// 已遍历过 (i, j)
-		return
-	}
-	// 前序：进入节点 (i, j)
-	visited[i][j] = true
-	dfs(grid, i - 1, j, visited) // 上
-	dfs(grid, i + 1, j, visited) // 下
-	dfs(grid, i, j - 1, visited) // 左
-	dfs(grid, i, j + 1, visited) // 右
-	// 后序：离开节点 (i, j)
-	// visited[i][j] = true;
+  let m = grid.length,
+    n = grid[0].length;
+  if (i < 0 || j < 0 || i >= m || j >= n) {
+    // 超出索引边界
+    return;
+  }
+  if (visited[i][j]) {
+    // 已遍历过 (i, j)
+    return;
+  }
+  // 前序：进入节点 (i, j)
+  visited[i][j] = true;
+  dfs(grid, i - 1, j, visited); // 上
+  dfs(grid, i + 1, j, visited); // 下
+  dfs(grid, i, j - 1, visited); // 左
+  dfs(grid, i, j + 1, visited); // 右
+  // 后序：离开节点 (i, j)
+  // visited[i][j] = true;
 }
 ```
 

@@ -38,7 +38,7 @@ adj(s:number):[]number {
 
 ```tsx
 // 返回节点 from 到节点 to 之间的边的权重
-type weight = (from: number, to: number) => number
+type weight = (from: number, to: number) => number;
 ```
 
 这个`weight`方法可以根据实际情况而定，因为不同的算法题，题目给的「权重」含义可能不一样，我们存储权重的方式也不一样。
@@ -50,34 +50,34 @@ type weight = (from: number, to: number) => number
 ```tsx
 // 输入一棵二叉树的根节点，层序遍历这棵二叉树
 class TreeNode {
-	val: number
-	left: TreeNode | null
-	right: TreeNode | null
-	constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-		this.val = val === undefined ? 0 : val
-		this.left = left === undefined ? null : left
-		this.right = right === undefined ? null : right
-	}
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;
+  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
+  }
 }
 const levelTraverse = (root: TreeNode) => {
-	if (root == null) return 0
-	let q: TreeNode[] = []
-	q.push(root)
-	let depth = 1
-	// 从上到下遍历二叉树的每一层
-	while (q.length !== 0) {
-		let size = q.length
-		// 从左到右遍历每一层的每个节点
-		for (let i = 0; i < size; i++) {
-			let cur = q.shift() as TreeNode
-			console.log(`节点 ${cur} 在第 ${depth}层`)
-			// 将下一层节点放入队列
-			if (cur.left) q.push(cur.left)
-			if (cur.right) q.push(cur.right)
-		}
-		depth++
-	}
-}
+  if (root == null) return 0;
+  let q: TreeNode[] = [];
+  q.push(root);
+  let depth = 1;
+  // 从上到下遍历二叉树的每一层
+  while (q.length !== 0) {
+    let size = q.length;
+    // 从左到右遍历每一层的每个节点
+    for (let i = 0; i < size; i++) {
+      let cur = q.shift() as TreeNode;
+      console.log(`节点 ${cur} 在第 ${depth}层`);
+      // 将下一层节点放入队列
+      if (cur.left) q.push(cur.left);
+      if (cur.right) q.push(cur.right);
+    }
+    depth++;
+  }
+};
 ```
 
 ![image-20211105092714808](index.assets/image-20211105092714808.png)
@@ -90,35 +90,35 @@ const levelTraverse = (root: TreeNode) => {
 
 ```tsx
 class Node {
-	val: number
-	children: Node[]
-	constructor(val: number, children: Node[]) {
-		this.val = val
-		this.children = children
-	}
+  val: number;
+  children: Node[];
+  constructor(val: number, children: Node[]) {
+    this.val = val;
+    this.children = children;
+  }
 }
 
 // 输入一棵多叉树的根节点，层序遍历这棵多叉树
 const levelNTraverse = (root: Node) => {
-	if (root == null) return 0
-	let q: Node[] = []
-	q.push(root)
-	let depth = 1
-	// 从上到下遍历二叉树的每一层
-	while (q.length !== 0) {
-		let size = q.length
-		// 从左到右遍历每一层的每个节点
-		for (let i = 0; i < size; i++) {
-			let cur = q.shift() as Node
-			console.log(`节点 ${cur} 在第 ${depth}层`)
-			// 将下一层节点放入队列
-			for (let child of root.children) {
-				q.push(child)
-			}
-		}
-		depth++
-	}
-}
+  if (root == null) return 0;
+  let q: Node[] = [];
+  q.push(root);
+  let depth = 1;
+  // 从上到下遍历二叉树的每一层
+  while (q.length !== 0) {
+    let size = q.length;
+    // 从左到右遍历每一层的每个节点
+    for (let i = 0; i < size; i++) {
+      let cur = q.shift() as Node;
+      console.log(`节点 ${cur} 在第 ${depth}层`);
+      // 将下一层节点放入队列
+      for (let child of root.children) {
+        q.push(child);
+      }
+    }
+    depth++;
+  }
+};
 ```
 
 基于多叉树的遍历框架，我们又可以扩展出 ==BFS（广度优先搜索）==的算法框架
@@ -127,36 +127,36 @@ const levelNTraverse = (root: Node) => {
 // 输入起点，进行 BFS 搜索
 
 const BFS = (start, target) => {
-	if (start === null) return //判断初始条件，特殊情况直接return
-	let queue = [] // 核心数据结构
-	let visited = new Set() // 避免走回头路
+  if (start === null) return; //判断初始条件，特殊情况直接return
+  let queue = []; // 核心数据结构
+  let visited = new Set(); // 避免走回头路
 
-	queue.push(start) // 将起点加入队列
-	visited.add(start) //像一般的二叉树结构，没有子节点到父节点的指针，不会走回头路就不需要visited
-	let step = 0 // 记录扩散的步数
+  queue.push(start); // 将起点加入队列
+  visited.add(start); //像一般的二叉树结构，没有子节点到父节点的指针，不会走回头路就不需要visited
+  let step = 0; // 记录扩散的步数
 
-	while (queue.length !== 0) {
-		let size = queue.length
-		/* 将当前队列中的所有节点向四周扩散 */
-		for (let i = 0; i < size; i++) {
-			let cur = queue.shift()
-			if (visited.has(cur)) continue
-			/* 划重点：这里判断是否到达终点 */
-			if (cur === target) return step
-			/* 将 cur 的相邻节点加入队列 */
-			for (let x of cur.adj()) {
-				// !!!!!! 相邻节点
-				//cur.adj()泛指 cur 相邻的节点
-				if (!visited.has(x)) {
-					queue.push(x)
-					visited.add(x)
-				}
-			}
-		}
-		/* 划重点：更新步数在这里 */
-		step++
-	}
-}
+  while (queue.length !== 0) {
+    let size = queue.length;
+    /* 将当前队列中的所有节点向四周扩散 */
+    for (let i = 0; i < size; i++) {
+      let cur = queue.shift();
+      if (visited.has(cur)) continue;
+      /* 划重点：这里判断是否到达终点 */
+      if (cur === target) return step;
+      /* 将 cur 的相邻节点加入队列 */
+      for (let x of cur.adj()) {
+        // !!!!!! 相邻节点
+        //cur.adj()泛指 cur 相邻的节点
+        if (!visited.has(x)) {
+          queue.push(x);
+          visited.add(x);
+        }
+      }
+    }
+    /* 划重点：更新步数在这里 */
+    step++;
+  }
+};
 ```
 
 如果对 BFS 算法不熟悉，可以看前文 [BFS 算法框架](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247485134&idx=1&sn=fd345f8a93dc4444bcc65c57bb46fc35&scene=21#wechat_redirect)，这里只是为了让你做个对比，==所谓 BFS 算法，就是把算法问题抽象成一幅「无权图」，然后继续玩二叉树层级遍历那一套罢了。==
@@ -180,22 +180,22 @@ const BFS = (start, target) => {
 ```tsx
 // 输入一棵二叉树的根节点，遍历这棵二叉树所有节点
 const levelTraverse = (root: TreeNode) => {
-	if (root == null) return 0
-	let q: TreeNode[] = []
-	q.push(root)
-	// 从上到下遍历二叉树的每一层
-	while (q.length !== 0) {
-		let size = q.length
-		// 从左到右遍历每一层的每个节点
-		for (let i = 0; i < size; i++) {
-			let cur = q.shift() as TreeNode
-			console.log(`节点 ${cur} 在第 ${depth}层`)
-			// 将下一层节点放入队列
-			if (cur.left) q.push(cur.left)
-			if (cur.right) q.push(cur.right)
-		}
-	}
-}
+  if (root == null) return 0;
+  let q: TreeNode[] = [];
+  q.push(root);
+  // 从上到下遍历二叉树的每一层
+  while (q.length !== 0) {
+    let size = q.length;
+    // 从左到右遍历每一层的每个节点
+    for (let i = 0; i < size; i++) {
+      let cur = q.shift() as TreeNode;
+      console.log(`节点 ${cur} 在第 ${depth}层`);
+      // 将下一层节点放入队列
+      if (cur.left) q.push(cur.left);
+      if (cur.right) q.push(cur.right);
+    }
+  }
+};
 ```
 
 但问题是，没有`for`循环，你也没办法维护`depth`变量了。
@@ -204,36 +204,36 @@ const levelTraverse = (root: TreeNode) => {
 
 ```tsx
 class State {
-	// 记录 node 节点的深度
-	depth: number
-	node: TreeNode
+  // 记录 node 节点的深度
+  depth: number;
+  node: TreeNode;
 
-	constructor(node: TreeNode, depth: number) {
-		this.depth = depth
-		this.node = node
-	}
+  constructor(node: TreeNode, depth: number) {
+    this.depth = depth;
+    this.node = node;
+  }
 }
 
 // 输入一棵二叉树的根节点，遍历这棵二叉树所有节点
 const levelTraverse = (root: TreeNode) => {
-	if (root == null) return 0
-	let q: State[] = []
-	q.push(new State(root, 1))
-	// 遍历二叉树的每一个节点
-	while (q.length !== 0) {
-		let cur = q.shift() as State
-		let cur_node: TreeNode = cur.node
-		let cur_depth = cur.depth
-		console.log(`节点 ${cur_node} 在第 ${cur_depth} 层`)
-		// 将子节点放入队列
-		if (cur_node.left != null) {
-			q.push(new State(cur_node.left, cur_depth + 1))
-		}
-		if (cur_node.right != null) {
-			q.push(new State(cur_node.right, cur_depth + 1))
-		}
-	}
-}
+  if (root == null) return 0;
+  let q: State[] = [];
+  q.push(new State(root, 1));
+  // 遍历二叉树的每一个节点
+  while (q.length !== 0) {
+    let cur = q.shift() as State;
+    let cur_node: TreeNode = cur.node;
+    let cur_depth = cur.depth;
+    console.log(`节点 ${cur_node} 在第 ${cur_depth} 层`);
+    // 将子节点放入队列
+    if (cur_node.left != null) {
+      q.push(new State(cur_node.left, cur_depth + 1));
+    }
+    if (cur_node.right != null) {
+      q.push(new State(cur_node.right, cur_depth + 1));
+    }
+  }
+};
 ```
 
 这样，我们就可以不使用`for`循环也确切地知道每个二叉树节点的深度了。
@@ -257,14 +257,14 @@ type dijkstra=( start:number,  graph:[]number)=>number[];
 
 ```tsx
 class State {
-	// 记录 node 节点的深度
-	id: number
-	distFromStart: number
+  // 记录 node 节点的深度
+  id: number;
+  distFromStart: number;
 
-	constructor(id: number, distFromStart: number) {
-		this.id = id
-		this.distFromStart = distFromStart
-	}
+  constructor(id: number, distFromStart: number) {
+    this.id = id;
+    this.distFromStart = distFromStart;
+  }
 }
 ```
 
@@ -281,148 +281,147 @@ class State {
 
 ```tsx
 class State {
-	// 记录 node 节点的深度
-	id: number
-	distFromStart: number
+  // 记录 node 节点的深度
+  id: number;
+  distFromStart: number;
 
-	constructor(id: number, distFromStart: number) {
-		this.id = id
-		this.distFromStart = distFromStart
-	}
+  constructor(id: number, distFromStart: number) {
+    this.id = id;
+    this.distFromStart = distFromStart;
+  }
 }
 // 输入一幅图和一个起点 start，计算 start 到其他节点的最短距离
 const dijkstra = (start: number, graph: Array<Array<any>>): number[] => {
-	// 图中节点的个数
-	let V = graph.length
-	// 记录最短路径的权重，你可以理解为 dp table
-	// 定义：distTo[i] 的值就是节点 start 到达节点 i 的最短路径权重
-	// 求最小值，所以 dp table 初始化为正无穷
-	let distTo: number[] = new Array(graph.length).fill(Number.MAX_VALUE)
-	// base case，start 到 start 的最短距离就是 0
-	distTo[start] = 0
+  // 图中节点的个数
+  let V = graph.length;
+  // 记录最短路径的权重，你可以理解为 dp table
+  // 定义：distTo[i] 的值就是节点 start 到达节点 i 的最短路径权重
+  // 求最小值，所以 dp table 初始化为正无穷
+  let distTo: number[] = new Array(graph.length).fill(Number.MAX_VALUE);
+  // base case，start 到 start 的最短距离就是 0
+  distTo[start] = 0;
 
-	// 优先级队列，distFromStart 较小的排在前面
-	let pq = new HeapRelatedDS.PriorityQueue([], (a: State, b: State) => {
-		return a.distFromStart - b.distFromStart
-	})
-	// 从起点 start 开始进行 BFS
-	pq.push(new State(start, 0))
+  // 优先级队列，distFromStart 较小的排在前面
+  let pq = new HeapRelatedDS.PriorityQueue([], (a: State, b: State) => {
+    return a.distFromStart - b.distFromStart;
+  });
+  // 从起点 start 开始进行 BFS
+  pq.push(new State(start, 0));
 
-	while (pq.size !== 0) {
-		let curState = pq.shift()
-		let curNodeID = curState.id
-		let curDistFromStart = curState.distFromStart
-		if (curDistFromStart > distTo[curNodeID]) {
-			// 已经有一条更短的路径到达 curNode 节点了
-			continue
-		}
-		// 将 curNode 的相邻节点装入队列
-		for (let neighbor of graph[curNodeID]) {
-			// 看看从 curNode 达到 nextNode 的距离是否会更短
-			let nextNodeID = neighbor[0]
-			let distToNextNode = distTo[curNodeID] + neighbor[1]
-			if (distTo[nextNodeID] > distToNextNode) {
-				// 更新 dp table
-				distTo[nextNodeID] = distToNextNode
-				// 将这个节点以及距离放入队列
-				pq.push(new State(nextNodeID, distToNextNode))
-			}
-		}
-	}
-	return distTo
-}
+  while (pq.size !== 0) {
+    let curState = pq.shift();
+    let curNodeID = curState.id;
+    let curDistFromStart = curState.distFromStart;
+    if (curDistFromStart > distTo[curNodeID]) {
+      // 已经有一条更短的路径到达 curNode 节点了
+      continue;
+    }
+    // 将 curNode 的相邻节点装入队列
+    for (let neighbor of graph[curNodeID]) {
+      // 看看从 curNode 达到 nextNode 的距离是否会更短
+      let nextNodeID = neighbor[0];
+      let distToNextNode = distTo[curNodeID] + neighbor[1];
+      if (distTo[nextNodeID] > distToNextNode) {
+        // 更新 dp table
+        distTo[nextNodeID] = distToNextNode;
+        // 将这个节点以及距离放入队列
+        pq.push(new State(nextNodeID, distToNextNode));
+      }
+    }
+  }
+  return distTo;
+};
 ```
 
 **对比普通的 BFS 算法，你可能会有以下疑问**：
 
 **1、没有`visited`集合记录已访问的节点，所以一个节点会被访问多次，会被多次加入队列，那会不会导致队列永远不为空，造成死循环**？
 
--   如果你能让到达`nextNodeID`的距离更短，那就更新`distTo[nextNodeID]`的值，让你入队，否则的话对不起，不让入队。
+- 如果你能让到达`nextNodeID`的距离更短，那就更新`distTo[nextNodeID]`的值，让你入队，否则的话对不起，不让入队。
 
--   **因为两个节点之间的最短距离（路径权重）肯定是一个确定的值，不可能无限减小下去，所以队列一定会空，队列空了之后，`distTo`数组中记录的就是从`start`到其他节点的最短距离**。
+- **因为两个节点之间的最短距离（路径权重）肯定是一个确定的值，不可能无限减小下去，所以队列一定会空，队列空了之后，`distTo`数组中记录的就是从`start`到其他节点的最短距离**。
 
 **2、为什么用优先级队列`PriorityQueue`而不是`LinkedList`实现的普通队列？为什么要按照`distFromStart`的值来排序**？
 
--   如果你非要用普通队列，其实也没问题的，你可以直接把`PriorityQueue`改成`LinkedList`，也能得到正确答案，但是效率会低很多。
--   **Dijkstra 算法使用优先级队列，主要是为了效率上的优化，类似一种贪心算法的思路**。
+- 如果你非要用普通队列，其实也没问题的，你可以直接把`PriorityQueue`改成`LinkedList`，也能得到正确答案，但是效率会低很多。
+- **Dijkstra 算法使用优先级队列，主要是为了效率上的优化，类似一种贪心算法的思路**。
 
 **3、如果我只想计算起点`start`到某一个终点`end`的最短路径，是否可以修改算法，提升一些效率**？
 
--   接下来说第三个问题，如果只关心起点`start`到某一个终点`end`的最短路径，是否可以修改代码提升算法效率。
+- 接下来说第三个问题，如果只关心起点`start`到某一个终点`end`的最短路径，是否可以修改代码提升算法效率。
 
-    肯定可以的，因为我们标准 Dijkstra 算法会算出`start`到所有其他节点的最短路径，你只想计算到`end`的最短路径，相当于减少计算量，当然可以提升效率。
+  肯定可以的，因为我们标准 Dijkstra 算法会算出`start`到所有其他节点的最短路径，你只想计算到`end`的最短路径，相当于减少计算量，当然可以提升效率。
+  - ```tsx
+    class State {
+      // 记录 node 节点的深度
+      id: number;
+      distFromStart: number;
 
-    -   ```tsx
-        class State {
-        	// 记录 node 节点的深度
-        	id: number
-        	distFromStart: number
+      constructor(id: number, distFromStart: number) {
+        this.id = id;
+        this.distFromStart = distFromStart;
+      }
+    }
+    // 返回节点 from 到节点 to 之间的边的权重
+    let weight = (from: number, to: number): number => {
+      return 1;
+    };
+    // 输入节点 s 返回 s 的相邻节点
+    let adj = (s: number): number[] => [1, 2];
+    // 输入一幅图和一个起点 start，计算 start 到其他节点的最短距离
+    const dijkstra = (start: number, graph: number[]): number => {
+      // 图中节点的个数
+      let V = graph.length;
+      // 记录最短路径的权重，你可以理解为 dp table
+      // 定义：distTo[i] 的值就是节点 start 到达节点 i 的最短路径权重
+      // 求最小值，所以 dp table 初始化为正无穷
+      let distTo: number[] = new Array<number>(V).fill(Number.MAX_SAFE_INTEGER);
+      // base case，start 到 start 的最短距离就是 0
+      distTo[start] = 0;
 
-        	constructor(id: number, distFromStart: number) {
-        		this.id = id
-        		this.distFromStart = distFromStart
-        	}
+      // 优先级队列，distFromStart 较小的排在前面
+      let pq = new HeapRelatedDS.PriorityQueue();
+      // 从起点 start 开始进行 BFS
+      pq.push(new State(start, 0));
+
+      while (pq.size !== 0) {
+        let curState = pq.shift();
+        let curNodeID = curState.id;
+        let curDistFromStart = curState.distFromStart;
+
+        // 在这里加一个判断就行了，其他代码不用改
+        if (curNodeID == 'end_Condition') {
+          return curDistFromStart;
         }
-        // 返回节点 from 到节点 to 之间的边的权重
-        let weight = (from: number, to: number): number => {
-        	return 1
+
+        if (curDistFromStart > distTo[curNodeID]) {
+          continue;
         }
-        // 输入节点 s 返回 s 的相邻节点
-        let adj = (s: number): number[] => [1, 2]
-        // 输入一幅图和一个起点 start，计算 start 到其他节点的最短距离
-        const dijkstra = (start: number, graph: number[]): number => {
-        	// 图中节点的个数
-        	let V = graph.length
-        	// 记录最短路径的权重，你可以理解为 dp table
-        	// 定义：distTo[i] 的值就是节点 start 到达节点 i 的最短路径权重
-        	// 求最小值，所以 dp table 初始化为正无穷
-        	let distTo: number[] = new Array<number>(V).fill(Number.MAX_SAFE_INTEGER)
-        	// base case，start 到 start 的最短距离就是 0
-        	distTo[start] = 0
-
-        	// 优先级队列，distFromStart 较小的排在前面
-        	let pq = new HeapRelatedDS.PriorityQueue()
-        	// 从起点 start 开始进行 BFS
-        	pq.push(new State(start, 0))
-
-        	while (pq.size !== 0) {
-        		let curState = pq.shift()
-        		let curNodeID = curState.id
-        		let curDistFromStart = curState.distFromStart
-
-        		// 在这里加一个判断就行了，其他代码不用改
-        		if (curNodeID == 'end_Condition') {
-        			return curDistFromStart
-        		}
-
-        		if (curDistFromStart > distTo[curNodeID]) {
-        			continue
-        		}
-        		// 将 curNode 的相邻节点装入队列
-        		for (let nextNodeID of adj(curNodeID)) {
-        			// 看看从 curNode 达到 nextNode 的距离是否会更短
-        			let distToNextNode = distTo[curNodeID] + weight(curNodeID, nextNodeID)
-        			if (distTo[nextNodeID] > distToNextNode) {
-        				// 更新 dp table
-        				distTo[nextNodeID] = distToNextNode
-        				// 将这个节点以及距离放入队列
-        				pq.push(new State(nextNodeID, distToNextNode))
-        			}
-        		}
-        	}
-
-        	// 如果运行到这里，说明从 start 无法走到 end
-        	return Number.MAX_VALUE
+        // 将 curNode 的相邻节点装入队列
+        for (let nextNodeID of adj(curNodeID)) {
+          // 看看从 curNode 达到 nextNode 的距离是否会更短
+          let distToNextNode = distTo[curNodeID] + weight(curNodeID, nextNodeID);
+          if (distTo[nextNodeID] > distToNextNode) {
+            // 更新 dp table
+            distTo[nextNodeID] = distToNextNode;
+            // 将这个节点以及距离放入队列
+            pq.push(new State(nextNodeID, distToNextNode));
+          }
         }
-        ```
+      }
 
+      // 如果运行到这里，说明从 start 无法走到 end
+      return Number.MAX_VALUE;
+    };
     ```
 
-    ```
+  ```
 
--   因为优先级队列自动排序的性质，**每次**从队列里面拿出来的都是`distFromStart`值最小的，所以当你从队头拿出一个节点，如果发现这个节点就是终点`end`，那么`distFromStart`对应的值就是从`start`到`end`的最短距离。
+  ```
 
-    这个算法较之前的实现提前 return 了，所以效率有一定的提高。
+- 因为优先级队列自动排序的性质，**每次**从队列里面拿出来的都是`distFromStart`值最小的，所以当你从队头拿出一个节点，如果发现这个节点就是终点`end`，那么`distFromStart`对应的值就是从`start`到`end`的最短距离。
+
+  这个算法较之前的实现提前 return 了，所以效率有一定的提高。
 
 ![image-20211105101654558](index.assets/image-20211105101654558.png)
 ==在用 Dijkstra 之前，别忘了要满足一些条件，加权有向图，没有负权重边，OK，可以用 Dijkstra 算法计算最短路径。==

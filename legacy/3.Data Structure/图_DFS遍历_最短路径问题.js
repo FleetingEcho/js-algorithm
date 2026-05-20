@@ -1,5 +1,5 @@
 // 深度优先搜索
-/* 
+/*
 深度优先搜索算法将会从第一个指定的顶点开始遍历图，沿着路径直到这条路径最后一个顶点被访问了，
 接着原路回退并探索下一条路径。
 
@@ -36,7 +36,7 @@ const initializeColor = (points) => {
   }
   return color;
 };
-/* 
+/*
 A -> B C D
 B -> A E F
 C -> A D G
@@ -85,7 +85,7 @@ const DFS_Graph = (graph, callback) => {
 const graph = new Graph();
 // Graph已经调用过了
 
-/* 
+/*
 DFS_Graph(graph, printVertex); 打印结果
 A -> B C D
 B -> A E F
@@ -102,7 +102,7 @@ I -> E
 const printVertex = (value) => console.log('Visited vertex: ' + value);
 DFS_Graph(graph, printVertex);
 
-/* 
+/*
 ! 对于给定的图 G，我们希望 "深度优先搜索算法" 遍历图 G 的所有节点，构建“森林”（有根树
 ! 的一个集合）以及一组源顶点（根），并输出两个数组：发现时间和完成探索时间。我们可以修
 ! 改 depthFirstSearch 函数来返回一些信息：
@@ -129,7 +129,7 @@ const DFSVisit = (u, color, d, f, p, time, linkList) => {
   // 当这个顶点被完全探索后，我们追踪其完成时间
   f[u] = ++time.count; // {6}
 };
-/* 
+/*
 时间（time）变量值的范围只可能在图顶点数量的一倍到两倍（2|V|）之间；
 对于所有的顶点 u，d[u]<f[u]（意味着，发现时间的值比完成时间的值小，完成时间意思是所有顶点都已经被探索过了）
 */

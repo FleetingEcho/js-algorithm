@@ -29,7 +29,7 @@ const romanToInt = function (s: string) {
   }
   return res;
 };
-/* 
+/*
 罗马数字由 I,V,X,L,C,D,M 构成；
 当小值在大值的左边，则减小值，如 IV=5-1=4；
 当小值在大值的右边，则加小值，如 VI=5+1=6；

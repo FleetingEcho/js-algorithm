@@ -11,7 +11,7 @@ const edges1 = [
   [1, 5],
   [2, 1],
 ];
-/* 
+/*
 {
 '1': Node { value: 1, children: [ 5, 2 ] },
 '2': Node { value: 2, children: [ 1 ] },

@@ -1,4 +1,4 @@
-/* 
+/*
 集合是由一组无序且唯一（即不能重复）的项组成的。该数据结构使用了与有限集合相同的数学概念
 空集就是不包含任何元素的集合
 素数 （除了 1 和自身，没有其他正因数的、大于 1 的自然数）
@@ -75,7 +75,7 @@ export default class Set {
       smallerSet = values;
     }
     smallerSet.forEach((value) => {
-      /* 
+      /*
       const array1 = [1, 2, 3];
       从第0位开始查找2
       console.log(array1.includes(2,0));  //true
@@ -128,7 +128,7 @@ export default class Set {
 
 // ! 测试
 
-/* 
+/*
 const set = new Set(); 
 set.add(1); 
 console.log(set.values()); //[1] 
@@ -146,7 +146,7 @@ console.log(set.values()); //[]
 */
 
 // !测试 Union运算
-/* 
+/*
 const setA = new Set(); 
 setA.add(1); 
 setA.add(2); 
@@ -161,7 +161,7 @@ console.log(unionAB.values());
 */
 
 // ! 交集运算
-/* 
+/*
 const setA = new Set(); 
 setA.add(1); 
 setA.add(2); 

@@ -2,7 +2,7 @@
 
 // > 思路：  1. 一维dp，   2. 二维dp
 
-/* 
+/*
 ! 方法 1
 let n = array.length;
 let dp = new Array(n).fill(0);
@@ -59,7 +59,7 @@ function longestPalindromeSubseq(s) {
   // 整个 s 的最长回文子串长度
   return dp[0][n - 1];
 }
-/* 
+/*
 > 分析后找状态转移方程
 [?, b,  x,  a,  b,  y,  ?]
  i i+1             j-1  j

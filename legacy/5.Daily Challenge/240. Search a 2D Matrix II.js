@@ -1,4 +1,4 @@
-/* 
+/*
 Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
 
 Integers in each row are sorted in ascending from left to right.
@@ -61,7 +61,7 @@ const searchMatrix = function (matrix, target) {
 
 // BFS
 
-/* 
+/*
 从右上角开始搜索，
 如果比15大，则向下搜索，小，则用缩小横向范围并用11做比较，比11大继续向下搜索，小则继续缩小横向范围
 

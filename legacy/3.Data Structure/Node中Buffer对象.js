@@ -2,7 +2,7 @@
 // 它是Node原生提供的全局对象，可以直接使用，不需要require('buffer')。
 
 // new Buffer() 是node.js中的对象
-/* 
+/*
 Blob: 前端的一个专门用于支持文件操作的二进制对象
 
 ArrayBuffer：前端的一个通用的二进制缓冲区，类似数组，但在API和特性上却有诸多不同

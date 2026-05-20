@@ -2,7 +2,7 @@
 
 //!   归一   [a,b,c]
 
-/* 
+/*
 找中间值:  mid>目标，则搜[left,mid-1] , mid<目标 [mid+1,right]
 
 找左边值:  mid等于目标，则让right=mid-1，锁定和返回left值   mid>目标，则搜[left,mid-1] , mid<目标 [mid+1,right]

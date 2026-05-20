@@ -1,5 +1,5 @@
 // 394. 字符串解码
-/* 
+/*
 输入：s = "3[a]2[bc]"
 输出："aaabcbc"
 
@@ -14,7 +14,7 @@ function isLetters(str) {
   else return true;
 }
 
-/* 
+/*
 输入：s = "2[abc]3[cd]ef"
 输出："abcabccdcdcdef"
 */

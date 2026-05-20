@@ -9,7 +9,7 @@ namespace LeetCode895 {
     constructor() {}
 
     push(val: number): void {
-      /* 
+      /*
       1.记录新增的数字，[].push
       2.更新频率
       */

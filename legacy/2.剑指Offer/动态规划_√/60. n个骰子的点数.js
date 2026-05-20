@@ -15,7 +15,7 @@ const twoSum = function (n) {
     .filter(Boolean);
 };
 
-/* 
+/*
 ! 如果只有两个骰子，则可能的结果是：
 1+1
 1+2 2+1

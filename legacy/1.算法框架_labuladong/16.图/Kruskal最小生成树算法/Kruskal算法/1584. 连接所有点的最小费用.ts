@@ -83,7 +83,7 @@ namespace LeetCode1584Common {
 
 // LeetCode1584Common.test()
 
-/* 
+/*
 
 	export const test = () => {
 		const res = minCostConnectPoints([

@@ -47,7 +47,7 @@ const helper = (s) => {
   return stack.reduce((pre, cur) => pre + cur);
 };
 
-/* 
+/*
 
 输入: "3+2*2"
 输出: 7

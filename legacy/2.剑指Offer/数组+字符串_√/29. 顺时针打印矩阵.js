@@ -1,6 +1,6 @@
 // 29. 顺时针打印矩阵
 // 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
-/* 
+/*
 输入：matrix = [
                 [1,2,3,4],
                 [5,6,7,8],
@@ -44,7 +44,7 @@ const spiralOrder = function (matrix) {
   return res;
 };
 
-/* 
+/*
       for(let i = left; i <= width; i++) res[x++] = matrix[top][i];
       if(++top > height) {break}; // x==12
       for(let i = top; i <= height; i++){

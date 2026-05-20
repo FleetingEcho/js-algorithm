@@ -1,5 +1,5 @@
 // ! 目前不太正确。。。 只有方法2正确
-/* 
+/*
 https://leetcode-cn.com/problems/super-egg-drop/solution/ji-ben-dong-tai-gui-hua-jie-fa-by-labuladong/
 
 输入：K = 1, N = 2
@@ -51,7 +51,7 @@ function superEggDrop(K, N) {
 console.log(superEggDrop(3, 14));
 
 // ! 正确的二分法解法！！！！
-/* 
+/*
 [
   [0, 0, 0, 0,0, 0, 0],
   [0, 0, 0, 0,0, 0, 0],
@@ -78,7 +78,7 @@ function superEggDrop1(K, N) {
 console.log(superEggDrop1(3, 14));
 console.log(superEggDrop1(2, 6));
 
-/* 
+/*
 
 dp[k][m - 1] 就是楼上的楼层数，因为鸡蛋个数 k 不变，
 也就是鸡蛋没碎，扔鸡蛋次数 m 减一；

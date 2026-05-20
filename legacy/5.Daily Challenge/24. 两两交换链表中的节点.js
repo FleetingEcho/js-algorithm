@@ -12,7 +12,7 @@ function swapPairs(head) {
 
 // 哨兵节点
 
-/* 
+/*
       |-------|
       |___    |
       |   |   |

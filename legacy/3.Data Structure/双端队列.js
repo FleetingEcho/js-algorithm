@@ -4,7 +4,7 @@ class Deque {
     this.lowestCount = 0;
     this.items = {};
   }
-  /* 
+  /*
 { '0': 'John', '1': 'Jack' } 
 */
   addFront(element) {

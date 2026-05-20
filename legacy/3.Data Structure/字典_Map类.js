@@ -56,7 +56,7 @@ export default class Dictionary {
     return obj;
   }
 }
-/* 
+/*
 
 let dictionary = new Dictionary()
 dictionary.set('Honda', 'Civic')

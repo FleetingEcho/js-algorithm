@@ -2,7 +2,7 @@
 //复杂度 O(1) < O(logn) < (n) < O(n*logn) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)
 // 每次淘汰那些最久没被使用的数据
 
-/* 
+/*
 class LRUCache {
 	constructor(capacity) {
 		this.capacity = capacity

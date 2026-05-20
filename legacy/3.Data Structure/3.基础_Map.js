@@ -18,7 +18,7 @@ set1.forEach((value, key) => {
 
 //*  如果对同一个键多次赋值，后面的值将覆盖前面的值。
 
-/* 
+/*
 * Map属性 size
 * Map方法  set(key,value) get(key) has() delete() clear()
 
@@ -75,7 +75,7 @@ for (let value of map1.values()) {
 
 for (let [key, value] of map1) {
   console.log(key, value);
-  /* 
+  /*
    Honda Accord
    Honda1 Civic
    Honda2 CRV
@@ -85,7 +85,7 @@ for (let [key, value] of map1) {
 
 for (let item of map1.entries()) {
   console.log(item);
-  /* 
+  /*
 [ 'Honda', 'Accord' ]
 [ 'Honda1', 'Civic' ]
 [ 'Honda2', 'CRV' ]
@@ -107,7 +107,7 @@ console.log([...map3.entries()]); //  [ [ 1, 'one' ], [ 2, 'two' ], [ 3, 'three'
 console.log([...map3]); // [ [ 1, 'one' ], [ 2, 'two' ], [ 3, 'three' ] ]
 
 // console.log( [...map] )
-/* 
+/*
 [
   [ 'Honda', 'Accord' ],
   [ 'Honda1', 'Civic' ],
@@ -142,7 +142,7 @@ const reporter = {
 map3.forEach(function (value, key, map) {
   this.aaa(key, value);
 }, reporter); //this指向的是reporter
-/* 
+/*
 Key: 1, Value: one
 Key: 2, Value: two
 Key: 3, Value: three

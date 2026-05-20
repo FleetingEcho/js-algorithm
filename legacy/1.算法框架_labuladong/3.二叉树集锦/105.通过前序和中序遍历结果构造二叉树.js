@@ -49,7 +49,7 @@ const buildTree = function (preorder, inorder) {
 };
 
 console.log(buildTree(preorder, inorder));
-/* 
+/*
 
 对于任意一颗树而言，前序遍历的形式总是
 [ 根节点, [左子树的前序遍历结果], [右子树的前序遍历结果] ]

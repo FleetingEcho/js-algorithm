@@ -1,5 +1,5 @@
 // 3. 数组中重复的数字
-/* 
+/*
 输入：
 [2, 3, 1, 0, 2, 5, 3]
 输出：2 或 3 
@@ -25,7 +25,7 @@ const findRepeatNumber = (arr) => {
 
 console.log(findRepeatNumber([2, 3, 1, 0, 5, 5, 3]));
 
-/* 
+/*
 资源浪费的解答：
 const findRepeatNumber=(arr)=>{
   let obj={};

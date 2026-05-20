@@ -1,5 +1,5 @@
 // * 字符串对象共有4个方法，可以使用正则表达式 match() 、 replace() 、 search() 和 split() 。
-/* 
+/*
 search    	检索与正则表达式相匹配的值。
 match	      返回数组，包含匹配项。
 replace    	替换与正则表达式匹配的子串

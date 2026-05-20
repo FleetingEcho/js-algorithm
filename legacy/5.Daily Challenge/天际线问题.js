@@ -53,7 +53,7 @@ console.log(
 // 用map做更慢， 因为如果数量巨大的话都得存取
 
 // 方法2:  100ms
-/* 
+/*
 var getSkyline = function(buildings) {
   let b = buildings
   let ans = []

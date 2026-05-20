@@ -1,5 +1,5 @@
 // 48. 最长不含重复字符的子字符串
-/* 
+/*
 输入: "abcabcbb"
 输出: 3 
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
@@ -39,7 +39,7 @@ function lengthOfStr(string) {
   return res;
 }
 
-/* 
+/*
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {

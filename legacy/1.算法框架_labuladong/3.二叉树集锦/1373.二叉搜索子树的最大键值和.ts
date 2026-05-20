@@ -32,7 +32,7 @@ namespace LeetCode1373 {
     return maxSum;
   }
 }
-/* 
+/*
   
   根据以上三点，站在当前节点的视角，需要知道以下具体信息：
 1、左右子树是否是 BST。

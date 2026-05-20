@@ -25,7 +25,7 @@ function solveNQueens(n) {
   const backtrack = (board, row) => {
     // 触发结束条件
     if (row == n) {
-      /* 
+      /*
 [
   [ '.Q..', '...Q', 'Q...', '..Q.' ],
   [ '..Q.', 'Q...', '...Q', '.Q..' ]

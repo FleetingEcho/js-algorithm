@@ -1,4 +1,4 @@
-/* 
+/*
 如果是输出个位数，则可以使用位运算
 */
 function missingNumber(nums) {

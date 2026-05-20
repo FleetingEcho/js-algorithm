@@ -1,8 +1,8 @@
-/* 
+/*
 ! 零、二分查找框架
 ! 只要数组有序，就应该想到双指针技巧(二分查找)。
 */
-/* 
+/*
 > 找中间值:  mid>目标，则搜[left,mid-1] , mid<目标 [mid+1,right]
 
 > 找左边值:  mid等于目标，则让right=mid-1，锁定和返回left值   mid>目标，则搜[left,mid-1] , mid<目标 [mid+1,right]
@@ -32,7 +32,7 @@ function binarySearch(nums, target) {
   return '...';
 }
 
-/* 
+/*
 ! 分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节。
 ! 本文都会使用 else if，旨在讲清楚，读者理解后可自行简化。
 */
@@ -52,7 +52,7 @@ function binarySearch(nums, target) {
   return -1;
 }
 
-/* 
+/*
 * while(left <= right) 的终止条件是 left == right + 1，写成区间的形式就是 [right + 1, right]，
 或者带个具体的数字进去 [3, 2]，可见这时候区间为空，因为没有数字既大于等于 3 又小于等于 2 的吧。
 所以这时候 while 循环终止是正确的，直接返回 -1 即可。
@@ -177,7 +177,7 @@ function right_bound(nums, target) {
 }
 
 // *  例题！！！！！！！    和392判断子序列完全一致
-/* 
+/*
 在前文 二分查找详解 中，详解了如何正确写出三种二分查找算法的细节。
 二分查找返回目标值 val 的索引，对于搜索左侧边界的二分查找，有一个特殊性质：
 当 val 不存在时，得到的索引恰好是比 val 大的最小元素索引。

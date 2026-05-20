@@ -54,7 +54,7 @@ console.log(str4.toUpperCase()); // A SDFAASASAWCMNIJIDW123 20
 str.substring(start, end); // [start, end), 返回新的字符串
 str.substring(start, end + 1); // [start, end], 返回新的字符串
 str.substr(start, length);
-/* 
+/*
 substr:
 如果start为负数，则start=str.length+start。
 如果 length 为 0 或负数，将返回一个空字符串。
@@ -75,7 +75,7 @@ console.log(a); // h 解构赋值
 
 //!  字符串遍历
 
-/* 
+/*
 for(let i in str6){
   console.log(i)  // index
   console.log(str6[i]) //打印每个位置

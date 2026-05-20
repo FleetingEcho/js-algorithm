@@ -8,7 +8,7 @@ const reverse = function (x: number): number {
   return res;
 };
 
-/* 
+/*
 
 class Solution {
     public int reverse(int x) {

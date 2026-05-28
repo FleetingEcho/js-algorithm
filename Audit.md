@@ -8,8 +8,8 @@
 
 | 项目 | 结果 |
 |---|---|
-| 核心算法框架文件数 | 40 个 Markdown 文件（`algorithm-frameworks/00-39`） |
-| 内容文件数 | 47 个 Markdown 文件（不含 README） |
+| 核心算法框架文件数 | 41 个 Markdown 文件（`algorithm-frameworks/00-40`） |
+| 内容文件数 | 48 个 Markdown 文件（不含 README） |
 | Mermaid 图数量 | 126 个 |
 | Markdown 代码围栏 | 已检查未发现未闭合代码块 |
 | 坏链接残留 | 已检查旧的暂缺关联阅读引用 |

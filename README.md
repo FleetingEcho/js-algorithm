@@ -20,7 +20,7 @@
 
 ---
 
-> 算法框架思维的结构化总结 —— 将零散笔记重构为 **47 篇结构化 Markdown**，覆盖并扩展 **269 道 LeetCode 高频题**。
+> 算法框架思维的结构化总结 —— 将零散笔记重构为 **48 篇结构化 Markdown**，覆盖并扩展 **269 道 LeetCode 高频题**。
 >
 > 每篇文章包含：核心思想 → TypeScript + Python 实现 → Mermaid 流程图 → 复杂度分析 → 刷题路线
 
@@ -129,7 +129,7 @@ flowchart TD
 
 ---
 
-## 📦 文件总览 (47 篇)
+## 📦 文件总览 (48 篇)
 
 ### 🔷 全局入口 (2 篇)
 
@@ -186,14 +186,14 @@ flowchart TD
 | 26  | [并查集 Union-Find](algorithm-frameworks/26-union-find.md)                    | 路径压缩 + 按秩合并、岛屿数量、账户合并          |    7     |
 | 27  | [图算法](algorithm-frameworks/27-graph-algorithms.md)                         | Dijkstra、拓扑排序、二分图染色                   |    9     |
 
-### 🔷 Phase 4 — 进阶专题 (12 篇)
+### 🔷 Phase 4 — 进阶专题 (13 篇)
 
 | #   | 文件                                                    | 一句话总结                          | 核心题数 |
 | --- | ------------------------------------------------------- | ----------------------------------- | :------: |
 | 28  | [字符串匹配](algorithm-frameworks/28-string-matching.md)                     | KMP / Rabin-Karp / Z-Algorithm     |    6     |
 | 29  | [LRU & LFU 缓存](algorithm-frameworks/29-lru-and-lfu-cache.md)               | 哈希表 + 双向链表、频率桶淘汰       |    2     |
 | 30  | [Trie 前缀树](algorithm-frameworks/30-trie-prefix-tree.md)                   | 插入/搜索/前缀搜索模板、通配符匹配  |    4     |
-| 31  | [位运算](algorithm-frameworks/31-bit-manipulation-and-math.md)               | 异或性质、n&(n-1)、位掩码枚举子集   |    6     |
+| 31  | [位运算与数论](algorithm-frameworks/31-bit-manipulation-and-math.md)         | 异或性质、快速幂、埃氏筛、取模技巧  |    9     |
 | 32  | [设计与 OOD](algorithm-frameworks/32-design-and-ood.md)                      | 最小栈、O(1)随机访问、LFU、文件系统 |    12    |
 | 33  | [贪心算法](algorithm-frameworks/33-greedy.md)                                | 区间调度、跳跃游戏、加油站          |    7     |
 | 34  | [算法模式识别总结](algorithm-frameworks/34-algorithm-pattern-recognition.md) | 看到什么→想到什么速查表 + 面试策略  |    —     |
@@ -202,6 +202,7 @@ flowchart TD
 | 37  | [矩阵技巧](algorithm-frameworks/37-matrix-techniques.md)                     | 网格 DFS/BFS、二维前缀和、矩阵变换  |    7     |
 | 38  | [面试表达模板](algorithm-frameworks/38-interview-explanation-patterns.md)     | 暴力到优化、正确性、复杂度表达      |    —     |
 | 39  | [必背题清单](algorithm-frameworks/39-must-solve-list.md)                     | 高频模板题压缩清单                  |    50    |
+| 40  | [状态压缩 DP](algorithm-frameworks/40-bitmask-dp.md)                         | bitmask 状态枚举、TSP、子集划分、BFS+mask | 7   |
 
 ### 🔷 Phase 5 — 复盘训练与质量维护 (3 篇)
 
@@ -276,7 +277,7 @@ flowchart TD
 | 来源                   |    数量    | 备注                                 |
 | ---------------------- | :--------: | ------------------------------------ |
 | 原始题库规模           | **269 题** | 来自 `leetcode-questions-summary.md` |
-| 当前专题/索引文件      | **47 篇**  | 不含本入口 README                    |
+| 当前专题/索引文件      | **48 篇**  | 不含本入口 README                    |
 | 新增扩展专题           | **9 篇**   | 线段树/树状数组、单调队列、矩阵技巧、面试表达、必背题、错题复盘与题型训练、面试当天速查、质量审计 |
 
 ---

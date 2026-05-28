@@ -30,6 +30,9 @@ flowchart TD
 | 4   | [191](https://leetcode.cn/problems/number-of-1-bits/)  | 位1的个数            |  🟢  | n&(n-1)           |    ⭐    |
 | 5   | [231](https://leetcode.cn/problems/power-of-two/)      | 2 的幂               |  🟢  | n>0 && n&(n-1)==0 |    ⭐    |
 | 6   | [78](https://leetcode.cn/problems/subsets/)            | 子集                 |  🟡  | 位掩码枚举        |   ⭐⭐   |
+| 7   | [204](https://leetcode.cn/problems/count-primes/)      | 计数质数             |  🟢  | 埃氏筛            |   ⭐⭐   |
+| 8   | [50](https://leetcode.cn/problems/powx-n/)             | Pow(x, n)            |  🟡  | 快速幂            |   ⭐⭐   |
+| 9   | [372](https://leetcode.cn/problems/super-pow/)         | 超级次方             |  🟡  | 取模快速幂        |   ⭐⭐   |
 
 ---
 
@@ -130,6 +133,91 @@ def subsets_bitmask(nums: list[int]) -> list[list[int]]:
     return result
 ```
 
+---
+
+## 🔢 数学与数论
+
+> 高频面试和 DP 问题常要求大数取模（`mod = 10^9 + 7`）、分解因数、判断素数。以下模板是这类题的基础工具。
+
+### GCD / LCM（辗转相除法）
+
+```typescript
+function gcd(a: number, b: number): number {
+  return b === 0 ? a : gcd(b, a % b);
+}
+
+function lcm(a: number, b: number): number {
+  return (a / gcd(a, b)) * b;
+}
+```
+
+```python
+from math import gcd
+
+def lcm(a: int, b: int) -> int:
+    return a // gcd(a, b) * b  # Python 3.9+ 有内置 math.lcm
+```
+
+### 快速幂（Binary Exponentiation）
+
+```typescript
+function fastPow(base: number, exp: number, mod: number): number {
+  let result = 1;
+  base %= mod;
+  while (exp > 0) {
+    if (exp & 1) result = result * base % mod;
+    base = base * base % mod;
+    exp >>= 1;
+  }
+  return result;
+}
+```
+
+```python
+def fast_pow(base: int, exp: int, mod: int) -> int:
+    # Python 内置 pow(base, exp, mod) 即三参数快速幂，推荐直接用
+    return pow(base, exp, mod)
+```
+
+### 埃氏筛（Sieve of Eratosthenes）
+
+```typescript
+function sieve(n: number): boolean[] {
+  const isPrime = new Array(n + 1).fill(true);
+  isPrime[0] = isPrime[1] = false;
+  for (let i = 2; i * i <= n; i++) {
+    if (isPrime[i]) {
+      for (let j = i * i; j <= n; j += i) isPrime[j] = false;
+    }
+  }
+  return isPrime;
+}
+```
+
+```python
+def sieve(n: int) -> list[bool]:
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False
+    i = 2
+    while i * i <= n:
+        if is_prime[i]:
+            for j in range(i * i, n + 1, i):
+                is_prime[j] = False
+        i += 1
+    return is_prime
+```
+
+### 取模技巧（MOD = 10^9 + 7）
+
+```
+加法：(a + b) % MOD
+乘法：(a * b) % MOD
+减法：((a - b) % MOD + MOD) % MOD   ← 防止结果为负
+快速幂：fastPow(base, exp, MOD)      / Python: pow(base, exp, MOD)
+```
+
+---
+
 ## 🎯 易错点
 
 ```
@@ -137,8 +225,12 @@ def subsets_bitmask(nums: list[int]) -> list[list[int]]:
 [ ] 判断 2 的幂必须先检查 n > 0。
 [ ] x & -x 取最低位 1，常用于树状数组。
 [ ] 子集枚举复杂度是 O(n * 2^n)，n 通常不能太大。
+[ ] 快速幂中 base 必须先对 mod 取余，避免后续大数溢出。
+[ ] 埃氏筛内层从 i*i 开始，不是 2*i（更小的倍数已被标记过）。
+[ ] TS/JS 大数乘法可能超过 Number.MAX_SAFE_INTEGER，需用 BigInt 或分步取模。
+[ ] Python 的 pow(b, e, m) 三参数形式直接支持快速幂，效率高于手写循环。
 ```
 
 ---
 
-> **关联阅读：** `34-algorithm-pattern-recognition.md`
+> **关联阅读：** `34-algorithm-pattern-recognition.md` → `40-bitmask-dp.md`（状态压缩 DP）
